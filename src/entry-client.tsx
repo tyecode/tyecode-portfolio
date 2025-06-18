@@ -1,5 +1,5 @@
 import { StrictMode } from 'react';
-import { hydrateRoot } from 'react-dom/client';
+import { hydrateRoot, createRoot } from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
 
 import App from './App';
@@ -49,7 +49,7 @@ const waitForStylesheets = (): Promise<void> => {
   });
 };
 
-// Wait for DOM and stylesheets before hydrating
+// Wait for DOM and stylesheets before rendering
 const initializeApp = async () => {
   // Ensure DOM is ready
   if (document.readyState === 'loading') {
@@ -67,15 +67,24 @@ const initializeApp = async () => {
     root.classList.add('loaded');
   }
 
-  // Hydrate the app
-  hydrateRoot(
-    root as HTMLElement,
+  const AppComponent = (
     <StrictMode>
       <HelmetProvider>
         <App />
       </HelmetProvider>
     </StrictMode>
   );
+
+  // Check if root has existing content (SSR) or is empty (static build)
+  const hasSSRContent = root && root.innerHTML.trim() !== '';
+
+  if (hasSSRContent) {
+    // Hydrate for SSR
+    hydrateRoot(root as HTMLElement, AppComponent);
+  } else {
+    // Render for static build
+    createRoot(root as HTMLElement).render(AppComponent);
+  }
 };
 
 initializeApp();
