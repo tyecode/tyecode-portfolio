@@ -77,7 +77,7 @@ export const PROJECTS: Project[] = [
     category: 'E-commerce UI',
     image: 'bg-gradient-to-br from-blue-100 to-blue-200',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-    link: '#',
+    link: 'https://github.com/tyecode/ecommerce-frontend-demo',
   },
   {
     title: 'Dashboard Interface',
@@ -86,7 +86,7 @@ export const PROJECTS: Project[] = [
     category: 'Dashboard UI',
     image: 'bg-gradient-to-br from-green-100 to-green-200',
     tags: ['Vue.js', 'Chart.js', 'CSS Grid', 'ARIA'],
-    link: '#',
+    link: 'https://tyecode-dashboard-demo.vercel.app',
   },
   {
     title: 'Landing Page Collection',
@@ -95,7 +95,7 @@ export const PROJECTS: Project[] = [
     category: 'Landing Pages',
     image: 'bg-gradient-to-br from-purple-100 to-purple-200',
     tags: ['HTML5', 'CSS3', 'JavaScript', 'GSAP'],
-    link: '#',
+    link: 'https://tyecode-landing-pages.netlify.app',
   },
   {
     title: 'Component Library',

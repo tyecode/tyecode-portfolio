@@ -99,16 +99,16 @@ const Footer: React.FC = () => {
             </div>
             <div className='flex items-center gap-6 text-sm text-gray-400'>
               <a
-                href='/privacy'
+                href='#contact'
                 className='hover:text-white transition-colors duration-200 focus:outline-none rounded-md flex-center'
-                aria-label='Read privacy policy'
+                aria-label='Contact for privacy policy information'
               >
                 {'Privacy Policy'}
               </a>
               <a
-                href='/terms'
+                href='#contact'
                 className='hover:text-white transition-colors duration-200 focus:outline-none rounded-md flex-center'
-                aria-label='Read terms of service'
+                aria-label='Contact for terms of service information'
               >
                 {'Terms of Service'}
               </a>

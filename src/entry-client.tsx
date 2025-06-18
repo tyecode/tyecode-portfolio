@@ -76,13 +76,17 @@ const initializeApp = async () => {
   );
 
   // Check if root has existing content (SSR) or is empty (static build)
-  const hasSSRContent = root && root.innerHTML.trim() !== '';
+  // Also check for static build environment
+  const isStaticBuild =
+    import.meta.env.VITE_STATIC_BUILD === 'true' ||
+    window.location.pathname.includes('/tyecode-portfolio/');
+  const hasSSRContent = root && root.innerHTML.trim() !== '' && !isStaticBuild;
 
   if (hasSSRContent) {
     // Hydrate for SSR
     hydrateRoot(root as HTMLElement, AppComponent);
   } else {
-    // Render for static build
+    // Render for static build or when no SSR content
     createRoot(root as HTMLElement).render(AppComponent);
   }
 };

@@ -21,26 +21,28 @@
   "author": {
     "name": "tyecode",
     "email": "sengphachanh.dev@gmail.com",
-    "url": "https://tyecode.dev"
+    "url": "https://tyecode.github.io/tyecode-portfolio/"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/tyecode/tyecode-portfolio"
   },
-  "homepage": "https://tyecode.dev",
+  "homepage": "https://tyecode.github.io/tyecode-portfolio/",
   "private": false,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "node server",
-    "build": "npm run build:client && npm run build:server",
+    "build": "pnpm run build:client && pnpm run build:server",
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "build:static": "vite build",
     "preview": "cross-env NODE_ENV=production node server",
-    "lighthouse": "lighthouse http://localhost:5173 --output html --output-path ./lighthouse-report.html --chrome-flags=\"--headless\"",
-    "lighthouse:prod": "lighthouse http://localhost:4173 --output html --output-path ./lighthouse-prod-report.html --chrome-flags=\"--headless\"",
-    "test:lighthouse": "npm run build:static && npm run preview:static && npm run lighthouse:prod",
+    "lighthouse": "lighthouse http://localhost:5173 --output html --output-path ./lighthouse-dev-report.html --chrome-flags=\"--headless\"",
+    "lighthouse:local": "lighthouse http://localhost:4173 --output html --output-path ./lighthouse-local-report.html --chrome-flags=\"--headless\"",
+    "lighthouse:prod": "lighthouse https://tyecode.github.io/tyecode-portfolio/ --output html --output-path ./lighthouse-prod-report.html --chrome-flags=\"--headless\"",
+    "test:lighthouse": "pnpm run build:static && pnpm run preview:static && pnpm run lighthouse:local",
+    "test:lighthouse:prod": "pnpm run lighthouse:prod",
     "preview:static": "vite preview --port 4173",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

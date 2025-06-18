@@ -1,6 +1,6 @@
 # 🎨 tyecode - Front-End Web Developer Portfolio
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=vercel)](https://tyecode.dev)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=github)](https://tyecode.github.io/tyecode-portfolio/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/tyecode/tyecode-portfolio)
 [![React](https://img.shields.io/badge/React-19.0-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
@@ -23,6 +23,7 @@ This is a **professional portfolio website** for **tyecode**, a front-end web de
 - **🔧 Type Safe**: Built with TypeScript for robust development experience
 - **🎨 Component-Driven**: Reusable UI components with consistent design system
 - **⚡ Lazy Loading**: Component-level code splitting with React Suspense for optimal performance
+- **📱 PWA Ready**: Comprehensive web manifest with app shortcuts and icons
 
 ## 🛠️ Tech Stack
 
@@ -59,94 +60,7 @@ This is a **professional portfolio website** for **tyecode**, a front-end web de
 - **Vite 6.1** - Fast development server and optimized build tool
 - **PNPM** - Fast, disk space efficient package manager
 - **Cross-env** - Cross-platform environment variables
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- **Node.js** (v18 or higher)
-- **PNPM** (recommended) or **npm**
-- **Git**
-
-### Installation
-
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/tyecode/tyecode-portfolio.git
-   cd tyecode-portfolio
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   pnpm install
-   # or
-   npm install
-   ```
-
-3. **Start development server**
-
-   ```bash
-   pnpm dev
-   # or
-   npm run dev
-   ```
-
-4. **Open in browser**
-   ```
-   http://localhost:5173
-   ```
-
-### Build for Production
-
-```bash
-# Build both client and server
-pnpm build
-
-# Preview production build
-pnpm preview
-```
-
-## 📂 Project Structure
-
-```
-tyecode-portfolio/
-├── 📁 public/
-│   ├── 📄 favicon.png           # App icon
-│   ├── 📄 favicon.svg           # Vector app icon
-│   ├── 📄 portrait.jpg          # Profile image
-│   ├── 📄 resume.pdf            # Resume download
-│   ├── 📄 sitemap.xml           # SEO sitemap
-│   ├── 📄 robots.txt            # Search engine directives
-│   └── 📁 images/               # Static images
-├── 📁 src/
-│   ├── 📁 components/
-│   │   ├── 📁 layout/           # Header, Footer, MainLayout
-│   │   ├── 📁 section/          # HeroSection, AboutSection, WorkSection, ExperienceSection, ContactSection
-│   │   ├── 📁 seo/              # MetaTags, PageMetaTags
-│   │   └── 📁 ui/               # Button, Logo, LoadingScreen, ContactForm
-│   ├── 📁 constants/            # Navigation, sections, social links configuration
-│   ├── 📁 hooks/                # usePreloader and other custom React hooks
-│   ├── 📁 utils/                # Utility functions, performance utils, structured data
-│   ├── 📁 config/               # Meta tags configuration
-│   ├── 📁 styles/               # CSS modules (critical, base, animations, accessibility, utilities)
-│   ├── 📁 assets/               # React logo and structured data
-│   ├── 📄 App.tsx               # Main application component with Suspense
-│   ├── 📄 entry-client.tsx      # Client-side entry point with hydration
-│   ├── 📄 entry-server.tsx      # Server-side entry point for SSR
-│   ├── 📄 index.css             # Global styles and Tailwind imports
-│   └── 📄 vite-env.d.ts         # Vite environment types
-├── 📄 index.html                # HTML template with performance optimizations
-├── 📄 package.json              # Dependencies and scripts
-├── 📄 server.js                 # Express server for SSR with compression
-├── 📄 tsconfig.json             # TypeScript configuration with path mapping
-├── 📄 tsconfig.node.json        # Node.js TypeScript configuration
-├── 📄 vite.config.ts            # Vite configuration with SSR and optimization
-├── 📄 pnpm-lock.yaml            # PNPM lockfile
-├── 📄 CONTRIBUTING.md           # Contribution guidelines
-└── 📄 LICENSE                   # MIT license
-```
+- **Lighthouse CLI** - Performance and SEO testing tools
 
 ## 🎨 Features Showcase
 
@@ -171,7 +85,7 @@ tyecode-portfolio/
 - **Featured projects** with detailed UI/UX implementations
 - **Technology tags** and project categories
 - **Interactive project cards** with smooth transitions
-- **Responsive image galleries** and project previews
+- **External project links** with proper SEO attributes
 
 ### 🎯 Experience Section
 
@@ -219,16 +133,43 @@ This portfolio is optimized for search engines with:
 - **🎨 CSS Optimization** to prevent Flash of Unstyled Content (FOUC)
 - **🖼️ Asset Optimization** with intelligent loading strategies
 - **🗜️ Compression** middleware for production builds
-- **📊 Performance Monitoring** with custom utility functions
+- **📊 Performance Monitoring** with Lighthouse CI integration
 
-## 📊 Performance Metrics
+## 📊 Performance Metrics (Latest Lighthouse Scores)
 
-- **⚡ Lighthouse Score**: 95+ on all metrics
-- **🚀 First Contentful Paint**: < 1.5s
+- **⚡ Performance**: 92/100
+- **♿ Accessibility**: 91/100
+- **🏆 Best Practices**: 96/100
+- **🔍 SEO**: 91/100
+- **📱 Average Score**: 93/100
+- **🚀 First Contentful Paint**: 2.5s
 - **📱 Mobile Optimized**: 100% responsive design
 - **♿ Accessibility**: WCAG 2.1 AA compliant
 - **🎨 Cross-Browser**: Compatible with all modern browsers
-- **🔍 SEO Score**: 100% optimized for search engines
+
+## 🚀 Deployment
+
+This portfolio is deployed on **GitHub Pages** using **GitHub Actions** for continuous deployment:
+
+### Automated Deployment
+
+- **GitHub Actions** workflow for CI/CD
+- **Static build** optimized for GitHub Pages
+- **Automatic deployments** on push to main branch
+- **Performance testing** with Lighthouse CI
+
+### Manual Deployment
+
+```bash
+# Build for GitHub Pages
+pnpm run build:static
+
+# Test the build locally
+pnpm run preview:static
+
+# Deploy via GitHub Actions (automatic on push)
+git push origin main
+```
 
 ## 🤝 Contributing
 
@@ -251,3 +192,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 ⭐ **Star this repository** if you found it helpful! It helps other developers discover this project.
+
+**Live Demo**: [https://tyecode.github.io/tyecode-portfolio/](https://tyecode.github.io/tyecode-portfolio/)

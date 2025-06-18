@@ -176,7 +176,11 @@ export const externalLinks: LinkTag[] = [
   },
   {
     rel: 'canonical',
-    href: 'https://tyecode.dev',
+    href: 'https://tyecode.github.io/tyecode-portfolio/',
+  },
+  {
+    rel: 'manifest',
+    href: '/tyecode-portfolio/site.webmanifest',
   },
 ];
 

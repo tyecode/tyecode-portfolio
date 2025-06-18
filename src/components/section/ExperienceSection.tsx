@@ -39,7 +39,6 @@ const ExperienceSection: React.FC = () => {
                   ? 'border-l-gray-900 shadow-md'
                   : 'border-l-gray-300'
               }`}
-              role='listitem'
               aria-labelledby={`job-title-${index}`}
               aria-describedby={`job-description-${index}`}
             >
@@ -111,13 +110,14 @@ const ExperienceSection: React.FC = () => {
 
         <div className='text-center mt-12'>
           <Button
+            as='link'
+            href='/resume.pdf'
+            target='_blank'
+            rel='noopener noreferrer'
             variant='primary'
-            onClick={() =>
-              window.open('/resume.pdf', '_blank', 'noopener,noreferrer')
-            }
-            aria-label='Download full resume PDF file'
+            aria-label='Download complete resume PDF showcasing front-end development experience'
           >
-            {'Download Full Resume'}
+            {'Download Complete Resume'}
           </Button>
         </div>
       </div>

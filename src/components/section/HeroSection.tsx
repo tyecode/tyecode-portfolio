@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import Button from '@/components/ui/Button';
 
-import { batchDOMOperations } from '@/utils/performance-utils';
 import { HERO_CONTENT, SOCIAL_LINKS } from '@/constants';
 
 const HeroSection: React.FC = () => {
@@ -10,18 +9,6 @@ const HeroSection: React.FC = () => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
   const profileImagePath = '/images/portrait.jpg';
-
-  const scrollToSection = (sectionId: string) => {
-    // Use batched DOM operations to prevent forced layout
-    batchDOMOperations.read(() => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        batchDOMOperations.write(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        });
-      }
-    });
-  };
 
   const handleImageError = () => {
     setImageError(true);
@@ -32,30 +19,29 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className='pt-24 pb-16 bg-white' aria-labelledby='hero-heading'>
-      <div className='max-w-6xl mx-auto px-6 lg:px-8 relative'>
-        <div className='max-w-3xl'>
-          <div className='mb-6'>
-            <span
-              className='inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800'
-              role='status'
-              aria-label='Availability status'
-            >
-              {HERO_CONTENT.availabilityStatus}
-            </span>
-          </div>
-
+    <section
+      id='hero'
+      className='min-h-screen bg-gradient-to-br from-gray-50 to-white flex-center py-20'
+    >
+      <div className='container mx-auto px-6'>
+        <div className='text-center max-w-4xl mx-auto'>
           <h1
-            id='hero-heading'
-            className='text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight'
+            className='text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight'
+            style={{
+              background:
+                'linear-gradient(135deg, #1f2937 0%, #374151 50%, #1f2937 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
           >
             {"Hi, I'm "}
-            <span className='text-gray-600'>{HERO_CONTENT.name}</span>
+            <span className='text-gray-700'>{HERO_CONTENT.name}</span>
             <br />
             {HERO_CONTENT.title.split(' ').map((word, index) => (
               <span
                 key={index}
-                className={index === 0 ? 'text-gray-900' : 'text-gray-600'}
+                className={index === 0 ? 'text-gray-900' : 'text-gray-700'}
               >
                 {word}
                 {index < HERO_CONTENT.title.split(' ').length - 1 ? ' ' : ''}
@@ -63,25 +49,25 @@ const HeroSection: React.FC = () => {
             ))}
           </h1>
 
-          <p className='text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl'>
+          <p className='text-lg text-gray-700 mb-8 leading-relaxed max-w-2xl'>
             {HERO_CONTENT.description.split(' at ')[0]} at{' '}
             <span className='text-gray-900 font-medium'>
-              {HERO_CONTENT.currentCompany}
+              {HERO_CONTENT.description.split(' at ')[1]?.split('.')[0]}
             </span>
-            , previously at{' '}
-            <span className='text-gray-900 font-medium'>
-              {HERO_CONTENT.previousCompany}
-            </span>
-            .
+            .{' '}
+            {HERO_CONTENT.description
+              .split('. ')[1]
+              ?.replace(HERO_CONTENT.name, '')}
           </p>
 
           <div className='flex flex-col sm:flex-row gap-4 mb-10'>
             <Button
+              as='link'
+              href='#work'
               variant='primary'
-              onClick={() => scrollToSection('work')}
               aria-describedby='projects-description'
             >
-              {'View My Projects'}
+              {'View My Front-End Projects'}
             </Button>
             <Button
               variant='secondary'
@@ -93,7 +79,7 @@ const HeroSection: React.FC = () => {
           </div>
           <div id='projects-description' className='sr-only'>
             Navigate to the portfolio section to view my front-end development
-            projects
+            projects showcasing React, TypeScript, and modern CSS frameworks
           </div>
 
           <nav

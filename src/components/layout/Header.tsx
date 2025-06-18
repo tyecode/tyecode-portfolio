@@ -54,7 +54,7 @@ export default function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className='flex-center text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors duration-200 rounded-md px-2 py-1'
+                  className='flex-center text-gray-700 hover:text-gray-900 text-sm font-medium transition-colors duration-200 rounded-md px-2 py-1'
                 >
                   {link.label}
                 </a>
@@ -73,7 +73,7 @@ export default function Header() {
               <button
                 type='button'
                 onClick={toggleMobileMenu}
-                className='text-gray-600 flex-center hover:text-gray-900 p-2 cursor-pointer rounded-md'
+                className='text-gray-700 flex-center hover:text-gray-900 p-2 cursor-pointer rounded-md'
                 aria-label='Toggle main menu'
                 aria-expanded={isMobileMenuOpen}
                 aria-controls='mobile-menu'
@@ -109,7 +109,7 @@ export default function Header() {
           <div
             id='mobile-menu'
             className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-              isMobileMenuOpen ? 'opacity-100' : 'max-h-0 opacity-0'
+              isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
             }`}
             aria-hidden={!isMobileMenuOpen}
           >
@@ -122,8 +122,9 @@ export default function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className='block px-3 py-2 text-gray-600 hover:text-gray-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 rounded-md'
+                  className='block px-3 py-2 text-gray-700 hover:text-gray-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 rounded-md'
                   onClick={() => setIsMobileMenuOpen(false)}
+                  tabIndex={isMobileMenuOpen ? 0 : -1}
                 >
                   {link.label}
                 </a>
@@ -134,6 +135,7 @@ export default function Header() {
                   size='md'
                   fullWidth
                   onClick={handleMobileContactClick}
+                  tabIndex={isMobileMenuOpen ? 0 : -1}
                 >
                   {'Get in Touch'}
                 </Button>

@@ -1,5 +1,16 @@
 User-agent: *
 Allow: /
+Allow: /assets/
+Allow: /images/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
+Allow: /*.ico
 
 # Sitemap location for GitHub Pages
 Sitemap: https://tyecode.github.io/tyecode-portfolio/sitemap.xml
@@ -12,17 +23,4 @@ User-agent: Bingbot
 Allow: /
 
 User-agent: Slurp
-Allow: /
-
-# Allow access to important assets
-Allow: /assets/
-Allow: /images/
-Allow: /*.css
-Allow: /*.js
-Allow: /*.png
-Allow: /*.jpg
-Allow: /*.jpeg
-Allow: /*.gif
-Allow: /*.svg
-Allow: /*.webp
-Allow: /*.ico 
+Allow: / 
