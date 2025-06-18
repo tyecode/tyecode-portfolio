@@ -42,7 +42,9 @@ export default function Footer() {
               Let's Connect
             </h4>
             <div className="space-y-3">
-              <p className="text-gray-600 text-sm">hello@tyecode.dev</p>
+              <p className="text-gray-600 text-sm">
+                sengphachanh.dev@gmail.com
+              </p>
               <div className="flex space-x-3">
                 <a
                   href="#"

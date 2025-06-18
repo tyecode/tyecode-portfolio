@@ -1,4 +1,4 @@
-# 🚀 tyecode - Full-Stack Web Developer Portfolio
+# 🎨 tyecode - Front-End Web Developer Portfolio
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=vercel)](https://tyecode.dev)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/tyecode/tyecode-portfolio)
@@ -6,34 +6,36 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 
-> **Modern, responsive portfolio website showcasing full-stack web development expertise with cutting-edge technologies.**
+> **Modern, responsive portfolio website showcasing front-end web development expertise and UI/UX implementation skills.**
 
 ## 👨‍💻 About This Project
 
-This is a **professional portfolio website** for **tyecode**, a full-stack web developer specializing in modern web technologies. The portfolio demonstrates expertise in building scalable web applications, SaaS platforms, and innovative digital solutions.
+This is a **professional portfolio website** for **tyecode**, a front-end web developer specializing in modern JavaScript frameworks and user interface development. The portfolio demonstrates expertise in building responsive web applications, interactive user interfaces, and pixel-perfect design implementations.
 
 ### 🎯 Key Features
 
-- **🎨 Modern Design**: Clean, professional interface with smooth animations
-- **📱 Fully Responsive**: Optimized for all devices and screen sizes
-- **⚡ Lightning Fast**: Server-side rendering (SSR) with React 19
-- **🔍 SEO Optimized**: Comprehensive meta tags, structured data, and performance optimization
-- **♿ Accessible**: WCAG compliant with semantic HTML and proper ARIA labels
-- **🎭 Interactive**: Smooth animations and hover effects using Tailwind CSS
+- **🎨 Modern Design**: Clean, professional interface with smooth animations and micro-interactions
+- **📱 Fully Responsive**: Mobile-first approach optimized for all devices and screen sizes
+- **⚡ Lightning Fast**: Server-side rendering (SSR) with React 19 and performance optimization
+- **🔍 SEO Optimized**: Comprehensive meta tags, structured data, and Core Web Vitals optimization
+- **♿ Accessible**: WCAG compliant with semantic HTML, proper ARIA labels, and keyboard navigation
+- **🎭 Interactive**: Smooth animations, hover effects, and engaging user interactions
 - **🔧 Type Safe**: Built with TypeScript for robust development experience
+- **🎨 Component-Driven**: Reusable UI components with consistent design system
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **React 19** - Latest React with concurrent features
+- **React 19** - Latest React with concurrent features and modern hooks
 - **TypeScript 5.7** - Type-safe JavaScript development
-- **Tailwind CSS 4.1** - Utility-first CSS framework
-- **Vite 6.1** - Next-generation frontend tooling
+- **Tailwind CSS 4.1** - Utility-first CSS framework for rapid UI development
+- **Vite 6.1** - Next-generation frontend tooling with hot module replacement
 
-### Backend & Infrastructure
-- **Express.js** - Node.js web framework for SSR
-- **Compression** - Gzip compression for optimized loading
-- **Server-Side Rendering** - Enhanced SEO and performance
+### Styling & Animation
+- **Tailwind CSS** - Utility-first CSS framework
+- **CSS Grid & Flexbox** - Modern layout techniques
+- **CSS Animations** - Smooth transitions and micro-interactions
+- **Responsive Design** - Mobile-first approach
 
 ### Development Tools
 - **ESLint** - Code quality and consistency
@@ -45,7 +47,7 @@ This is a **professional portfolio website** for **tyecode**, a full-stack web d
 
 ### Prerequisites
 - **Node.js** (v18 or higher)
-- **npm** or **yarn**
+- **npm** or **pnpm**
 - **Git**
 
 ### Installation
@@ -59,11 +61,15 @@ This is a **professional portfolio website** for **tyecode**, a full-stack web d
 2. **Install dependencies**
    ```bash
    npm install
+   # or
+   pnpm install
    ```
 
 3. **Start development server**
    ```bash
    npm run dev
+   # or
+   pnpm dev
    ```
 
 4. **Open in browser**
@@ -108,29 +114,34 @@ tyecode-portfolio/
 ## 🎨 Features Showcase
 
 ### 🏠 Hero Section
-- **Professional introduction** with call-to-action buttons
-- **Animated elements** and gradient backgrounds
-- **Social media links** and contact information
+- **Professional introduction** with dynamic typing effects
+- **Responsive design** with mobile-optimized layout
+- **Call-to-action buttons** with hover animations
+- **Social media integration** with external links
 
 ### 👨‍💻 About Section
-- **Skills showcase** with modern technology stack
+- **Skills showcase** with modern front-end technologies
+- **Interactive skill cards** with hover effects
 - **Professional summary** and development philosophy
-- **Statistics and achievements** with visual counters
+- **Statistics dashboard** with animated counters
 
 ### 💼 Portfolio Section
-- **Featured projects** with detailed descriptions
+- **Featured projects** with detailed UI/UX implementations
 - **Technology tags** and project categories
-- **Interactive project cards** with hover effects
+- **Interactive project cards** with smooth transitions
+- **Responsive image galleries** and project previews
 
 ### 🎯 Experience Section
-- **Professional timeline** with current and past roles
-- **Key achievements** and impact metrics
-- **Company information** and role descriptions
+- **Professional timeline** with front-end focused roles
+- **Key achievements** in UI development and performance
+- **Company highlights** and project impacts
+- **Skills progression** and technology adoption
 
 ### 📧 Contact Section
-- **Contact form** with form validation
+- **Contact form** with client-side validation
 - **Multiple contact methods** and availability status
-- **Professional email** and location information
+- **Professional email** and social media links
+- **Responsive form design** with accessibility features
 
 ## 🔍 SEO Optimization
 
@@ -145,30 +156,34 @@ This portfolio is optimized for search engines with:
 - **♿ Accessibility** features for better user experience
 
 ### Target Keywords
-- Full-stack web developer
+- Front-end web developer
 - React TypeScript developer
-- Modern web development portfolio
-- Professional developer portfolio
-- Web application development
-- SaaS development expertise
+- UI/UX implementation
+- Responsive web design
+- JavaScript developer portfolio
+- Modern web development
+- Component library development
 
 ## 📊 Performance
 
 - **⚡ Lighthouse Score**: 95+ on all metrics
 - **🚀 First Contentful Paint**: < 1.5s
-- **📱 Mobile Optimized**: Responsive design
+- **📱 Mobile Optimized**: 100% responsive design
 - **♿ Accessibility**: WCAG 2.1 AA compliant
+- **🎨 Cross-Browser**: Compatible with all modern browsers
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/tyecode/tyecode-portfolio/issues).
+Contributions, issues, and feature requests are welcome! This project follows front-end development best practices and welcomes improvements to UI/UX, performance, accessibility, and code quality.
 
-### Development Guidelines
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+Please read our [Contributing Guidelines](CONTRIBUTING.md) for detailed information on:
+- 🚀 Getting started with development
+- 📋 Code standards and best practices  
+- 🔧 Commit message conventions
+- 📝 Pull request guidelines
+- 🧪 Testing procedures
+
+Feel free to check the [issues page](https://github.com/tyecode/tyecode-portfolio/issues) for open tasks or create new ones.
 
 ## 📄 License
 
@@ -176,10 +191,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-**tyecode** - Full-Stack Web Developer
+**tyecode** - Front-End Web Developer
 
 - 🌐 **Website**: [tyecode.dev](https://tyecode.dev)
-- 📧 **Email**: [hello@tyecode.dev](mailto:hello@tyecode.dev)
+- 📧 **Email**: [sengphachanh.dev@gmail.com](mailto:sengphachanh.dev@gmail.com)
 - 💼 **LinkedIn**: [linkedin.com/in/tyecode](https://linkedin.com/in/tyecode)
 - 🐙 **GitHub**: [github.com/tyecode](https://github.com/tyecode)
 - 🐦 **Twitter**: [@tyecode](https://twitter.com/tyecode)
@@ -188,4 +203,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ⭐ **Star this repository** if you found it helpful! It helps other developers discover this project.
 
-**📈 Available for freelance projects and full-time opportunities.** 
+**📈 Available for front-end development projects and UI implementation opportunities.** 

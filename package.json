@@ -20,7 +20,7 @@
   ],
   "author": {
     "name": "tyecode",
-    "email": "hello@tyecode.dev",
+    "email": "sengphachanh.dev@gmail.com",
     "url": "https://tyecode.dev"
   },
   "repository": {
@@ -28,7 +28,7 @@
     "url": "https://github.com/tyecode/tyecode-portfolio"
   },
   "homepage": "https://tyecode.dev",
-  "private": true,
+  "private": false,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
