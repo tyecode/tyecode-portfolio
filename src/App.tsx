@@ -4,23 +4,14 @@ import MainLayout from "@/components/layout/MainLayout";
 import HeroSection from "@/components/section/HeroSection";
 import AboutSection from "@/components/section/AboutSection";
 import WorkSection from "@/components/section/WorkSection";
-import ExperienceSection from "./components/section/ExperienceSection";
+import ExperienceSection from "@/components/section/ExperienceSection";
 import ContactSection from "@/components/section/ContactSection";
 import LoadingScreen from "@/components/ui/LoadingScreen";
 
 import { usePreloader } from "@/hooks/usePreloader";
 
 function App() {
-  // Add any critical resources that need to be preloaded
-  const criticalResources: string[] = [
-    // Add paths to critical images, fonts, or other assets here
-    // Example: '/assets/hero-bg.jpg', '/assets/fonts/custom-font.woff2'
-  ];
-
-  const { isLoading } = usePreloader({
-    minLoadingTime: 1000,
-    resources: criticalResources,
-  });
+  const { isLoading } = usePreloader();
 
   if (isLoading) {
     return <LoadingScreen />;

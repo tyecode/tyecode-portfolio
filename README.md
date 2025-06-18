@@ -189,18 +189,6 @@ Feel free to check the [issues page](https://github.com/tyecode/tyecode-portfoli
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 📞 Contact
-
-**tyecode** - Front-End Web Developer
-
-- 🌐 **Website**: [tyecode.dev](https://tyecode.dev)
-- 📧 **Email**: [sengphachanh.dev@gmail.com](mailto:sengphachanh.dev@gmail.com)
-- 💼 **LinkedIn**: [linkedin.com/in/tyecode](https://linkedin.com/in/tyecode)
-- 🐙 **GitHub**: [github.com/tyecode](https://github.com/tyecode)
-- 🐦 **Twitter**: [@tyecode](https://twitter.com/tyecode)
-
 ---
 
 ⭐ **Star this repository** if you found it helpful! It helps other developers discover this project.
-
-**📈 Available for front-end development projects and UI implementation opportunities.** 
