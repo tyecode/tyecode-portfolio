@@ -5,19 +5,19 @@ export interface NavLink {
 
 export const NAVIGATION_LINKS: NavLink[] = [
   {
-    href: "#about",
-    label: "About",
+    href: '#about',
+    label: 'About',
   },
   {
-    href: "#work",
-    label: "Work",
+    href: '#work',
+    label: 'Work',
   },
   {
-    href: "#experience",
-    label: "Experience",
+    href: '#experience',
+    label: 'Experience',
   },
   {
-    href: "#contact",
-    label: "Contact",
+    href: '#contact',
+    label: 'Contact',
   },
 ];

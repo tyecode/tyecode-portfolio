@@ -1,8 +1,8 @@
-import { StrictMode } from "react";
-import { renderToString } from "react-dom/server";
-import { HelmetProvider } from "react-helmet-async";
+import { StrictMode } from 'react';
+import { renderToString } from 'react-dom/server';
+import { HelmetProvider } from 'react-helmet-async';
 
-import App from "./App";
+import App from './App';
 
 export function render(_url: string) {
   const helmetContext = {};
@@ -25,7 +25,7 @@ export function render(_url: string) {
           helmet.meta.toString(),
           helmet.link.toString(),
           helmet.script.toString(),
-        ].join("\n")
-      : "",
+        ].join('\n')
+      : '',
   };
 }

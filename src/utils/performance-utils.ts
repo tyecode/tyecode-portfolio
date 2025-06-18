@@ -10,11 +10,11 @@ export const batchDOMOperations = (() => {
 
   const flush = () => {
     // Execute all reads first
-    readCallbacks.forEach((callback) => callback());
+    readCallbacks.forEach(callback => callback());
     readCallbacks = [];
 
     // Then execute all writes
-    writeCallbacks.forEach((callback) => callback());
+    writeCallbacks.forEach(callback => callback());
     writeCallbacks = [];
 
     scheduled = false;
@@ -42,17 +42,17 @@ export const batchDOMOperations = (() => {
  * Wait for the next animation frame
  */
 export const nextFrame = (): Promise<void> => {
-  return new Promise((resolve) => requestAnimationFrame(() => resolve()));
+  return new Promise(resolve => requestAnimationFrame(() => resolve()));
 };
 
 /**
  * Check if all critical resources have loaded
  */
 export const waitForCriticalResources = (): Promise<void> => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const checkResourcesLoaded = () => {
       // Check if document is ready
-      if (document.readyState !== "complete") {
+      if (document.readyState !== 'complete') {
         return false;
       }
 
@@ -60,7 +60,7 @@ export const waitForCriticalResources = (): Promise<void> => {
       const stylesheets = Array.from(
         document.querySelectorAll('link[rel="stylesheet"]')
       );
-      const stylesheetsLoaded = stylesheets.every((sheet) => {
+      const stylesheetsLoaded = stylesheets.every(sheet => {
         if (sheet instanceof HTMLLinkElement) {
           return sheet.sheet !== null || sheet.disabled;
         }
@@ -68,7 +68,7 @@ export const waitForCriticalResources = (): Promise<void> => {
       });
 
       // Check if fonts are loaded (if Font Loading API is available)
-      if (document.fonts && document.fonts.status !== "loaded") {
+      if (document.fonts && document.fonts.status !== 'loaded') {
         return false;
       }
 
@@ -102,7 +102,7 @@ export const createSafeResizeObserver = (
 ): ResizeObserver => {
   let animationId: number | null = null;
 
-  return new ResizeObserver((entries) => {
+  return new ResizeObserver(entries => {
     if (animationId) {
       cancelAnimationFrame(animationId);
     }
@@ -118,7 +118,7 @@ export const createSafeResizeObserver = (
  * Safe DOM measurement that doesn't force layout
  */
 export const safeMeasure = (element: HTMLElement) => {
-  return new Promise<DOMRect>((resolve) => {
+  return new Promise<DOMRect>(resolve => {
     batchDOMOperations.read(() => {
       resolve(element.getBoundingClientRect());
     });

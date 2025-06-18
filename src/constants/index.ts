@@ -1,8 +1,8 @@
 // Navigation and UI constants
-export * from "./navigation";
+export * from './navigation';
 
 // Social media, contact, and content constants
-export * from "./social";
+export * from './social';
 
 // Section data constants
-export * from "./sections";
+export * from './sections';

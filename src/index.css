@@ -1,7 +1,7 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Import organized CSS files */
-@import "./styles/base.css";
-@import "./styles/utilities.css";
-@import "./styles/animations.css";
-@import "./styles/accessibility.css";
+@import './styles/base.css';
+@import './styles/utilities.css';
+@import './styles/animations.css';
+@import './styles/accessibility.css';

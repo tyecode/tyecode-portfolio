@@ -27,29 +27,34 @@ This is a **professional portfolio website** for **tyecode**, a front-end web de
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **React 19.0** - Latest React with concurrent features, Suspense, and modern hooks
 - **TypeScript 5.7** - Type-safe JavaScript development with latest features
 - **Tailwind CSS 4.1** - Utility-first CSS framework with Vite plugin integration
 - **Vite 6.1** - Next-generation frontend tooling with hot module replacement
 
 ### Backend & SSR
+
 - **Express 5.0** - Fast, unopinionated web framework for Node.js
 - **Server-Side Rendering** - Custom SSR implementation with React 19
 - **React Helmet Async** - Document head management for SEO optimization
 
 ### Styling & Animation
+
 - **Tailwind CSS 4.1** - Utility-first CSS framework with Vite plugin
 - **CSS Grid & Flexbox** - Modern layout techniques
 - **Custom CSS Animations** - Smooth transitions and micro-interactions
 - **Responsive Design** - Mobile-first approach with optimized breakpoints
 
 ### Performance & SEO
+
 - **Structured Data** - JSON-LD markup for rich snippets
 - **Meta Tags Management** - Dynamic SEO optimization
 - **Performance Optimization** - Custom utilities and optimization techniques
 - **Sitemap & Robots.txt** - Search engine optimization files
 
 ### Development Tools
+
 - **TypeScript 5.7** - Static type checking with path mapping
 - **Vite 6.1** - Fast development server and optimized build tool
 - **PNPM** - Fast, disk space efficient package manager
@@ -58,6 +63,7 @@ This is a **professional portfolio website** for **tyecode**, a front-end web de
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - **Node.js** (v18 or higher)
 - **PNPM** (recommended) or **npm**
 - **Git**
@@ -65,12 +71,14 @@ This is a **professional portfolio website** for **tyecode**, a front-end web de
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/tyecode/tyecode-portfolio.git
    cd tyecode-portfolio
    ```
 
 2. **Install dependencies**
+
    ```bash
    pnpm install
    # or
@@ -78,6 +86,7 @@ This is a **professional portfolio website** for **tyecode**, a front-end web de
    ```
 
 3. **Start development server**
+
    ```bash
    pnpm dev
    # or
@@ -142,6 +151,7 @@ tyecode-portfolio/
 ## 🎨 Features Showcase
 
 ### 🏠 Hero Section
+
 - **Professional introduction** with clear name, title, and role description
 - **Availability status indicator** showing current work status
 - **Responsive design** with mobile-optimized layout
@@ -150,24 +160,28 @@ tyecode-portfolio/
 - **Profile image** with optimized loading and fallback handling
 
 ### 👨‍💻 About Section
+
 - **Skills showcase** with modern front-end technologies
 - **Interactive skill cards** with hover effects
 - **Professional summary** and development philosophy
 - **Statistics dashboard** with animated counters
 
 ### 💼 Portfolio Section
+
 - **Featured projects** with detailed UI/UX implementations
 - **Technology tags** and project categories
 - **Interactive project cards** with smooth transitions
 - **Responsive image galleries** and project previews
 
 ### 🎯 Experience Section
+
 - **Professional timeline** with front-end focused roles
 - **Key achievements** in UI development and performance
 - **Company highlights** and project impacts
 - **Skills progression** and technology adoption
 
 ### 📧 Contact Section
+
 - **Contact form** with comprehensive validation and user feedback
 - **Multiple contact methods** and availability status
 - **Professional email** and social media links
@@ -188,6 +202,7 @@ This portfolio is optimized for search engines with:
 - **🤖 Robots.txt** for search engine directives
 
 ### Target Keywords
+
 - Front-end web developer
 - React TypeScript developer
 - UI/UX implementation
@@ -220,8 +235,9 @@ This portfolio is optimized for search engines with:
 Contributions, issues, and feature requests are welcome! This project follows front-end development best practices and welcomes improvements to UI/UX, performance, accessibility, and code quality.
 
 Please read our [Contributing Guidelines](CONTRIBUTING.md) for detailed information on:
+
 - 🚀 Getting started with development
-- 📋 Code standards and best practices  
+- 📋 Code standards and best practices
 - 🔧 Commit message conventions
 - 📝 Pull request guidelines
 - 🧪 Testing procedures

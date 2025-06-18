@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 interface PreloaderOptions {
   minLoadingTime?: number;
@@ -6,7 +6,7 @@ interface PreloaderOptions {
 
 // Function to check if critical resources are loaded
 const waitForCriticalResources = (): Promise<void> => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const checkResources = () => {
       // Check if fonts are loaded
       const fontPromise = document.fonts
@@ -17,7 +17,7 @@ const waitForCriticalResources = (): Promise<void> => {
       const stylesheets = Array.from(
         document.querySelectorAll('link[rel="stylesheet"]')
       );
-      const stylesheetsLoaded = stylesheets.every((sheet) => {
+      const stylesheetsLoaded = stylesheets.every(sheet => {
         return (
           sheet instanceof HTMLLinkElement && (sheet.sheet || sheet.disabled)
         );
@@ -51,17 +51,17 @@ export const usePreloader = ({
       await waitForCriticalResources();
 
       // Initial delay for smooth transition
-      await new Promise((resolve) => setTimeout(resolve, 300));
+      await new Promise(resolve => setTimeout(resolve, 300));
 
       const elapsed = Date.now() - startTime;
       const remainingTime = Math.max(minLoadingTime - elapsed, 0);
 
       if (remainingTime > 0) {
-        await new Promise((resolve) => setTimeout(resolve, remainingTime));
+        await new Promise(resolve => setTimeout(resolve, remainingTime));
       }
 
       // Final delay before hiding to ensure everything is painted
-      await new Promise((resolve) => setTimeout(resolve, 200));
+      await new Promise(resolve => setTimeout(resolve, 200));
       setIsLoading(false);
     };
 

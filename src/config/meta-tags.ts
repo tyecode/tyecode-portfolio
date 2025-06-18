@@ -17,191 +17,191 @@ export interface LinkTag {
 
 export const seoMetaTags: MetaTag[] = [
   {
-    name: "description",
+    name: 'description',
     content:
-      "Front-end web developer specializing in React, TypeScript, Vue.js, and modern CSS frameworks. Creating beautiful, responsive, and user-friendly web applications with pixel-perfect designs and exceptional user experiences.",
+      'Front-end web developer specializing in React, TypeScript, Vue.js, and modern CSS frameworks. Creating beautiful, responsive, and user-friendly web applications with pixel-perfect designs and exceptional user experiences.',
   },
   {
-    name: "keywords",
+    name: 'keywords',
     content:
-      "front-end developer, web developer, React developer, TypeScript, Vue.js, Tailwind CSS, responsive design, UI developer, JavaScript, HTML5, CSS3, tyecode",
+      'front-end developer, web developer, React developer, TypeScript, Vue.js, Tailwind CSS, responsive design, UI developer, JavaScript, HTML5, CSS3, tyecode',
   },
   {
-    name: "author",
-    content: "tyecode",
+    name: 'author',
+    content: 'tyecode',
   },
   {
-    name: "robots",
-    content: "index, follow",
+    name: 'robots',
+    content: 'index, follow',
   },
   {
-    name: "language",
-    content: "English",
+    name: 'language',
+    content: 'English',
   },
   {
-    name: "revisit-after",
-    content: "7 days",
+    name: 'revisit-after',
+    content: '7 days',
   },
 ];
 
 export const openGraphMetaTags: MetaTag[] = [
   {
-    property: "og:type",
-    content: "website",
+    property: 'og:type',
+    content: 'website',
   },
   {
-    property: "og:title",
-    content: "tyecode - Front-End Web Developer Portfolio",
+    property: 'og:title',
+    content: 'tyecode - Front-End Web Developer Portfolio',
   },
   {
-    property: "og:description",
+    property: 'og:description',
     content:
-      "Front-end web developer with 4+ years of experience creating responsive, user-friendly web applications. Specializing in React, TypeScript, Vue.js, and modern CSS frameworks.",
+      'Front-end web developer with 4+ years of experience creating responsive, user-friendly web applications. Specializing in React, TypeScript, Vue.js, and modern CSS frameworks.',
   },
   {
-    property: "og:url",
-    content: "https://tyecode.dev",
+    property: 'og:url',
+    content: 'https://tyecode.dev',
   },
   {
-    property: "og:site_name",
-    content: "tyecode Portfolio",
+    property: 'og:site_name',
+    content: 'tyecode Portfolio',
   },
   {
-    property: "og:image",
-    content: "https://tyecode.dev/og-image.jpg",
+    property: 'og:image',
+    content: 'https://tyecode.dev/og-image.jpg',
   },
   {
-    property: "og:image:width",
-    content: "1200",
+    property: 'og:image:width',
+    content: '1200',
   },
   {
-    property: "og:image:height",
-    content: "630",
+    property: 'og:image:height',
+    content: '630',
   },
   {
-    property: "og:image:alt",
-    content: "tyecode - Front-End Web Developer Portfolio",
+    property: 'og:image:alt',
+    content: 'tyecode - Front-End Web Developer Portfolio',
   },
   {
-    property: "og:locale",
-    content: "en_US",
+    property: 'og:locale',
+    content: 'en_US',
   },
 ];
 
 export const twitterMetaTags: MetaTag[] = [
   {
-    name: "twitter:card",
-    content: "summary_large_image",
+    name: 'twitter:card',
+    content: 'summary_large_image',
   },
   {
-    name: "twitter:site",
-    content: "@tyecode",
+    name: 'twitter:site',
+    content: '@tyecode',
   },
   {
-    name: "twitter:creator",
-    content: "@tyecode",
+    name: 'twitter:creator',
+    content: '@tyecode',
   },
   {
-    name: "twitter:title",
-    content: "tyecode - Front-End Web Developer Portfolio",
+    name: 'twitter:title',
+    content: 'tyecode - Front-End Web Developer Portfolio',
   },
   {
-    name: "twitter:description",
+    name: 'twitter:description',
     content:
-      "Front-end web developer with 4+ years of experience creating responsive, user-friendly web applications. Specializing in React, TypeScript, Vue.js, and modern CSS frameworks.",
+      'Front-end web developer with 4+ years of experience creating responsive, user-friendly web applications. Specializing in React, TypeScript, Vue.js, and modern CSS frameworks.',
   },
   {
-    name: "twitter:image",
-    content: "https://tyecode.dev/twitter-card.jpg",
+    name: 'twitter:image',
+    content: 'https://tyecode.dev/twitter-card.jpg',
   },
   {
-    name: "twitter:image:alt",
-    content: "tyecode - Front-End Web Developer Portfolio",
+    name: 'twitter:image:alt',
+    content: 'tyecode - Front-End Web Developer Portfolio',
   },
 ];
 
 export const themeMetaTags: MetaTag[] = [
   {
-    name: "theme-color",
-    content: "#111827",
+    name: 'theme-color',
+    content: '#111827',
   },
   {
-    name: "msapplication-TileColor",
-    content: "#111827",
+    name: 'msapplication-TileColor',
+    content: '#111827',
   },
 ];
 
 export const faviconLinks: LinkTag[] = [
   {
-    rel: "icon",
-    href: "/favicon.png",
-    type: "image/png",
+    rel: 'icon',
+    href: '/favicon.png',
+    type: 'image/png',
   },
   {
-    rel: "icon",
-    type: "image/png",
-    sizes: "32x32",
-    href: "/favicon.png",
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '32x32',
+    href: '/favicon.png',
   },
   {
-    rel: "icon",
-    type: "image/png",
-    sizes: "16x16",
-    href: "/favicon.png",
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '16x16',
+    href: '/favicon.png',
   },
   {
-    rel: "apple-touch-icon",
-    sizes: "180x180",
-    href: "/favicon.png",
+    rel: 'apple-touch-icon',
+    sizes: '180x180',
+    href: '/favicon.png',
   },
   {
-    rel: "manifest",
-    href: "/site.webmanifest",
+    rel: 'manifest',
+    href: '/site.webmanifest',
   },
 ];
 
 export const externalLinks: LinkTag[] = [
   {
-    rel: "preconnect",
-    href: "https://fonts.googleapis.com",
+    rel: 'preconnect',
+    href: 'https://fonts.googleapis.com',
   },
   {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossorigin: "",
+    rel: 'preconnect',
+    href: 'https://fonts.gstatic.com',
+    crossorigin: '',
   },
   {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap",
+    rel: 'stylesheet',
+    href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap',
   },
   {
-    rel: "canonical",
-    href: "https://tyecode.dev",
+    rel: 'canonical',
+    href: 'https://tyecode.dev',
   },
 ];
 
 export const criticalLinks: LinkTag[] = [
   {
-    rel: "preload",
-    href: "/src/styles/critical.css",
-    as: "style",
+    rel: 'preload',
+    href: '/src/styles/critical.css',
+    as: 'style',
     onload: "this.onload=null;this.rel='stylesheet'",
   },
   {
-    rel: "preload",
-    href: "/src/index.css",
-    as: "style",
+    rel: 'preload',
+    href: '/src/index.css',
+    as: 'style',
     onload: "this.onload=null;this.rel='stylesheet'",
   },
 ];
 
 export const siteConfig = {
-  title: "tyecode - Front-End Web Developer | Modern Portfolio",
-  baseUrl: "https://tyecode.dev",
-  email: "sengphachanh.dev@gmail.com",
+  title: 'tyecode - Front-End Web Developer | Modern Portfolio',
+  baseUrl: 'https://tyecode.dev',
+  email: 'sengphachanh.dev@gmail.com',
   social: {
-    github: "https://github.com/tyecode",
-    linkedin: "https://linkedin.com/in/tyecode",
-    twitter: "https://twitter.com/tyecode",
+    github: 'https://github.com/tyecode',
+    linkedin: 'https://linkedin.com/in/tyecode',
+    twitter: 'https://twitter.com/tyecode',
   },
 };

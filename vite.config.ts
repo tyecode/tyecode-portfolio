@@ -1,21 +1,21 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
-import path from "path";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import path from 'path';
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
     },
   },
   optimizeDeps: {
-    include: ["react-helmet-async"],
+    include: ['react-helmet-async'],
   },
   ssr: {
-    noExternal: ["react-helmet-async"],
+    noExternal: ['react-helmet-async'],
   },
   css: {
     // Improve CSS loading performance
@@ -30,11 +30,11 @@ export default defineConfig({
     rollupOptions: {
       output: {
         // Ensure CSS is loaded before JS
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name?.endsWith(".css")) {
-            return "assets/styles/[name]-[hash][extname]";
+        assetFileNames: assetInfo => {
+          if (assetInfo.name?.endsWith('.css')) {
+            return 'assets/styles/[name]-[hash][extname]';
           }
-          return "assets/[name]-[hash][extname]";
+          return 'assets/[name]-[hash][extname]';
         },
       },
     },
@@ -42,5 +42,5 @@ export default defineConfig({
     sourcemap: true,
   },
   // Optimize asset loading
-  assetsInclude: ["**/*.woff", "**/*.woff2"],
+  assetsInclude: ['**/*.woff', '**/*.woff2'],
 });

@@ -1,4 +1,4 @@
-import structuredDataConfig from "@/assets/structured-data.json";
+import structuredDataConfig from '@/assets/structured-data.json';
 
 export function generateStructuredData(): string {
   return JSON.stringify(structuredDataConfig, null, 2);
