@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@layer base {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
+
+@layer utilities {
+  html {
+    font-family: "Inter", sans-serif;
+    scroll-behavior: smooth;
+    overscroll-behavior: none;
+  }
+}

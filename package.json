@@ -1,0 +1,62 @@
+{
+  "name": "tyecode-portfolio",
+  "description": "Modern front-end web developer portfolio built with React, TypeScript, and Tailwind CSS. Showcasing responsive web applications, UI/UX implementations, and front-end development expertise.",
+  "keywords": [
+    "portfolio",
+    "front-end developer",
+    "frontend developer",
+    "web developer",
+    "react",
+    "typescript",
+    "tailwind css",
+    "developer portfolio",
+    "web development",
+    "modern portfolio",
+    "responsive design",
+    "ui/ux",
+    "javascript",
+    "css",
+    "html"
+  ],
+  "author": {
+    "name": "tyecode",
+    "email": "hello@tyecode.dev",
+    "url": "https://tyecode.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tyecode/tyecode-portfolio"
+  },
+  "homepage": "https://tyecode.dev",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node server",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build --outDir dist/client",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
+    "preview": "cross-env NODE_ENV=production node server"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.10",
+    "clsx": "^2.1.1",
+    "compression": "^1.8.0",
+    "express": "^5.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sirv": "^3.0.1",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.10"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "cross-env": "^7.0.3",
+    "typescript": "~5.7.3",
+    "vite": "^6.1.1"
+  }
+}
