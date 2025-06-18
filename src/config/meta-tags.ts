@@ -15,6 +15,25 @@ export interface LinkTag {
   crossorigin?: string;
 }
 
+// Dynamic base path utility
+const getBasePath = (): string => {
+  // Check for static build environment variable
+  if (import.meta.env.VITE_STATIC_BUILD === 'true') {
+    return '/tyecode-portfolio';
+  }
+
+  // Check if running on GitHub Pages (client-side detection)
+  if (
+    typeof window !== 'undefined' &&
+    window.location.pathname.includes('/tyecode-portfolio/')
+  ) {
+    return '/tyecode-portfolio';
+  }
+
+  // Default to root path for local development
+  return '';
+};
+
 export const seoMetaTags: MetaTag[] = [
   {
     name: 'description',
@@ -68,7 +87,7 @@ export const openGraphMetaTags: MetaTag[] = [
   },
   {
     property: 'og:image',
-    content: 'https://tyecode.github.io/tyecode-portfolio/portrait.jpg',
+    content: 'https://tyecode.github.io/tyecode-portfolio/images/portrait.jpg',
   },
   {
     property: 'og:image:width',
@@ -112,7 +131,7 @@ export const twitterMetaTags: MetaTag[] = [
   },
   {
     name: 'twitter:image',
-    content: 'https://tyecode.github.io/tyecode-portfolio/portrait.jpg',
+    content: 'https://tyecode.github.io/tyecode-portfolio/images/portrait.jpg',
   },
   {
     name: 'twitter:image:alt',
@@ -134,29 +153,29 @@ export const themeMetaTags: MetaTag[] = [
 export const faviconLinks: LinkTag[] = [
   {
     rel: 'icon',
-    href: '/favicon.png',
+    href: `${getBasePath()}/favicon.png`,
     type: 'image/png',
   },
   {
     rel: 'icon',
     type: 'image/png',
     sizes: '32x32',
-    href: '/favicon.png',
+    href: `${getBasePath()}/favicon.png`,
   },
   {
     rel: 'icon',
     type: 'image/png',
     sizes: '16x16',
-    href: '/favicon.png',
+    href: `${getBasePath()}/favicon.png`,
   },
   {
     rel: 'apple-touch-icon',
     sizes: '180x180',
-    href: '/favicon.png',
+    href: `${getBasePath()}/favicon.png`,
   },
   {
     rel: 'manifest',
-    href: '/site.webmanifest',
+    href: `${getBasePath()}/site.webmanifest`,
   },
 ];
 
@@ -178,10 +197,6 @@ export const externalLinks: LinkTag[] = [
     rel: 'canonical',
     href: 'https://tyecode.github.io/tyecode-portfolio/',
   },
-  {
-    rel: 'manifest',
-    href: '/tyecode-portfolio/site.webmanifest',
-  },
 ];
 
 export const criticalLinks: LinkTag[] = [
@@ -198,6 +213,94 @@ export const criticalLinks: LinkTag[] = [
     onload: "this.onload=null;this.rel='stylesheet'",
   },
 ];
+
+// Dynamic manifest generation
+export const generateManifest = () => {
+  const basePath = getBasePath();
+
+  return {
+    name: 'tyecode - Front-End Developer Portfolio',
+    short_name: 'tyecode',
+    description:
+      'Modern front-end web developer portfolio built with React, TypeScript, and Tailwind CSS. Showcasing responsive web applications, UI/UX implementations, and front-end development expertise.',
+    start_url: `${basePath}/`,
+    scope: `${basePath}/`,
+    id: 'tyecode-portfolio',
+    display: 'standalone',
+    display_override: ['window-controls-overlay', 'standalone'],
+    orientation: 'portrait-primary',
+    background_color: '#ffffff',
+    theme_color: '#111827',
+    lang: 'en',
+    dir: 'ltr',
+    icons: [
+      {
+        src: `${basePath}/favicon.svg`,
+        sizes: 'any',
+        type: 'image/svg+xml',
+        purpose: 'any maskable',
+      },
+      {
+        src: `${basePath}/favicon.png`,
+        sizes: '256x256',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: `${basePath}/favicon.png`,
+        sizes: '192x192',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: `${basePath}/favicon.png`,
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: `${basePath}/images/portrait.jpg`,
+        sizes: '2728x2728',
+        type: 'image/jpeg',
+        purpose: 'any',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'View Projects',
+        short_name: 'Projects',
+        description: 'Browse featured web development projects',
+        url: `${basePath}/#work`,
+        icons: [{ src: `${basePath}/favicon.png`, sizes: '256x256' }],
+      },
+      {
+        name: 'Experience',
+        short_name: 'Experience',
+        description: 'View professional experience and timeline',
+        url: `${basePath}/#experience`,
+        icons: [{ src: `${basePath}/favicon.png`, sizes: '256x256' }],
+      },
+      {
+        name: 'Contact',
+        short_name: 'Contact',
+        description: 'Get in touch for collaboration',
+        url: `${basePath}/#contact`,
+        icons: [{ src: `${basePath}/favicon.png`, sizes: '256x256' }],
+      },
+    ],
+    categories: ['portfolio', 'developer', 'web-development'],
+    screenshots: [
+      {
+        src: `${basePath}/images/portrait.jpg`,
+        sizes: '2728x2728',
+        type: 'image/jpeg',
+        form_factor: 'wide',
+      },
+    ],
+    prefer_related_applications: false,
+    related_applications: [],
+  };
+};
 
 export const siteConfig = {
   title: 'tyecode - Front-End Web Developer | Modern Portfolio',

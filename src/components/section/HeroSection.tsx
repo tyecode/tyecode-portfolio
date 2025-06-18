@@ -8,7 +8,11 @@ const HeroSection: React.FC = () => {
   const [imageError, setImageError] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
-  const profileImagePath = '/images/portrait.jpg';
+  // Dynamic base path - use GitHub Pages path for static builds, root path for SSR
+  const basePath =
+    import.meta.env.VITE_STATIC_BUILD === 'true' ? '/tyecode-portfolio' : '';
+  const profileImagePath = `${basePath}/images/portrait.jpg`;
+  const resumePath = `${basePath}/resume.pdf`;
 
   const handleImageError = () => {
     setImageError(true);
@@ -23,18 +27,9 @@ const HeroSection: React.FC = () => {
       id='hero'
       className='min-h-screen bg-gradient-to-br from-gray-50 to-white flex-center py-20'
     >
-      <div className='container mx-auto px-6'>
+      <div className='container mx-auto px-6 relative'>
         <div className='text-center max-w-4xl mx-auto'>
-          <h1
-            className='text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight'
-            style={{
-              background:
-                'linear-gradient(135deg, #1f2937 0%, #374151 50%, #1f2937 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
+          <h1 className='text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight'>
             {"Hi, I'm "}
             <span className='text-gray-700'>{HERO_CONTENT.name}</span>
             <br />
@@ -71,7 +66,7 @@ const HeroSection: React.FC = () => {
             </Button>
             <Button
               variant='secondary'
-              onClick={() => window.open('/resume.pdf', '_blank')}
+              onClick={() => window.open(resumePath, '_blank')}
               aria-label='Download resume PDF file'
             >
               {'Download Resume'}

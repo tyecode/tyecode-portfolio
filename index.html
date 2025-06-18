@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- ==================== Essential Meta Tags ==================== -->
     <!-- These will be overridden by the MetaTags component -->
     <title>tyecode - Front-End Web Developer | Modern Portfolio</title>
 
-    <!-- ==================== Critical Resources ==================== -->
+    <!-- Fallback favicons before React MetaTags loads -->
+    <link rel="icon" href="./favicon.png" type="image/png" />
+    <link rel="shortcut icon" href="./favicon.png" type="image/png" />
+
     <!-- Preconnect to external domains for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,7 +22,6 @@
       rel="stylesheet"
     />
 
-    <!-- ==================== Critical CSS ==================== -->
     <!-- Critical styles moved to external file for better organization -->
     <link rel="stylesheet" href="/src/styles/critical.css" />
 

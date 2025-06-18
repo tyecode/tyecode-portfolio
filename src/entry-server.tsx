@@ -3,6 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { HelmetProvider } from 'react-helmet-async';
 
 import App from './App';
+import { generateManifest } from './config/meta-tags';
 
 export function render(_url: string) {
   const helmetContext = {};
@@ -29,3 +30,6 @@ export function render(_url: string) {
       : '',
   };
 }
+
+// Export generateManifest for the dynamic manifest route
+export { generateManifest };

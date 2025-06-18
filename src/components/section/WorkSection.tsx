@@ -11,7 +11,7 @@ const WorkSection: React.FC = () => {
       className='py-20 bg-white'
       aria-labelledby='work-heading'
     >
-      <div className='max-w-6xl mx-auto px-6 lg:px-8'>
+      <div className='max-w-6xl mx-auto px-6 lg:px-8 relative'>
         <div className='text-center mb-16'>
           <h2
             id='work-heading'
