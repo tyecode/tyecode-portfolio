@@ -54,7 +54,7 @@ export default function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="flex-center text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 rounded-md px-2 py-1"
+                  className="flex-center text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors duration-200 rounded-md px-2 py-1"
                 >
                   {link.label}
                 </a>
@@ -131,7 +131,7 @@ export default function Header() {
               <div className="p-3">
                 <Button
                   variant="primary"
-                  size="sm"
+                  size="md"
                   fullWidth
                   onClick={handleMobileContactClick}
                 >

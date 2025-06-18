@@ -4,6 +4,40 @@ interface PreloaderOptions {
   minLoadingTime?: number;
 }
 
+// Function to check if critical resources are loaded
+const waitForCriticalResources = (): Promise<void> => {
+  return new Promise((resolve) => {
+    const checkResources = () => {
+      // Check if fonts are loaded
+      const fontPromise = document.fonts
+        ? document.fonts.ready
+        : Promise.resolve();
+
+      // Check if stylesheets are loaded
+      const stylesheets = Array.from(
+        document.querySelectorAll('link[rel="stylesheet"]')
+      );
+      const stylesheetsLoaded = stylesheets.every((sheet) => {
+        return (
+          sheet instanceof HTMLLinkElement && (sheet.sheet || sheet.disabled)
+        );
+      });
+
+      if (stylesheetsLoaded) {
+        fontPromise.then(() => {
+          // Small delay to ensure layout calculations are complete
+          setTimeout(resolve, 50);
+        });
+      } else {
+        // Retry after a short delay
+        setTimeout(checkResources, 16);
+      }
+    };
+
+    checkResources();
+  });
+};
+
 export const usePreloader = ({
   minLoadingTime = 1000,
 }: PreloaderOptions = {}) => {
@@ -13,7 +47,10 @@ export const usePreloader = ({
     const startTime = Date.now();
 
     const handleLoading = async () => {
-      // Initial delay
+      // Wait for critical resources first
+      await waitForCriticalResources();
+
+      // Initial delay for smooth transition
       await new Promise((resolve) => setTimeout(resolve, 300));
 
       const elapsed = Date.now() - startTime;
@@ -23,8 +60,8 @@ export const usePreloader = ({
         await new Promise((resolve) => setTimeout(resolve, remainingTime));
       }
 
-      // Final delay before hiding
-      await new Promise((resolve) => setTimeout(resolve, 300));
+      // Final delay before hiding to ensure everything is painted
+      await new Promise((resolve) => setTimeout(resolve, 200));
       setIsLoading(false);
     };
 

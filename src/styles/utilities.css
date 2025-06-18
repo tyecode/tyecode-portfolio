@@ -1,0 +1,18 @@
+/* Custom utility classes */
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.flex-between {
+  @apply flex items-center justify-between;
+}
+
+/* Prevent FOUC for dynamically loaded content */
+.prevent-fouc {
+  visibility: hidden;
+}
+
+.prevent-fouc.loaded {
+  visibility: visible;
+  animation: fadeIn 0.3s ease-in-out;
+}

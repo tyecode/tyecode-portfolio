@@ -34,9 +34,9 @@ export const SOCIAL_LINKS: SocialLink[] = [
     ariaLabel: "Visit tyecode's GitHub profile (opens in new tab)",
   },
   {
-    name: "Twitter",
-    href: "https://twitter.com/tyecode",
-    ariaLabel: "Visit tyecode's Twitter profile (opens in new tab)",
+    name: "Facebook",
+    href: "https://facebook.com/tyecode",
+    ariaLabel: "Visit tyecode's Facebook profile (opens in new tab)",
   },
 ];
 

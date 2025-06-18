@@ -1,44 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
-import Button from "@/components/ui/Button";
+import ContactForm, { ContactFormData } from "@/components/ui/ContactForm";
 
 import { CONTACT_INFO } from "@/constants";
 
 const ContactSection: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log("Form submitted:", formData);
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-    } catch (error) {
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
+  const handleFormSubmit = async (data: ContactFormData) => {
+    // Simulate form submission
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    console.log("Form submitted:", data);
   };
 
   return (
@@ -64,132 +34,7 @@ const ContactSection: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           <div>
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-6"
-              noValidate
-              aria-label="Contact form"
-            >
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-900 mb-2"
-                >
-                  {"Name "}
-                  <span aria-label="required" className="text-red-500">
-                    *
-                  </span>
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-1 focus:ring-gray-900 focus:border-transparent transition-all duration-200"
-                  placeholder={"Your full name"}
-                  required
-                  aria-required="true"
-                  aria-describedby="name-error"
-                />
-                <div id="name-error" className="sr-only" aria-live="polite">
-                  {!formData.name && submitStatus === "error"
-                    ? "Name is required"
-                    : ""}
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-900 mb-2"
-                >
-                  {"Email "}
-                  <span aria-label="required" className="text-red-500">
-                    *
-                  </span>
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-1 focus:ring-gray-900 focus:border-transparent transition-all duration-200"
-                  placeholder="your.email@example.com"
-                  required
-                  aria-required="true"
-                  aria-describedby="email-error"
-                />
-                <div id="email-error" className="sr-only" aria-live="polite">
-                  {!formData.email && submitStatus === "error"
-                    ? "Email is required"
-                    : ""}
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-900 mb-2"
-                >
-                  {"Message "}
-                  <span aria-label="required" className="text-red-500">
-                    *
-                  </span>
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-1 focus:ring-gray-900 focus:border-transparent transition-all duration-200 resize-none"
-                  placeholder="Tell me about your project or just say hello..."
-                  required
-                  aria-required="true"
-                  aria-describedby="message-error"
-                ></textarea>
-                <div id="message-error" className="sr-only" aria-live="polite">
-                  {!formData.message && submitStatus === "error"
-                    ? "Message is required"
-                    : ""}
-                </div>
-              </div>
-
-              {submitStatus === "success" && (
-                <div
-                  className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800"
-                  role="status"
-                  aria-live="polite"
-                >
-                  {"Thank you for your message! I'll get back to you soon."}
-                </div>
-              )}
-
-              {submitStatus === "error" && (
-                <div
-                  className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-800"
-                  role="alert"
-                  aria-live="assertive"
-                >
-                  {"There was an error sending your message. Please try again."}
-                </div>
-              )}
-
-              <Button
-                type="submit"
-                variant="primary"
-                fullWidth
-                isLoading={isSubmitting}
-                aria-describedby="submit-description"
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
-              <div id="submit-description" className="sr-only">
-                Send your contact form message to tyecode
-              </div>
-            </form>
+            <ContactForm onSubmit={handleFormSubmit} />
           </div>
 
           <div className="space-y-8">

@@ -1,7 +1,7 @@
 // Hero Section Data
 export const HERO_CONTENT = {
   availabilityStatus: "Available for new opportunities",
-  name: "tyecode",
+  name: "Tye",
   title: "Front-End Web Developer",
   description:
     "I create beautiful, responsive, and user-friendly web applications using modern front-end technologies. Currently crafting exceptional user experiences at Creative Digital Agency, previously at UI Innovations.",
@@ -22,7 +22,7 @@ export const ABOUT_SKILLS: string[] = [
   "HTML5/CSS3",
   "Tailwind CSS",
   "Sass/SCSS",
-  "Vue.js",
+  "Node.js",
   "Responsive Design",
   "Webpack/Vite",
   "Git/GitHub",
@@ -30,12 +30,12 @@ export const ABOUT_SKILLS: string[] = [
 
 export const ABOUT_STATS: Stat[] = [
   {
-    value: "30+",
+    value: "50+",
     label: "UI Components Built",
     ariaLabel: "30 plus",
   },
   {
-    value: "4+",
+    value: "3+",
     label: "Years Experience",
     ariaLabel: "4 plus",
   },
@@ -53,9 +53,9 @@ export const ABOUT_STATS: Stat[] = [
 
 export const ABOUT_CONTENT = {
   paragraphs: [
-    "I'm a front-end web developer with over 4 years of experience creating responsive, user-friendly web applications. I specialize in modern JavaScript frameworks and creating pixel-perfect user interfaces.",
+    "I'm a front-end web developer with over 3 years of experience creating responsive, user-friendly web applications. I specialize in modern JavaScript frameworks and creating pixel-perfect user interfaces.",
     "My passion lies in transforming designs into interactive, accessible web experiences that delight users. I excel at bridging the gap between design and development, ensuring seamless collaboration with designers and backend teams.",
-    "When I'm not coding, you can find me exploring the latest CSS features, contributing to open-source UI libraries, or sharing front-end best practices with the developer community through blog posts and tutorials.",
+    "When I'm not coding, you can find me exploring the latest CSS features, contributing to open-source UI libraries, or experimenting with new design tools and prototyping interactive user interfaces.",
   ],
 };
 

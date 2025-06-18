@@ -1,17 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Button from "@/components/ui/Button";
 
+import { batchDOMOperations } from "@/utils/performance-utils";
 import { HERO_CONTENT, SOCIAL_LINKS } from "@/constants";
 
 const HeroSection: React.FC = () => {
+  const [imageError, setImageError] = useState<boolean>(false);
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+
+  const profileImagePath = "/images/portrait.jpg";
+
   const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    // Use batched DOM operations to prevent forced layout
+    batchDOMOperations.read(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        batchDOMOperations.write(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        });
+      }
+    });
+  };
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
   };
 
   return (
     <section className="pt-24 pb-16 bg-white" aria-labelledby="hero-heading">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 relative">
         <div className="max-w-3xl">
           <div className="mb-6">
             <span
@@ -94,15 +116,34 @@ const HeroSection: React.FC = () => {
         </div>
 
         {/* Profile Image */}
-        <div className="absolute top-24 right-8 lg:right-16 hidden lg:block">
-          <div
-            className="w-32 h-32 rounded-full bg-gray-200 border-4 border-white shadow-lg"
-            role="img"
-            aria-label="tyecode profile placeholder image"
-          >
-            <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-300 to-gray-400"></div>
+        <div className="absolute top-8 right-8 lg:right-8 hidden lg:block">
+          <div className="w-32 h-32 rounded-full border-4 border-white shadow-lg overflow-hidden">
+            {profileImagePath && imageLoaded && !imageError ? (
+              <img
+                src={profileImagePath}
+                alt="tyecode - Front-End Web Developer"
+                className="w-full h-full object-cover"
+                loading="eager"
+                onError={handleImageError}
+                onLoad={handleImageLoad}
+                draggable={false}
+              />
+            ) : (
+              <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-300 to-gray-400" />
+            )}
           </div>
         </div>
+
+        {/* Hidden preloader image */}
+        {profileImagePath && !imageLoaded && !imageError && (
+          <img
+            src={profileImagePath}
+            alt=""
+            className="hidden"
+            onError={handleImageError}
+            onLoad={handleImageLoad}
+          />
+        )}
       </div>
     </section>
   );
