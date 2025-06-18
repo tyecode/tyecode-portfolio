@@ -223,7 +223,7 @@ const ContactSection: React.FC = () => {
                     <div className="font-medium text-gray-900">Email</div>
                     <a
                       href={`mailto:${CONTACT_INFO.email}`}
-                      className="text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 rounded-md"
+                      className="text-gray-600 hover:text-gray-900 focus:outline-none"
                       aria-label={`Send email to ${CONTACT_INFO.email}`}
                     >
                       {CONTACT_INFO.email}

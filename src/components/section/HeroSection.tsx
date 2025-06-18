@@ -53,7 +53,7 @@ const HeroSection: React.FC = () => {
             .
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 mb-10">
             <Button
               variant="primary"
               onClick={() => scrollToSection("work")}
@@ -82,7 +82,7 @@ const HeroSection: React.FC = () => {
               <a
                 key={social.name}
                 href={social.href}
-                className="hover:text-gray-900 transition-colors duration-200 hover:underline focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 rounded-md"
+                className="hover:text-gray-900 transition-colors duration-200 hover:underline flex-center"
                 aria-label={social.ariaLabel}
                 target="_blank"
                 rel="noopener noreferrer"

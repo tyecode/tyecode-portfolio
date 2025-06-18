@@ -50,7 +50,7 @@ const WorkSection: React.FC = () => {
           {PROJECTS.map((project, index) => (
             <article
               key={index}
-              className="group cursor-pointer focus-within:ring-2 focus-within:ring-gray-900 focus-within:ring-offset-2 rounded-xl"
+              className="group cursor-pointer rounded-xl"
               role="listitem"
               tabIndex={0}
               onClick={() => handleProjectClick(project)}
