@@ -2,10 +2,12 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "tyecode",
+  "givenName": "Tye",
   "jobTitle": "Front-End Web Developer",
   "description": "Front-end web developer with over 4 years of experience creating responsive, user-friendly web applications. I specialize in modern JavaScript frameworks and creating pixel-perfect user interfaces.",
-  "url": "https://tyecode.dev",
+  "url": "https://tyecode.github.io/tyecode-portfolio/",
   "email": "sengphachanh.dev@gmail.com",
+  "image": "https://tyecode.github.io/tyecode-portfolio/portrait.jpg",
   "sameAs": [
     "https://github.com/tyecode",
     "https://linkedin.com/in/tyecode",
@@ -32,29 +34,39 @@
     "@type": "Organization",
     "name": "Creative Digital Agency"
   },
-  "hasCredential": {
-    "@type": "EducationalOccupationalCredential",
-    "name": "Senior Front-End Developer",
-    "description": "Leading front-end development of responsive web applications, creating reusable UI components, and mentoring junior developers."
-  },
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Senior Front-End Developer",
+      "description": "Leading front-end development of responsive web applications, creating reusable UI components, and mentoring junior developers."
+    }
+  ],
   "workExample": [
     {
       "@type": "CreativeWork",
       "name": "E-commerce Frontend",
       "description": "Responsive e-commerce interface built with React and TypeScript, featuring advanced product filtering and mobile-optimized checkout flow.",
+      "url": "https://tyecode.github.io/tyecode-portfolio/#work",
       "programmingLanguage": ["React", "TypeScript", "Tailwind CSS"]
     },
     {
       "@type": "CreativeWork",
       "name": "Dashboard Interface",
       "description": "Modern admin dashboard with interactive charts, real-time data visualization, and responsive design.",
+      "url": "https://tyecode.github.io/tyecode-portfolio/#work",
       "programmingLanguage": ["Vue.js", "Chart.js", "CSS Grid"]
     },
     {
       "@type": "CreativeWork",
       "name": "Component Library",
       "description": "Comprehensive UI component library with documentation, featuring reusable React components and design tokens.",
+      "url": "https://tyecode.github.io/tyecode-portfolio/#work",
       "programmingLanguage": ["React", "Storybook", "Jest"]
     }
-  ]
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "sengphachanh.dev@gmail.com",
+    "contactType": "Professional Inquiry"
+  }
 }

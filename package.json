@@ -38,6 +38,10 @@
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "build:static": "vite build",
     "preview": "cross-env NODE_ENV=production node server",
+    "lighthouse": "lighthouse http://localhost:5173 --output html --output-path ./lighthouse-report.html --chrome-flags=\"--headless\"",
+    "lighthouse:prod": "lighthouse http://localhost:4173 --output html --output-path ./lighthouse-prod-report.html --chrome-flags=\"--headless\"",
+    "test:lighthouse": "npm run build:static && npm run preview:static && npm run lighthouse:prod",
+    "preview:static": "vite preview --port 4173",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "format:src": "prettier --write src/"
@@ -63,6 +67,7 @@
     "@types/react-helmet-async": "^1.0.3",
     "@vitejs/plugin-react": "^4.3.4",
     "cross-env": "^7.0.3",
+    "lighthouse": "^12.1.0",
     "prettier": "^3.5.3",
     "typescript": "~5.7.3",
     "vite": "^6.1.1"

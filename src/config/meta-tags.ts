@@ -60,7 +60,7 @@ export const openGraphMetaTags: MetaTag[] = [
   },
   {
     property: 'og:url',
-    content: 'https://tyecode.dev',
+    content: 'https://tyecode.github.io/tyecode-portfolio/',
   },
   {
     property: 'og:site_name',
@@ -68,15 +68,15 @@ export const openGraphMetaTags: MetaTag[] = [
   },
   {
     property: 'og:image',
-    content: 'https://tyecode.dev/og-image.jpg',
+    content: 'https://tyecode.github.io/tyecode-portfolio/portrait.jpg',
   },
   {
     property: 'og:image:width',
-    content: '1200',
+    content: '400',
   },
   {
     property: 'og:image:height',
-    content: '630',
+    content: '400',
   },
   {
     property: 'og:image:alt',
@@ -91,7 +91,7 @@ export const openGraphMetaTags: MetaTag[] = [
 export const twitterMetaTags: MetaTag[] = [
   {
     name: 'twitter:card',
-    content: 'summary_large_image',
+    content: 'summary',
   },
   {
     name: 'twitter:site',
@@ -112,7 +112,7 @@ export const twitterMetaTags: MetaTag[] = [
   },
   {
     name: 'twitter:image',
-    content: 'https://tyecode.dev/twitter-card.jpg',
+    content: 'https://tyecode.github.io/tyecode-portfolio/portrait.jpg',
   },
   {
     name: 'twitter:image:alt',
@@ -197,7 +197,7 @@ export const criticalLinks: LinkTag[] = [
 
 export const siteConfig = {
   title: 'tyecode - Front-End Web Developer | Modern Portfolio',
-  baseUrl: 'https://tyecode.dev',
+  baseUrl: 'https://tyecode.github.io/tyecode-portfolio',
   email: 'sengphachanh.dev@gmail.com',
   social: {
     github: 'https://github.com/tyecode',
