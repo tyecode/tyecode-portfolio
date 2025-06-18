@@ -39,7 +39,7 @@ const waitForCriticalResources = (): Promise<void> => {
 };
 
 export const usePreloader = ({
-  minLoadingTime = 1000,
+  minLoadingTime = 500,
 }: PreloaderOptions = {}) => {
   const [isLoading, setIsLoading] = useState(true);
 

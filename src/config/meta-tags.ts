@@ -16,7 +16,7 @@ export interface LinkTag {
 }
 
 // Dynamic base path utility
-const getBasePath = (): string => {
+export const getBasePath = (): string => {
   // Check for static build environment variable
   if (import.meta.env.VITE_STATIC_BUILD === 'true') {
     return '/tyecode-portfolio';

@@ -36,7 +36,7 @@
     "build": "pnpm run build:client && pnpm run build:server",
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
-    "build:static": "vite build",
+    "build:static": "cross-env VITE_STATIC_BUILD=true vite build",
     "preview": "cross-env NODE_ENV=production node server",
     "lighthouse": "lighthouse http://localhost:5173 --output html --output-path ./lighthouse-dev-report.html --chrome-flags=\"--headless\"",
     "lighthouse:local": "lighthouse http://localhost:4173 --output html --output-path ./lighthouse-local-report.html --chrome-flags=\"--headless\"",
