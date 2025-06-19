@@ -141,6 +141,32 @@ app.post(`${base}api/contact`, async (req, res) => {
   }
 });
 
+// Serve robots.txt specifically
+app.get(`${base}robots.txt`, async (req, res) => {
+  try {
+    let robotsContent;
+    if (!isProduction) {
+      // In development, serve from public directory
+      robotsContent = await fs.readFile('./public/robots.txt', 'utf-8');
+    } else {
+      // In production, serve from dist directory
+      robotsContent = await fs.readFile('./dist/robots.txt', 'utf-8');
+    }
+
+    res.set('Content-Type', 'text/plain');
+    res.send(robotsContent);
+  } catch (error) {
+    console.error('Error serving robots.txt:', error);
+    // Fallback robots.txt
+    const fallbackRobots = `User-agent: *
+Allow: /
+
+Sitemap: ${req.protocol}://${req.get('host')}${base}sitemap.xml`;
+    res.set('Content-Type', 'text/plain');
+    res.send(fallbackRobots);
+  }
+});
+
 // Serve HTML
 app.use('*all', async (req, res) => {
   try {
