@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tyecode-portfolio-v1';
+const _CACHE_NAME = 'tyecode-portfolio-v1';
 const STATIC_CACHE = 'tyecode-static-v1';
 const DYNAMIC_CACHE = 'tyecode-dynamic-v1';
 
@@ -15,11 +15,11 @@ const STATIC_ASSETS = [
 
 // Install event - cache static assets
 self.addEventListener('install', event => {
-  console.log('Service Worker: Installing...');
+  console.warn('Service Worker: Installing...');
   event.waitUntil(
     caches.open(STATIC_CACHE)
       .then(cache => {
-        console.log('Service Worker: Caching static assets');
+        console.warn('Service Worker: Caching static assets');
         return cache.addAll(STATIC_ASSETS);
       })
       .then(() => self.skipWaiting())
@@ -28,14 +28,14 @@ self.addEventListener('install', event => {
 
 // Activate event - clean up old caches
 self.addEventListener('activate', event => {
-  console.log('Service Worker: Activating...');
+  console.warn('Service Worker: Activating...');
   event.waitUntil(
     caches.keys()
       .then(cacheNames => {
         return Promise.all(
           cacheNames.map(cache => {
             if (cache !== STATIC_CACHE && cache !== DYNAMIC_CACHE) {
-              console.log('Service Worker: Deleting old cache', cache);
+              console.warn('Service Worker: Deleting old cache', cache);
               return caches.delete(cache);
             }
           })
@@ -110,7 +110,7 @@ function updateCache(request) {
           .then(cache => cache.put(request, response));
       }
     })
-    .catch(err => console.log('Cache update failed:', err));
+    .catch(err => console.error('Cache update failed:', err));
 }
 
 // Helper function to determine cache name

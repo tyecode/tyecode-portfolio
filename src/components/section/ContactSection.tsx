@@ -7,12 +7,7 @@ import { CONTACT_INFO } from '@/constants';
 
 const ContactSection: React.FC = () => {
   const handleFormSubmit = async (data: ContactFormData) => {
-    try {
-      await submitContactForm(data);
-    } catch (error) {
-      // The ContactForm component handles error display
-      throw error;
-    }
+    await submitContactForm(data);
   };
 
   return (

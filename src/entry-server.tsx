@@ -1,12 +1,13 @@
 import { StrictMode } from 'react';
 import { renderToString } from 'react-dom/server';
-import { HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider, HelmetServerState } from 'react-helmet-async';
+
+import { generateManifest } from '@/config/meta-tags';
 
 import App from './App';
-import { generateManifest } from './config/meta-tags';
 
 export function render(_url: string) {
-  const helmetContext = {};
+  const helmetContext: { helmet?: HelmetServerState } = {};
 
   const html = renderToString(
     <StrictMode>
@@ -16,7 +17,7 @@ export function render(_url: string) {
     </StrictMode>
   );
 
-  const { helmet } = helmetContext as any;
+  const { helmet } = helmetContext;
 
   return {
     html,

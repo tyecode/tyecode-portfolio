@@ -199,13 +199,13 @@ const ContactForm: React.FC<ContactFormProps> = ({
       } else {
         // Default form submission behavior
         await new Promise(resolve => setTimeout(resolve, 1000));
-        console.log('Form submitted:', formData);
+        console.warn('Form submitted:', formData);
       }
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
       setTouched({});
       setErrors({});
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -295,7 +295,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
       {submitStatus === 'success' && (
         <div className='p-4 bg-green-50 border border-green-200 rounded-lg text-green-800'>
-          Thank you for your message! I'll get back to you soon.
+          Thank you for your message! I&apos;ll get back to you soon.
         </div>
       )}
 

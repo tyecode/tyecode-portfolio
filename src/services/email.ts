@@ -34,7 +34,7 @@ export const sendContactEmail = async (
   data: ContactEmailData
 ): Promise<void> => {
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    console.log('Email not configured. Contact form data:', data);
+    console.warn('Email not configured. Contact form data:', data);
     return; // Skip email sending if not configured
   }
 
@@ -69,7 +69,7 @@ export const sendContactEmail = async (
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log('Contact email sent successfully');
+    console.warn('Contact email sent successfully');
   } catch (error) {
     console.error('Error sending contact email:', error);
     throw new Error('Failed to send email');

@@ -10,7 +10,7 @@ const registerServiceWorker = async () => {
   if ('serviceWorker' in navigator && import.meta.env.PROD) {
     try {
       const registration = await navigator.serviceWorker.register('/sw.js');
-      console.log('Service Worker registered successfully:', registration);
+      console.warn('Service Worker registered successfully:', registration);
 
       // Handle updates
       registration.addEventListener('updatefound', () => {
@@ -22,13 +22,13 @@ const registerServiceWorker = async () => {
               navigator.serviceWorker.controller
             ) {
               // New content available, could show update notification
-              console.log('New content available, refresh to update');
+              console.warn('New content available, refresh to update');
             }
           });
         }
       });
     } catch (error) {
-      console.log('Service Worker registration failed:', error);
+      console.error('Service Worker registration failed:', error);
     }
   }
 };
