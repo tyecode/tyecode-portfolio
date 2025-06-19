@@ -78,6 +78,11 @@ jobs:
       - name: Wait for deployment
         run: sleep 60
 
+      - name: Test site accessibility
+        run: |
+          echo "Testing if site is accessible..."
+          curl -I "${{ needs.deploy.outputs.page_url }}" || echo "Site not accessible via curl"
+
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v10
         with:
@@ -86,3 +91,5 @@ jobs:
           configPath: './.lighthouserc.json'
           uploadArtifacts: false
           temporaryPublicStorage: false
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
