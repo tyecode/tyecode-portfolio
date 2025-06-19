@@ -60,6 +60,22 @@ const HeroSection: React.FC = () => {
             <span className='text-gray-900 font-medium'>
               {HERO_CONTENT.previousCompany}
             </span>
+            . Explore my{' '}
+            <a
+              href='#work'
+              className='text-gray-900 font-medium hover:underline transition-colors'
+              aria-label='View portfolio projects'
+            >
+              featured projects
+            </a>{' '}
+            or learn more{' '}
+            <a
+              href='#about'
+              className='text-gray-900 font-medium hover:underline transition-colors'
+              aria-label='Learn about my background'
+            >
+              about my experience
+            </a>
             .
           </p>
 
@@ -82,7 +98,10 @@ const HeroSection: React.FC = () => {
           </div>
           <div id='projects-description' className='sr-only'>
             Navigate to the portfolio section to view my front-end development
-            projects
+            projects and{' '}
+            <a href='#experience' className='underline'>
+              professional experience
+            </a>
           </div>
 
           <nav

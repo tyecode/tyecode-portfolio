@@ -1,0 +1,9 @@
+# Redirect www to non-www
+https://www.tyecode.github.io/* https://tyecode.github.io/:splat 301!
+
+# Ensure all traffic goes to the main portfolio URL
+https://tyecode.github.io/tyecode-portfolio/ https://tyecode.github.io/tyecode-portfolio 301!
+
+# Handle legacy URLs or alternative patterns
+/portfolio/* /tyecode-portfolio/:splat 301!
+/home /tyecode-portfolio/ 301! 

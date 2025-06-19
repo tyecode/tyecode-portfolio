@@ -21,8 +21,24 @@ const WorkSection: React.FC = () => {
           </h2>
           <p className='text-lg text-gray-600 max-w-2xl mx-auto'>
             {
-              "A showcase of user interfaces and web applications I've built, demonstrating my front-end development skills and attention to user experience design."
+              "A showcase of user interfaces and web applications I've built, demonstrating my front-end development skills and attention to user experience design. Learn more "
             }
+            <a
+              href='#about'
+              className='text-gray-900 font-medium hover:underline transition-colors'
+              aria-label='Learn about my technical skills'
+            >
+              about my skills
+            </a>{' '}
+            or{' '}
+            <a
+              href='#contact'
+              className='text-gray-900 font-medium hover:underline transition-colors'
+              aria-label='Get in touch for collaboration'
+            >
+              get in touch
+            </a>{' '}
+            to discuss your next project.
           </p>
         </div>
 

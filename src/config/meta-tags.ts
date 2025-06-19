@@ -38,12 +38,12 @@ export const seoMetaTags: MetaTag[] = [
   {
     name: 'description',
     content:
-      'Front-end web developer specializing in React, TypeScript, Vue.js, and modern CSS frameworks. Creating beautiful, responsive, and user-friendly web applications with pixel-perfect designs and exceptional user experiences.',
+      '🚀 Professional front-end developer specializing in React, TypeScript & modern web technologies. 4+ years building responsive, user-friendly web applications. Available for hire - View portfolio & get in touch!',
   },
   {
     name: 'keywords',
     content:
-      'front-end developer, web developer, React developer, TypeScript, Vue.js, Tailwind CSS, responsive design, UI developer, JavaScript, HTML5, CSS3, tyecode',
+      'front-end developer, React developer, TypeScript developer, JavaScript developer, Vue.js developer, responsive web design, UI developer, modern web development, available for hire, tyecode',
   },
   {
     name: 'author',
@@ -70,12 +70,13 @@ export const openGraphMetaTags: MetaTag[] = [
   },
   {
     property: 'og:title',
-    content: 'tyecode - Front-End Web Developer Portfolio',
+    content:
+      'tyecode - Expert Front-End Developer | React & TypeScript Portfolio',
   },
   {
     property: 'og:description',
     content:
-      'Front-end web developer with 4+ years of experience creating responsive, user-friendly web applications. Specializing in React, TypeScript, Vue.js, and modern CSS frameworks.',
+      '🚀 Professional front-end developer with 4+ years experience. Specializing in React, TypeScript, Vue.js & modern CSS frameworks. View my portfolio of responsive web applications & get in touch for your next project!',
   },
   {
     property: 'og:url',
@@ -122,12 +123,13 @@ export const twitterMetaTags: MetaTag[] = [
   },
   {
     name: 'twitter:title',
-    content: 'tyecode - Front-End Web Developer Portfolio',
+    content:
+      'tyecode - Expert Front-End Developer | React & TypeScript Portfolio',
   },
   {
     name: 'twitter:description',
     content:
-      'Front-end web developer with 4+ years of experience creating responsive, user-friendly web applications. Specializing in React, TypeScript, Vue.js, and modern CSS frameworks.',
+      '🚀 Professional front-end developer with 4+ years experience. Specializing in React, TypeScript, Vue.js & modern CSS frameworks. View my portfolio of responsive web applications & get in touch for your next project!',
   },
   {
     name: 'twitter:image',
@@ -323,7 +325,7 @@ export const generateManifest = () => {
 };
 
 export const siteConfig = {
-  title: 'tyecode - Front-End Web Developer | Modern Portfolio',
+  title: 'tyecode - Expert Front-End Developer | React & TypeScript Specialist',
   baseUrl: 'https://tyecode.github.io/tyecode-portfolio',
   email: 'sengphachanh.dev@gmail.com',
   social: {

@@ -27,6 +27,25 @@ const AboutSection: React.FC = () => {
                   {paragraph}
                 </p>
               ))}
+              <p className='text-lg text-gray-600 leading-relaxed'>
+                Check out my{' '}
+                <a
+                  href='#work'
+                  className='text-gray-900 font-medium hover:underline transition-colors'
+                  aria-label='View my portfolio projects'
+                >
+                  portfolio projects
+                </a>{' '}
+                to see these skills in action, or view my{' '}
+                <a
+                  href='#experience'
+                  className='text-gray-900 font-medium hover:underline transition-colors'
+                  aria-label='View my professional experience'
+                >
+                  professional experience
+                </a>{' '}
+                for more details about my career journey.
+              </p>
             </div>
           </div>
 
