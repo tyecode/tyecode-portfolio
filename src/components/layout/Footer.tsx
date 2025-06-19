@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import {
   NAVIGATION_LINKS,
   SOCIAL_LINKS,
@@ -7,7 +8,15 @@ import {
 } from '@/constants';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const [currentYear, setCurrentYear] = useState<number | null>(null);
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => {
+    // Mark as hydrated to prevent hydration mismatch
+    setIsHydrated(true);
+    // Only set the year on the client side to prevent hydration mismatch
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   return (
     <footer
@@ -93,7 +102,11 @@ const Footer = () => {
         <div className='mt-8 pt-8 border-t border-gray-700'>
           <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
             <div className='text-sm text-gray-400'>
-              <span>{`© ${currentYear} tyecode. All rights reserved.`}</span>
+              <span>
+                {isHydrated && currentYear
+                  ? `© ${currentYear} tyecode. All rights reserved.`
+                  : '© tyecode. All rights reserved.'}
+              </span>
             </div>
             <div className='flex items-center gap-6 text-sm text-gray-400'>
               <a

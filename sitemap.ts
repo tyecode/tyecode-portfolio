@@ -41,7 +41,8 @@ export const excludeRoutes: string[] = [
 export const sitemapConfig = {
   changefreq: 'weekly' as const,
   priority: 0.8,
-  lastmod: new Date().toISOString(),
+  // Remove dynamic date to prevent hydration issues
+  // lastmod: new Date().toISOString(),
   // Route-specific configurations
   routeConfig: {
     '/': { priority: 1.0, changefreq: 'daily' as const },

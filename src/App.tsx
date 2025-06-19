@@ -1,5 +1,4 @@
 import { Suspense, lazy } from 'react';
-import { HelmetProvider } from 'react-helmet-async';
 
 import MainLayout from '@/components/layout/MainLayout';
 import SectionSkeleton from '@/components/ui/SectionSkeleton';
@@ -35,7 +34,7 @@ function App() {
   const seoData = useSEO();
 
   return (
-    <HelmetProvider>
+    <>
       <MetaTags {...seoData} />
       <MainLayout>
         {/* Hero section loads immediately for optimal LCP */}
@@ -69,7 +68,7 @@ function App() {
           <ContactSection />
         </Suspense>
       </MainLayout>
-    </HelmetProvider>
+    </>
   );
 }
 

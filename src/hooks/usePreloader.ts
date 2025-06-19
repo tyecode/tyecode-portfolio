@@ -44,6 +44,9 @@ export const usePreloader = ({
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Ensure this only runs on client side
+    if (typeof window === 'undefined') return;
+
     const startTime = Date.now();
 
     const handleLoading = async () => {

@@ -23,8 +23,10 @@ export const getBasePath = (): string => {
   }
 
   // Check if running on GitHub Pages (client-side detection)
+  // Use a more robust check to prevent hydration issues
   if (
     typeof window !== 'undefined' &&
+    typeof window.location !== 'undefined' &&
     window.location.pathname.includes('/tyecode-portfolio/')
   ) {
     return '/tyecode-portfolio';

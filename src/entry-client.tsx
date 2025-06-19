@@ -5,6 +5,18 @@ import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 import './index.css';
 
+// Import debugging utilities for development
+import {
+  enableHydrationDebug,
+  compareSSRContent,
+  checkHydrationIssues,
+} from './utils/hydration-debug';
+
+// Enable debugging in development
+if (process.env.NODE_ENV === 'development') {
+  enableHydrationDebug();
+}
+
 // Optimized function to wait for critical stylesheets only
 const waitForCriticalStylesheets = (): Promise<void> => {
   return new Promise(resolve => {
@@ -28,6 +40,24 @@ const waitForCriticalStylesheets = (): Promise<void> => {
   });
 };
 
+// More reliable hydration detection
+const hasServerRenderedContent = (): boolean => {
+  const root = document.getElementById('root');
+  if (!root) return false;
+
+  // Check if root has meaningful content (not just whitespace)
+  const hasContent = root.innerHTML.trim() !== '';
+
+  // Check if we're in static build mode
+  const isStaticBuild =
+    import.meta.env.VITE_STATIC_BUILD === 'true' ||
+    (typeof window !== 'undefined' &&
+      window.location.pathname.includes('/tyecode-portfolio/'));
+
+  // Only hydrate if we have server content and we're not in static build mode
+  return hasContent && !isStaticBuild;
+};
+
 // Optimized app initialization for faster LCP
 const initializeApp = async () => {
   // Ensure DOM is ready
@@ -46,6 +76,12 @@ const initializeApp = async () => {
     root.classList.add('loaded');
   }
 
+  // Debug hydration in development
+  if (process.env.NODE_ENV === 'development') {
+    compareSSRContent();
+    setTimeout(() => checkHydrationIssues(), 500);
+  }
+
   const AppComponent = (
     <StrictMode>
       <HelmetProvider>
@@ -54,18 +90,28 @@ const initializeApp = async () => {
     </StrictMode>
   );
 
-  // Check if root has existing content (SSR) or is empty (static build)
-  const isStaticBuild =
-    import.meta.env.VITE_STATIC_BUILD === 'true' ||
-    window.location.pathname.includes('/tyecode-portfolio/');
-  const hasSSRContent = root && root.innerHTML.trim() !== '' && !isStaticBuild;
+  const shouldHydrate = hasServerRenderedContent();
 
-  if (hasSSRContent) {
-    // Hydrate for SSR - no additional delays
-    hydrateRoot(root as HTMLElement, AppComponent);
-  } else {
-    // Render for static build - no additional delays
-    createRoot(root as HTMLElement).render(AppComponent);
+  try {
+    if (shouldHydrate) {
+      // Hydrate for SSR - no additional delays
+      hydrateRoot(root as HTMLElement, AppComponent, {
+        onRecoverableError: error => {
+          console.warn('Hydration error (recoverable):', error);
+        },
+      });
+    } else {
+      // Render for static build - no additional delays
+      createRoot(root as HTMLElement).render(AppComponent);
+    }
+  } catch (error) {
+    console.error('Hydration error occurred:', error);
+    // Fallback to client-side rendering if hydration fails
+    if (root) {
+      console.warn('Falling back to client-side rendering');
+      root.innerHTML = '';
+      createRoot(root).render(AppComponent);
+    }
   }
 };
 

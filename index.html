@@ -48,7 +48,7 @@
     <link rel="preload" href="/src/styles/critical.css" as="style" />
     <link rel="preload" href="/src/index.css" as="style" />
 
-    <!-- Preload Inter font for hero text specifically -->
+    <!-- Preload Inter font for hero text specifically - NON-BLOCKING -->
     <link
       rel="preload"
       href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2"
@@ -57,18 +57,12 @@
       crossorigin="anonymous"
     />
 
-    <!-- Critical font loading - load synchronously for LCP -->
+    <!-- Load ALL Google Fonts asynchronously to eliminate render-blocking -->
     <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-    />
-
-    <!-- Load additional font weights asynchronously -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@800;900&display=swap"
-      media="print"
-      onload="this.media='all'"
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
     <noscript>
       <link
@@ -77,15 +71,15 @@
       />
     </noscript>
 
-    <!-- Critical Styles -->
+    <!-- Critical Styles - Load synchronously only for critical CSS -->
     <link rel="stylesheet" href="/src/styles/critical.css" />
 
-    <!-- Main Stylesheet with Optimization -->
+    <!-- Main Stylesheet - Load asynchronously to prevent render blocking -->
     <link
-      rel="stylesheet"
+      rel="preload"
       href="/src/index.css"
-      media="print"
-      onload="this.media='all'"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
     <noscript>
       <link rel="stylesheet" href="/src/index.css" />
@@ -107,6 +101,13 @@
           sans-serif;
       }
 
+      /* Font loading optimization - prevent FOIT */
+      @font-face {
+        font-family: 'Inter-fallback';
+        size-adjust: 106.5%;
+        src: local('Arial');
+      }
+
       /* Critical styles for LCP element - Hero section paragraph */
       .hero-lcp-text {
         font-size: 1.125rem;
@@ -117,10 +118,20 @@
         max-width: 42rem;
         font-weight: 400;
         letter-spacing: -0.025em;
+        /* Use fallback font initially to prevent FOIT */
+        font-family:
+          'Inter-fallback',
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          'Helvetica Neue',
+          Arial,
+          sans-serif;
         /* Performance optimizations */
         contain: layout style;
         will-change: auto;
-        font-display: swap;
+        font-display: auto;
       }
 
       /* Critical hero section styles */
@@ -152,9 +163,19 @@
         color: #111827;
         margin-bottom: 1.5rem;
         line-height: 1.1;
+        /* Use fallback font initially */
+        font-family:
+          'Inter-fallback',
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          'Helvetica Neue',
+          Arial,
+          sans-serif;
         /* Performance optimizations */
         contain: layout style;
-        font-display: swap;
+        font-display: auto;
       }
 
       /* Reserve space for sections to prevent layout shift */
@@ -183,6 +204,31 @@
       /* Font loading optimization - prevent invisible text */
       .font-inter {
         font-display: swap;
+        font-family:
+          'Inter',
+          'Inter-fallback',
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          'Helvetica Neue',
+          Arial,
+          sans-serif;
+      }
+
+      /* Update font-family after Inter loads */
+      .fonts-loaded #root,
+      .fonts-loaded .hero-lcp-text,
+      .fonts-loaded .hero-heading {
+        font-family:
+          'Inter',
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          'Helvetica Neue',
+          Arial,
+          sans-serif;
       }
 
       /* Responsive hero heading */
@@ -200,6 +246,14 @@
           padding-left: 2rem;
           padding-right: 2rem;
         }
+      }
+
+      /* Ensure smooth transitions when fonts load */
+      * {
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
     </style>
 
@@ -327,6 +381,18 @@
             document.getElementById('static-hero').style.display = 'none';
           }
         }, 100);
+      }
+
+      // Font loading optimization - detect when Inter font is loaded
+      if ('fonts' in document) {
+        document.fonts.ready.then(() => {
+          document.documentElement.classList.add('fonts-loaded');
+        });
+      } else {
+        // Fallback for browsers without Font Loading API
+        setTimeout(() => {
+          document.documentElement.classList.add('fonts-loaded');
+        }, 3000);
       }
     </script>
   </body>

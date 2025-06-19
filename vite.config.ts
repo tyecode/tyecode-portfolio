@@ -107,9 +107,13 @@ export default defineConfig(
         sourcemap: false,
         reportCompressedSize: false,
         chunkSizeWarningLimit: 1000,
+        cssCodeSplit: true,
+        cssMinify: 'esbuild',
+        assetsInlineLimit: 2048,
       },
       esbuild: {
-        drop: ['console', 'debugger'],
+        drop:
+          process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
       },
     };
   }
