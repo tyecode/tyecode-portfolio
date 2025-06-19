@@ -28,9 +28,14 @@
     "test:lighthouse": "pnpm run build:static && pnpm run preview:static && pnpm run lighthouse:local",
     "test:lighthouse:prod": "pnpm run lighthouse:prod",
     "preview:static": "vite preview --port 8080",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:check": "eslint . --max-warnings 0",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "format:src": "prettier --write src/"
+    "format:src": "prettier --write src/",
+    "check": "pnpm run lint:check && pnpm run format:check",
+    "fix": "pnpm run lint:fix && pnpm run format"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.10",
@@ -47,6 +52,7 @@
     "tailwindcss": "^4.1.10"
   },
   "devDependencies": {
+    "@eslint/js": "^9.29.0",
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.4",
     "@types/nodemailer": "^6.4.17",
@@ -56,9 +62,16 @@
     "@types/react-helmet-async": "^1.0.3",
     "@vitejs/plugin-react": "^4.3.4",
     "cross-env": "^7.0.3",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
     "lighthouse": "^12.1.0",
     "prettier": "^3.5.3",
     "typescript": "~5.7.3",
+    "typescript-eslint": "^8.34.1",
     "vite": "^6.1.1"
   }
 }

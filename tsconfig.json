@@ -28,5 +28,6 @@
     }
   },
   "include": ["src"],
+  "exclude": ["eslint.config.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
