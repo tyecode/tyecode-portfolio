@@ -1,5 +1,9 @@
 import fs from 'node:fs/promises';
 import express from 'express';
+import { config } from 'dotenv';
+
+// Load environment variables from .env file
+config();
 
 // Constants
 const isProduction = process.env.NODE_ENV === 'production';
@@ -15,6 +19,10 @@ const templateHtml = isProduction
 
 // Create http server
 const app = express();
+
+// Parse JSON and URL-encoded bodies for API routes
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Add Vite or respective production middlewares
 /** @type {import('vite').ViteDevServer | undefined} */
@@ -68,6 +76,68 @@ app.get(`${base}site.webmanifest`, async (req, res) => {
     } catch (fallbackError) {
       res.status(500).send('Error loading manifest');
     }
+  }
+});
+
+// Contact form API endpoint
+app.post(`${base}api/contact`, async (req, res) => {
+  try {
+    const { name, email, message } = req.body;
+
+    // Basic validation
+    if (!name || !email || !message) {
+      return res.status(400).json({
+        success: false,
+        error: 'All fields are required',
+      });
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid email address',
+      });
+    }
+
+    // Send email using the email service
+    try {
+      if (!isProduction) {
+        // In development, just log the message
+        console.log('📧 Contact form submission (development mode):', {
+          name,
+          email,
+          message,
+        });
+        console.log('✅ Email functionality disabled in development');
+      } else {
+        // Use built files in production
+        const { sendContactEmail } = await import('./dist/server/email.js');
+        await sendContactEmail({ name, email, message });
+        console.log('✅ Email sent successfully');
+      }
+    } catch (emailError) {
+      console.error('Email sending failed:', emailError);
+      // Still log the contact for manual follow-up
+      console.log('Contact form submission (email failed):', {
+        name,
+        email,
+        message,
+      });
+    }
+
+    // Always return success to user (even if email fails)
+    res.json({
+      success: true,
+      message: 'Message sent successfully!',
+    });
+  } catch (error) {
+    console.error('Contact form error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Internal server error',
+    });
   }
 });
 

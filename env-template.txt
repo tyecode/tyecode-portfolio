@@ -1,0 +1,71 @@
+# Email Configuration Template for Contact Form
+# Copy this content to ".env" file or use it as reference
+
+# ==============================================
+# SMTP EMAIL SETTINGS
+# ==============================================
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password-here
+CONTACT_EMAIL=your-contact-email@gmail.com
+
+# ==============================================
+# SERVER SETTINGS
+# ==============================================
+NODE_ENV=production
+PORT=8080
+
+# ==============================================
+# SETUP INSTRUCTIONS
+# ==============================================
+# 1. Copy this file to .env: cp .env.template .env
+# 2. Replace the dummy values with your actual credentials
+# 3. For Gmail, you need an "App Password" (not your regular password)
+
+# ==============================================
+# HOW TO GET GMAIL APP PASSWORD
+# ==============================================
+# 1. Go to Google Account settings: https://myaccount.google.com
+# 2. Navigate to: Security → 2-Step Verification → App passwords
+# 3. Generate a new app password for "Mail"
+# 4. Use that 16-character password (format: xxxx xxxx xxxx xxxx)
+# 5. Remove spaces when putting it in SMTP_PASS
+
+# ==============================================
+# EXAMPLE WITH REAL DATA FORMAT
+# ==============================================
+# SMTP_HOST=smtp.gmail.com
+# SMTP_PORT=465
+# SMTP_USER=john.doe@gmail.com
+# SMTP_PASS=abcdefghijklmnop
+# CONTACT_EMAIL=contact@johndoe.com
+# NODE_ENV=production
+# PORT=8080
+
+# ==============================================
+# OTHER EMAIL PROVIDERS (ALTERNATIVES TO GMAIL)
+# ==============================================
+# Outlook/Hotmail:
+# SMTP_HOST=smtp-mail.outlook.com
+# SMTP_PORT=587
+# 
+# Yahoo:
+# SMTP_HOST=smtp.mail.yahoo.com
+# SMTP_PORT=465
+
+# ==============================================
+# TESTING NOTES
+# ==============================================
+# - With dummy/invalid credentials: emails will be logged to console
+# - With real credentials: emails will actually be sent
+# - The contact form always returns success to users
+# - Check server logs to see if emails are actually being sent
+
+# ==============================================
+# SECURITY REMINDERS
+# ==============================================
+# ❌ Never commit .env file with real credentials to version control
+# ✅ .env is already in .gitignore
+# ✅ For production deployment, set these as environment variables
+# ✅ Use App Passwords, not regular email passwords 

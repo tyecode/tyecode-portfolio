@@ -1,14 +1,18 @@
 import React from 'react';
 
 import ContactForm, { ContactFormData } from '@/components/ui/ContactForm';
+import { submitContactForm } from '@/utils/contact';
 
 import { CONTACT_INFO } from '@/constants';
 
 const ContactSection: React.FC = () => {
   const handleFormSubmit = async (data: ContactFormData) => {
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log('Form submitted:', data);
+    try {
+      await submitContactForm(data);
+    } catch (error) {
+      // The ContactForm component handles error display
+      throw error;
+    }
   };
 
   return (

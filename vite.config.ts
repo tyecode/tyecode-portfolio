@@ -16,7 +16,7 @@ export default defineConfig({
     include: ['react-helmet-async'],
   },
   ssr: {
-    noExternal: ['react-helmet-async'],
+    noExternal: ['react-helmet-async', 'nodemailer'],
   },
   css: {
     // Improve CSS loading performance
@@ -75,9 +75,9 @@ export default defineConfig({
         // Better chunk naming for debugging
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: chunkInfo => {
-          // For SSR builds, don't use hash for entry-server to ensure consistent import path
-          if (chunkInfo.name === 'entry-server') {
-            return 'entry-server.js';
+          // For SSR builds, don't use hash for entry files to ensure consistent import path
+          if (chunkInfo.name === 'entry-server' || chunkInfo.name === 'email') {
+            return '[name].js';
           }
           return 'assets/js/[name]-[hash].js';
         },
