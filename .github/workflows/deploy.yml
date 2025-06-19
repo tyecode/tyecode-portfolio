@@ -86,5 +86,5 @@ jobs:
           urls: |
             ${{ needs.deploy.outputs.page_url }}
           configPath: './.lighthouserc.json'
-          uploadArtifacts: true
-          temporaryPublicStorage: true
+          uploadArtifacts: false
+          temporaryPublicStorage: false

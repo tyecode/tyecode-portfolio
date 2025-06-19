@@ -14,9 +14,6 @@
         "categories:seo": ["error", { "minScore": 0.9 }],
         "categories:pwa": "off"
       }
-    },
-    "upload": {
-      "target": "temporary-public-storage"
     }
   }
 }
