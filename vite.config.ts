@@ -74,7 +74,13 @@ export default defineConfig({
         },
         // Better chunk naming for debugging
         chunkFileNames: 'assets/js/[name]-[hash].js',
-        entryFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: chunkInfo => {
+          // For SSR builds, don't use hash for entry-server to ensure consistent import path
+          if (chunkInfo.name === 'entry-server') {
+            return 'entry-server.js';
+          }
+          return 'assets/js/[name]-[hash].js';
+        },
       },
     },
     // Optimize build size with esbuild (faster than terser)

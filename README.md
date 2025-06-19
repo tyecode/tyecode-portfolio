@@ -1,4 +1,22 @@
-# 🎨 tyecode - Front-End Web Developer Portfolio
+<div align="center">
+
+<img src="public/favicon.png" alt="tyecode logo" width="80" height="80" />
+
+### Front-End Web Developer Portfolio
+
+<p align="center">
+  <em>Modern • Responsive • Performance-Focused</em>
+</p>
+
+---
+
+<img src="public/images/og.png" alt="Portfolio Preview" width="700" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" />
+
+<br />
+
+</div>
+
+<div align="center">
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=github)](https://tyecode.github.io/tyecode-portfolio/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/tyecode/tyecode-portfolio)
@@ -6,191 +24,146 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 
-> **Modern, responsive portfolio website showcasing front-end web development expertise and UI/UX implementation skills.**
+</div>
+
+> **Modern, responsive portfolio website showcasing front-end web development expertise with React, TypeScript, and Tailwind CSS.**
 
 ## 👨‍💻 About This Project
 
-This is a **professional portfolio website** for **tyecode**, a front-end web developer specializing in modern JavaScript frameworks and user interface development. The portfolio demonstrates expertise in building responsive web applications, interactive user interfaces, and pixel-perfect design implementations.
+Professional portfolio website for **tyecode**, a front-end web developer specializing in modern JavaScript frameworks and user interface development. Built with performance, accessibility, and SEO optimization in mind.
 
 ### 🎯 Key Features
 
-- **🎨 Modern Design**: Clean, professional interface with smooth animations and micro-interactions
-- **📱 Fully Responsive**: Mobile-first approach optimized for all devices and screen sizes
-- **⚡ Lightning Fast**: Server-side rendering (SSR) with React 19 and performance optimization
+- **🎨 Modern Design**: Clean, professional interface with smooth animations
+- **📱 Fully Responsive**: Mobile-first approach optimized for all devices
+- **⚡ Server-Side Rendering**: React 19 SSR with Express for optimal performance
 - **🔍 SEO Optimized**: Comprehensive meta tags, structured data, and Core Web Vitals optimization
-- **♿ Accessible**: WCAG compliant with semantic HTML, proper ARIA labels, and keyboard navigation
-- **🎭 Interactive**: Smooth animations, hover effects, and engaging user interactions
-- **🔧 Type Safe**: Built with TypeScript for robust development experience
-- **🎨 Component-Driven**: Reusable UI components with consistent design system
-- **⚡ Lazy Loading**: Component-level code splitting with React Suspense for optimal performance
-- **📱 PWA Ready**: Comprehensive web manifest with app shortcuts and icons
+- **♿ Accessible**: WCAG compliant with semantic HTML and keyboard navigation
+- **🔧 Type Safe**: Built with TypeScript for robust development
+- **📱 PWA Ready**: Web manifest with app shortcuts and icons
 
 ## 🛠️ Tech Stack
 
-### Frontend
+### Core Technologies
 
-- **React 19.0** - Latest React with concurrent features, Suspense, and modern hooks
-- **TypeScript 5.7** - Type-safe JavaScript development with latest features
-- **Tailwind CSS 4.1** - Utility-first CSS framework with Vite plugin integration
-- **Vite 6.1** - Next-generation frontend tooling with hot module replacement
-
-### Backend & SSR
-
-- **Express 5.0** - Fast, unopinionated web framework for Node.js
-- **Server-Side Rendering** - Custom SSR implementation with React 19
-- **React Helmet Async** - Document head management for SEO optimization
-
-### Styling & Animation
-
+- **React 19.0** - Latest React with concurrent features and Suspense
+- **TypeScript 5.7** - Type-safe development with latest features
 - **Tailwind CSS 4.1** - Utility-first CSS framework with Vite plugin
-- **CSS Grid & Flexbox** - Modern layout techniques
-- **Custom CSS Animations** - Smooth transitions and micro-interactions
-- **Responsive Design** - Mobile-first approach with optimized breakpoints
+- **Vite 6.1** - Fast development and optimized builds
 
-### Performance & SEO
+### Backend & Performance
 
-- **Structured Data** - JSON-LD markup for rich snippets
-- **Meta Tags Management** - Dynamic SEO optimization
-- **Performance Optimization** - Custom utilities and optimization techniques
-- **Sitemap & Robots.txt** - Search engine optimization files
+- **Express 5.0** - Fast web framework for SSR
+- **React Helmet Async 2.0** - SEO optimization and meta tag management
+- **Component Code Splitting** - Optimized loading with React Suspense
 
 ### Development Tools
 
-- **TypeScript 5.7** - Static type checking with path mapping
-- **Vite 6.1** - Fast development server and optimized build tool
-- **PNPM** - Fast, disk space efficient package manager
-- **Cross-env** - Cross-platform environment variables
-- **Lighthouse CLI** - Performance and SEO testing tools
+- **PNPM** - Fast, efficient package manager
+- **Lighthouse CLI** - Performance and SEO testing
+- **Prettier** - Code formatting and consistency
 
-## 🎨 Features Showcase
+## 🎨 Portfolio Sections
 
 ### 🏠 Hero Section
 
-- **Professional introduction** with clear name, title, and role description
-- **Availability status indicator** showing current work status
-- **Responsive design** with mobile-optimized layout
-- **Call-to-action buttons** with hover animations
-- **Social media integration** with external links
-- **Profile image** with optimized loading and fallback handling
+Professional introduction with clear role description, availability status, and call-to-action buttons.
 
 ### 👨‍💻 About Section
 
-- **Skills showcase** with modern front-end technologies
-- **Interactive skill cards** with hover effects
-- **Professional summary** and development philosophy
-- **Statistics dashboard** with animated counters
+Skills showcase with interactive cards, professional summary, and development philosophy.
 
-### 💼 Portfolio Section
+### 💼 Work Section
 
-- **Featured projects** with detailed UI/UX implementations
-- **Technology tags** and project categories
-- **Interactive project cards** with smooth transitions
-- **External project links** with proper SEO attributes
+Featured projects with detailed descriptions, technology tags, and external links.
 
 ### 🎯 Experience Section
 
-- **Professional timeline** with front-end focused roles
-- **Key achievements** in UI development and performance
-- **Company highlights** and project impacts
-- **Skills progression** and technology adoption
+Professional timeline with key achievements and technology progression.
 
 ### 📧 Contact Section
 
-- **Contact form** with comprehensive validation and user feedback
-- **Multiple contact methods** and availability status
-- **Professional email** and social media links
-- **Responsive form design** with accessibility features
+Contact form with validation, multiple contact methods, and social media links.
 
-## 🔍 SEO Optimization
+## 🔍 SEO & Performance
 
-This portfolio is optimized for search engines with:
+- **📊 Structured Data** (JSON-LD) for rich search result snippets
+- **🎯 Dynamic Meta Tags** with Open Graph and Twitter Cards
+- **⚡ Core Web Vitals** optimization for search ranking
+- **🗺️ XML Sitemap** and robots.txt for search engines
+- **♿ Accessibility** features for better UX and SEO
 
-- **📊 Structured Data** (JSON-LD) for rich snippets in search results
-- **🎯 Dynamic Meta Tags** with React Helmet Async for optimal SEO
-- **📱 Open Graph** tags for enhanced social media sharing
-- **🐦 Twitter Cards** for enhanced tweet previews
-- **🔗 Canonical URLs** to prevent duplicate content issues
-- **⚡ Performance** optimization for Core Web Vitals
-- **♿ Accessibility** features for better user experience and SEO
-- **🗺️ XML Sitemap** for search engine crawling
-- **🤖 Robots.txt** for search engine directives
+## 🚀 Getting Started
 
-### Target Keywords
+### Development
 
-- Front-end web developer
-- React TypeScript developer
-- UI/UX implementation
-- Responsive web design
-- JavaScript developer portfolio
-- Modern web development
-- Component library development
+```bash
+# Install dependencies
+pnpm install
 
-## ⚡ Performance Features
+# Start development server
+pnpm run dev
 
-- **🎯 Server-Side Rendering (SSR)** with Express and React 19
-- **🔄 Component-level Code Splitting** with React Suspense
-- **📦 Optimized Bundling** with Vite 6.1 and advanced configuration
-- **🎨 CSS Optimization** to prevent Flash of Unstyled Content (FOUC)
-- **🖼️ Asset Optimization** with intelligent loading strategies
-- **🗜️ Compression** middleware for production builds
-- **📊 Performance Monitoring** with Lighthouse CI integration
+# Visit http://localhost:8000
+```
 
-## 📊 Performance Metrics (Latest Lighthouse Scores)
+### Build & Preview
+
+```bash
+# Build for production (SSR)
+pnpm run build
+pnpm run preview
+
+# Build for static hosting
+pnpm run build:static
+pnpm run preview:static
+```
+
+### Performance Testing
+
+```bash
+# Test development build
+pnpm run lighthouse
+
+# Test production build
+pnpm run lighthouse:prod
+```
+
+## 📊 Performance Metrics
+
+Latest Lighthouse scores:
 
 - **⚡ Performance**: 92/100
 - **♿ Accessibility**: 91/100
 - **🏆 Best Practices**: 96/100
 - **🔍 SEO**: 91/100
-- **📱 Average Score**: 93/100
-- **🚀 First Contentful Paint**: 2.5s
-- **📱 Mobile Optimized**: 100% responsive design
-- **♿ Accessibility**: WCAG 2.1 AA compliant
-- **🎨 Cross-Browser**: Compatible with all modern browsers
 
 ## 🚀 Deployment
 
-This portfolio is deployed on **GitHub Pages** using **GitHub Actions** for continuous deployment:
+Deployed on **GitHub Pages** with automated CI/CD:
 
-### Automated Deployment
-
-- **GitHub Actions** workflow for CI/CD
-- **Static build** optimized for GitHub Pages
-- **Automatic deployments** on push to main branch
+- **GitHub Actions** workflow for continuous deployment
+- **Automatic builds** on push to main branch
 - **Performance testing** with Lighthouse CI
-
-### Manual Deployment
-
-```bash
-# Build for GitHub Pages
-pnpm run build:static
-
-# Test the build locally
-pnpm run preview:static
-
-# Deploy via GitHub Actions (automatic on push)
-git push origin main
-```
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! This project follows front-end development best practices and welcomes improvements to UI/UX, performance, accessibility, and code quality.
+Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) for:
 
-Please read our [Contributing Guidelines](CONTRIBUTING.md) for detailed information on:
-
-- 🚀 Getting started with development
-- 📋 Code standards and best practices
-- 🔧 Commit message conventions
-- 📝 Pull request guidelines
-- 🧪 Testing procedures
-
-Feel free to check the [issues page](https://github.com/tyecode/tyecode-portfolio/issues) for open tasks or create new ones.
+- Development setup and standards
+- Code quality and best practices
+- Pull request guidelines
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-⭐ **Star this repository** if you found it helpful! It helps other developers discover this project.
-
-**Live Demo**: [https://tyecode.github.io/tyecode-portfolio/](https://tyecode.github.io/tyecode-portfolio/)
+<div align="center">
+  <img src="public/favicon.png" alt="tyecode" width="32" height="32" />
+  
+  ⭐ **Star this repository** if you found it helpful!
+  
+  **Live Demo**: [https://tyecode.github.io/tyecode-portfolio/](https://tyecode.github.io/tyecode-portfolio/)
+</div>
