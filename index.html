@@ -47,9 +47,8 @@
     <!-- Critical Resource Preloads -->
     <link rel="preload" href="/src/styles/critical.css" as="style" />
     <link rel="preload" href="/src/index.css" as="style" />
-    <link rel="preload" href="/src/entry-client.tsx" as="script" />
 
-    <!-- Font Optimization with Performance Best Practices -->
+    <!-- Preload Inter font for hero text specifically -->
     <link
       rel="preload"
       href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2"
@@ -58,10 +57,16 @@
       crossorigin="anonymous"
     />
 
-    <!-- Optimized Font Loading with font-display: swap -->
+    <!-- Critical font loading - load synchronously for LCP -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+
+    <!-- Load additional font weights asynchronously -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@800;900&display=swap"
       media="print"
       onload="this.media='all'"
     />
@@ -102,6 +107,45 @@
           sans-serif;
       }
 
+      /* Critical styles for LCP element - Hero section paragraph */
+      .hero-lcp-text {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        color: #4b5563;
+        margin-bottom: 2rem;
+        line-height: 1.625;
+        max-width: 42rem;
+        font-weight: 400;
+        letter-spacing: -0.025em;
+      }
+
+      /* Critical hero section styles */
+      .hero-section {
+        padding-top: 6rem;
+        padding-bottom: 4rem;
+        background-color: white;
+      }
+
+      .hero-container {
+        max-width: 72rem;
+        margin: 0 auto;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        position: relative;
+      }
+
+      .hero-content {
+        max-width: 48rem;
+      }
+
+      .hero-heading {
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+      }
+
       /* Reserve space for sections to prevent layout shift */
       section[id] {
         min-height: 200px;
@@ -128,6 +172,23 @@
       /* Font loading optimization - prevent invisible text */
       .font-inter {
         font-display: swap;
+      }
+
+      /* Responsive hero heading */
+      @media (min-width: 640px) {
+        .hero-heading {
+          font-size: 3rem;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .hero-heading {
+          font-size: 3.75rem;
+        }
+        .hero-container {
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
       }
     </style>
 

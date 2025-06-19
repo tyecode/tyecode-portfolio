@@ -2,18 +2,14 @@ import { Suspense, lazy } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 
 import MainLayout from '@/components/layout/MainLayout';
-import LoadingScreen from '@/components/ui/LoadingScreen';
 import SectionSkeleton from '@/components/ui/SectionSkeleton';
 import MetaTags from '@/components/seo/MetaTags';
 import { useSEO } from '@/hooks/useSEO';
 
-import { usePreloader } from '@/hooks/usePreloader';
+// Import HeroSection directly instead of lazy loading for immediate LCP
+import HeroSection from '@/components/section/HeroSection';
 
-// Lazy load components with specific chunk names for better caching
-const HeroSection = lazy(
-  () =>
-    import('@/components/section/HeroSection' /* webpackChunkName: "hero" */)
-);
+// Lazy load only below-the-fold components for better performance
 const AboutSection = lazy(
   () =>
     import('@/components/section/AboutSection' /* webpackChunkName: "about" */)
@@ -36,20 +32,14 @@ const ContactSection = lazy(
 );
 
 function App() {
-  const { isLoading } = usePreloader({ minLoadingTime: 1000 });
   const seoData = useSEO();
-
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
 
   return (
     <HelmetProvider>
       <MetaTags {...seoData} />
       <MainLayout>
-        <Suspense fallback={<LoadingScreen />}>
-          <HeroSection />
-        </Suspense>
+        {/* Hero section loads immediately for optimal LCP */}
+        <HeroSection />
         <Suspense
           fallback={<SectionSkeleton className='bg-gray-50' variant='about' />}
         >

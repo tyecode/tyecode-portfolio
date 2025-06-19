@@ -5,61 +5,40 @@ import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 import './index.css';
 
-// Function to wait for stylesheets to load
-const waitForStylesheets = (): Promise<void> => {
+// Optimized function to wait for critical stylesheets only
+const waitForCriticalStylesheets = (): Promise<void> => {
   return new Promise(resolve => {
-    // Check if all stylesheets are loaded
-    const stylesheets = Array.from(
-      document.querySelectorAll(
-        'link[rel="stylesheet"], link[rel="preload"][as="style"]'
-      )
-    );
+    // Only wait for critical.css - other styles can load async
+    const criticalSheet = document.querySelector('link[href*="critical.css"]');
 
-    if (stylesheets.length === 0) {
+    if (!criticalSheet || (criticalSheet as HTMLLinkElement).sheet) {
       resolve();
       return;
     }
 
-    let loadedCount = 0;
-    const totalSheets = stylesheets.length;
-
-    const checkComplete = () => {
-      loadedCount++;
-      if (loadedCount >= totalSheets) {
-        // Small delay to ensure all styles are applied
-        setTimeout(() => resolve(), 10);
-      }
+    const handleLoad = () => {
+      resolve();
     };
 
-    stylesheets.forEach(sheet => {
-      if (sheet instanceof HTMLLinkElement) {
-        if (sheet.sheet || sheet.disabled) {
-          checkComplete();
-        } else {
-          sheet.addEventListener('load', checkComplete);
-          sheet.addEventListener('error', checkComplete);
-        }
-      } else {
-        checkComplete();
-      }
-    });
+    criticalSheet.addEventListener('load', handleLoad, { once: true });
+    criticalSheet.addEventListener('error', handleLoad, { once: true });
 
-    // Fallback timeout
-    setTimeout(() => resolve(), 100);
+    // Fallback timeout - render anyway after 100ms
+    setTimeout(resolve, 100);
   });
 };
 
-// Wait for DOM and stylesheets before rendering
+// Optimized app initialization for faster LCP
 const initializeApp = async () => {
   // Ensure DOM is ready
   if (document.readyState === 'loading') {
     await new Promise(resolve => {
-      document.addEventListener('DOMContentLoaded', resolve);
+      document.addEventListener('DOMContentLoaded', resolve, { once: true });
     });
   }
 
-  // Wait for stylesheets to load
-  await waitForStylesheets();
+  // Only wait for critical CSS, not all stylesheets
+  await waitForCriticalStylesheets();
 
   // Add loaded class to prevent FOUC
   const root = document.getElementById('root');
@@ -76,20 +55,19 @@ const initializeApp = async () => {
   );
 
   // Check if root has existing content (SSR) or is empty (static build)
-  // Also check for static build environment
   const isStaticBuild =
     import.meta.env.VITE_STATIC_BUILD === 'true' ||
     window.location.pathname.includes('/tyecode-portfolio/');
   const hasSSRContent = root && root.innerHTML.trim() !== '' && !isStaticBuild;
 
   if (hasSSRContent) {
-    // Hydrate for SSR
+    // Hydrate for SSR - no additional delays
     hydrateRoot(root as HTMLElement, AppComponent);
   } else {
-    // Render for static build or when no SSR content
+    // Render for static build - no additional delays
     createRoot(root as HTMLElement).render(AppComponent);
   }
 };
 
-// Initialize the app
+// Initialize immediately for optimal LCP
 initializeApp().catch(console.error);

@@ -20,9 +20,12 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className='pt-24 pb-16 bg-white' aria-labelledby='hero-heading'>
-      <div className='max-w-6xl mx-auto px-6 lg:px-8 relative'>
-        <div className='max-w-3xl'>
+    <section
+      className='hero-section pt-24 pb-16 bg-white'
+      aria-labelledby='hero-heading'
+    >
+      <div className='hero-container max-w-6xl mx-auto px-6 lg:px-8 relative'>
+        <div className='hero-content max-w-3xl'>
           <div className='mb-6'>
             <span
               className='inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800'
@@ -35,7 +38,7 @@ const HeroSection: React.FC = () => {
 
           <h1
             id='hero-heading'
-            className='text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight'
+            className='hero-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight'
           >
             {"Hi, I'm "}
             <span className='text-gray-600'>{HERO_CONTENT.name}</span>
@@ -51,7 +54,7 @@ const HeroSection: React.FC = () => {
             ))}
           </h1>
 
-          <p className='text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl'>
+          <p className='hero-lcp-text text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl'>
             {HERO_CONTENT.description.split(' at ')[0]} at{' '}
             <span className='text-gray-900 font-medium'>
               {HERO_CONTENT.currentCompany}
