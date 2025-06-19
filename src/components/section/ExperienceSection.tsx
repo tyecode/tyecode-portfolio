@@ -32,6 +32,7 @@ const ExperienceSection = () => {
           {EXPERIENCES.map((exp, index) => (
             <article
               key={index}
+              role='listitem'
               className={`bg-white rounded-xl p-8 border-l-4 ${
                 exp.current
                   ? 'border-l-gray-900 shadow-md'

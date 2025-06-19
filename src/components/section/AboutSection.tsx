@@ -62,6 +62,7 @@ const AboutSection = () => {
               {ABOUT_SKILLS.map((skill, index) => (
                 <div
                   key={index}
+                  role='listitem'
                   className='bg-white px-4 py-2 rounded-lg text-sm font-medium text-gray-700 border border-gray-200'
                 >
                   {skill}
@@ -82,7 +83,7 @@ const AboutSection = () => {
                 aria-labelledby='stats-heading'
               >
                 {ABOUT_STATS.map((stat, index) => (
-                  <div key={index}>
+                  <div key={index} role='listitem'>
                     <div
                       className='text-2xl font-bold text-gray-900 mb-1'
                       aria-label={stat.ariaLabel}
