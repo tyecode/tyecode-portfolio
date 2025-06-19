@@ -11,7 +11,7 @@ const ContactSection = () => {
   return (
     <section
       id='contact'
-      className='py-20 bg-gray-50'
+      className='py-20 bg-gray-50 section-contact prevent-layout-shift'
       aria-labelledby='contact-heading'
     >
       <div className='max-w-4xl mx-auto px-6 lg:px-8'>

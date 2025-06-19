@@ -4,7 +4,7 @@ const AboutSection = () => {
   return (
     <section
       id='about'
-      className='py-20 bg-gray-50'
+      className='py-20 bg-gray-50 section-about prevent-layout-shift'
       aria-labelledby='about-heading'
     >
       <div className='max-w-6xl mx-auto px-6 lg:px-8'>

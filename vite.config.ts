@@ -63,6 +63,11 @@ export default defineConfig(
       },
       optimizeDeps: {
         include: ['react-helmet-async'],
+        exclude: ['vite-plugin-pages', 'vite-ssg'],
+        esbuildOptions: {
+          target: 'es2020',
+          treeShaking: true,
+        },
       },
       ssr: {
         noExternal: ['react-helmet-async', 'nodemailer'],
@@ -75,6 +80,8 @@ export default defineConfig(
               : {
                   manualChunks: {
                     react: ['react', 'react-dom'],
+                    vendor: ['react-helmet-async'],
+                    utils: ['clsx', 'tailwind-merge'],
                   },
                 }),
             chunkFileNames: 'assets/js/[name]-[hash].js',
@@ -88,10 +95,18 @@ export default defineConfig(
               return 'assets/js/[name]-[hash].js';
             },
           },
+          treeshake: {
+            moduleSideEffects: false,
+            propertyReadSideEffects: false,
+            tryCatchDeoptimization: false,
+          },
+          external: isSSR ? ['express', 'compression', 'sirv'] : [],
         },
         target: 'es2020',
         minify: 'esbuild',
         sourcemap: false,
+        reportCompressedSize: false,
+        chunkSizeWarningLimit: 1000,
       },
       esbuild: {
         drop: ['console', 'debugger'],

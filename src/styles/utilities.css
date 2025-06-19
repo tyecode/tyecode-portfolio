@@ -16,3 +16,101 @@
   visibility: visible;
   animation: fadeIn 0.3s ease-in-out;
 }
+
+/* Layout Shift Prevention Utilities */
+.prevent-layout-shift {
+  contain: layout style;
+}
+
+.section-skeleton {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Form field height consistency */
+.form-field-container {
+  min-height: 4rem; /* Base height for input + error message space */
+}
+
+.form-textarea-container {
+  min-height: 8rem; /* Base height for textarea + error message space */
+}
+
+/* Section minimum heights to prevent layout shift */
+.section-about {
+  min-height: 600px;
+}
+
+.section-work {
+  min-height: 800px;
+}
+
+.section-experience {
+  min-height: 600px;
+}
+
+.section-contact {
+  min-height: 800px;
+}
+
+.section-footer {
+  min-height: 250px;
+}
+
+/* Image placeholders to prevent layout shift */
+.image-placeholder {
+  background-color: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure consistent spacing for dynamic content */
+.dynamic-content-container {
+  min-height: 1rem;
+  transition: none;
+}
+
+/* Prevent layout shift from loading states */
+.loading-placeholder {
+  min-height: inherit;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.2s ease-in-out infinite;
+}
+
+/* Font loading fallback to prevent text shifting */
+.font-fallback {
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, sans-serif;
+  font-display: swap;
+}
+
+/* Aspect ratio containers to prevent image layout shifts */
+.aspect-ratio-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-ratio-4-3 {
+  aspect-ratio: 4 / 3;
+}
+
+.aspect-ratio-1-1 {
+  aspect-ratio: 1 / 1;
+}

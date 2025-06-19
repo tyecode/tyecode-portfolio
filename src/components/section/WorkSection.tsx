@@ -6,7 +6,7 @@ const WorkSection = () => {
   return (
     <section
       id='work'
-      className='py-20 bg-white'
+      className='py-20 bg-white section-work prevent-layout-shift'
       aria-labelledby='work-heading'
     >
       <div className='max-w-6xl mx-auto px-6 lg:px-8 relative'>

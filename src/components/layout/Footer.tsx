@@ -11,7 +11,7 @@ const Footer = () => {
 
   return (
     <footer
-      className='bg-gray-900 text-white py-12'
+      className='bg-gray-900 text-white py-12 section-footer prevent-layout-shift'
       role='contentinfo'
       aria-label='Site footer'
     >

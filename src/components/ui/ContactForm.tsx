@@ -245,6 +245,15 @@ const ContactForm: React.FC<ContactFormProps> = ({
         {touched.name && errors.name && (
           <div className='mt-1 text-sm text-red-600'>{errors.name}</div>
         )}
+        {!touched.name ||
+          (!errors.name && (
+            <div
+              className='mt-1 text-sm text-transparent h-5'
+              aria-hidden='true'
+            >
+              &#8203;
+            </div>
+          ))}
       </div>
 
       <div>
@@ -268,6 +277,15 @@ const ContactForm: React.FC<ContactFormProps> = ({
         {touched.email && errors.email && (
           <div className='mt-1 text-sm text-red-600'>{errors.email}</div>
         )}
+        {!touched.email ||
+          (!errors.email && (
+            <div
+              className='mt-1 text-sm text-transparent h-5'
+              aria-hidden='true'
+            >
+              &#8203;
+            </div>
+          ))}
       </div>
 
       <div>
@@ -291,19 +309,30 @@ const ContactForm: React.FC<ContactFormProps> = ({
         {touched.message && errors.message && (
           <div className='mt-1 text-sm text-red-600'>{errors.message}</div>
         )}
+        {!touched.message ||
+          (!errors.message && (
+            <div
+              className='mt-1 text-sm text-transparent h-5'
+              aria-hidden='true'
+            >
+              &#8203;
+            </div>
+          ))}
       </div>
 
-      {submitStatus === 'success' && (
-        <div className='p-4 bg-green-50 border border-green-200 rounded-lg text-green-800'>
-          Thank you for your message! I&apos;ll get back to you soon.
-        </div>
-      )}
+      <div className='min-h-12'>
+        {submitStatus === 'success' && (
+          <div className='p-4 bg-green-50 border border-green-200 rounded-lg text-green-800'>
+            Thank you for your message! I&apos;ll get back to you soon.
+          </div>
+        )}
 
-      {submitStatus === 'error' && Object.keys(errors).length === 0 && (
-        <div className='p-4 bg-red-50 border border-red-200 rounded-lg text-red-800'>
-          There was an error sending your message. Please try again.
-        </div>
-      )}
+        {submitStatus === 'error' && Object.keys(errors).length === 0 && (
+          <div className='p-4 bg-red-50 border border-red-200 rounded-lg text-red-800'>
+            There was an error sending your message. Please try again.
+          </div>
+        )}
+      </div>
 
       <Button
         type='button'

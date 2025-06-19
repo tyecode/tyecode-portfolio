@@ -3,19 +3,36 @@ import { HelmetProvider } from 'react-helmet-async';
 
 import MainLayout from '@/components/layout/MainLayout';
 import LoadingScreen from '@/components/ui/LoadingScreen';
+import SectionSkeleton from '@/components/ui/SectionSkeleton';
 import MetaTags from '@/components/seo/MetaTags';
 import { useSEO } from '@/hooks/useSEO';
 
 import { usePreloader } from '@/hooks/usePreloader';
 
-const HeroSection = lazy(() => import('@/components/section/HeroSection'));
-const AboutSection = lazy(() => import('@/components/section/AboutSection'));
-const WorkSection = lazy(() => import('@/components/section/WorkSection'));
+// Lazy load components with specific chunk names for better caching
+const HeroSection = lazy(
+  () =>
+    import('@/components/section/HeroSection' /* webpackChunkName: "hero" */)
+);
+const AboutSection = lazy(
+  () =>
+    import('@/components/section/AboutSection' /* webpackChunkName: "about" */)
+);
+const WorkSection = lazy(
+  () =>
+    import('@/components/section/WorkSection' /* webpackChunkName: "work" */)
+);
 const ExperienceSection = lazy(
-  () => import('@/components/section/ExperienceSection')
+  () =>
+    import(
+      '@/components/section/ExperienceSection' /* webpackChunkName: "experience" */
+    )
 );
 const ContactSection = lazy(
-  () => import('@/components/section/ContactSection')
+  () =>
+    import(
+      '@/components/section/ContactSection' /* webpackChunkName: "contact" */
+    )
 );
 
 function App() {
@@ -33,16 +50,32 @@ function App() {
         <Suspense fallback={<LoadingScreen />}>
           <HeroSection />
         </Suspense>
-        <Suspense fallback={null}>
+        <Suspense
+          fallback={<SectionSkeleton className='bg-gray-50' variant='about' />}
+        >
           <AboutSection />
         </Suspense>
-        <Suspense fallback={null}>
+        <Suspense
+          fallback={<SectionSkeleton className='bg-white' variant='work' />}
+        >
           <WorkSection />
         </Suspense>
-        <Suspense fallback={null}>
+        <Suspense
+          fallback={
+            <SectionSkeleton className='bg-gray-50' variant='experience' />
+          }
+        >
           <ExperienceSection />
         </Suspense>
-        <Suspense fallback={null}>
+        <Suspense
+          fallback={
+            <SectionSkeleton
+              className='bg-gray-50'
+              variant='contact'
+              minHeight='min-h-screen'
+            />
+          }
+        >
           <ContactSection />
         </Suspense>
       </MainLayout>
