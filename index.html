@@ -1,11 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
+    <!-- Essential Meta Tags -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- SEO Meta Tags -->
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta
+      http-equiv="Referrer-Policy"
+      content="strict-origin-when-cross-origin"
+    />
+
+    <!-- Primary SEO Meta Tags (Fallback - React will override these) -->
     <title>
       tyecode - Expert Front-End Developer | React & TypeScript Specialist
     </title>
@@ -13,101 +25,151 @@
       name="description"
       content="🚀 Professional front-end developer specializing in React, TypeScript & modern web technologies. 4+ years building responsive, user-friendly web applications. Available for hire - View portfolio & get in touch!"
     />
+    <meta name="author" content="tyecode" />
+    <meta name="robots" content="index, follow" />
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://tyecode.github.io/tyecode-portfolio/" />
+    <!-- Theme and App Configuration -->
+    <meta name="theme-color" content="#111827" />
+    <meta name="color-scheme" content="light" />
+    <meta name="format-detection" content="telephone=no" />
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="tyecode - Expert Front-End Developer | React & TypeScript Portfolio"
-    />
-    <meta
-      property="og:description"
-      content="🚀 Professional front-end developer with 4+ years experience. Specializing in React, TypeScript, Vue.js & modern CSS frameworks. View my portfolio of responsive web applications & get in touch for your next project!"
-    />
-    <meta
-      property="og:url"
-      content="https://tyecode.github.io/tyecode-portfolio/"
-    />
-    <meta property="og:site_name" content="tyecode Portfolio" />
-    <meta
-      property="og:image"
-      content="https://tyecode.github.io/tyecode-portfolio/images/og.png"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="tyecode - Front-End Web Developer Portfolio"
-    />
-    <meta property="og:locale" content="en_US" />
-
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@tyecode" />
-    <meta name="twitter:creator" content="@tyecode" />
-    <meta
-      name="twitter:title"
-      content="tyecode - Expert Front-End Developer | React & TypeScript Portfolio"
-    />
-    <meta
-      name="twitter:description"
-      content="🚀 Professional front-end developer with 4+ years experience. Specializing in React, TypeScript, Vue.js & modern CSS frameworks. View my portfolio of responsive web applications & get in touch for your next project!"
-    />
-    <meta
-      name="twitter:image"
-      content="https://tyecode.github.io/tyecode-portfolio/images/og.png"
-    />
-    <meta
-      name="twitter:image:alt"
-      content="tyecode - Front-End Web Developer Portfolio"
-    />
-
-    <!-- Fallback favicons before React MetaTags loads -->
-    <link rel="icon" href="/favicon.png" type="image/png" />
+    <!-- Apple Touch Icon and Favicons -->
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="256x256" />
     <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="mask-icon" href="/favicon.svg" color="#111827" />
 
-    <!-- Preconnect to external domains for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!-- DNS Prefetch and Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 
-    <!-- DNS prefetch for potential external resources -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <!-- Critical Resource Preloads -->
+    <link rel="preload" href="/src/styles/critical.css" as="style" />
+    <link rel="preload" href="/src/index.css" as="style" />
+    <link rel="preload" href="/src/entry-client.tsx" as="script" />
 
-    <!-- Google Fonts - Inter with font-display: swap for better performance -->
+    <!-- Font Optimization with Performance Best Practices -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="preload"
+      href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+
+    <!-- Optimized Font Loading -->
+    <link
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       />
     </noscript>
 
-    <!-- Critical styles moved to external file for better organization -->
+    <!-- Critical Styles -->
     <link rel="stylesheet" href="/src/styles/critical.css" />
 
-    <!-- Preload main stylesheet to prevent FOUC -->
+    <!-- Main Stylesheet with Optimization -->
     <link
-      rel="preload"
+      rel="stylesheet"
       href="/src/index.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      media="print"
+      onload="this.media='all'"
     />
-    <noscript><link rel="stylesheet" href="/src/index.css" /></noscript>
+    <noscript>
+      <link rel="stylesheet" href="/src/index.css" />
+    </noscript>
 
+    <!-- Prevent Flash of Unstyled Content (FOUC) -->
+    <style>
+      /* Minimal inline styles to prevent layout shift */
+      #root {
+        min-height: 100vh;
+      }
+      .loading-screen {
+        position: fixed;
+        inset: 0;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+    </style>
+
+    <!-- React will inject additional meta tags here -->
     <!--app-head-->
   </head>
 
   <body>
-    <div id="root"><!--app-html--></div>
+    <!-- Skip Navigation for Accessibility -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded z-50"
+      tabindex="1"
+    >
+      Skip to main content
+    </a>
+
+    <!-- Main Application Root -->
+    <div
+      id="root"
+      role="application"
+      aria-label="tyecode Portfolio Application"
+    >
+      <!-- Server-side rendered content will be injected here -->
+      <!--app-html-->
+    </div>
+
+    <!-- NoScript Fallback -->
+    <noscript>
+      <div
+        style="
+          text-align: center;
+          padding: 2rem;
+          font-family: system-ui, sans-serif;
+        "
+      >
+        <h1>JavaScript Required</h1>
+        <p>
+          This portfolio requires JavaScript to function properly. Please enable
+          JavaScript in your browser.
+        </p>
+        <p>
+          You can contact me directly at:
+          <a href="mailto:sengphachanh.dev@gmail.com"
+            >sengphachanh.dev@gmail.com</a
+          >
+        </p>
+      </div>
+    </noscript>
+
+    <!-- Application Entry Point -->
     <script type="module" src="/src/entry-client.tsx"></script>
+
+    <!-- Performance Monitoring -->
+    <script>
+      // Basic performance monitoring
+      if ('performance' in window && 'PerformanceObserver' in window) {
+        try {
+          new PerformanceObserver(list => {
+            for (const entry of list.getEntries()) {
+              if (entry.name === 'first-contentful-paint') {
+                console.info('First Contentful Paint:', entry.startTime + 'ms');
+              }
+            }
+          }).observe({ entryTypes: ['paint'] });
+        } catch (e) {
+          // Silently handle any errors
+        }
+      }
+    </script>
   </body>
 </html>

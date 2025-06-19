@@ -1,11 +1,9 @@
-import React from 'react';
-
 import ContactForm, { ContactFormData } from '@/components/ui/ContactForm';
 import { submitContactForm } from '@/utils/contact';
 
 import { CONTACT_INFO } from '@/constants';
 
-const ContactSection: React.FC = () => {
+const ContactSection = () => {
   const handleFormSubmit = async (data: ContactFormData) => {
     await submitContactForm(data);
   };

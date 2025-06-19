@@ -34,20 +34,55 @@ export const getBasePath = (): string => {
   return '';
 };
 
+// Site configuration - centralized place for all site metadata
+export const siteConfig = {
+  title: 'tyecode - Expert Front-End Developer | React & TypeScript Specialist',
+  baseUrl: 'https://tyecode.github.io/tyecode-portfolio/',
+  email: 'sengphachanh.dev@gmail.com',
+  author: 'tyecode',
+  description:
+    '🚀 Professional front-end developer specializing in React, TypeScript & modern web technologies. 4+ years building responsive, user-friendly web applications. Available for hire - View portfolio & get in touch!',
+  keywords:
+    'front-end developer, React developer, TypeScript developer, JavaScript developer, Vue.js developer, responsive web design, UI developer, modern web development, available for hire, tyecode',
+  themeColor: '#111827',
+  locale: 'en_US',
+  language: 'English',
+  social: {
+    github: 'https://github.com/tyecode',
+    linkedin: 'https://linkedin.com/in/tyecode',
+    twitter: 'https://twitter.com/tyecode',
+    twitterHandle: '@tyecode',
+  },
+  images: {
+    og: '/images/og.png',
+    favicon: '/favicon.png',
+    faviconSvg: '/favicon.svg',
+  },
+};
+
+// Helper functions for generating URLs
+export const generateImageUrl = (imagePath: string): string => {
+  const basePath = getBasePath();
+  return `${siteConfig.baseUrl}${basePath}${imagePath}`;
+};
+
+export const generateCanonicalUrl = (path: string = ''): string => {
+  const basePath = getBasePath();
+  return `${siteConfig.baseUrl}${basePath}${path}`;
+};
+
 export const seoMetaTags: MetaTag[] = [
   {
     name: 'description',
-    content:
-      '🚀 Professional front-end developer specializing in React, TypeScript & modern web technologies. 4+ years building responsive, user-friendly web applications. Available for hire - View portfolio & get in touch!',
+    content: siteConfig.description,
   },
   {
     name: 'keywords',
-    content:
-      'front-end developer, React developer, TypeScript developer, JavaScript developer, Vue.js developer, responsive web design, UI developer, modern web development, available for hire, tyecode',
+    content: siteConfig.keywords,
   },
   {
     name: 'author',
-    content: 'tyecode',
+    content: siteConfig.author,
   },
   {
     name: 'robots',
@@ -55,7 +90,7 @@ export const seoMetaTags: MetaTag[] = [
   },
   {
     name: 'language',
-    content: 'English',
+    content: siteConfig.language,
   },
   {
     name: 'revisit-after',
@@ -70,17 +105,15 @@ export const openGraphMetaTags: MetaTag[] = [
   },
   {
     property: 'og:title',
-    content:
-      'tyecode - Expert Front-End Developer | React & TypeScript Portfolio',
+    content: siteConfig.title,
   },
   {
     property: 'og:description',
-    content:
-      '🚀 Professional front-end developer with 4+ years experience. Specializing in React, TypeScript, Vue.js & modern CSS frameworks. View my portfolio of responsive web applications & get in touch for your next project!',
+    content: siteConfig.description,
   },
   {
     property: 'og:url',
-    content: 'https://tyecode.github.io/tyecode-portfolio/',
+    content: generateCanonicalUrl(),
   },
   {
     property: 'og:site_name',
@@ -88,7 +121,7 @@ export const openGraphMetaTags: MetaTag[] = [
   },
   {
     property: 'og:image',
-    content: 'https://tyecode.github.io/tyecode-portfolio/images/og.png',
+    content: generateImageUrl(siteConfig.images.og),
   },
   {
     property: 'og:image:width',
@@ -104,7 +137,7 @@ export const openGraphMetaTags: MetaTag[] = [
   },
   {
     property: 'og:locale',
-    content: 'en_US',
+    content: siteConfig.locale,
   },
 ];
 
@@ -115,25 +148,23 @@ export const twitterMetaTags: MetaTag[] = [
   },
   {
     name: 'twitter:site',
-    content: '@tyecode',
+    content: siteConfig.social.twitterHandle,
   },
   {
     name: 'twitter:creator',
-    content: '@tyecode',
+    content: siteConfig.social.twitterHandle,
   },
   {
     name: 'twitter:title',
-    content:
-      'tyecode - Expert Front-End Developer | React & TypeScript Portfolio',
+    content: siteConfig.title,
   },
   {
     name: 'twitter:description',
-    content:
-      '🚀 Professional front-end developer with 4+ years experience. Specializing in React, TypeScript, Vue.js & modern CSS frameworks. View my portfolio of responsive web applications & get in touch for your next project!',
+    content: siteConfig.description,
   },
   {
     name: 'twitter:image',
-    content: 'https://tyecode.github.io/tyecode-portfolio/images/og.png',
+    content: generateImageUrl(siteConfig.images.og),
   },
   {
     name: 'twitter:image:alt',
@@ -144,36 +175,36 @@ export const twitterMetaTags: MetaTag[] = [
 export const themeMetaTags: MetaTag[] = [
   {
     name: 'theme-color',
-    content: '#111827',
+    content: siteConfig.themeColor,
   },
   {
     name: 'msapplication-TileColor',
-    content: '#111827',
+    content: siteConfig.themeColor,
   },
 ];
 
 export const faviconLinks: LinkTag[] = [
   {
     rel: 'icon',
-    href: `${getBasePath()}/favicon.png`,
+    href: `${getBasePath()}${siteConfig.images.favicon}`,
     type: 'image/png',
   },
   {
     rel: 'icon',
     type: 'image/png',
     sizes: '32x32',
-    href: `${getBasePath()}/favicon.png`,
+    href: `${getBasePath()}${siteConfig.images.favicon}`,
   },
   {
     rel: 'icon',
     type: 'image/png',
     sizes: '16x16',
-    href: `${getBasePath()}/favicon.png`,
+    href: `${getBasePath()}${siteConfig.images.favicon}`,
   },
   {
     rel: 'apple-touch-icon',
     sizes: '180x180',
-    href: `${getBasePath()}/favicon.png`,
+    href: `${getBasePath()}${siteConfig.images.favicon}`,
   },
   {
     rel: 'manifest',
@@ -194,10 +225,6 @@ export const externalLinks: LinkTag[] = [
   {
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap',
-  },
-  {
-    rel: 'canonical',
-    href: 'https://tyecode.github.io/tyecode-portfolio/',
   },
 ];
 
@@ -322,15 +349,4 @@ export const generateManifest = () => {
     prefer_related_applications: false,
     related_applications: [],
   };
-};
-
-export const siteConfig = {
-  title: 'tyecode - Expert Front-End Developer | React & TypeScript Specialist',
-  baseUrl: 'https://tyecode.github.io/tyecode-portfolio',
-  email: 'sengphachanh.dev@gmail.com',
-  social: {
-    github: 'https://github.com/tyecode',
-    linkedin: 'https://linkedin.com/in/tyecode',
-    twitter: 'https://twitter.com/tyecode',
-  },
 };

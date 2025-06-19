@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import MainLayout from '@/components/layout/MainLayout';
 import LoadingScreen from '@/components/ui/LoadingScreen';
 import MetaTags from '@/components/seo/MetaTags';
+import { useSEO } from '@/hooks/useSEO';
 
 import { usePreloader } from '@/hooks/usePreloader';
 
@@ -19,6 +20,7 @@ const ContactSection = lazy(
 
 function App() {
   const { isLoading } = usePreloader({ minLoadingTime: 1000 });
+  const seoData = useSEO();
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -26,7 +28,7 @@ function App() {
 
   return (
     <HelmetProvider>
-      <MetaTags />
+      <MetaTags {...seoData} />
       <MainLayout>
         <Suspense fallback={<LoadingScreen />}>
           <HeroSection />

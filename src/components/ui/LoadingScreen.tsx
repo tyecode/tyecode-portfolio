@@ -1,8 +1,6 @@
-import React from 'react';
-
 import Logo from '@/components/ui/Logo';
 
-const LoadingScreen: React.FC = () => {
+const LoadingScreen = () => {
   return (
     <div className='loading-screen fixed inset-0 bg-white flex items-center justify-center z-50'>
       <div className='loading-content text-center'>

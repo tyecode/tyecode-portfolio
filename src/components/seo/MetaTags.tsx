@@ -1,115 +1,79 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-import {
-  seoMetaTags,
-  openGraphMetaTags,
-  twitterMetaTags,
-  themeMetaTags,
-  faviconLinks,
-  externalLinks,
-  siteConfig,
-} from '@/config/meta-tags';
-import { generateStructuredData } from '@/utils/structured-data';
-
 interface MetaTagsProps {
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
+  canonical: string;
+  image: string;
+  schemaMarkup?: Record<string, unknown>;
   keywords?: string;
-  ogImage?: string;
-  twitterImage?: string;
-  canonicalUrl?: string;
+  author?: string;
+  themeColor?: string;
+  twitterHandle?: string;
 }
 
-export const MetaTags: React.FC<MetaTagsProps> = ({
-  title = siteConfig.title,
+const MetaTags = ({
+  title,
   description,
-  keywords,
-  ogImage,
-  twitterImage,
-  canonicalUrl = siteConfig.baseUrl,
-}) => {
-  // Override default values with props if provided
-  const finalSeoTags = seoMetaTags.map(tag => {
-    if (tag.name === 'description' && description) {
-      return { ...tag, content: description };
-    }
-    if (tag.name === 'keywords' && keywords) {
-      return { ...tag, content: keywords };
-    }
-    return tag;
-  });
+  canonical,
+  image,
+  schemaMarkup,
+  keywords = 'front-end developer, React developer, TypeScript developer, JavaScript developer, Vue.js developer, responsive web design, UI developer, modern web development, available for hire, tyecode',
+  author = 'tyecode',
+  themeColor = '#111827',
+  twitterHandle = '@tyecode',
+}: MetaTagsProps) => (
+  <Helmet>
+    {/* Primary Meta Tags */}
+    <title>{title}</title>
+    <meta name='title' content={title} />
+    <meta name='description' content={description} />
+    <meta name='keywords' content={keywords} />
+    <meta name='author' content={author} />
+    <meta name='robots' content='index, follow' />
+    <meta name='language' content='English' />
+    <meta name='revisit-after' content='7 days' />
 
-  const finalOgTags = openGraphMetaTags.map(tag => {
-    if (tag.property === 'og:description' && description) {
-      return { ...tag, content: description };
-    }
-    if (tag.property === 'og:image' && ogImage) {
-      return { ...tag, content: ogImage };
-    }
-    if (tag.property === 'og:url' && canonicalUrl) {
-      return { ...tag, content: canonicalUrl };
-    }
-    return tag;
-  });
+    {/* Canonical URL */}
+    <link rel='canonical' href={canonical} />
 
-  const finalTwitterTags = twitterMetaTags.map(tag => {
-    if (tag.name === 'twitter:description' && description) {
-      return { ...tag, content: description };
-    }
-    if (tag.name === 'twitter:image' && twitterImage) {
-      return { ...tag, content: twitterImage };
-    }
-    return tag;
-  });
+    {/* Theme Color */}
+    <meta name='theme-color' content={themeColor} />
+    <meta name='msapplication-TileColor' content={themeColor} />
 
-  return (
-    <Helmet>
-      {/* Page Title */}
-      <title>{title}</title>
+    {/* Open Graph / Facebook */}
+    <meta property='og:type' content='website' />
+    <meta property='og:url' content={canonical} />
+    <meta property='og:title' content={title} />
+    <meta property='og:description' content={description} />
+    <meta property='og:image' content={image} />
+    <meta property='og:image:width' content='1200' />
+    <meta property='og:image:height' content='630' />
+    <meta
+      property='og:image:alt'
+      content='tyecode - Front-End Web Developer Portfolio'
+    />
+    <meta property='og:site_name' content='tyecode Portfolio' />
+    <meta property='og:locale' content='en_US' />
 
-      {/* Basic Meta Tags */}
-      <meta charSet='UTF-8' />
-      <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-      <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+    {/* Twitter */}
+    <meta property='twitter:card' content='summary_large_image' />
+    <meta property='twitter:url' content={canonical} />
+    <meta property='twitter:title' content={title} />
+    <meta property='twitter:description' content={description} />
+    <meta property='twitter:image' content={image} />
+    <meta
+      property='twitter:image:alt'
+      content='tyecode - Front-End Web Developer Portfolio'
+    />
+    <meta name='twitter:site' content={twitterHandle} />
+    <meta name='twitter:creator' content={twitterHandle} />
 
-      {/* SEO Meta Tags */}
-      {finalSeoTags.map((tag, index) => (
-        <meta key={`seo-${index}`} {...tag} />
-      ))}
-
-      {/* Open Graph Meta Tags */}
-      {finalOgTags.map((tag, index) => (
-        <meta key={`og-${index}`} {...tag} />
-      ))}
-
-      {/* Twitter Meta Tags */}
-      {finalTwitterTags.map((tag, index) => (
-        <meta key={`twitter-${index}`} {...tag} />
-      ))}
-
-      {/* Theme Meta Tags */}
-      {themeMetaTags.map((tag, index) => (
-        <meta key={`theme-${index}`} {...tag} />
-      ))}
-
-      {/* Favicon Links */}
-      {faviconLinks.map((link, index) => (
-        <link key={`favicon-${index}`} {...link} />
-      ))}
-
-      {/* External Links */}
-      {externalLinks.map((link, index) => (
-        <link key={`external-${index}`} {...link} />
-      ))}
-
-      {/* Canonical URL */}
-      <link rel='canonical' href={canonicalUrl} />
-
-      {/* Structured Data */}
-      <script type='application/ld+json'>{generateStructuredData()}</script>
-    </Helmet>
-  );
-};
+    {/* Structured Data (Schema Markup) */}
+    {schemaMarkup && (
+      <script type='application/ld+json'>{JSON.stringify(schemaMarkup)}</script>
+    )}
+  </Helmet>
+);
 
 export default MetaTags;

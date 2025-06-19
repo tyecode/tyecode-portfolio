@@ -1,100 +1,99 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
+import ViteSitemap from 'vite-plugin-sitemap';
+import { createHtmlPlugin } from 'vite-plugin-html';
 import path from 'path';
+import {
+  BASE_URL,
+  staticRoutes,
+  excludeRoutes,
+  sitemapConfig,
+} from './sitemap';
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: process.env.VITE_STATIC_BUILD === 'true' ? '/tyecode-portfolio/' : '/',
-  plugins: [react(), tailwindcss()],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
-  },
-  optimizeDeps: {
-    include: ['react-helmet-async'],
-  },
-  ssr: {
-    noExternal: ['react-helmet-async', 'nodemailer'],
-  },
-  css: {
-    // Improve CSS loading performance
-    devSourcemap: true,
-    postcss: {
-      plugins: [],
-    },
-  },
-  build: {
-    // Optimize CSS loading to prevent FOUC
-    cssCodeSplit: true, // Enable CSS code splitting for better performance
-    rollupOptions: {
-      output: {
-        // Advanced chunk splitting for better caching
-        manualChunks: (id: string) => {
-          // Vendor libraries
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'vendor-react';
-            }
-            if (id.includes('react-helmet-async')) {
-              return 'vendor-helmet';
-            }
-            if (id.includes('clsx') || id.includes('tailwind-merge')) {
-              return 'vendor-utils';
-            }
-            return 'vendor';
-          }
+export default defineConfig(({ command, mode, isSsrBuild }) => {
+  const isSSR = isSsrBuild || process.argv.includes('--ssr');
 
-          // Component chunks based on directory structure
-          if (id.includes('/src/components/section/')) {
-            return 'components-sections';
-          }
-          if (id.includes('/src/components/ui/')) {
-            return 'components-ui';
-          }
-          if (id.includes('/src/components/')) {
-            return 'components';
-          }
-
-          // Utility chunks
-          if (id.includes('/src/hooks/') || id.includes('/src/utils/')) {
-            return 'utils';
-          }
-          if (id.includes('/src/config/')) {
-            return 'config';
-          }
+  return {
+    base:
+      process.env.VITE_STATIC_BUILD === 'true' ? '/tyecode-portfolio/' : '/',
+    plugins: [
+      react(),
+      tailwindcss(),
+      ViteSitemap({
+        hostname: BASE_URL,
+        dynamicRoutes: staticRoutes,
+        exclude: excludeRoutes,
+        generateRobotsTxt: true,
+        changefreq: sitemapConfig.changefreq,
+        priority: sitemapConfig.priority,
+        readable: true,
+        robots: [
+          {
+            userAgent: '*',
+            allow: '/',
+          },
+          {
+            userAgent: '*',
+            disallow: '/admin',
+          },
+          {
+            userAgent: '*',
+            disallow: '/private',
+          },
+        ],
+      }),
+      createHtmlPlugin({
+        minify: true,
+        inject: {
+          data: {
+            title: 'tyecode Portfolio',
+            description:
+              'Modern front-end web developer portfolio built with React, TypeScript, and Tailwind CSS.',
+          },
         },
-        // Ensure CSS is loaded efficiently
-        assetFileNames: assetInfo => {
-          if (assetInfo.name?.endsWith('.css')) {
-            return 'assets/styles/[name]-[hash][extname]';
-          }
-          return 'assets/[name]-[hash][extname]';
-        },
-        // Better chunk naming for debugging
-        chunkFileNames: 'assets/js/[name]-[hash].js',
-        entryFileNames: chunkInfo => {
-          // For SSR builds, don't use hash for entry files to ensure consistent import path
-          if (chunkInfo.name === 'entry-server' || chunkInfo.name === 'email') {
-            return '[name].js';
-          }
-          return 'assets/js/[name]-[hash].js';
-        },
+      }),
+    ],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
       },
     },
-    // Optimize build size with esbuild (faster than terser)
-    target: 'es2020',
-    minify: 'esbuild',
-    // Reduce source map size in production
-    sourcemap: false,
-    // Optimize chunk size
-    chunkSizeWarningLimit: 1000,
-  },
-  // Optimize esbuild settings
-  esbuild: {
-    drop: ['console', 'debugger'], // Remove console.log and debugger in production
-  },
-  // Optimize asset loading
-  assetsInclude: ['**/*.woff', '**/*.woff2'],
+    optimizeDeps: {
+      include: ['react-helmet-async'],
+    },
+    ssr: {
+      noExternal: ['react-helmet-async', 'nodemailer'],
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          ...(isSSR
+            ? {}
+            : {
+                manualChunks: {
+                  react: ['react', 'react-dom'],
+                },
+              }),
+          chunkFileNames: 'assets/js/[name]-[hash].js',
+          entryFileNames: chunkInfo => {
+            if (
+              chunkInfo.name === 'entry-server' ||
+              chunkInfo.name === 'email'
+            ) {
+              return '[name].js';
+            }
+            return 'assets/js/[name]-[hash].js';
+          },
+        },
+      },
+      target: 'es2020',
+      minify: 'esbuild',
+      sourcemap: false,
+    },
+    esbuild: {
+      drop: ['console', 'debugger'],
+    },
+  };
 });

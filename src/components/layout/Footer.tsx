@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   NAVIGATION_LINKS,
   SOCIAL_LINKS,
@@ -8,7 +6,7 @@ import {
   BRAND_INFO,
 } from '@/constants';
 
-const Footer: React.FC = () => {
+const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (

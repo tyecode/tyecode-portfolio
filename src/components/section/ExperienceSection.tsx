@@ -1,10 +1,8 @@
-import React from 'react';
-
 import Button from '@/components/ui/Button';
 
 import { EXPERIENCES } from '@/constants';
 
-const ExperienceSection: React.FC = () => {
+const ExperienceSection = () => {
   return (
     <section
       id='experience'

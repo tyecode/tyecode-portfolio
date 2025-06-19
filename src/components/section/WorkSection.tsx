@@ -1,10 +1,8 @@
-import React from 'react';
-
 import Button from '@/components/ui/Button';
 
 import { PROJECTS } from '@/constants';
 
-const WorkSection: React.FC = () => {
+const WorkSection = () => {
   return (
     <section
       id='work'

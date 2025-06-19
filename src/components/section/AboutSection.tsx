@@ -1,8 +1,6 @@
-import React from 'react';
-
 import { ABOUT_SKILLS, ABOUT_STATS, ABOUT_CONTENT } from '@/constants';
 
-const AboutSection: React.FC = () => {
+const AboutSection = () => {
   return (
     <section
       id='about'

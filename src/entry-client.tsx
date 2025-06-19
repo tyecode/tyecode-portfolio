@@ -5,34 +5,6 @@ import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 import './index.css';
 
-// Service Worker registration for performance optimization
-const registerServiceWorker = async () => {
-  if ('serviceWorker' in navigator && import.meta.env.PROD) {
-    try {
-      const registration = await navigator.serviceWorker.register('/sw.js');
-      console.warn('Service Worker registered successfully:', registration);
-
-      // Handle updates
-      registration.addEventListener('updatefound', () => {
-        const newWorker = registration.installing;
-        if (newWorker) {
-          newWorker.addEventListener('statechange', () => {
-            if (
-              newWorker.state === 'installed' &&
-              navigator.serviceWorker.controller
-            ) {
-              // New content available, could show update notification
-              console.warn('New content available, refresh to update');
-            }
-          });
-        }
-      });
-    } catch (error) {
-      console.error('Service Worker registration failed:', error);
-    }
-  }
-};
-
 // Function to wait for stylesheets to load
 const waitForStylesheets = (): Promise<void> => {
   return new Promise(resolve => {
@@ -117,9 +89,6 @@ const initializeApp = async () => {
     // Render for static build or when no SSR content
     createRoot(root as HTMLElement).render(AppComponent);
   }
-
-  // Register service worker after app initialization
-  await registerServiceWorker();
 };
 
 // Initialize the app

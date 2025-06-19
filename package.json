@@ -21,12 +21,11 @@
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "build:email": "vite build --ssr src/services/email.ts --outDir dist/server --emptyOutDir=false",
     "build:static": "cross-env VITE_STATIC_BUILD=true vite build",
+    "build:lighthouse": "vite build",
     "preview": "cross-env NODE_ENV=production PORT=8080 node server",
     "lighthouse": "lighthouse http://localhost:8000 --output html --output-path ./lighthouse-dev-report.html --chrome-flags=\"--headless\"",
     "lighthouse:local": "lighthouse http://localhost:8080 --output html --output-path ./lighthouse-local-report.html --chrome-flags=\"--headless\"",
     "lighthouse:prod": "lighthouse https://tyecode.github.io/tyecode-portfolio/ --output html --output-path ./lighthouse-prod-report.html --chrome-flags=\"--headless\"",
-    "test:lighthouse": "pnpm run build:static && pnpm run preview:static && pnpm run lighthouse:local",
-    "test:lighthouse:prod": "pnpm run lighthouse:prod",
     "preview:static": "vite preview --port 8080",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -49,7 +48,11 @@
     "react-helmet-async": "^2.0.5",
     "sirv": "^3.0.1",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.10"
+    "tailwindcss": "^4.1.10",
+    "vite-plugin-html": "^3.2.2",
+    "vite-plugin-pages": "^0.33.0",
+    "vite-plugin-sitemap": "^0.8.2",
+    "vite-ssg": "^27.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
