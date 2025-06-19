@@ -24,7 +24,4 @@ dist-ssr
 *.sw?
 
 # Lighthouse reports
-lighthouse-report.html
-lighthouse-prod-report.html
-lighthouse-final-report.html
-lighthouse-ultimate-report.html
+lighthouse*

@@ -32,7 +32,7 @@ const Logo: React.FC<LogoProps> = ({
   };
 
   return (
-    <a href='/' className={cn('flex items-center space-x-3', className)}>
+    <a href='/#' className={cn('flex items-center space-x-3', className)}>
       <div
         className={cn(
           sizeClasses[size],

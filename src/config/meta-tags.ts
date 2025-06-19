@@ -87,15 +87,15 @@ export const openGraphMetaTags: MetaTag[] = [
   },
   {
     property: 'og:image',
-    content: 'https://tyecode.github.io/tyecode-portfolio/images/portrait.jpg',
+    content: 'https://tyecode.github.io/tyecode-portfolio/images/og.png',
   },
   {
     property: 'og:image:width',
-    content: '400',
+    content: '1200',
   },
   {
     property: 'og:image:height',
-    content: '400',
+    content: '630',
   },
   {
     property: 'og:image:alt',
@@ -131,7 +131,7 @@ export const twitterMetaTags: MetaTag[] = [
   },
   {
     name: 'twitter:image',
-    content: 'https://tyecode.github.io/tyecode-portfolio/images/portrait.jpg',
+    content: 'https://tyecode.github.io/tyecode-portfolio/images/og.png',
   },
   {
     name: 'twitter:image:alt',
@@ -212,6 +212,26 @@ export const criticalLinks: LinkTag[] = [
     as: 'style',
     onload: "this.onload=null;this.rel='stylesheet'",
   },
+  // Preload critical images for better LCP
+  {
+    rel: 'preload',
+    href: '/images/og.png',
+    as: 'image',
+    type: 'image/png',
+  },
+  // Preload critical JavaScript chunks
+  {
+    rel: 'modulepreload',
+    href: '/src/entry-client.tsx',
+  },
+  // Preload fonts for better typography loading
+  {
+    rel: 'preload',
+    href: 'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2',
+    as: 'font',
+    type: 'font/woff2',
+    crossorigin: 'anonymous',
+  },
 ];
 
 // Dynamic manifest generation
@@ -259,9 +279,9 @@ export const generateManifest = () => {
         purpose: 'any',
       },
       {
-        src: `${basePath}/images/portrait.jpg`,
-        sizes: '2728x2728',
-        type: 'image/jpeg',
+        src: `${basePath}/images/og.png`,
+        sizes: '1200x630',
+        type: 'image/png',
         purpose: 'any',
       },
     ],
@@ -291,9 +311,9 @@ export const generateManifest = () => {
     categories: ['portfolio', 'developer', 'web-development'],
     screenshots: [
       {
-        src: `${basePath}/images/portrait.jpg`,
-        sizes: '2728x2728',
-        type: 'image/jpeg',
+        src: `${basePath}/images/og.png`,
+        sizes: '1200x630',
+        type: 'image/png',
         form_factor: 'wide',
       },
     ],

@@ -38,9 +38,9 @@
       "purpose": "any"
     },
     {
-      "src": "/tyecode-portfolio/images/portrait.jpg",
-      "sizes": "2728x2728",
-      "type": "image/jpeg",
+      "src": "/tyecode-portfolio/images/og.png",
+      "sizes": "1200x630",
+      "type": "image/png",
       "purpose": "any"
     }
   ],
@@ -76,11 +76,10 @@
   ],
   "screenshots": [
     {
-      "src": "/tyecode-portfolio/images/portrait.jpg",
-      "sizes": "2728x2728",
-      "type": "image/jpeg",
-      "form_factor": "wide",
-      "label": "Portfolio homepage showcasing projects and skills"
+      "src": "/tyecode-portfolio/images/og.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide"
     }
   ],
   "prefer_related_applications": false,

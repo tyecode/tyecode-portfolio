@@ -1,16 +1,39 @@
-import { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 
 import MainLayout from '@/components/layout/MainLayout';
-import HeroSection from '@/components/section/HeroSection';
-import AboutSection from '@/components/section/AboutSection';
-import WorkSection from '@/components/section/WorkSection';
-import ExperienceSection from '@/components/section/ExperienceSection';
-import ContactSection from '@/components/section/ContactSection';
 import LoadingScreen from '@/components/ui/LoadingScreen';
 import MetaTags from '@/components/seo/MetaTags';
 
 import { usePreloader } from '@/hooks/usePreloader';
+
+// Lazy load non-critical sections for better performance
+const HeroSection = lazy(() => import('@/components/section/HeroSection'));
+const AboutSection = lazy(() => import('@/components/section/AboutSection'));
+const WorkSection = lazy(() => import('@/components/section/WorkSection'));
+const ExperienceSection = lazy(
+  () => import('@/components/section/ExperienceSection')
+);
+const ContactSection = lazy(
+  () => import('@/components/section/ContactSection')
+);
+
+// Optimized fallback component
+const SectionFallback = ({
+  className = 'min-h-96 bg-gray-50',
+}: {
+  className?: string;
+}) => (
+  <div className={`${className} animate-pulse`}>
+    <div className='container mx-auto px-4 py-12'>
+      <div className='space-y-4'>
+        <div className='h-8 bg-gray-200 rounded-md w-1/3'></div>
+        <div className='h-4 bg-gray-200 rounded-md w-2/3'></div>
+        <div className='h-4 bg-gray-200 rounded-md w-1/2'></div>
+      </div>
+    </div>
+  </div>
+);
 
 function App() {
   const { isLoading } = usePreloader();
@@ -24,28 +47,20 @@ function App() {
       <MetaTags />
       <MainLayout>
         <Suspense
-          fallback={<div className='min-h-screen bg-gray-100 animate-pulse' />}
+          fallback={<SectionFallback className='min-h-screen bg-gray-100' />}
         >
           <HeroSection />
         </Suspense>
-        <Suspense
-          fallback={<div className='min-h-96 bg-gray-50 animate-pulse' />}
-        >
+        <Suspense fallback={<SectionFallback />}>
           <AboutSection />
         </Suspense>
-        <Suspense
-          fallback={<div className='min-h-96 bg-gray-50 animate-pulse' />}
-        >
+        <Suspense fallback={<SectionFallback />}>
           <WorkSection />
         </Suspense>
-        <Suspense
-          fallback={<div className='min-h-96 bg-gray-50 animate-pulse' />}
-        >
+        <Suspense fallback={<SectionFallback />}>
           <ExperienceSection />
         </Suspense>
-        <Suspense
-          fallback={<div className='min-h-96 bg-gray-50 animate-pulse' />}
-        >
+        <Suspense fallback={<SectionFallback />}>
           <ContactSection />
         </Suspense>
       </MainLayout>

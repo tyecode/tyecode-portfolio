@@ -27,20 +27,67 @@ export default defineConfig({
   },
   build: {
     // Optimize CSS loading to prevent FOUC
-    cssCodeSplit: false, // Keep CSS together to prevent multiple loading requests
+    cssCodeSplit: true, // Enable CSS code splitting for better performance
     rollupOptions: {
       output: {
-        // Ensure CSS is loaded before JS
+        // Advanced chunk splitting for better caching
+        manualChunks: (id: string) => {
+          // Vendor libraries
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'vendor-react';
+            }
+            if (id.includes('react-helmet-async')) {
+              return 'vendor-helmet';
+            }
+            if (id.includes('clsx') || id.includes('tailwind-merge')) {
+              return 'vendor-utils';
+            }
+            return 'vendor';
+          }
+
+          // Component chunks based on directory structure
+          if (id.includes('/src/components/section/')) {
+            return 'components-sections';
+          }
+          if (id.includes('/src/components/ui/')) {
+            return 'components-ui';
+          }
+          if (id.includes('/src/components/')) {
+            return 'components';
+          }
+
+          // Utility chunks
+          if (id.includes('/src/hooks/') || id.includes('/src/utils/')) {
+            return 'utils';
+          }
+          if (id.includes('/src/config/')) {
+            return 'config';
+          }
+        },
+        // Ensure CSS is loaded efficiently
         assetFileNames: assetInfo => {
           if (assetInfo.name?.endsWith('.css')) {
             return 'assets/styles/[name]-[hash][extname]';
           }
           return 'assets/[name]-[hash][extname]';
         },
+        // Better chunk naming for debugging
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
       },
     },
-    // Enable source maps for better debugging
-    sourcemap: true,
+    // Optimize build size with esbuild (faster than terser)
+    target: 'es2020',
+    minify: 'esbuild',
+    // Reduce source map size in production
+    sourcemap: false,
+    // Optimize chunk size
+    chunkSizeWarningLimit: 1000,
+  },
+  // Optimize esbuild settings
+  esbuild: {
+    drop: ['console', 'debugger'], // Remove console.log and debugger in production
   },
   // Optimize asset loading
   assetsInclude: ['**/*.woff', '**/*.woff2'],

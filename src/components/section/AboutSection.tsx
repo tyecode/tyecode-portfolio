@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ABOUT_SKILLS, ABOUT_STATS } from '@/constants';
+import { ABOUT_SKILLS, ABOUT_STATS, ABOUT_CONTENT } from '@/constants';
 
 const AboutSection: React.FC = () => {
   return (
@@ -19,30 +19,14 @@ const AboutSection: React.FC = () => {
               {'About Me'}
             </h2>
             <div className='space-y-4 text-gray-600 leading-relaxed'>
-              <p className='text-lg text-gray-600 mb-6 leading-relaxed'>
-                {
-                  "I'm passionate about creating user-friendly web applications that deliver exceptional user experiences. With expertise in modern JavaScript frameworks, I focus on building scalable, accessible, and performant solutions."
-                }
-              </p>
-              <p className='text-lg text-gray-600 mb-8 leading-relaxed'>
-                {
-                  'Currently working at Creative Digital Agency, I specialize in React and TypeScript development, crafting responsive interfaces that work seamlessly across all devices. Check out my '
-                }
-                <a
-                  href='#work'
-                  className='text-gray-900 font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-1 rounded'
+              {ABOUT_CONTENT.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className='text-lg text-gray-600 leading-relaxed'
                 >
-                  latest projects
-                </a>
-                {' or view my '}
-                <a
-                  href='#experience'
-                  className='text-gray-900 font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-1 rounded'
-                >
-                  professional experience
-                </a>
-                {' to learn more about my development journey.'}
-              </p>
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </div>
 

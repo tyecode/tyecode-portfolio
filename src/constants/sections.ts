@@ -51,13 +51,11 @@ export const ABOUT_STATS: Stat[] = [
   },
 ];
 
-export const ABOUT_CONTENT = {
-  paragraphs: [
-    "I'm a front-end web developer with over 3 years of experience creating responsive, user-friendly web applications. I specialize in modern JavaScript frameworks and creating pixel-perfect user interfaces.",
-    'My passion lies in transforming designs into interactive, accessible web experiences that delight users. I excel at bridging the gap between design and development, ensuring seamless collaboration with designers and backend teams.',
-    "When I'm not coding, you can find me exploring the latest CSS features, contributing to open-source UI libraries, or experimenting with new design tools and prototyping interactive user interfaces.",
-  ],
-};
+export const ABOUT_CONTENT = [
+  "I'm a front-end web developer with over 3 years of experience creating responsive, user-friendly web applications. I specialize in modern JavaScript frameworks and creating pixel-perfect user interfaces.",
+  'My passion lies in transforming designs into interactive, accessible web experiences that delight users. I excel at bridging the gap between design and development, ensuring seamless collaboration with designers and backend teams.',
+  "When I'm not coding, you can find me exploring the latest CSS features, contributing to open-source UI libraries, or experimenting with new design tools and prototyping interactive user interfaces.",
+];
 
 // Work Section Data
 export interface Project {
