@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Button from '@/components/ui/Button';
 import { getBasePath } from '@/config/meta-tags';
@@ -10,6 +10,14 @@ const HeroSection: React.FC = () => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
   const profileImagePath = `${getBasePath()}/images/portrait.jpg`;
+
+  useEffect(() => {
+    // Hide static hero content once React has hydrated
+    const staticHero = document.getElementById('static-hero');
+    if (staticHero) {
+      staticHero.style.display = 'none';
+    }
+  }, []);
 
   const handleImageError = () => {
     setImageError(true);
@@ -40,22 +48,17 @@ const HeroSection: React.FC = () => {
             id='hero-heading'
             className='hero-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight'
           >
-            {"Hi, I'm "}
+            Hi, I&apos;m{' '}
             <span className='text-gray-600'>{HERO_CONTENT.name}</span>
             <br />
-            {HERO_CONTENT.title.split(' ').map((word, index) => (
-              <span
-                key={index}
-                className={index === 0 ? 'text-gray-900' : 'text-gray-600'}
-              >
-                {word}
-                {index < HERO_CONTENT.title.split(' ').length - 1 ? ' ' : ''}
-              </span>
-            ))}
+            <span className='text-gray-900'>Front-End</span>{' '}
+            <span className='text-gray-600'>Web Developer</span>
           </h1>
 
           <p className='hero-lcp-text text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl'>
-            {HERO_CONTENT.description.split(' at ')[0]} at{' '}
+            I create beautiful, responsive, and user-friendly web applications
+            using modern front-end technologies. Currently crafting exceptional
+            user experiences at{' '}
             <span className='text-gray-900 font-medium'>
               {HERO_CONTENT.currentCompany}
             </span>

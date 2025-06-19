@@ -117,6 +117,10 @@
         max-width: 42rem;
         font-weight: 400;
         letter-spacing: -0.025em;
+        /* Performance optimizations */
+        contain: layout style;
+        will-change: auto;
+        font-display: swap;
       }
 
       /* Critical hero section styles */
@@ -124,6 +128,8 @@
         padding-top: 6rem;
         padding-bottom: 4rem;
         background-color: white;
+        /* Performance optimizations */
+        contain: layout style;
       }
 
       .hero-container {
@@ -136,6 +142,8 @@
 
       .hero-content {
         max-width: 48rem;
+        /* Performance optimizations */
+        contain: layout;
       }
 
       .hero-heading {
@@ -144,6 +152,9 @@
         color: #111827;
         margin-bottom: 1.5rem;
         line-height: 1.1;
+        /* Performance optimizations */
+        contain: layout style;
+        font-display: swap;
       }
 
       /* Reserve space for sections to prevent layout shift */
@@ -211,7 +222,53 @@
       role="application"
       aria-label="tyecode Portfolio Application"
     >
-      <!-- Server-side rendered content will be injected here -->
+      <!-- Critical above-the-fold content for immediate LCP -->
+      <div style="display: none" id="static-hero">
+        <section class="hero-section pt-24 pb-16 bg-white">
+          <div class="hero-container max-w-6xl mx-auto px-6 lg:px-8 relative">
+            <div class="hero-content max-w-3xl">
+              <div class="mb-6">
+                <span
+                  class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
+                >
+                  Available for new opportunities
+                </span>
+              </div>
+              <h1
+                class="hero-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+              >
+                Hi, I'm <span class="text-gray-600">Tye</span><br />
+                <span class="text-gray-900">Front-End</span>
+                <span class="text-gray-600">Web Developer</span>
+              </h1>
+              <p
+                class="hero-lcp-text text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl"
+              >
+                I create beautiful, responsive, and user-friendly web
+                applications using modern front-end technologies. Currently
+                crafting exceptional user experiences at
+                <span class="text-gray-900 font-medium"
+                  >Creative Digital Agency</span
+                >, previously at
+                <span class="text-gray-900 font-medium">UI Innovations</span>.
+                Explore my
+                <a
+                  href="#work"
+                  class="text-gray-900 font-medium hover:underline transition-colors"
+                  >featured projects</a
+                >
+                or learn more
+                <a
+                  href="#about"
+                  class="text-gray-900 font-medium hover:underline transition-colors"
+                  >about my experience</a
+                >.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- Server-side and client-side rendered content will be injected here -->
       <!--app-html-->
     </div>
 
@@ -256,6 +313,20 @@
         } catch (e) {
           // Silently handle any errors
         }
+      }
+    </script>
+
+    <!-- Script to show static content immediately -->
+    <script>
+      // Show static hero content immediately for LCP optimization
+      if (document.getElementById('static-hero')) {
+        document.getElementById('static-hero').style.display = 'block';
+        // Hide it once React takes over (after hydration)
+        setTimeout(() => {
+          if (document.getElementById('static-hero')) {
+            document.getElementById('static-hero').style.display = 'none';
+          }
+        }, 100);
       }
     </script>
   </body>
