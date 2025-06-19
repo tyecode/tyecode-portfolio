@@ -110,7 +110,7 @@ export const openGraphMetaTags: MetaTag[] = [
 export const twitterMetaTags: MetaTag[] = [
   {
     name: 'twitter:card',
-    content: 'summary',
+    content: 'summary_large_image',
   },
   {
     name: 'twitter:site',
