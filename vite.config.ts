@@ -12,88 +12,90 @@ import {
 } from './sitemap';
 
 // https://vite.dev/config/
-export default defineConfig(({ command, mode, isSsrBuild }) => {
-  const isSSR = isSsrBuild || process.argv.includes('--ssr');
+export default defineConfig(
+  ({ command: _command, mode: _mode, isSsrBuild }) => {
+    const isSSR = isSsrBuild || process.argv.includes('--ssr');
 
-  return {
-    base:
-      process.env.VITE_STATIC_BUILD === 'true' ? '/tyecode-portfolio/' : '/',
-    plugins: [
-      react(),
-      tailwindcss(),
-      ViteSitemap({
-        hostname: BASE_URL,
-        dynamicRoutes: staticRoutes,
-        exclude: excludeRoutes,
-        generateRobotsTxt: true,
-        changefreq: sitemapConfig.changefreq,
-        priority: sitemapConfig.priority,
-        readable: true,
-        robots: [
-          {
-            userAgent: '*',
-            allow: '/',
+    return {
+      base:
+        process.env.VITE_STATIC_BUILD === 'true' ? '/tyecode-portfolio/' : '/',
+      plugins: [
+        react(),
+        tailwindcss(),
+        ViteSitemap({
+          hostname: BASE_URL,
+          dynamicRoutes: staticRoutes,
+          exclude: excludeRoutes,
+          generateRobotsTxt: true,
+          changefreq: sitemapConfig.changefreq,
+          priority: sitemapConfig.priority,
+          readable: true,
+          robots: [
+            {
+              userAgent: '*',
+              allow: '/',
+            },
+            {
+              userAgent: '*',
+              disallow: '/admin',
+            },
+            {
+              userAgent: '*',
+              disallow: '/private',
+            },
+          ],
+        }),
+        createHtmlPlugin({
+          minify: true,
+          inject: {
+            data: {
+              title: 'tyecode Portfolio',
+              description:
+                'Modern front-end web developer portfolio built with React, TypeScript, and Tailwind CSS.',
+            },
           },
-          {
-            userAgent: '*',
-            disallow: '/admin',
-          },
-          {
-            userAgent: '*',
-            disallow: '/private',
-          },
-        ],
-      }),
-      createHtmlPlugin({
-        minify: true,
-        inject: {
-          data: {
-            title: 'tyecode Portfolio',
-            description:
-              'Modern front-end web developer portfolio built with React, TypeScript, and Tailwind CSS.',
-          },
-        },
-      }),
-    ],
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, './src'),
-      },
-    },
-    optimizeDeps: {
-      include: ['react-helmet-async'],
-    },
-    ssr: {
-      noExternal: ['react-helmet-async', 'nodemailer'],
-    },
-    build: {
-      rollupOptions: {
-        output: {
-          ...(isSSR
-            ? {}
-            : {
-                manualChunks: {
-                  react: ['react', 'react-dom'],
-                },
-              }),
-          chunkFileNames: 'assets/js/[name]-[hash].js',
-          entryFileNames: chunkInfo => {
-            if (
-              chunkInfo.name === 'entry-server' ||
-              chunkInfo.name === 'email'
-            ) {
-              return '[name].js';
-            }
-            return 'assets/js/[name]-[hash].js';
-          },
+        }),
+      ],
+      resolve: {
+        alias: {
+          '@': path.resolve(__dirname, './src'),
         },
       },
-      target: 'es2020',
-      minify: 'esbuild',
-      sourcemap: false,
-    },
-    esbuild: {
-      drop: ['console', 'debugger'],
-    },
-  };
-});
+      optimizeDeps: {
+        include: ['react-helmet-async'],
+      },
+      ssr: {
+        noExternal: ['react-helmet-async', 'nodemailer'],
+      },
+      build: {
+        rollupOptions: {
+          output: {
+            ...(isSSR
+              ? {}
+              : {
+                  manualChunks: {
+                    react: ['react', 'react-dom'],
+                  },
+                }),
+            chunkFileNames: 'assets/js/[name]-[hash].js',
+            entryFileNames: chunkInfo => {
+              if (
+                chunkInfo.name === 'entry-server' ||
+                chunkInfo.name === 'email'
+              ) {
+                return '[name].js';
+              }
+              return 'assets/js/[name]-[hash].js';
+            },
+          },
+        },
+        target: 'es2020',
+        minify: 'esbuild',
+        sourcemap: false,
+      },
+      esbuild: {
+        drop: ['console', 'debugger'],
+      },
+    };
+  }
+);
