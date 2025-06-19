@@ -148,7 +148,7 @@ Deployed on **GitHub Pages** with automated CI/CD:
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) for:
+Contributions are welcome! Please read our [Contributing Guidelines](docs/CONTRIBUTING.md) for:
 
 - Development setup and standards
 - Code quality and best practices
