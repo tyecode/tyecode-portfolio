@@ -139,7 +139,6 @@
         padding-top: 6rem;
         padding-bottom: 4rem;
         background-color: white;
-        /* Performance optimizations */
         contain: layout style;
       }
 
@@ -153,7 +152,6 @@
 
       .hero-content {
         max-width: 48rem;
-        /* Performance optimizations */
         contain: layout;
       }
 
@@ -163,7 +161,6 @@
         color: #111827;
         margin-bottom: 1.5rem;
         line-height: 1.1;
-        /* Use fallback font initially */
         font-family:
           'Inter-fallback',
           -apple-system,
@@ -173,7 +170,6 @@
           'Helvetica Neue',
           Arial,
           sans-serif;
-        /* Performance optimizations */
         contain: layout style;
         font-display: auto;
       }
@@ -255,6 +251,11 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
+
+      /* Ensure no-JS content is completely hidden when JS is enabled */
+      .js-enabled .no-js-portfolio {
+        display: none !important;
+      }
     </style>
 
     <!-- React will inject additional meta tags here -->
@@ -262,6 +263,11 @@
   </head>
 
   <body>
+    <!-- Immediately mark that JavaScript is enabled -->
+    <script>
+      document.documentElement.classList.add('js-enabled');
+    </script>
+
     <!-- Skip Navigation for Accessibility -->
     <a
       href="#main-content"
@@ -276,78 +282,1266 @@
       role="application"
       aria-label="tyecode Portfolio Application"
     >
-      <!-- Critical above-the-fold content for immediate LCP -->
-      <div style="display: none" id="static-hero">
-        <section class="hero-section pt-24 pb-16 bg-white">
-          <div class="hero-container max-w-6xl mx-auto px-6 lg:px-8 relative">
-            <div class="hero-content max-w-3xl">
-              <div class="mb-6">
-                <span
-                  class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
-                >
-                  Available for new opportunities
-                </span>
-              </div>
-              <h1
-                class="hero-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
-              >
-                Hi, I'm <span class="text-gray-600">Tye</span><br />
-                <span class="text-gray-900">Front-End</span>
-                <span class="text-gray-600">Web Developer</span>
-              </h1>
-              <p
-                class="hero-lcp-text text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl"
-              >
-                I create beautiful, responsive, and user-friendly web
-                applications using modern front-end technologies. Currently
-                crafting exceptional user experiences at
-                <span class="text-gray-900 font-medium"
-                  >Creative Digital Agency</span
-                >, previously at
-                <span class="text-gray-900 font-medium">UI Innovations</span>.
-                Explore my
-                <a
-                  href="#work"
-                  class="text-gray-900 font-medium hover:underline transition-colors"
-                  >featured projects</a
-                >
-                or learn more
-                <a
-                  href="#about"
-                  class="text-gray-900 font-medium hover:underline transition-colors"
-                  >about my experience</a
-                >.
-              </p>
-            </div>
-          </div>
-        </section>
-      </div>
       <!-- Server-side and client-side rendered content will be injected here -->
       <!--app-html-->
-    </div>
 
-    <!-- NoScript Fallback -->
-    <noscript>
-      <div
-        style="
-          text-align: center;
-          padding: 2rem;
-          font-family: system-ui, sans-serif;
-        "
-      >
-        <h1>JavaScript Required</h1>
-        <p>
-          This portfolio requires JavaScript to function properly. Please enable
-          JavaScript in your browser.
-        </p>
-        <p>
-          You can contact me directly at:
-          <a href="mailto:sengphachanh.dev@gmail.com"
-            >sengphachanh.dev@gmail.com</a
-          >
-        </p>
-      </div>
-    </noscript>
+      <!-- Enhanced NoScript Fallback with Full Portfolio Content -->
+      <noscript>
+        <style>
+          /* Enhanced styles for no-JS experience - Matching main app design */
+          .no-js-portfolio {
+            font-family:
+              'Inter',
+              -apple-system,
+              BlinkMacSystemFont,
+              'Segoe UI',
+              Roboto,
+              'Helvetica Neue',
+              Arial,
+              sans-serif;
+            line-height: 1.6;
+            color: #374151;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+          }
+
+          /* Header Styling - Matching main app */
+          .no-js-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 50;
+            height: 64px;
+          }
+
+          .no-js-header-content {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+          }
+
+          .no-js-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+          }
+
+          .no-js-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #111827;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: monospace;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+          }
+
+          .no-js-logo-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: #111827;
+          }
+
+          .no-js-nav {
+            display: none;
+          }
+
+          .no-js-nav-link {
+            color: #4b5563;
+            font-weight: 500;
+            font-size: 14px;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: color 0.2s;
+          }
+
+          .no-js-nav-link:hover {
+            color: #111827;
+          }
+
+          /* Main Content Container */
+          .no-js-main {
+            flex: 1;
+            margin-top: 64px;
+          }
+
+          /* Hero Section - Matching main app exactly */
+          .no-js-hero {
+            padding: 96px 0 64px;
+            background: white;
+            position: relative;
+          }
+
+          .no-js-hero-container {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+          }
+
+          .no-js-hero-content {
+            max-width: 48rem;
+          }
+
+          .no-js-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 500;
+            background: #f3f4f6;
+            color: #374151;
+            margin-bottom: 24px;
+          }
+
+          .no-js-hero-heading {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 24px;
+            line-height: 1.1;
+          }
+
+          .no-js-hero-heading .name {
+            color: #6b7280;
+          }
+
+          .no-js-hero-heading .title-front {
+            color: #111827;
+          }
+
+          .no-js-hero-heading .title-dev {
+            color: #6b7280;
+          }
+
+          .no-js-hero-description {
+            font-size: 18px;
+            color: #6b7280;
+            margin-bottom: 32px;
+            line-height: 1.625;
+            max-width: 32rem;
+          }
+
+          .no-js-hero-description a {
+            color: #111827;
+            font-weight: 500;
+            text-decoration: none;
+          }
+
+          .no-js-hero-description a:hover {
+            text-decoration: underline;
+          }
+
+          .no-js-hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
+          }
+
+          .no-js-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+          }
+
+          .no-js-btn-primary {
+            background: #111827;
+            color: white;
+          }
+
+          .no-js-btn-primary:hover {
+            background: #1f2937;
+          }
+
+          .no-js-btn-secondary {
+            background: white;
+            color: #111827;
+            border-color: #d1d5db;
+          }
+
+          .no-js-btn-secondary:hover {
+            border-color: #9ca3af;
+          }
+
+          .no-js-hero-social {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+          }
+
+          .no-js-hero-social a {
+            color: #6b7280;
+            font-size: 14px;
+            text-decoration: none;
+            transition: color 0.2s;
+          }
+
+          .no-js-hero-social a:hover {
+            color: #111827;
+            text-decoration: underline;
+          }
+
+          /* Section Styles */
+          .no-js-section {
+            padding: 80px 0;
+          }
+
+          .no-js-section-gray {
+            background: #f9fafb;
+          }
+
+          .no-js-section-white {
+            background: white;
+          }
+
+          .no-js-container {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+          }
+
+          .no-js-section-header {
+            text-align: center;
+            margin-bottom: 64px;
+          }
+
+          .no-js-section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 16px;
+          }
+
+          .no-js-section-description {
+            font-size: 18px;
+            color: #6b7280;
+            max-width: 32rem;
+            margin: 0 auto;
+            line-height: 1.625;
+          }
+
+          .no-js-section-description a {
+            color: #111827;
+            font-weight: 500;
+            text-decoration: none;
+          }
+
+          .no-js-section-description a:hover {
+            text-decoration: underline;
+          }
+
+          /* About Section */
+          .no-js-about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 64px;
+            align-items: start;
+          }
+
+          .no-js-about-paragraph {
+            font-size: 18px;
+            color: #6b7280;
+            line-height: 1.625;
+            margin-bottom: 16px;
+          }
+
+          .no-js-skills-section h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 24px;
+          }
+
+          .no-js-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+          }
+
+          .no-js-skill-item {
+            background: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #4b5563;
+            border: 1px solid #e5e7eb;
+          }
+
+          .no-js-stats-section {
+            margin-top: 48px;
+          }
+
+          .no-js-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+          }
+
+          .no-js-stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 4px;
+          }
+
+          .no-js-stat-label {
+            font-size: 14px;
+            color: #6b7280;
+          }
+
+          /* Work Section */
+          .no-js-work-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+          }
+
+          .no-js-project-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+          }
+
+          .no-js-project-card:hover {
+            transform: translateY(-4px);
+            box-shadow:
+              0 20px 25px -5px rgba(0, 0, 0, 0.1),
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+          }
+
+          .no-js-project-image {
+            height: 192px;
+            position: relative;
+            overflow: hidden;
+          }
+
+          .no-js-project-gradient {
+            width: 100%;
+            height: 100%;
+          }
+
+          .no-js-project-gradient.blue {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+          }
+
+          .no-js-project-gradient.green {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+          }
+
+          .no-js-project-gradient.purple {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+          }
+
+          .no-js-project-gradient.red {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+          }
+
+          .no-js-project-category {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #111827;
+          }
+
+          .no-js-project-content {
+            padding: 24px;
+          }
+
+          .no-js-project-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 12px;
+          }
+
+          .no-js-project-description {
+            font-size: 16px;
+            color: #6b7280;
+            line-height: 1.625;
+            margin-bottom: 16px;
+          }
+
+          .no-js-project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+          }
+
+          .no-js-project-tag {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+          }
+
+          /* Experience Section */
+          .no-js-experience-timeline .no-js-experience-item {
+            margin-bottom: 48px;
+            position: relative;
+            padding-left: 32px;
+          }
+
+          .no-js-experience-timeline .no-js-experience-item:last-child {
+            margin-bottom: 0;
+          }
+
+          .no-js-experience-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: #111827;
+            border-radius: 50%;
+          }
+
+          .no-js-experience-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 12px;
+            bottom: -48px;
+            width: 2px;
+            background: #e5e7eb;
+          }
+
+          .no-js-experience-header {
+            margin-bottom: 16px;
+          }
+
+          .no-js-experience-company {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+          }
+
+          .no-js-experience-role {
+            font-size: 16px;
+            font-weight: 500;
+            color: #6b7280;
+            margin-bottom: 4px;
+          }
+
+          .no-js-experience-period {
+            font-size: 14px;
+            color: #9ca3af;
+          }
+
+          .no-js-experience-description {
+            font-size: 16px;
+            color: #6b7280;
+            line-height: 1.625;
+            margin-bottom: 16px;
+          }
+
+          .no-js-experience-achievements {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+          }
+
+          .no-js-experience-achievement {
+            font-size: 14px;
+            color: #6b7280;
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 8px;
+          }
+
+          .no-js-experience-achievement::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #9ca3af;
+          }
+
+          /* Contact Section */
+          .no-js-contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+          }
+
+          .no-js-contact-form {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+          }
+
+          .no-js-contact-info > div:not(:last-child) {
+            margin-bottom: 32px;
+          }
+
+          .no-js-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+          }
+
+          .no-js-contact-icon {
+            width: 40px;
+            height: 40px;
+            background: #f3f4f6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+          }
+
+          .no-js-contact-details h4 {
+            font-weight: 500;
+            color: #111827;
+            margin-bottom: 4px;
+          }
+
+          .no-js-contact-details p {
+            color: #6b7280;
+            margin: 0;
+          }
+
+          .no-js-contact-details a {
+            color: #6b7280;
+            text-decoration: none;
+          }
+
+          .no-js-contact-details a:hover {
+            color: #111827;
+          }
+
+          .no-js-availability-card {
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+          }
+
+          .no-js-availability-card h4 {
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 12px;
+          }
+
+          .no-js-availability-card p {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.625;
+            margin: 0;
+          }
+
+          /* Footer */
+          .no-js-footer {
+            background: #111827;
+            color: white;
+            padding: 48px 0;
+          }
+
+          .no-js-footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+          }
+
+          .no-js-footer-brand h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+          }
+
+          .no-js-footer-brand p {
+            color: #d1d5db;
+            margin-bottom: 16px;
+            max-width: 28rem;
+            line-height: 1.625;
+          }
+
+          .no-js-footer-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #9ca3af;
+          }
+
+          .no-js-footer-status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+          }
+
+          .no-js-footer-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+          }
+
+          .no-js-footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+          }
+
+          .no-js-footer-links li {
+            margin-bottom: 8px;
+          }
+
+          .no-js-footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.2s;
+          }
+
+          .no-js-footer-links a:hover {
+            color: white;
+          }
+
+          .no-js-footer-social {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+          }
+
+          .no-js-footer-bottom {
+            border-top: 1px solid #374151;
+            margin-top: 32px;
+            padding-top: 32px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 14px;
+          }
+
+          /* Responsive Design */
+          @media (min-width: 640px) {
+            .no-js-hero-buttons {
+              flex-direction: row;
+            }
+
+            .no-js-hero-heading {
+              font-size: 3rem;
+            }
+          }
+
+          @media (min-width: 768px) {
+            .no-js-nav {
+              display: flex;
+              align-items: center;
+              gap: 32px;
+            }
+
+            .no-js-contact-grid {
+              grid-template-columns: 1fr 1fr;
+            }
+
+            .no-js-footer-grid {
+              grid-template-columns: 2fr 1fr 1fr;
+            }
+          }
+
+          @media (min-width: 1024px) {
+            .no-js-hero-heading {
+              font-size: 3.75rem;
+            }
+
+            .no-js-hero-container {
+              padding: 0 2rem;
+            }
+
+            .no-js-container {
+              padding: 0 2rem;
+            }
+
+            .no-js-about-grid {
+              grid-template-columns: 1fr 1fr;
+            }
+
+            .no-js-work-grid {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+        </style>
+
+        <div class="no-js-portfolio">
+          <!-- Header -->
+          <header class="no-js-header">
+            <div class="no-js-header-content">
+              <div class="no-js-logo">
+                <div class="no-js-logo-icon">{T}</div>
+                <span class="no-js-logo-text">tyecode</span>
+              </div>
+              <nav class="no-js-nav">
+                <a href="#about" class="no-js-nav-link">About</a>
+                <a href="#work" class="no-js-nav-link">Work</a>
+                <a href="#experience" class="no-js-nav-link">Experience</a>
+                <a href="#contact" class="no-js-nav-link">Contact</a>
+              </nav>
+            </div>
+          </header>
+
+          <!-- Main Content -->
+          <main class="no-js-main">
+            <!-- Hero Section -->
+            <section class="no-js-hero">
+              <div class="no-js-hero-container">
+                <div class="no-js-hero-content">
+                  <div class="no-js-badge">Available for new opportunities</div>
+                  <h1 class="no-js-hero-heading">
+                    Hi, I'm <span class="name">Emma</span><br />
+                    <span class="title-front">Front-End</span>
+                    <span class="title-dev">Web Developer</span>
+                  </h1>
+                  <p class="no-js-hero-description">
+                    I create beautiful, responsive, and user-friendly web
+                    applications using modern front-end technologies. Currently
+                    crafting exceptional user experiences at
+                    <strong>TechFlow Solutions</strong>, previously at
+                    <strong>PixelCraft Studios</strong>. Explore my
+                    <a href="#work">featured projects</a> or learn more
+                    <a href="#about">about my experience</a>.
+                  </p>
+                  <div class="no-js-hero-buttons">
+                    <a href="#work" class="no-js-btn no-js-btn-primary"
+                      >View My Projects</a
+                    >
+                    <a
+                      href="/resume.pdf"
+                      class="no-js-btn no-js-btn-secondary"
+                      target="_blank"
+                      >Download Resume</a
+                    >
+                  </div>
+                  <nav class="no-js-hero-social">
+                    <a
+                      href="https://linkedin.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >LinkedIn</a
+                    >
+                    <a
+                      href="https://github.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >GitHub</a
+                    >
+                    <a
+                      href="https://twitter.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Twitter</a
+                    >
+                  </nav>
+                </div>
+              </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="no-js-section no-js-section-gray">
+              <div class="no-js-container">
+                <div class="no-js-about-grid">
+                  <div>
+                    <h2
+                      class="no-js-section-title"
+                      style="text-align: left; margin-bottom: 24px"
+                    >
+                      About Me
+                    </h2>
+                    <div class="no-js-about-content">
+                      <p class="no-js-about-paragraph">
+                        I'm a passionate frontend developer with over 4 years of
+                        experience crafting responsive, accessible web
+                        applications. I specialize in React, TypeScript, and
+                        modern CSS frameworks, with a keen eye for pixel-perfect
+                        user interfaces.
+                      </p>
+                      <p class="no-js-about-paragraph">
+                        My expertise lies in transforming complex designs into
+                        interactive, performance-optimized web experiences. I
+                        thrive on collaborating with cross-functional teams to
+                        deliver products that not only look great but also
+                        provide exceptional user experiences.
+                      </p>
+                      <p class="no-js-about-paragraph">
+                        When I'm not coding, you'll find me exploring the latest
+                        frontend frameworks, contributing to open-source
+                        projects, or sharing my knowledge through technical
+                        writing and mentoring aspiring developers.
+                      </p>
+                      <p class="no-js-about-paragraph">
+                        Check out my <a href="#work">portfolio projects</a> to
+                        see these skills in action, or view my
+                        <a href="#experience">professional experience</a> for
+                        more details about my career journey.
+                      </p>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="no-js-skills-section">
+                      <h3>Skills & Expertise</h3>
+                      <div class="no-js-skills-grid">
+                        <div class="no-js-skill-item">React/Next.js</div>
+                        <div class="no-js-skill-item">TypeScript</div>
+                        <div class="no-js-skill-item">JavaScript (ES6+)</div>
+                        <div class="no-js-skill-item">HTML5/CSS3</div>
+                        <div class="no-js-skill-item">Tailwind CSS</div>
+                        <div class="no-js-skill-item">Sass/SCSS</div>
+                        <div class="no-js-skill-item">Node.js</div>
+                        <div class="no-js-skill-item">Responsive Design</div>
+                        <div class="no-js-skill-item">Webpack/Vite</div>
+                        <div class="no-js-skill-item">Git/GitHub</div>
+                      </div>
+                    </div>
+                    <div class="no-js-stats-section">
+                      <h3>Quick Stats</h3>
+                      <div class="no-js-stats-grid">
+                        <div>
+                          <div class="no-js-stat-value">65+</div>
+                          <div class="no-js-stat-label">
+                            UI Components Built
+                          </div>
+                        </div>
+                        <div>
+                          <div class="no-js-stat-value">4+</div>
+                          <div class="no-js-stat-label">Years Experience</div>
+                        </div>
+                        <div>
+                          <div class="no-js-stat-value">35+</div>
+                          <div class="no-js-stat-label">Websites Launched</div>
+                        </div>
+                        <div>
+                          <div class="no-js-stat-value">99%</div>
+                          <div class="no-js-stat-label">Mobile Responsive</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Work Section -->
+            <section id="work" class="no-js-section no-js-section-white">
+              <div class="no-js-container">
+                <div class="no-js-section-header">
+                  <h2 class="no-js-section-title">Featured Projects</h2>
+                  <p class="no-js-section-description">
+                    A showcase of user interfaces and web applications I've
+                    built, demonstrating my front-end development skills and
+                    attention to user experience design. Learn more
+                    <a href="#about">about my skills</a> or
+                    <a href="#contact">get in touch</a> to discuss your next
+                    project.
+                  </p>
+                </div>
+                <div class="no-js-work-grid">
+                  <article class="no-js-project-card">
+                    <div class="no-js-project-image">
+                      <div class="no-js-project-gradient blue"></div>
+                      <div class="no-js-project-category">Web Application</div>
+                    </div>
+                    <div class="no-js-project-content">
+                      <h3 class="no-js-project-title">
+                        SaaS Dashboard Platform
+                      </h3>
+                      <p class="no-js-project-description">
+                        Modern SaaS dashboard with real-time analytics,
+                        interactive charts, and responsive design. Features
+                        advanced data visualization, user management, and
+                        dark/light mode support.
+                      </p>
+                      <div class="no-js-project-tags">
+                        <span class="no-js-project-tag">React</span>
+                        <span class="no-js-project-tag">TypeScript</span>
+                        <span class="no-js-project-tag">Tailwind CSS</span>
+                        <span class="no-js-project-tag">Chart.js</span>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="no-js-project-card">
+                    <div class="no-js-project-image">
+                      <div class="no-js-project-gradient green"></div>
+                      <div class="no-js-project-category">E-commerce</div>
+                    </div>
+                    <div class="no-js-project-content">
+                      <h3 class="no-js-project-title">
+                        E-commerce Marketplace
+                      </h3>
+                      <p class="no-js-project-description">
+                        Full-featured e-commerce platform with product catalog,
+                        shopping cart, payment integration, and admin panel.
+                        Built with performance and accessibility in mind.
+                      </p>
+                      <div class="no-js-project-tags">
+                        <span class="no-js-project-tag">Next.js</span>
+                        <span class="no-js-project-tag">TypeScript</span>
+                        <span class="no-js-project-tag">Stripe API</span>
+                        <span class="no-js-project-tag">Tailwind CSS</span>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="no-js-project-card">
+                    <div class="no-js-project-image">
+                      <div class="no-js-project-gradient purple"></div>
+                      <div class="no-js-project-category">Design System</div>
+                    </div>
+                    <div class="no-js-project-content">
+                      <h3 class="no-js-project-title">Design System Library</h3>
+                      <p class="no-js-project-description">
+                        Comprehensive design system and component library with
+                        documentation. Features tokens, reusable components, and
+                        automated testing for consistent UI/UX.
+                      </p>
+                      <div class="no-js-project-tags">
+                        <span class="no-js-project-tag">React</span>
+                        <span class="no-js-project-tag">Storybook</span>
+                        <span class="no-js-project-tag">TypeScript</span>
+                        <span class="no-js-project-tag">CSS-in-JS</span>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="no-js-project-card">
+                    <div class="no-js-project-image">
+                      <div class="no-js-project-gradient red"></div>
+                      <div class="no-js-project-category">Portfolio Sites</div>
+                    </div>
+                    <div class="no-js-project-content">
+                      <h3 class="no-js-project-title">
+                        Portfolio Website Collection
+                      </h3>
+                      <p class="no-js-project-description">
+                        Collection of responsive portfolio websites with smooth
+                        animations, optimized performance, and SEO-friendly
+                        architecture. Showcases various design styles and
+                        interactions.
+                      </p>
+                      <div class="no-js-project-tags">
+                        <span class="no-js-project-tag">React</span>
+                        <span class="no-js-project-tag">Framer Motion</span>
+                        <span class="no-js-project-tag">Next.js</span>
+                        <span class="no-js-project-tag">GSAP</span>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section id="experience" class="no-js-section no-js-section-gray">
+              <div class="no-js-container">
+                <div class="no-js-section-header">
+                  <h2 class="no-js-section-title">Experience</h2>
+                  <p class="no-js-section-description">
+                    My journey through different companies and roles, each
+                    contributing to my growth as a front-end developer and UI
+                    specialist.
+                  </p>
+                </div>
+                <div class="no-js-experience-timeline">
+                  <div class="no-js-experience-item">
+                    <div class="no-js-experience-header">
+                      <h3 class="no-js-experience-company">
+                        TechFlow Solutions
+                      </h3>
+                      <p class="no-js-experience-role">
+                        Senior Frontend Developer
+                      </p>
+                      <p class="no-js-experience-period">2023 - Present</p>
+                    </div>
+                    <p class="no-js-experience-description">
+                      Leading frontend development for enterprise-level
+                      applications, architecting scalable component systems, and
+                      mentoring a team of 4 junior developers on modern React
+                      patterns.
+                    </p>
+                    <ul class="no-js-experience-achievements">
+                      <li class="no-js-experience-achievement">
+                        Architected micro-frontend system that reduced
+                        deployment time by 70%
+                      </li>
+                      <li class="no-js-experience-achievement">
+                        Led migration from legacy codebase to modern
+                        React/TypeScript stack
+                      </li>
+                      <li class="no-js-experience-achievement">
+                        Mentored 4 junior developers, with 3 receiving
+                        promotions within 8 months
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="no-js-experience-item">
+                    <div class="no-js-experience-header">
+                      <h3 class="no-js-experience-company">
+                        PixelCraft Studios
+                      </h3>
+                      <p class="no-js-experience-role">Frontend Developer</p>
+                      <p class="no-js-experience-period">2022 - 2023</p>
+                    </div>
+                    <p class="no-js-experience-description">
+                      Developed responsive web applications for diverse clients,
+                      collaborated with design teams to implement pixel-perfect
+                      UIs, and optimized application performance.
+                    </p>
+                    <ul class="no-js-experience-achievements">
+                      <li class="no-js-experience-achievement">
+                        Built React component library used across 12+ client
+                        projects
+                      </li>
+                      <li class="no-js-experience-achievement">
+                        Improved Core Web Vitals scores by 45% through
+                        performance optimization
+                      </li>
+                      <li class="no-js-experience-achievement">
+                        Delivered 8 major client projects on time and within
+                        budget
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="no-js-experience-item">
+                    <div class="no-js-experience-header">
+                      <h3 class="no-js-experience-company">
+                        Digital Craft Co.
+                      </h3>
+                      <p class="no-js-experience-role">
+                        Junior Frontend Developer
+                      </p>
+                      <p class="no-js-experience-period">2021 - 2022</p>
+                    </div>
+                    <p class="no-js-experience-description">
+                      First professional role focusing on modern JavaScript
+                      frameworks, responsive design implementation, and
+                      collaborative development practices in an agile
+                      environment.
+                    </p>
+                    <ul class="no-js-experience-achievements">
+                      <li class="no-js-experience-achievement">
+                        Developed mobile-first responsive interfaces for 15+
+                        client websites
+                      </li>
+                      <li class="no-js-experience-achievement">
+                        Implemented accessibility standards achieving WCAG 2.1
+                        AA compliance
+                      </li>
+                      <li class="no-js-experience-achievement">
+                        Created automated testing suite that reduced bug reports
+                        by 60%
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="no-js-section no-js-section-white">
+              <div class="no-js-container">
+                <div class="no-js-section-header">
+                  <h2 class="no-js-section-title">
+                    Let's Create Amazing User Experiences
+                  </h2>
+                  <p class="no-js-section-description">
+                    I'm always excited to work on new front-end projects and
+                    collaborate with design teams. Let's discuss how I can help
+                    bring your user interface designs to life.
+                  </p>
+                </div>
+                <div class="no-js-contact-grid">
+                  <div class="no-js-contact-form">
+                    <h3 style="color: #111827; margin-bottom: 24px">
+                      Send me a message
+                    </h3>
+                    <p style="color: #6b7280; margin-bottom: 16px">
+                      For the best experience with this contact form, please
+                      enable JavaScript. Alternatively, you can reach me
+                      directly via email.
+                    </p>
+                    <a
+                      href="mailto:emma.johnson@gmail.com"
+                      class="no-js-btn no-js-btn-primary"
+                      style="display: inline-block; margin-top: 16px"
+                      >Send Email Instead</a
+                    >
+                  </div>
+                  <div class="no-js-contact-info">
+                    <div>
+                      <h3 style="color: #111827; margin-bottom: 24px">
+                        Get in Touch
+                      </h3>
+                      <div class="no-js-contact-item">
+                        <div class="no-js-contact-icon">
+                          <svg
+                            width="20"
+                            height="20"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              fill="none"
+                            />
+                          </svg>
+                        </div>
+                        <div class="no-js-contact-details">
+                          <h4>Email</h4>
+                          <p>
+                            <a href="mailto:emma.johnson@gmail.com"
+                              >emma.johnson@gmail.com</a
+                            >
+                          </p>
+                        </div>
+                      </div>
+                      <div class="no-js-contact-item">
+                        <div class="no-js-contact-icon">
+                          <svg
+                            width="20"
+                            height="20"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              fill="none"
+                            />
+                            <path
+                              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              fill="none"
+                            />
+                          </svg>
+                        </div>
+                        <div class="no-js-contact-details">
+                          <h4>Location</h4>
+                          <p>San Francisco, CA / Remote</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="no-js-availability-card">
+                      <h4>Availability</h4>
+                      <p>
+                        Currently available for front-end development projects
+                        and UI implementation opportunities. I typically respond
+                        to inquiries within 24 hours.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+
+          <!-- Footer -->
+          <footer class="no-js-footer">
+            <div class="no-js-container">
+              <div class="no-js-footer-grid">
+                <div class="no-js-footer-brand">
+                  <h2>Emma Johnson</h2>
+                  <p>
+                    Frontend developer specializing in creating beautiful,
+                    responsive, and accessible web applications using React,
+                    TypeScript, and modern CSS frameworks.
+                  </p>
+                  <div class="no-js-footer-status">
+                    <span>Available for new opportunities</span>
+                    <div class="no-js-footer-status-dot"></div>
+                  </div>
+                </div>
+                <div class="no-js-footer-section">
+                  <h3>Quick Links</h3>
+                  <ul class="no-js-footer-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                  </ul>
+                </div>
+                <div class="no-js-footer-section">
+                  <h3>Connect</h3>
+                  <div>
+                    <a
+                      href="mailto:emma.johnson@gmail.com"
+                      style="
+                        color: #d1d5db;
+                        display: block;
+                        margin-bottom: 12px;
+                      "
+                      >emma.johnson@gmail.com</a
+                    >
+                  </div>
+                  <div class="no-js-footer-social">
+                    <a
+                      href="https://linkedin.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >LinkedIn</a
+                    >
+                    <a
+                      href="https://github.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >GitHub</a
+                    >
+                    <a
+                      href="https://twitter.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Twitter</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="no-js-footer-bottom">
+                <p>© 2025 tyecode. All rights reserved.</p>
+                <p style="margin-top: 8px; font-style: italic">
+                  Note: This is a simplified version optimized for browsers
+                  without JavaScript. For the full interactive experience,
+                  please enable JavaScript.
+                </p>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </noscript>
+    </div>
 
     <!-- Application Entry Point -->
     <script type="module" src="/src/entry-client.tsx"></script>
@@ -372,17 +1566,6 @@
 
     <!-- Script to show static content immediately -->
     <script>
-      // Show static hero content immediately for LCP optimization
-      if (document.getElementById('static-hero')) {
-        document.getElementById('static-hero').style.display = 'block';
-        // Hide it once React takes over (after hydration)
-        setTimeout(() => {
-          if (document.getElementById('static-hero')) {
-            document.getElementById('static-hero').style.display = 'none';
-          }
-        }, 100);
-      }
-
       // Font loading optimization - detect when Inter font is loaded
       if ('fonts' in document) {
         document.fonts.ready.then(() => {
