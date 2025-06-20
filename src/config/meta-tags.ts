@@ -64,14 +64,15 @@ export const siteConfig = {
 
 // Helper functions for generating URLs
 export const generateImageUrl = (imagePath: string): string => {
-  // For absolute URLs needed by social media platforms, use the base URL directly
-  // The baseUrl already includes the full path
-  return `${siteConfig.baseUrl}${imagePath}`;
+  const cleanImagePath = imagePath.startsWith('/')
+    ? imagePath.slice(1)
+    : imagePath;
+  return `${siteConfig.baseUrl}${cleanImagePath}`;
 };
 
 export const generateCanonicalUrl = (path: string = ''): string => {
-  // For canonical URLs, also use the base URL directly
-  return `${siteConfig.baseUrl}${path}`;
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${siteConfig.baseUrl}${cleanPath}`;
 };
 
 export const seoMetaTags: MetaTag[] = [
