@@ -96,7 +96,9 @@ const HeroSection: React.FC = () => {
             </Button>
             <Button
               variant='secondary'
-              onClick={() => window.open('/resume.pdf', '_blank')}
+              onClick={() =>
+                window.open(`${getBasePath()}/resume.pdf`, '_blank')
+              }
               aria-label='Download resume PDF file'
             >
               {'Download Resume'}

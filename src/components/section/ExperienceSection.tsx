@@ -1,5 +1,6 @@
 import Button from '@/components/ui/Button';
 import { cn } from '@/utils/cn';
+import { getBasePath } from '@/config/meta-tags';
 import { EXPERIENCES } from '@/constants';
 
 const ExperienceSection = () => {
@@ -111,7 +112,7 @@ const ExperienceSection = () => {
         <div className='text-center mt-12'>
           <Button
             as='link'
-            href='/resume.pdf'
+            href={`${getBasePath()}/resume.pdf`}
             target='_blank'
             rel='noopener noreferrer'
             variant='primary'
