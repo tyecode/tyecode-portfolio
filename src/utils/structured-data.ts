@@ -8,7 +8,7 @@ const structuredDataConfig = {
     'Front-end web developer with over 4 years of experience creating responsive, user-friendly web applications. I specialize in modern JavaScript frameworks and creating pixel-perfect user interfaces.',
   url: 'https://tyecode.github.io/tyecode-portfolio/',
   email: 'sengphachanh.dev@gmail.com',
-  image: 'https://tyecode.github.io/tyecode-portfolio/images/og.png',
+  image: 'https://tyecode.github.io/tyecode-portfolio/images/og.jpg',
   sameAs: [
     'https://github.com/tyecode',
     'https://linkedin.com/in/tyecode',

@@ -56,7 +56,7 @@ export const siteConfig = {
     twitterHandle: '@tyecode',
   },
   images: {
-    og: '/images/og.png',
+    og: '/images/og.jpg',
     favicon: '/favicon.png',
     faviconSvg: '/favicon.svg',
   },
@@ -133,7 +133,7 @@ export const openGraphMetaTags: MetaTag[] = [
   },
   {
     property: 'og:image:type',
-    content: 'image/png',
+    content: 'image/jpeg',
   },
   {
     property: 'og:image:width',
@@ -256,9 +256,9 @@ export const criticalLinks: LinkTag[] = [
   // Preload critical images for better LCP
   {
     rel: 'preload',
-    href: `${getBasePath()}/images/og.png`,
+    href: `${getBasePath()}/images/og.jpg`,
     as: 'image',
-    type: 'image/png',
+    type: 'image/jpeg',
   },
   // Preload critical JavaScript chunks
   {
@@ -320,9 +320,9 @@ export const generateManifest = () => {
         purpose: 'any',
       },
       {
-        src: `${basePath}/images/og.png`,
+        src: `${basePath}/images/og.jpg`,
         sizes: '1200x630',
-        type: 'image/png',
+        type: 'image/jpeg',
         purpose: 'any',
       },
     ],
@@ -352,9 +352,9 @@ export const generateManifest = () => {
     categories: ['portfolio', 'developer', 'web-development'],
     screenshots: [
       {
-        src: `${basePath}/images/og.png`,
+        src: `${basePath}/images/og.jpg`,
         sizes: '1200x630',
-        type: 'image/png',
+        type: 'image/jpeg',
         form_factor: 'wide',
       },
     ],
