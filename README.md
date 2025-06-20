@@ -1,16 +1,16 @@
 <div align="center">
 
-<img src="public/favicon.png" alt="Portfolio Template logo" width="80" height="80" />
+<img src="public/favicon.png" alt="tyecode Portfolio logo" width="80" height="80" />
 
-### Portfolio Template
+### tyecode Portfolio
 
 <p align="center">
-  <em>Modern • Responsive • Performance-Focused</em>
+  <em>Expert Front-End Developer • React & TypeScript Specialist</em>
 </p>
 
 ---
 
-<img src="public/images/og.png" alt="Portfolio Preview" width="700" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" />
+<img src="public/images/og.png" alt="tyecode Portfolio Preview" width="700" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" />
 
 <br />
 
@@ -25,7 +25,7 @@
 
 </div>
 
-> **Modern, responsive portfolio website template built with React, TypeScript, and Tailwind CSS.**
+> **Personal portfolio website - Professional front-end developer specializing in React, TypeScript & modern web technologies.**
 
 ## 🚀 Features
 
@@ -36,6 +36,7 @@
 - **♿ Accessible**: WCAG compliant with semantic HTML
 - **🔧 Type Safe**: Built with TypeScript
 - **📱 PWA Ready**: Web manifest with app shortcuts and icons
+- **🚫 No-JS Fallback**: Complete portfolio experience without JavaScript
 
 ## 🛠️ Tech Stack
 
@@ -46,27 +47,27 @@
 - **Express 5.0** - Web framework for SSR
 - **React Helmet Async** - SEO optimization
 
-## 📋 Template Sections
+## 📋 Portfolio Sections
 
-- **Hero Section** - Professional introduction with CTA buttons
-- **About Section** - Skills showcase and professional summary
-- **Work Section** - Featured projects with technology tags
-- **Experience Section** - Professional timeline
-- **Contact Section** - Contact form with validation
+- **Hero Section** - Professional introduction and availability status
+- **About Section** - Skills showcase, experience summary, and quick stats
+- **Work Section** - Featured projects with technology stacks
+- **Experience Section** - Professional career timeline
+- **Contact Section** - Contact form and availability information
 
-## 🚀 Getting Started
+## 🚀 Development
 
 ### Prerequisites
 
 - Node.js 18+
-- PNPM (or npm/yarn)
+- PNPM (recommended) or npm/yarn
 
-### Installation
+### Local Development
 
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd portfolio-template
+git clone https://github.com/tyecode/tyecode-portfolio.git
+cd tyecode-portfolio
 
 # Install dependencies
 pnpm install
@@ -76,16 +77,6 @@ pnpm run dev
 
 # Visit http://localhost:8000
 ```
-
-### Customization
-
-1. **Update content** in `src/constants/` files:
-   - `src/constants/sections.ts` - Portfolio sections content
-   - `src/constants/social.ts` - Social media links
-   - `src/constants/navigation.ts` - Navigation menu items
-2. **Replace images** in `public/images/`
-3. **Modify site configuration** in `src/config/meta-tags.ts`
-4. **Update SEO data** in `src/config/meta-tags.ts`
 
 ## 🏗️ Build & Deploy
 
@@ -113,22 +104,49 @@ pnpm run preview:static
 pnpm run lighthouse
 ```
 
-## 📊 Performance
+## 📊 Performance Optimizations
 
-Optimized for Core Web Vitals with:
+Built with Core Web Vitals in mind:
 
-- Component code splitting
-- Image optimization
-- SEO best practices
-- Accessibility standards
+- **Component code splitting** for faster initial loads
+- **Image optimization** with proper sizing and formats
+- **Font loading optimization** to prevent layout shifts
+- **Critical CSS inlining** for faster rendering
+- **SEO best practices** with structured data
+- **Accessibility standards** (WCAG 2.1 AA compliance)
+- **Progressive enhancement** with no-JS fallback
 
 ## 🤝 Contributing
 
+Contributions, issues, and feature requests are welcome! This project welcomes improvements to UI/UX, performance, accessibility, and code quality.
+
+### Quick Start
+
 1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Install dependencies (`pnpm install`)
+4. Make your changes
+5. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
+
+### What We're Looking For
+
+- 🎨 **UI/UX Improvements**: Enhanced animations, better responsive design
+- ⚡ **Performance Optimizations**: Bundle size reduction, loading speed improvements
+- ♿ **Accessibility**: ARIA improvements, keyboard navigation, screen reader support
+- 🧩 **Component Enhancements**: Reusable components, design system improvements
+- 📝 **Documentation**: Code comments, README updates
+
+### Guidelines
+
+- Write TypeScript with proper type definitions
+- Use Tailwind CSS utility classes
+- Follow mobile-first responsive design
+- Ensure accessibility standards (WCAG 2.1 AA)
+- Test on multiple devices and screen sizes
+
+Please read our [Contributing Guide](docs/CONTRIBUTING.md) for detailed information about the development process, coding standards, and pull request guidelines.
 
 ## 📄 License
 
@@ -136,4 +154,4 @@ MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-⭐ **Star this repository** if you found it helpful!
+⭐ **Star this repository** if you found it helpful or inspiring!
