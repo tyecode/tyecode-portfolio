@@ -1,0 +1,16 @@
+# Global ownership
+* @tyecode
+
+# Source code
+/src/ @tyecode
+
+# Configuration files
+package.json @tyecode
+*.config.* @tyecode
+tsconfig*.json @tyecode
+
+# Workflows
+/.github/ @tyecode
+
+# Documentation
+*.md @tyecode
