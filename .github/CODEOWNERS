@@ -1,0 +1,16 @@
+# Global ownership
+* @tyecode
+
+# Specific file ownership
+package.json @tyecode
+*.md @tyecode
+/.github/ @tyecode
+
+# Source code
+/src/ @tyecode
+/public/ @tyecode
+
+# Configuration files
+*.config.* @tyecode
+tsconfig.json @tyecode
+tailwind.config.js @tyecode
