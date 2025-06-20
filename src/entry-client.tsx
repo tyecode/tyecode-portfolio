@@ -54,8 +54,13 @@ const hasServerRenderedContent = (): boolean => {
     (typeof window !== 'undefined' &&
       window.location.pathname.includes('/tyecode-portfolio/'));
 
-  // Only hydrate if we have server content and we're not in static build mode
-  return hasContent && !isStaticBuild;
+  // For static builds, never hydrate - always use createRoot
+  // For SSR builds, only hydrate if we have server content
+  if (isStaticBuild) {
+    return false; // Never hydrate in static mode
+  }
+
+  return hasContent; // Only hydrate if we have SSR content
 };
 
 // Optimized app initialization for faster LCP

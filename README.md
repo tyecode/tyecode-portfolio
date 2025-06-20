@@ -16,6 +16,8 @@
 
 </div>
 
+<br />
+
 <div align="center">
 
 [![React](https://img.shields.io/badge/React-19.0-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
@@ -89,14 +91,25 @@ pnpm run dev
 ### Production Build
 
 ```bash
-# SSR build
+# SSR build (Server-Side Rendering)
 pnpm run build
 pnpm run preview
 
-# Static build
+# Static build for GitHub Pages deployment
 pnpm run build:static
 pnpm run preview:static
+
+# Static build for local testing (no base path)
+pnpm run build:static:local
+pnpm run preview:static:local
 ```
+
+### Build Options Explained
+
+- **`dev`**: Development server with hot reload and SSR
+- **`build` + `preview`**: Full SSR build for production deployment
+- **`build:static` + `preview:static`**: Static build for GitHub Pages with `/tyecode-portfolio/` base path
+- **`build:static:local` + `preview:static:local`**: Static build for local testing without base path issues
 
 ### Performance Testing
 
