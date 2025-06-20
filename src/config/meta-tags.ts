@@ -64,13 +64,14 @@ export const siteConfig = {
 
 // Helper functions for generating URLs
 export const generateImageUrl = (imagePath: string): string => {
-  const basePath = getBasePath();
-  return `${siteConfig.baseUrl}${basePath}${imagePath}`;
+  // For absolute URLs needed by social media platforms, use the base URL directly
+  // The baseUrl already includes the full path
+  return `${siteConfig.baseUrl}${imagePath}`;
 };
 
 export const generateCanonicalUrl = (path: string = ''): string => {
-  const basePath = getBasePath();
-  return `${siteConfig.baseUrl}${basePath}${path}`;
+  // For canonical URLs, also use the base URL directly
+  return `${siteConfig.baseUrl}${path}`;
 };
 
 export const seoMetaTags: MetaTag[] = [
@@ -124,6 +125,14 @@ export const openGraphMetaTags: MetaTag[] = [
   {
     property: 'og:image',
     content: generateImageUrl(siteConfig.images.og),
+  },
+  {
+    property: 'og:image:secure_url',
+    content: generateImageUrl(siteConfig.images.og),
+  },
+  {
+    property: 'og:image:type',
+    content: 'image/png',
   },
   {
     property: 'og:image:width',
@@ -246,7 +255,7 @@ export const criticalLinks: LinkTag[] = [
   // Preload critical images for better LCP
   {
     rel: 'preload',
-    href: '/images/og.png',
+    href: `${getBasePath()}/images/og.png`,
     as: 'image',
     type: 'image/png',
   },
