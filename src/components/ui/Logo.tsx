@@ -1,4 +1,5 @@
 import { cn } from '@/utils/cn';
+import { getBasePath } from '@/config/meta-tags';
 
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
@@ -30,7 +31,10 @@ const Logo: React.FC<LogoProps> = ({
   };
 
   return (
-    <a href='/#' className={cn('flex items-center space-x-3', className)}>
+    <a
+      href={`${getBasePath()}/#`}
+      className={cn('flex items-center space-x-3', className)}
+    >
       <div
         className={cn(
           sizeClasses[size],
