@@ -42,6 +42,8 @@
     "type-check": "tsc --noEmit",
     "test": "echo 'No tests specified' && exit 0",
     "commitlint": "commitlint --from HEAD~1 --to HEAD --verbose",
+    "commit": "cz",
+    "commit:retry": "cz --retry",
     "prepare": "husky"
   },
   "dependencies": {
@@ -70,7 +72,9 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
+    "commitizen": "^4.3.1",
     "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -83,5 +87,10 @@
     "typescript": "~5.7.3",
     "typescript-eslint": "^8.34.1",
     "vite": "^6.1.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
