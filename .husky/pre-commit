@@ -1,0 +1,12 @@
+#!/bin/sh
+echo "🔍 Running pre-commit checks..."
+
+# Run type checking
+echo "📝 Type checking..."
+pnpm run type-check
+
+# Run linting and formatting checks
+echo "🧹 Running code quality checks..."
+pnpm run check
+
+echo "✅ Pre-commit checks passed!"

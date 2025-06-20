@@ -1,0 +1,8 @@
+#!/bin/sh
+echo "🚀 Running pre-push checks..."
+
+# Ensure the project builds successfully
+echo "🏗️ Building project..."
+pnpm run build:static:local
+
+echo "✅ Pre-push checks passed!" 
