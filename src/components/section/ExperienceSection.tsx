@@ -1,5 +1,5 @@
 import Button from '@/components/ui/Button';
-
+import { cn } from '@/utils/cn';
 import { EXPERIENCES } from '@/constants';
 
 const ExperienceSection = () => {
@@ -33,11 +33,12 @@ const ExperienceSection = () => {
             <article
               key={index}
               role='listitem'
-              className={`bg-white rounded-xl p-8 border-l-4 ${
+              className={cn(
+                'bg-white rounded-xl p-8 border-l-4',
                 exp.current
                   ? 'border-l-gray-900 shadow-md'
                   : 'border-l-gray-300'
-              }`}
+              )}
               aria-labelledby={`job-title-${index}`}
               aria-describedby={`job-description-${index}`}
             >

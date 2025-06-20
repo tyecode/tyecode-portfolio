@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import Button from '@/components/ui/Button';
 import Logo from '@/components/ui/Logo';
-
+import { cn } from '@/utils/cn';
 import { NAVIGATION_LINKS } from '@/constants';
 
 export default function Header() {
@@ -108,9 +108,10 @@ export default function Header() {
           {/* Mobile Navigation Menu */}
           <div
             id='mobile-menu'
-            className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
+            className={cn(
+              'md:hidden transition-all duration-300 ease-in-out overflow-hidden',
               isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-            }`}
+            )}
             aria-hidden={!isMobileMenuOpen}
           >
             <nav

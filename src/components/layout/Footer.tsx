@@ -6,6 +6,7 @@ import {
   AVAILABILITY_STATUS,
   BRAND_INFO,
 } from '@/constants';
+import { cn } from '@/utils/cn';
 
 const Footer = () => {
   const [currentYear, setCurrentYear] = useState<number | null>(null);
@@ -35,9 +36,10 @@ const Footer = () => {
             <div className='flex items-center gap-1 text-sm text-gray-400'>
               <span>{AVAILABILITY_STATUS.text}</span>
               <div
-                className={`w-2 h-2 rounded-full ${
+                className={cn(
+                  'w-2 h-2 rounded-full',
                   AVAILABILITY_STATUS.available ? 'bg-green-400' : 'bg-gray-400'
-                }`}
+                )}
                 aria-label={AVAILABILITY_STATUS.ariaLabel}
                 role='img'
               ></div>

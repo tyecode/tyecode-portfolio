@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 
 import Button from '@/components/ui/Button';
+import { cn } from '@/utils/cn';
 import { getBasePath } from '@/config/meta-tags';
-
 import { HERO_CONTENT, SOCIAL_LINKS } from '@/constants';
 
 const HeroSection: React.FC = () => {
   const [imageError, setImageError] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
-  const profileImagePath = `${getBasePath()}/images/portrait.jpg`;
+  const profileImagePath = `${getBasePath()}/images/portrait.png`;
 
   useEffect(() => {
     // Hide static hero content once React has hydrated
@@ -153,7 +153,7 @@ const HeroSection: React.FC = () => {
           <img
             src={profileImagePath}
             alt=''
-            className='hidden'
+            className={cn('hidden')}
             onError={handleImageError}
             onLoad={handleImageLoad}
           />

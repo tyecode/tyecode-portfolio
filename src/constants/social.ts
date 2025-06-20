@@ -25,24 +25,24 @@ export interface BrandInfo {
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: 'LinkedIn',
-    href: 'https://linkedin.com/in/tyecode',
-    ariaLabel: "Visit tyecode's LinkedIn profile (opens in new tab)",
+    href: 'https://linkedin.com',
+    ariaLabel: "Visit Emma Johnson's LinkedIn profile (opens in new tab)",
   },
   {
     name: 'GitHub',
-    href: 'https://github.com/tyecode',
-    ariaLabel: "Visit tyecode's GitHub profile (opens in new tab)",
+    href: 'https://github.com',
+    ariaLabel: "Visit Emma Johnson's GitHub profile (opens in new tab)",
   },
   {
-    name: 'Facebook',
-    href: 'https://facebook.com/tyecode',
-    ariaLabel: "Visit tyecode's Facebook profile (opens in new tab)",
+    name: 'Twitter',
+    href: 'https://twitter.com',
+    ariaLabel: "Visit Emma Johnson's Twitter profile (opens in new tab)",
   },
 ];
 
 export const CONTACT_INFO: ContactInfo = {
-  email: 'sengphachanh.dev@gmail.com',
-  location: 'Remote / Global',
+  email: 'emma.johnson@gmail.com',
+  location: 'San Francisco, CA / Remote',
 };
 
 export const AVAILABILITY_STATUS: AvailabilityStatus = {
@@ -52,9 +52,9 @@ export const AVAILABILITY_STATUS: AvailabilityStatus = {
 };
 
 export const BRAND_INFO: BrandInfo = {
-  name: 'tyecode',
-  title: 'Front-End Web Developer',
+  name: 'Emma Johnson',
+  title: 'Frontend Developer',
   description:
-    'Front-end web developer specializing in creating beautiful, responsive, and accessible web applications using modern JavaScript frameworks.',
-  tagline: 'Available for new opportunities',
+    'Frontend developer specializing in creating beautiful, responsive, and accessible web applications using React, TypeScript, and modern CSS frameworks.',
+  tagline: 'Building exceptional digital experiences',
 };

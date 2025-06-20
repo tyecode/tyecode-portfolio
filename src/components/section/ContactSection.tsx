@@ -1,6 +1,5 @@
 import ContactForm, { ContactFormData } from '@/components/ui/ContactForm';
 import { submitContactForm } from '@/utils/contact';
-
 import { CONTACT_INFO } from '@/constants';
 
 const ContactSection = () => {

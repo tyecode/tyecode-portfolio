@@ -1,3 +1,5 @@
+import { cn } from '@/utils/cn';
+
 interface SectionSkeletonProps {
   className?: string;
   minHeight?: string;
@@ -38,7 +40,7 @@ const SectionSkeleton: React.FC<SectionSkeletonProps> = ({
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
               {[1, 2, 3].map(i => (
                 <div key={i} className='space-y-4'>
-                  <div className='aspect-ratio-16-9 bg-gray-200 rounded-lg'></div>
+                  <div className='aspect-video bg-gray-200 rounded-lg'></div>
                   <div className='h-6 bg-gray-200 rounded w-3/4'></div>
                   <div className='space-y-2'>
                     <div className='h-4 bg-gray-200 rounded'></div>
@@ -102,7 +104,7 @@ const SectionSkeleton: React.FC<SectionSkeletonProps> = ({
   };
 
   return (
-    <div className={`${className} ${minHeight} section-skeleton`}>
+    <div className={cn(className, minHeight, 'section-skeleton')}>
       <div className='max-w-6xl mx-auto px-6 lg:px-8 py-20'>
         <div className='text-center mb-16'>
           <div className='h-8 bg-gray-200 rounded w-1/3 mx-auto mb-4'></div>
