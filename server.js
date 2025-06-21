@@ -5,12 +5,29 @@ import { config } from 'dotenv';
 // Load environment variables from .env file
 config();
 
+// Function to dynamically read package info
+const getPackageInfo = async () => {
+  try {
+    const packageJsonContent = await fs.readFile('./package.json', 'utf-8');
+    const packageJson = JSON.parse(packageJsonContent);
+    return {
+      name: packageJson.name || '',
+    };
+  } catch (error) {
+    console.warn('Could not read package.json, using defaults:', error);
+    return {
+      name: '',
+    };
+  }
+};
+
 // Constants
 const isProduction = process.env.NODE_ENV === 'production';
 const port = process.env.PORT || 5173;
+const packageInfo = await getPackageInfo();
 // Use base path only for static builds, not for local SSR development
 const base =
-  process.env.VITE_STATIC_BUILD === 'true' ? '/tyecode-portfolio/' : '/';
+  process.env.VITE_STATIC_BUILD === 'true' ? `/${packageInfo.name}/` : '/';
 
 // Cached production assets
 const templateHtml = isProduction

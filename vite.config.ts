@@ -14,6 +14,32 @@ import {
 // Import brand info for dynamic HTML generation
 import fs from 'fs';
 
+// Function to dynamically read package info from package.json
+const getPackageInfo = () => {
+  try {
+    const packageJsonPath = path.resolve(__dirname, 'package.json');
+    const packageJsonContent = fs.readFileSync(packageJsonPath, 'utf-8');
+    const packageJson = JSON.parse(packageJsonContent);
+
+    return {
+      name: packageJson.name || '',
+      description: packageJson.description || '',
+      author: packageJson.author || {},
+      homepage: packageJson.homepage || '',
+      repository: packageJson.repository || {},
+    };
+  } catch (error) {
+    console.warn('Could not read package.json, using defaults:', error);
+    return {
+      name: '',
+      description: '',
+      author: {},
+      homepage: '',
+      repository: {},
+    };
+  }
+};
+
 // Function to dynamically read brand info from constants
 const getBrandInfo = () => {
   try {
@@ -41,12 +67,20 @@ const getBrandInfo = () => {
           /description:\s*['"`]([^'"`]*(?:\n[^'"`]*)*?)['"`]/s
         );
 
+        // Extract Twitter username
+        const twitterUsernameMatch = constantsContent.match(
+          /TWITTER_USERNAME\s*=\s*['"`]([^'"`]+)['"`]/
+        );
+
         return {
           name: nameMatch ? nameMatch[1] : 'tyecode',
           title: titleMatch ? titleMatch[1] : 'Front-End Developer',
           description: descriptionMatch
             ? descriptionMatch[1].replace(/\s+/g, ' ').trim()
             : 'Professional front-end developer specializing in React and TypeScript',
+          twitterUsername: twitterUsernameMatch
+            ? twitterUsernameMatch[1]
+            : 'tyecode',
         };
       } catch (importError) {
         console.warn('Could not parse constants file:', importError);
@@ -56,6 +90,7 @@ const getBrandInfo = () => {
           title: 'Front-End Developer',
           description:
             'Professional front-end developer specializing in React and TypeScript',
+          twitterUsername: 'tyecode',
         };
       }
     }
@@ -66,6 +101,7 @@ const getBrandInfo = () => {
       title: 'Front-End Developer',
       description:
         'Professional front-end developer specializing in React and TypeScript',
+      twitterUsername: 'tyecode',
     };
   } catch (error) {
     console.warn('Could not read brand info, using defaults:', error);
@@ -74,6 +110,7 @@ const getBrandInfo = () => {
       title: 'Front-End Developer',
       description:
         'Professional front-end developer specializing in React and TypeScript',
+      twitterUsername: 'tyecode',
     };
   }
 };
@@ -82,7 +119,17 @@ const getBrandInfo = () => {
 export default defineConfig(
   ({ command: _command, mode: _mode, isSsrBuild }) => {
     const isSSR = isSsrBuild || process.argv.includes('--ssr');
+    const packageInfo = getPackageInfo();
     const brandInfo = getBrandInfo();
+
+    // Dynamic base path from package name
+    const getBasePath = () => {
+      if (process.env.VITE_STATIC_BUILD === 'true') {
+        // Use package name for GitHub Pages deployment
+        return `/${packageInfo.name}/`;
+      }
+      return '/';
+    };
 
     // Dynamic HTML data
     const htmlData = {
@@ -96,11 +143,33 @@ export default defineConfig(
       appLabel: `${brandInfo.name} Portfolio Application`,
       logoText: brandInfo.name.charAt(0).toUpperCase(),
       currentYear: new Date().getFullYear(),
+      siteUrl:
+        process.env.VITE_STATIC_BUILD === 'true'
+          ? packageInfo.homepage
+          : 'http://localhost:8000/',
+      ogImageUrl:
+        process.env.VITE_STATIC_BUILD === 'true'
+          ? `${packageInfo.homepage}images/og.jpg`
+          : 'http://localhost:8000/images/og.jpg',
+      twitterUsername: brandInfo.twitterUsername,
     };
 
     return {
-      base:
-        process.env.VITE_STATIC_BUILD === 'true' ? '/tyecode-portfolio/' : '/',
+      base: getBasePath(),
+      preview: {
+        port: 8080,
+        // Fix MIME type issues for assets when using base path
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      },
+      server: {
+        port: 8000,
+        // Ensure correct MIME types are served
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      },
       plugins: [
         react(),
         tailwindcss(),

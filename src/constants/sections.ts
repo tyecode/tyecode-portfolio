@@ -104,6 +104,16 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/tyecode/tyecode-folio',
   },
   {
+    title: 'TaskFlow Pro',
+    description:
+      'A collaborative project management application with real-time updates, drag-and-drop Kanban boards, and team collaboration features. Built with modern React patterns.',
+    category: 'Web Application',
+    image: '/images/taskflow-pro.jpg',
+    gradient: 'bg-gradient-to-br from-blue-100 to-blue-200',
+    tags: ['React', 'TypeScript', 'Socket.io', 'Redux Toolkit', 'Tailwind CSS'],
+    link: 'https://github.com/tyecode/taskflow-pro',
+  },
+  {
     title: 'Inertia Design System',
     description:
       'A professional design system and component library for React applications. It ensures UI consistency and accelerates development across multiple projects.',
@@ -116,11 +126,11 @@ export const PROJECTS: Project[] = [
   {
     title: 'E-Shop Pro',
     description:
-      'A server-rendered E-commerce application built with Next.js for optimal performance and SEO. Integrates with Stripe for payments.',
+      'A server-rendered E-commerce application built with Next.js for optimal performance and SEO. Features secure payments, inventory management, and analytics.',
     category: 'E-commerce',
     image: '/images/ecommerce-platform.jpg',
-    gradient: 'bg-gradient-to-br from-blue-100 to-blue-200',
-    tags: ['Next.js', 'TypeScript', 'Stripe API', 'Vercel'],
+    gradient: 'bg-gradient-to-br from-amber-100 to-amber-200',
+    tags: ['Next.js', 'TypeScript', 'Stripe API', 'Prisma', 'Vercel'],
     link: 'https://github.com/tyecode/e-shop-pro',
   },
 ];

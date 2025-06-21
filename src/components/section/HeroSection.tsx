@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import Button from '@/components/ui/Button';
 import { cn } from '@/utils/cn';
-import { getBasePath } from '@/config/meta-tags';
+import { getBasePath } from '@/utils/package-info';
 import { HERO_CONTENT, SOCIAL_LINKS } from '@/constants';
 
 const HeroSection: React.FC = () => {

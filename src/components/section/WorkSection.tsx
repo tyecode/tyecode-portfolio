@@ -55,12 +55,9 @@ const WorkSection = () => {
                     className='group block cursor-pointer'
                     aria-label={`View ${project.title} project`}
                   >
-                    <div className='bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2'>
+                    <div className='bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1 focus:outline-none'>
                       <div
-                        className={cn(
-                          'h-48 relative',
-                          !project.image && project.gradient
-                        )}
+                        className={cn('h-48 relative', project.gradient)}
                         role='img'
                         aria-label={`${project.title} project preview`}
                       >
@@ -68,7 +65,15 @@ const WorkSection = () => {
                           <img
                             src={project.image}
                             alt={`Screenshot of the ${project.title} project, a ${project.category} built with React.`}
-                            className='w-full h-full object-cover'
+                            className='w-full h-full object-cover opacity-0 transition-opacity duration-300'
+                            onLoad={e => {
+                              // Show image once it successfully loads
+                              e.currentTarget.style.opacity = '1';
+                            }}
+                            onError={e => {
+                              // Hide image on error, showing gradient fallback
+                              e.currentTarget.style.display = 'none';
+                            }}
                           />
                         ) : null}
                         <div className='absolute top-4 left-4'>
@@ -112,7 +117,7 @@ const WorkSection = () => {
                       <div
                         className={cn(
                           'h-48 relative opacity-50',
-                          !project.image && project.gradient
+                          project.gradient // Always apply gradient as background
                         )}
                         role='img'
                         aria-label={`${project.title} project preview - Coming soon`}
@@ -120,8 +125,16 @@ const WorkSection = () => {
                         {project.image ? (
                           <img
                             src={project.image}
-                            alt={`${project.title} project screenshot`}
-                            className='w-full h-full object-cover'
+                            alt={`Screenshot of the ${project.title} project, a ${project.category} built with React.`}
+                            className='w-full h-full object-cover opacity-0 transition-opacity duration-300'
+                            onLoad={e => {
+                              // Show image once it successfully loads
+                              e.currentTarget.style.opacity = '1';
+                            }}
+                            onError={e => {
+                              // Hide image on error, showing gradient fallback
+                              e.currentTarget.style.display = 'none';
+                            }}
                           />
                         ) : null}
                         <div className='absolute top-4 left-4'>

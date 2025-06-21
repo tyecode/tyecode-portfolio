@@ -127,7 +127,7 @@ export default function Header() {
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className='block px-3 py-2 text-gray-700 hover:text-gray-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 rounded-md'
+                      className='block px-3 py-2 text-gray-700 hover:text-gray-900 text-sm font-medium focus:outline-none rounded-md'
                       onClick={() => setIsMobileMenuOpen(false)}
                       tabIndex={isMobileMenuOpen ? 0 : -1}
                     >

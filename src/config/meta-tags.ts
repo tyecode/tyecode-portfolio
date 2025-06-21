@@ -1,4 +1,14 @@
-import { BRAND_INFO, CONTACT_INFO } from '@/constants';
+import { BRAND_INFO, CONTACT_INFO, TWITTER_USERNAME } from '@/constants';
+import {
+  getBasePath,
+  getBaseUrl,
+  generateUrl,
+  generateImageUrl,
+  getPackageInfo,
+} from '@/utils/package-info';
+
+// Re-export for backward compatibility
+export { getBasePath };
 
 export interface MetaTag {
   name?: string;
@@ -17,21 +27,10 @@ export interface LinkTag {
   crossorigin?: string;
 }
 
-// Dynamic base path utility
-export const getBasePath = (): string => {
-  if (
-    typeof process !== 'undefined' &&
-    process.env?.VITE_STATIC_BUILD === 'true'
-  ) {
-    return '/tyecode-portfolio';
-  }
-  return '';
-};
-
-// Site configuration - now fully dynamic from constants
+// Site configuration - now fully dynamic from constants and package info
 export const siteConfig = {
   title: `${BRAND_INFO.name} - ${BRAND_INFO.title} | React & TypeScript Specialist`,
-  baseUrl: 'https://tyecode.github.io/tyecode-portfolio/',
+  baseUrl: getBaseUrl(),
   email: CONTACT_INFO.email,
   author: BRAND_INFO.name,
   description: `Seeking an expert React Developer? I'm ${BRAND_INFO.name}, a Front-End Specialist with 4+ years of experience. ${BRAND_INFO.description}. View my portfolio and let's connect.`,
@@ -44,7 +43,8 @@ export const siteConfig = {
     github: 'https://github.com/tyecode',
     linkedin: 'https://linkedin.com/in/tyecode',
     twitter: 'https://twitter.com/tyecode',
-    twitterHandle: '@tyecode',
+    twitterHandle: `@${TWITTER_USERNAME}`,
+    twitterUsername: TWITTER_USERNAME,
   },
   images: {
     og: '/images/og.jpg',
@@ -52,18 +52,8 @@ export const siteConfig = {
   },
 };
 
-// Helper functions for generating URLs
-export const generateImageUrl = (imagePath: string): string => {
-  const cleanImagePath = imagePath.startsWith('/')
-    ? imagePath.slice(1)
-    : imagePath;
-  return `${siteConfig.baseUrl}${cleanImagePath}`;
-};
-
-export const generateCanonicalUrl = (path: string = ''): string => {
-  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-  return `${siteConfig.baseUrl}${cleanPath}`;
-};
+// Helper functions for generating URLs (now using dynamic utilities)
+export { generateImageUrl, generateUrl as generateCanonicalUrl };
 
 // --- SEO tags are now built from the dynamic siteConfig ---
 
@@ -80,7 +70,7 @@ export const openGraphMetaTags: MetaTag[] = [
   { property: 'og:type', content: 'website' },
   { property: 'og:title', content: siteConfig.title },
   { property: 'og:description', content: siteConfig.description },
-  { property: 'og:url', content: generateCanonicalUrl() },
+  { property: 'og:url', content: generateUrl() },
   { property: 'og:site_name', content: `${siteConfig.author} Portfolio` },
   { property: 'og:image', content: generateImageUrl(siteConfig.images.og) },
   {
@@ -144,18 +134,12 @@ export const criticalLinks: LinkTag[] = [
     type: 'image/jpeg',
   },
   { rel: 'modulepreload', href: '/src/entry-client.tsx' },
-  {
-    rel: 'preload',
-    href: 'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2',
-    as: 'font',
-    type: 'font/woff2',
-    crossorigin: 'anonymous',
-  },
 ];
 
 // Dynamic manifest generation
 export const generateManifest = () => {
   const basePath = getBasePath();
+  const packageInfo = getPackageInfo();
   const shortName = BRAND_INFO.name.split(' ')[0]; // Use first name for short_name
 
   return {
@@ -164,7 +148,7 @@ export const generateManifest = () => {
     description: BRAND_INFO.description,
     start_url: `${basePath}/`,
     scope: `${basePath}/`,
-    id: `${shortName.toLowerCase()}-tyecode-portfolio`,
+    id: `${shortName.toLowerCase()}-${packageInfo.name}`,
     display: 'standalone',
     display_override: ['window-controls-overlay', 'standalone'],
     orientation: 'portrait-primary',

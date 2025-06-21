@@ -37,8 +37,8 @@ export const generateFavicon = async (
 
     // Calculate responsive sizes based on canvas size
     const cornerRadius = size * 0.25; // 25% of size for rounded corners
-    const fontSize = size * 0.3; // Reduced from 0.4 to 0.3 for better proportions
-    const braceFontSize = size * 0.22; // Reduced from 0.3 to 0.22 for better proportions
+    const fontSize = size * 0.44; // Increased from 0.3 to 0.44 to match HTML placeholder (14/32 = 0.4375)
+    const braceFontSize = size * 0.32; // Increased from 0.22 to 0.32 for better proportions with larger main text
 
     // Clear canvas
     ctx.clearRect(0, 0, size, size);
@@ -57,7 +57,7 @@ export const generateFavicon = async (
     // Draw opening brace
     ctx.font = `${braceFontSize}px Monaco, "Courier New", monospace`;
     ctx.globalAlpha = 0.9;
-    ctx.fillText('{', size * 0.25, size * 0.5);
+    ctx.fillText('{', size * 0.22, size * 0.5);
 
     // Draw character
     ctx.font = `bold ${fontSize}px Monaco, "Courier New", monospace`;
@@ -67,7 +67,7 @@ export const generateFavicon = async (
     // Draw closing brace
     ctx.font = `${braceFontSize}px Monaco, "Courier New", monospace`;
     ctx.globalAlpha = 0.9;
-    ctx.fillText('}', size * 0.75, size * 0.5);
+    ctx.fillText('}', size * 0.78, size * 0.5);
 
     // Convert to data URL
     const dataUrl = canvas.toDataURL('image/png');
@@ -76,13 +76,45 @@ export const generateFavicon = async (
 };
 
 /**
- * Updates the favicon in the document head
+ * Generates a web app manifest for PWA support and better SEO
+ * @param faviconDataUrls - Array of favicon data URLs in different sizes
+ * @returns Web app manifest object
+ */
+const generateWebAppManifest = (faviconDataUrls: string[]) => {
+  const iconSizes = [72, 96, 128, 144, 152, 192, 384, 512];
+  const icons = faviconDataUrls.slice(-8).map((dataUrl, index) => ({
+    src: dataUrl,
+    sizes: `${iconSizes[index]}x${iconSizes[index]}`,
+    type: 'image/png',
+    purpose: index >= 6 ? 'any maskable' : 'any', // Last 2 icons support maskable
+  }));
+
+  return {
+    name: `${BRAND_INFO.name} - Front-End Developer Portfolio`,
+    short_name: BRAND_INFO.name,
+    description: `Portfolio website of ${BRAND_INFO.name}, showcasing front-end development projects and skills`,
+    start_url: '/',
+    display: 'standalone',
+    background_color: '#ffffff',
+    theme_color: '#111827',
+    orientation: 'portrait-primary',
+    scope: '/',
+    icons,
+    categories: ['portfolio', 'developer', 'technology'],
+    lang: 'en-US',
+  };
+};
+
+/**
+ * Updates the favicon in the document head with comprehensive SEO support
  * @param character - Character to use for the favicon (defaults to first letter of brand name)
  */
 export const updateFavicon = async (character?: string): Promise<void> => {
   try {
-    // Generate favicons in multiple sizes
-    const sizes = [16, 32, 48, 64, 128, 256];
+    // Generate favicons in comprehensive sizes for all platforms and use cases
+    const sizes = [
+      16, 32, 48, 64, 72, 96, 128, 144, 152, 180, 192, 256, 384, 512,
+    ];
     const faviconPromises = sizes.map(size =>
       generateFavicon({
         character: character || BRAND_INFO.name.charAt(0),
@@ -92,40 +124,113 @@ export const updateFavicon = async (character?: string): Promise<void> => {
 
     const faviconDataUrls = await Promise.all(faviconPromises);
 
-    // Remove existing favicon links
-    const existingFavicons = document.querySelectorAll('link[rel*="icon"]');
-    existingFavicons.forEach(favicon => favicon.remove());
+    // Remove existing favicon and manifest links
+    const existingElements = document.querySelectorAll(
+      'link[rel*="icon"], link[rel*="manifest"], link[rel*="apple-touch"]'
+    );
+    existingElements.forEach(element => element.remove());
 
-    // Add new favicon links
-    const faviconSizes = [
-      '16x16',
-      '32x32',
-      '48x48',
-      '64x64',
-      '128x128',
-      '256x256',
+    // Standard favicon sizes for browsers
+    const standardSizes = [
+      { size: 16, rel: 'icon' },
+      { size: 32, rel: 'icon' },
+      { size: 48, rel: 'icon' },
+      { size: 64, rel: 'icon' },
     ];
 
-    faviconDataUrls.forEach((dataUrl, index) => {
-      if (dataUrl) {
+    standardSizes.forEach(({ size, rel }) => {
+      const index = sizes.indexOf(size);
+      if (index !== -1 && faviconDataUrls[index]) {
         const link = document.createElement('link');
-        link.rel = 'icon';
+        link.rel = rel;
         link.type = 'image/png';
-        link.setAttribute('sizes', faviconSizes[index]);
-        link.href = dataUrl;
+        link.setAttribute('sizes', `${size}x${size}`);
+        link.href = faviconDataUrls[index];
         document.head.appendChild(link);
       }
     });
 
-    // Add apple-touch-icon (use the largest size)
-    const appleTouchIconLink = document.createElement('link');
-    appleTouchIconLink.rel = 'apple-touch-icon';
-    appleTouchIconLink.setAttribute('sizes', '256x256');
-    appleTouchIconLink.href = faviconDataUrls[faviconDataUrls.length - 1];
-    document.head.appendChild(appleTouchIconLink);
+    // Apple Touch Icons for iOS devices (SEO important for mobile)
+    const appleTouchSizes = [152, 180];
+    appleTouchSizes.forEach(size => {
+      const index = sizes.indexOf(size);
+      if (index !== -1 && faviconDataUrls[index]) {
+        const link = document.createElement('link');
+        link.rel = 'apple-touch-icon';
+        link.setAttribute('sizes', `${size}x${size}`);
+        link.href = faviconDataUrls[index];
+        document.head.appendChild(link);
+      }
+    });
+
+    // Default apple-touch-icon (180x180 is preferred)
+    const defaultAppleIndex = sizes.indexOf(180);
+    if (defaultAppleIndex !== -1 && faviconDataUrls[defaultAppleIndex]) {
+      const link = document.createElement('link');
+      link.rel = 'apple-touch-icon';
+      link.href = faviconDataUrls[defaultAppleIndex];
+      document.head.appendChild(link);
+    }
+
+    // Generate and inject web app manifest for PWA support and better SEO
+    const manifest = generateWebAppManifest(faviconDataUrls);
+    const manifestBlob = new Blob([JSON.stringify(manifest, null, 2)], {
+      type: 'application/json',
+    });
+    const manifestUrl = URL.createObjectURL(manifestBlob);
+
+    const manifestLink = document.createElement('link');
+    manifestLink.rel = 'manifest';
+    manifestLink.href = manifestUrl;
+    document.head.appendChild(manifestLink);
+
+    // Add Microsoft tile configuration for Windows
+    const msConfigMeta = document.createElement('meta');
+    msConfigMeta.name = 'msapplication-TileColor';
+    msConfigMeta.content = '#111827';
+    document.head.appendChild(msConfigMeta);
+
+    const msTileImageIndex = sizes.indexOf(144);
+    if (msTileImageIndex !== -1 && faviconDataUrls[msTileImageIndex]) {
+      const msTileImageMeta = document.createElement('meta');
+      msTileImageMeta.name = 'msapplication-TileImage';
+      msTileImageMeta.content = faviconDataUrls[msTileImageIndex];
+      document.head.appendChild(msTileImageMeta);
+    }
+
+    // Add mask-icon for Safari pinned tabs
+    const maskIconIndex = sizes.indexOf(192);
+    if (maskIconIndex !== -1 && faviconDataUrls[maskIconIndex]) {
+      // Generate SVG version for mask-icon (better for Safari)
+      const svgIcon = generateSVGIcon(character || BRAND_INFO.name.charAt(0));
+      const svgBlob = new Blob([svgIcon], { type: 'image/svg+xml' });
+      const svgUrl = URL.createObjectURL(svgBlob);
+
+      const maskIconLink = document.createElement('link');
+      maskIconLink.rel = 'mask-icon';
+      maskIconLink.href = svgUrl;
+      maskIconLink.setAttribute('color', '#111827');
+      document.head.appendChild(maskIconLink);
+    }
+
+    console.warn('✅ SEO-optimized favicon system updated successfully');
   } catch (error) {
-    console.error('Failed to update favicon:', error);
+    console.error('❌ Failed to update favicon:', error);
   }
+};
+
+/**
+ * Generates an SVG icon for Safari mask-icon support
+ * @param character - Character to use in the icon
+ * @returns SVG string
+ */
+const generateSVGIcon = (character: string): string => {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <rect width="32" height="32" rx="8" fill="black"/>
+    <text x="5.5" y="20" font-family="Monaco, monospace" font-size="10" fill="black" opacity="0.9">{</text>
+    <text x="16" y="20" font-family="Monaco, monospace" font-size="14" font-weight="bold" text-anchor="middle" fill="black">${character}</text>
+    <text x="26.5" y="20" font-family="Monaco, monospace" font-size="10" fill="black" opacity="0.9">}</text>
+  </svg>`;
 };
 
 /**

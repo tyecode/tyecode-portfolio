@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 
 import App from './App';
 import './index.css';
+import { getPackageInfo } from './utils/package-info';
 
 // Import debugging utilities for development
 import {
@@ -48,11 +49,12 @@ const hasServerRenderedContent = (): boolean => {
   // Check if root has meaningful content (not just whitespace)
   const hasContent = root.innerHTML.trim() !== '';
 
-  // Check if we're in static build mode
+  // Check if we're in static build mode using dynamic package info
+  const packageInfo = getPackageInfo();
   const isStaticBuild =
     import.meta.env.VITE_STATIC_BUILD === 'true' ||
     (typeof window !== 'undefined' &&
-      window.location.pathname.includes('/tyecode-portfolio/'));
+      window.location.pathname.includes(`/${packageInfo.name}/`));
 
   // For static builds, never hydrate - always use createRoot
   // For SSR builds, only hydrate if we have server content

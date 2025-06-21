@@ -1,5 +1,5 @@
 import { cn } from '@/utils/cn';
-import { getBasePath } from '@/config/meta-tags';
+import { getBasePath } from '@/utils/package-info';
 import Logo from './Logo';
 
 interface BrandProps {

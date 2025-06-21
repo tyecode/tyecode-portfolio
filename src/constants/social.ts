@@ -80,3 +80,6 @@ export const AVAILABILITY_STATUS: AvailabilityStatus = {
   ariaLabel: 'Available status indicator',
   available: true,
 };
+
+// Twitter username (without @ symbol) for meta tags and templates
+export const TWITTER_USERNAME = 'tyecode';
