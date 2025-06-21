@@ -35,7 +35,7 @@ export const sendContactEmail = async (
 ): Promise<void> => {
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
     console.warn('Email not configured. Contact form data:', data);
-    return; // Skip email sending if not configured
+    throw new Error('Email service not configured');
   }
 
   const transporter = createTransporter();

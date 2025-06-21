@@ -1,6 +1,10 @@
 /* Base reset to prevent layout shift */
 * {
   box-sizing: border-box;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Font fallback for consistent sizing */
@@ -10,23 +14,9 @@
   src: local('Arial');
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family:
-    'Inter-fallback',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  font-display: swap;
-}
-
-/* Switch to Inter font when loaded */
-.fonts-loaded body {
+/* Root styles to prevent layout shift */
+#root {
+  min-height: 100vh;
   font-family:
     'Inter',
     -apple-system,
@@ -38,8 +28,135 @@ body {
     sans-serif;
 }
 
-#root {
-  min-height: 100vh;
+/* Font loading optimization - prevent invisible text */
+.font-inter {
+  font-display: swap;
+  font-family:
+    'Inter',
+    'Inter-fallback',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+}
+
+/* Update font-family after Inter loads */
+.fonts-loaded #root,
+.fonts-loaded .hero-lcp-text,
+.fonts-loaded .hero-heading {
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+}
+
+/* Critical styles for LCP element - Hero section paragraph */
+.hero-lcp-text {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: #4b5563;
+  margin-bottom: 2rem;
+  line-height: 1.625;
+  max-width: 42rem;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  /* Use fallback font initially to prevent FOIT */
+  font-family:
+    'Inter-fallback',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+  /* Performance optimizations */
+  contain: layout style;
+  will-change: auto;
+  font-display: auto;
+}
+
+/* Critical hero section styles */
+.hero-section {
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+  background-color: white;
+  contain: layout style;
+}
+
+.hero-container {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 48rem;
+  contain: layout;
+}
+
+.hero-heading {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  font-family:
+    'Inter-fallback',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+  contain: layout style;
+  font-display: auto;
+}
+
+/* Responsive hero heading */
+@media (min-width: 640px) {
+  .hero-heading {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-heading {
+    font-size: 3.75rem;
+  }
+  .hero-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Reserve space for sections to prevent layout shift */
+section[id] {
+  min-height: 200px;
+}
+
+section[id='contact'] {
+  min-height: 600px;
+}
+
+footer[role='contentinfo'] {
+  min-height: 200px;
+}
+
+/* Ensure no-JS content is completely hidden when JS is enabled */
+.js-enabled .no-js-portfolio {
+  display: none !important;
 }
 
 /* Prevent layout shift during loading */
@@ -63,7 +180,7 @@ body {
 .loading-screen {
   position: fixed;
   inset: 0;
-  background-color: white;
+  background: white;
   display: flex;
   align-items: center;
   justify-content: center;

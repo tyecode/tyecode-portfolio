@@ -1,4 +1,55 @@
-export const BASE_URL = 'https://tyecode.github.io/tyecode-portfolio/';
+import fs from 'fs';
+import path from 'path';
+
+// Function to dynamically read package info for node environment
+const getPackageInfo = () => {
+  try {
+    const packageJsonPath = path.resolve(process.cwd(), 'package.json');
+    const packageJsonContent = fs.readFileSync(packageJsonPath, 'utf-8');
+    const packageJson = JSON.parse(packageJsonContent);
+
+    return {
+      name: packageJson.name || '',
+      repository: packageJson.repository || {},
+      homepage: packageJson.homepage || '',
+    };
+  } catch (error) {
+    console.warn('Could not read package.json, using defaults:', error);
+    return {
+      name: '',
+      repository: {},
+      homepage: '',
+    };
+  }
+};
+
+// Function to generate dynamic base URL
+const getBaseUrl = (): string => {
+  const packageInfo = getPackageInfo();
+
+  // Use homepage from package.json as the primary source
+  if (packageInfo.homepage) {
+    return packageInfo.homepage;
+  }
+
+  // Fallback: Try to construct from repository URL if available
+  if (packageInfo.repository.url) {
+    const match = packageInfo.repository.url.match(
+      /github\.com\/([^/]+)\/([^/]+)/
+    );
+    if (match) {
+      const [, username, repoName] = match;
+      return `https://${username}.github.io/${repoName}/`;
+    }
+  }
+
+  // Last resort: throw error since homepage should be configured
+  throw new Error(
+    'No homepage configured in package.json and unable to determine from repository URL'
+  );
+};
+
+export const BASE_URL = getBaseUrl();
 
 // Static routes that should be included in the sitemap
 export const staticRoutes: string[] = [

@@ -1,4 +1,5 @@
-import Logo from '@/components/ui/Logo';
+import Brand from '@/components/ui/Brand';
+import { BRAND_INFO } from '@/constants';
 
 const LoadingScreen = () => {
   return (
@@ -7,10 +8,15 @@ const LoadingScreen = () => {
         {/* Logo/Brand */}
         <div className='mb-8'>
           <div className='mb-4 flex justify-center'>
-            <Logo size='lg' showText={false} className='animate-pulse' />
+            <Brand
+              size='lg'
+              brandName={BRAND_INFO.name}
+              showText={false}
+              className='animate-pulse'
+            />
           </div>
           <h2 className='loading-title text-xl font-bold text-gray-900 mb-2'>
-            tyecode
+            {BRAND_INFO.name}
           </h2>
           <p className='loading-subtitle text-gray-500 text-sm'>
             Building something amazing...

@@ -1,85 +1,68 @@
-const structuredDataConfig = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'tyecode',
-  givenName: 'Tye',
-  jobTitle: 'Front-End Web Developer',
-  description:
-    'Front-end web developer with over 4 years of experience creating responsive, user-friendly web applications. I specialize in modern JavaScript frameworks and creating pixel-perfect user interfaces.',
-  url: 'https://tyecode.github.io/tyecode-portfolio/',
-  email: 'sengphachanh.dev@gmail.com',
-  image: 'https://tyecode.github.io/tyecode-portfolio/images/og.jpg',
-  sameAs: [
-    'https://github.com/tyecode',
-    'https://linkedin.com/in/tyecode',
-    'https://twitter.com/tyecode',
-  ],
-  knowsAbout: [
-    'React',
-    'Next.js',
-    'TypeScript',
-    'JavaScript',
-    'HTML5',
-    'CSS3',
-    'Tailwind CSS',
-    'Sass',
-    'SCSS',
-    'Vue.js',
-    'Responsive Design',
-    'Webpack',
-    'Vite',
-    'Git',
-    'GitHub',
-  ],
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Creative Digital Agency',
-  },
-  hasCredential: [
-    {
-      '@type': 'EducationalOccupationalCredential',
-      name: 'Senior Front-End Developer',
-      description:
-        'Leading front-end development of responsive web applications, creating reusable UI components, and mentoring junior developers.',
-    },
-  ],
-  workExample: [
-    {
-      '@type': 'CreativeWork',
-      name: 'E-commerce Frontend',
-      description:
-        'Responsive e-commerce interface built with React and TypeScript, featuring advanced product filtering and mobile-optimized checkout flow.',
-      url: 'https://tyecode.github.io/tyecode-portfolio/#work',
-      programmingLanguage: ['React', 'TypeScript', 'Tailwind CSS'],
-    },
-    {
-      '@type': 'CreativeWork',
-      name: 'Dashboard Interface',
-      description:
-        'Modern admin dashboard with interactive charts, real-time data visualization, and responsive design.',
-      url: 'https://tyecode.github.io/tyecode-portfolio/#work',
-      programmingLanguage: ['Vue.js', 'Chart.js', 'CSS Grid'],
-    },
-    {
-      '@type': 'CreativeWork',
-      name: 'Component Library',
-      description:
-        'Comprehensive UI component library with documentation, featuring reusable React components and design tokens.',
-      url: 'https://tyecode.github.io/tyecode-portfolio/#work',
-      programmingLanguage: ['React', 'Storybook', 'Jest'],
-    },
-  ],
-  contactPoint: {
-    '@type': 'ContactPoint',
-    email: 'sengphachanh.dev@gmail.com',
-    contactType: 'Professional Inquiry',
-  },
-};
+import { siteConfig } from '@/config/meta-tags';
+import {
+  HERO_CONTENT,
+  ABOUT_SKILLS,
+  SOCIAL_LINKS,
+  EXPERIENCES,
+  PROJECTS,
+  CONTACT_INFO,
+} from '@/constants';
 
+/**
+ * Generates JSON-LD structured data for the Person schema.
+ * This helps search engines understand your identity and expertise,
+ * which can lead to enhanced search result listings.
+ * It dynamically pulls data from your constants files for a single source of truth.
+ *
+ * @returns {string} A JSON string representing the Person schema markup.
+ */
 export function generateStructuredData(): string {
-  return JSON.stringify(structuredDataConfig, null, 2);
-}
+  const personSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: HERO_CONTENT.name,
+    url: siteConfig.baseUrl,
+    image: `${siteConfig.baseUrl}images/og.jpg`,
+    jobTitle: HERO_CONTENT.title,
+    description: siteConfig.description,
+    email: CONTACT_INFO.email,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'San Francisco',
+      addressRegion: 'CA',
+      addressCountry: 'US',
+    },
+    worksFor: {
+      '@type': 'Organization',
+      name: HERO_CONTENT.currentCompany,
+    },
+    alumniOf: EXPERIENCES.filter(exp => !exp.current).map(exp => ({
+      '@type': 'Organization',
+      name: exp.company,
+    })),
+    sameAs: SOCIAL_LINKS.map(link => link.href),
+    knowsAbout: ABOUT_SKILLS,
+    // Dynamically generate work examples from your projects constant
+    workExample: PROJECTS.map(project => ({
+      '@type': 'CreativeWork',
+      name: project.title,
+      description: project.description,
+      url: project.link,
+      programmingLanguage: project.tags,
+    })),
+    // Dynamically generate credentials from your experience constant
+    hasCredential: EXPERIENCES.map(exp => ({
+      '@type': 'EducationalOccupationalCredential',
+      name: exp.role,
+      description: exp.description,
+    })),
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: CONTACT_INFO.email,
+      contactType: 'Professional Inquiry',
+    },
+  };
 
-export function createStructuredDataScript(): string {
-  return `<script type="application/ld+json">${generateStructuredData()}</script>`;
+  // Your useSEO hook parses this, so we stringify it here.
+  return JSON.stringify(personSchema, null, 2);
 }

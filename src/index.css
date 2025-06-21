@@ -5,3 +5,13 @@
 @import './styles/utilities.css';
 @import './styles/animations.css';
 @import './styles/accessibility.css';
+
+@layer components {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
+
+@utility container {
+  @apply max-w-6xl mx-auto px-6 lg:px-8;
+}

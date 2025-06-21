@@ -1,16 +1,34 @@
 import fs from 'node:fs/promises';
 import express from 'express';
 import { config } from 'dotenv';
+import dedent from 'dedent';
 
 // Load environment variables from .env file
 config();
 
+// Function to dynamically read package info
+const getPackageInfo = async () => {
+  try {
+    const packageJsonContent = await fs.readFile('./package.json', 'utf-8');
+    const packageJson = JSON.parse(packageJsonContent);
+    return {
+      name: packageJson.name || '',
+    };
+  } catch (error) {
+    console.warn('Could not read package.json, using defaults:', error);
+    return {
+      name: '',
+    };
+  }
+};
+
 // Constants
 const isProduction = process.env.NODE_ENV === 'production';
 const port = process.env.PORT || 5173;
+const packageInfo = await getPackageInfo();
 // Use base path only for static builds, not for local SSR development
 const base =
-  process.env.VITE_STATIC_BUILD === 'true' ? '/tyecode-portfolio/' : '/';
+  process.env.VITE_STATIC_BUILD === 'true' ? `/${packageInfo.name}/` : '/';
 
 // Cached production assets
 const templateHtml = isProduction
@@ -110,28 +128,37 @@ app.post(`${base}api/contact`, async (req, res) => {
           email,
           message,
         });
-        console.log('✅ Email functionality disabled in development');
+        console.log('⚠️ Email functionality disabled in development');
+
+        // Simulate email sending in development
+        await new Promise(resolve => setTimeout(resolve, 500));
       } else {
         // Use built files in production
         const { sendContactEmail } = await import('./dist/server/email.js');
         await sendContactEmail({ name, email, message });
         console.log('✅ Email sent successfully');
       }
+
+      // Return success only when email is sent (or simulated in dev)
+      res.json({
+        success: true,
+        message: 'Message sent successfully!',
+      });
     } catch (emailError) {
       console.error('Email sending failed:', emailError);
-      // Still log the contact for manual follow-up
+      // Log the contact for manual follow-up
       console.log('Contact form submission (email failed):', {
         name,
         email,
         message,
       });
-    }
 
-    // Always return success to user (even if email fails)
-    res.json({
-      success: true,
-      message: 'Message sent successfully!',
-    });
+      // Return error to user when email fails
+      res.status(500).json({
+        success: false,
+        error: 'Failed to send message. Please try again later.',
+      });
+    }
   } catch (error) {
     console.error('Contact form error:', error);
     res.status(500).json({
@@ -158,10 +185,12 @@ app.get(`${base}robots.txt`, async (req, res) => {
   } catch (error) {
     console.error('Error serving robots.txt:', error);
     // Fallback robots.txt
-    const fallbackRobots = `User-agent: *
-Allow: /
+    const fallbackRobots = dedent`
+      User-agent: *
+      Allow: /
 
-Sitemap: ${req.protocol}://${req.get('host')}${base}sitemap.xml`;
+      Sitemap: ${req.protocol}://${req.get('host')}${base}sitemap.xml
+    `;
     res.set('Content-Type', 'text/plain');
     res.send(fallbackRobots);
   }
