@@ -62,11 +62,12 @@
     />
     <meta name="twitter:image:alt" content="<%- ogImageAlt %>" />
 
-    <!-- Apple Touch Icon and Favicons -->
-    <link rel="icon" href="/favicon.png" type="image/png" sizes="256x256" />
-    <link rel="shortcut icon" href="/favicon.png" type="image/png" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
-    <link rel="mask-icon" href="/favicon.svg" color="#111827" />
+    <!-- Temporary favicon placeholder - will be replaced by dynamic favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23111827'/><text x='16' y='20' font-family='monospace' font-size='14' font-weight='bold' text-anchor='middle' fill='white'>{<%- logoText %>}</text></svg>"
+      type="image/svg+xml"
+    />
 
     <!-- DNS Prefetch and Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
@@ -114,179 +115,6 @@
     <noscript>
       <link rel="stylesheet" href="/src/index.css" />
     </noscript>
-
-    <!-- Prevent Flash of Unstyled Content (FOUC) and Layout Shift -->
-    <style>
-      /* Minimal inline styles to prevent layout shift */
-      #root {
-        min-height: 100vh;
-        font-family:
-          'Inter',
-          -apple-system,
-          BlinkMacSystemFont,
-          'Segoe UI',
-          Roboto,
-          'Helvetica Neue',
-          Arial,
-          sans-serif;
-      }
-
-      /* Font loading optimization - prevent FOIT */
-      @font-face {
-        font-family: 'Inter-fallback';
-        size-adjust: 106.5%;
-        src: local('Arial');
-      }
-
-      /* Critical styles for LCP element - Hero section paragraph */
-      .hero-lcp-text {
-        font-size: 1.125rem;
-        line-height: 1.75rem;
-        color: #4b5563;
-        margin-bottom: 2rem;
-        line-height: 1.625;
-        max-width: 42rem;
-        font-weight: 400;
-        letter-spacing: -0.025em;
-        /* Use fallback font initially to prevent FOIT */
-        font-family:
-          'Inter-fallback',
-          -apple-system,
-          BlinkMacSystemFont,
-          'Segoe UI',
-          Roboto,
-          'Helvetica Neue',
-          Arial,
-          sans-serif;
-        /* Performance optimizations */
-        contain: layout style;
-        will-change: auto;
-        font-display: auto;
-      }
-
-      /* Critical hero section styles */
-      .hero-section {
-        padding-top: 6rem;
-        padding-bottom: 4rem;
-        background-color: white;
-        contain: layout style;
-      }
-
-      .hero-container {
-        max-width: 72rem;
-        margin: 0 auto;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-        position: relative;
-      }
-
-      .hero-content {
-        max-width: 48rem;
-        contain: layout;
-      }
-
-      .hero-heading {
-        font-size: 2.25rem;
-        font-weight: 700;
-        color: #111827;
-        margin-bottom: 1.5rem;
-        line-height: 1.1;
-        font-family:
-          'Inter-fallback',
-          -apple-system,
-          BlinkMacSystemFont,
-          'Segoe UI',
-          Roboto,
-          'Helvetica Neue',
-          Arial,
-          sans-serif;
-        contain: layout style;
-        font-display: auto;
-      }
-
-      /* Reserve space for sections to prevent layout shift */
-      section[id] {
-        min-height: 200px;
-      }
-
-      section[id='contact'] {
-        min-height: 600px;
-      }
-
-      footer[role='contentinfo'] {
-        min-height: 200px;
-      }
-
-      .loading-screen {
-        position: fixed;
-        inset: 0;
-        background: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-      }
-
-      /* Font loading optimization - prevent invisible text */
-      .font-inter {
-        font-display: swap;
-        font-family:
-          'Inter',
-          'Inter-fallback',
-          -apple-system,
-          BlinkMacSystemFont,
-          'Segoe UI',
-          Roboto,
-          'Helvetica Neue',
-          Arial,
-          sans-serif;
-      }
-
-      /* Update font-family after Inter loads */
-      .fonts-loaded #root,
-      .fonts-loaded .hero-lcp-text,
-      .fonts-loaded .hero-heading {
-        font-family:
-          'Inter',
-          -apple-system,
-          BlinkMacSystemFont,
-          'Segoe UI',
-          Roboto,
-          'Helvetica Neue',
-          Arial,
-          sans-serif;
-      }
-
-      /* Responsive hero heading */
-      @media (min-width: 640px) {
-        .hero-heading {
-          font-size: 3rem;
-        }
-      }
-
-      @media (min-width: 1024px) {
-        .hero-heading {
-          font-size: 3.75rem;
-        }
-        .hero-container {
-          padding-left: 2rem;
-          padding-right: 2rem;
-        }
-      }
-
-      /* Ensure smooth transitions when fonts load */
-      * {
-        font-synthesis: none;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-
-      /* Ensure no-JS content is completely hidden when JS is enabled */
-      .js-enabled .no-js-portfolio {
-        display: none !important;
-      }
-    </style>
 
     <!-- React will inject additional meta tags here -->
     <!--app-head-->

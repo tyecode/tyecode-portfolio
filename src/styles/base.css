@@ -1,8 +1,4 @@
 /* Base styles and resets */
-* {
-  box-sizing: border-box;
-}
-
 html,
 body {
   margin: 0;
@@ -25,10 +21,6 @@ html {
 
 body {
   font-family: inherit;
-}
-
-#root {
-  min-height: 100vh;
 }
 
 /* Focus management for keyboard navigation */
