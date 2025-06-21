@@ -1,9 +1,5 @@
 import { BRAND_INFO, AVAILABILITY_STATUS } from './social';
 
-// =================================================================
-// Type Definitions
-// =================================================================
-
 export interface Stat {
   value: string;
   label: string;

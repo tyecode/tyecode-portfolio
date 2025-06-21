@@ -33,11 +33,11 @@ export interface BrandInfo {
 // =================================================================
 
 // Twitter username (without @ symbol) for meta tags and templates
-export const TWITTER_USERNAME = 'sophia_builds';
+export const TWITTER_USERNAME = 'emma_builds';
 
 export const BRAND_INFO: BrandInfo = {
   // Your name or brand name
-  name: 'Sophia Chen',
+  name: 'Emma Loxley',
   // Your professional title
   title: 'Senior Front-End Developer',
   // A brief description of yourself
@@ -51,7 +51,7 @@ export const BRAND_INFO: BrandInfo = {
 
 export const CONTACT_INFO: ContactInfo = {
   // Your email address
-  email: 'sophia.chen@gmail.com',
+  email: 'emma.loxley@gmail.com',
   // Your location
   location: 'San Francisco, CA / Remote',
 };
@@ -70,19 +70,19 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: 'LinkedIn',
     platform: 'linkedin',
-    href: 'https://linkedin.com/in/sophia-chen-dev', // Replace with your LinkedIn URL
+    href: 'https://linkedin.com/in/tyecode', // Replace with your LinkedIn URL
     ariaLabel: `Visit ${BRAND_INFO.name}'s LinkedIn profile (opens in new tab)`,
   },
   {
     name: 'GitHub',
     platform: 'github',
-    href: 'https://github.com/sophia-builds', // Replace with your GitHub URL
+    href: 'https://github.com/tyecode', // Replace with your GitHub URL
     ariaLabel: `Visit ${BRAND_INFO.name}'s GitHub profile (opens in new tab)`,
   },
   {
     name: 'Twitter',
     platform: 'twitter',
-    href: 'https://twitter.com/sophia_builds', // Replace with your Twitter/X URL
+    href: 'https://twitter.com/tyecode', // Replace with your Twitter/X URL
     ariaLabel: `Visit ${BRAND_INFO.name}'s Twitter profile (opens in new tab)`,
   },
 ];

@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="public/favicon.png" alt="Tyecode Folio logo" width="80" height="80" />
-
-# Tyecode Folio - A React Portfolio Template
+# Modern Portfolio Template - React & TypeScript
 
 <p align="center">
   <em>An SEO-optimized, high-performance portfolio template built with React 19, TypeScript, and Vite.</em>
@@ -10,7 +8,7 @@
 
 ---
 
-<img src="public/images/og.png" alt="Tyecode Folio Preview" width="700" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" />
+<img src="public/images/og.png" alt="Portfolio Template Preview" width="700" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" />
 
 <br />
 
@@ -27,7 +25,7 @@
 
 </div>
 
-> This repository contains the source code for Tyecode Folio, a professional portfolio template for front-end developers. It is built with a focus on clean design, performance, and best practices for SEO and accessibility. Contributions are welcome!
+> This repository contains a professional portfolio template for front-end developers. Built with a focus on clean design, performance, and best practices for SEO and accessibility. Contributions are welcome!
 
 ## 🚀 Key Features
 
@@ -59,10 +57,10 @@
 ## 📋 Portfolio Sections
 
 - **Hero Section**: A professional introduction and call-to-action.
-- **About Section**: A summary of my skills, experience, and professional stats.
-- **Work Section**: A showcase of my featured projects with links and descriptions.
-- **Experience Section**: A timeline of my professional career.
-- **Contact Section**: A functional contact form and contact information.
+- **About Section**: Skills, experience, and professional stats showcase.
+- **Work Section**: Featured projects with links and descriptions.
+- **Experience Section**: Professional career timeline.
+- **Contact Section**: Functional contact form and contact information.
 
 ## 🚀 About This Project's Code
 
@@ -80,8 +78,8 @@ To run this project locally:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/tyecode/tyecode-portfolio.git](https://github.com/tyecode/tyecode-portfolio.git)
-    cd tyecode-portfolio
+    git clone https://github.com/your-username/portfolio-template.git
+    cd portfolio-template
     ```
 2.  **Install dependencies:**
     ```bash
@@ -92,6 +90,15 @@ To run this project locally:
     pnpm run dev
     ```
 4.  Open your browser to `http://localhost:8000`.
+
+## 🎯 Customization
+
+To customize this template for your own use:
+
+1. **Update Personal Information**: Edit `src/constants/social.ts` to replace Emma Loxley's dummy data with your own details.
+2. **Replace Projects**: Update `src/constants/projects.ts` with your own work and projects.
+3. **Customize Styling**: Modify Tailwind classes and components to match your personal brand.
+4. **Update Images**: Replace images in the `public/` directory with your own photos and project screenshots.
 
 ## 🤝 Contributing
 

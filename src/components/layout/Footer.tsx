@@ -6,9 +6,11 @@ import {
   BRAND_INFO,
 } from '@/constants';
 import { cn } from '@/utils/cn';
+import { getPackageInfo } from '@/utils/package-info';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const packageInfo = getPackageInfo();
 
   return (
     <footer
@@ -96,7 +98,7 @@ const Footer = () => {
           <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
             <div className='text-sm text-gray-400'>
               <span>
-                © {currentYear} {BRAND_INFO.name}. All rights reserved.
+                © {currentYear} {packageInfo.author.name}. All rights reserved.
               </span>
             </div>
             <nav aria-label='Legal links'>
