@@ -64,7 +64,7 @@ const getBrandInfo = () => {
 
         // Extract multi-line description
         const descriptionMatch = constantsContent.match(
-          /description:\s*['"`]([^'"`]*(?:\n[^'"`]*)*?)['"`]/s
+          /description:\s*(['"`])([\s\S]*?)\1/
         );
 
         // Extract Twitter username
@@ -76,7 +76,7 @@ const getBrandInfo = () => {
           name: nameMatch ? nameMatch[1] : 'tyecode',
           title: titleMatch ? titleMatch[1] : 'Front-End Developer',
           description: descriptionMatch
-            ? descriptionMatch[1].replace(/\s+/g, ' ').trim()
+            ? descriptionMatch[2].replace(/\s+/g, ' ').trim()
             : 'Professional front-end developer specializing in React and TypeScript',
           twitterUsername: twitterUsernameMatch
             ? twitterUsernameMatch[1]
