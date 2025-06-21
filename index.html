@@ -17,14 +17,9 @@
     />
 
     <!-- Primary SEO Meta Tags (Fallback - React will override these) -->
-    <title>
-      tyecode - Expert Front-End Developer | React & TypeScript Specialist
-    </title>
-    <meta
-      name="description"
-      content="🚀 Professional front-end developer specializing in React, TypeScript & modern web technologies. 4+ years building responsive, user-friendly web applications. Available for hire - View portfolio & get in touch!"
-    />
-    <meta name="author" content="tyecode" />
+    <title><%- siteTitle %></title>
+    <meta name="description" content="<%- siteDescription %>" />
+    <meta name="author" content="<%- brandName %>" />
     <meta name="robots" content="index, follow" />
 
     <!-- Theme and App Configuration -->
@@ -38,14 +33,8 @@
       property="og:url"
       content="https://tyecode.github.io/tyecode-portfolio/"
     />
-    <meta
-      property="og:title"
-      content="tyecode - Expert Front-End Developer | React & TypeScript Specialist"
-    />
-    <meta
-      property="og:description"
-      content="🚀 Professional front-end developer specializing in React, TypeScript & modern web technologies. 4+ years building responsive, user-friendly web applications. Available for hire - View portfolio & get in touch!"
-    />
+    <meta property="og:title" content="<%- siteTitle %>" />
+    <meta property="og:description" content="<%- siteDescription %>" />
     <meta
       property="og:image"
       content="https://tyecode.github.io/tyecode-portfolio/images/og.jpg"
@@ -57,33 +46,21 @@
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="tyecode - Front-End Web Developer Portfolio"
-    />
-    <meta property="og:site_name" content="tyecode Portfolio" />
+    <meta property="og:image:alt" content="<%- ogImageAlt %>" />
+    <meta property="og:site_name" content="<%- siteName %>" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter (Fallback - React will override these) -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@tyecode" />
     <meta name="twitter:creator" content="@tyecode" />
-    <meta
-      name="twitter:title"
-      content="tyecode - Expert Front-End Developer | React & TypeScript Specialist"
-    />
-    <meta
-      name="twitter:description"
-      content="🚀 Professional front-end developer specializing in React, TypeScript & modern web technologies. 4+ years building responsive, user-friendly web applications. Available for hire - View portfolio & get in touch!"
-    />
+    <meta name="twitter:title" content="<%- siteTitle %>" />
+    <meta name="twitter:description" content="<%- siteDescription %>" />
     <meta
       name="twitter:image"
       content="https://tyecode.github.io/tyecode-portfolio/images/og.jpg"
     />
-    <meta
-      name="twitter:image:alt"
-      content="tyecode - Front-End Web Developer Portfolio"
-    />
+    <meta name="twitter:image:alt" content="<%- ogImageAlt %>" />
 
     <!-- Apple Touch Icon and Favicons -->
     <link rel="icon" href="/favicon.png" type="image/png" sizes="256x256" />
@@ -330,11 +307,7 @@
     </a>
 
     <!-- Main Application Root -->
-    <div
-      id="root"
-      role="application"
-      aria-label="tyecode Portfolio Application"
-    >
+    <div id="root" role="application" aria-label="<%- appLabel %>">
       <!-- Server-side and client-side rendered content will be injected here -->
       <!--app-html-->
 
@@ -1055,8 +1028,8 @@
           <header class="no-js-header">
             <div class="no-js-header-content">
               <div class="no-js-logo">
-                <div class="no-js-logo-icon">{T}</div>
-                <span class="no-js-logo-text">tyecode</span>
+                <div class="no-js-logo-icon">{<%- logoText %>}</div>
+                <span class="no-js-logo-text"><%- brandName %></span>
               </div>
               <nav class="no-js-nav">
                 <a href="#about" class="no-js-nav-link">About</a>
@@ -1075,7 +1048,7 @@
                 <div class="no-js-hero-content">
                   <div class="no-js-badge">Available for new opportunities</div>
                   <h1 class="no-js-hero-heading">
-                    Hi, I'm <span class="name">Emma</span><br />
+                    Hi, I'm <span class="name"><%- brandName %></span><br />
                     <span class="title-front">Front-End</span>
                     <span class="title-dev">Web Developer</span>
                   </h1>
@@ -1527,7 +1500,7 @@
             <div class="no-js-container">
               <div class="no-js-footer-grid">
                 <div class="no-js-footer-brand">
-                  <h2>Emma Johnson</h2>
+                  <h2><%- brandName %></h2>
                   <p>
                     Frontend developer specializing in creating beautiful,
                     responsive, and accessible web applications using React,
@@ -1583,7 +1556,9 @@
                 </div>
               </div>
               <div class="no-js-footer-bottom">
-                <p>© 2025 tyecode. All rights reserved.</p>
+                <p>
+                  © <%- currentYear %> <%- brandName %>. All rights reserved.
+                </p>
                 <p style="margin-top: 8px; font-style: italic">
                   Note: This is a simplified version optimized for browsers
                   without JavaScript. For the full interactive experience,
