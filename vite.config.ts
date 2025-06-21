@@ -11,14 +11,165 @@ import {
   sitemapConfig,
 } from './sitemap';
 
+// Import brand info for dynamic HTML generation
+import fs from 'fs';
+
+// Function to dynamically read package info from package.json
+const getPackageInfo = () => {
+  try {
+    const packageJsonPath = path.resolve(__dirname, 'package.json');
+    const packageJsonContent = fs.readFileSync(packageJsonPath, 'utf-8');
+    const packageJson = JSON.parse(packageJsonContent);
+
+    return {
+      name: packageJson.name || '',
+      description: packageJson.description || '',
+      author: packageJson.author || {},
+      homepage: packageJson.homepage || '',
+      repository: packageJson.repository || {},
+    };
+  } catch (error) {
+    console.warn('Could not read package.json, using defaults:', error);
+    return {
+      name: '',
+      description: '',
+      author: {},
+      homepage: '',
+      repository: {},
+    };
+  }
+};
+
+// Function to dynamically read brand info from constants
+const getBrandInfo = () => {
+  try {
+    // For build-time access, we'll use a more reliable approach
+    // that can handle the actual TypeScript constants
+
+    // First, try to import the constants if we're in a Node.js context
+    if (typeof require !== 'undefined') {
+      try {
+        // This approach works for CommonJS contexts
+        const constantsPath = path.resolve(
+          __dirname,
+          'src/constants/social.ts'
+        );
+        const constantsContent = fs.readFileSync(constantsPath, 'utf-8');
+
+        // Extract values using more robust regex patterns
+        const nameMatch = constantsContent.match(/name:\s*['"`]([^'"`]+)['"`]/);
+        const titleMatch = constantsContent.match(
+          /title:\s*['"`]([^'"`]+)['"`]/
+        );
+
+        // Extract multi-line description
+        const descriptionMatch = constantsContent.match(
+          /description:\s*(['"`])([\s\S]*?)\1/
+        );
+
+        // Extract Twitter username
+        const twitterUsernameMatch = constantsContent.match(
+          /TWITTER_USERNAME\s*=\s*['"`]([^'"`]+)['"`]/
+        );
+
+        return {
+          name: nameMatch ? nameMatch[1] : 'tyecode',
+          title: titleMatch ? titleMatch[1] : 'Front-End Developer',
+          description: descriptionMatch
+            ? descriptionMatch[2].replace(/\s+/g, ' ').trim()
+            : 'Professional front-end developer specializing in React and TypeScript',
+          twitterUsername: twitterUsernameMatch
+            ? twitterUsernameMatch[1]
+            : 'tyecode',
+        };
+      } catch (importError) {
+        console.warn('Could not parse constants file:', importError);
+        // Fallback to defaults
+        return {
+          name: 'tyecode',
+          title: 'Front-End Developer',
+          description:
+            'Professional front-end developer specializing in React and TypeScript',
+          twitterUsername: 'tyecode',
+        };
+      }
+    }
+
+    // Fallback for other contexts
+    return {
+      name: 'tyecode',
+      title: 'Front-End Developer',
+      description:
+        'Professional front-end developer specializing in React and TypeScript',
+      twitterUsername: 'tyecode',
+    };
+  } catch (error) {
+    console.warn('Could not read brand info, using defaults:', error);
+    return {
+      name: 'tyecode',
+      title: 'Front-End Developer',
+      description:
+        'Professional front-end developer specializing in React and TypeScript',
+      twitterUsername: 'tyecode',
+    };
+  }
+};
+
 // https://vite.dev/config/
 export default defineConfig(
   ({ command: _command, mode: _mode, isSsrBuild }) => {
     const isSSR = isSsrBuild || process.argv.includes('--ssr');
+    const packageInfo = getPackageInfo();
+    const brandInfo = getBrandInfo();
+
+    // Dynamic base path from package name
+    const getBasePath = () => {
+      if (process.env.VITE_STATIC_BUILD === 'true') {
+        // Use package name for GitHub Pages deployment
+        return `/${packageInfo.name}/`;
+      }
+      return '/';
+    };
+
+    // Dynamic HTML data
+    const htmlData = {
+      brandName: brandInfo.name,
+      brandTitle: brandInfo.title,
+      brandDescription: brandInfo.description,
+      siteTitle: `${brandInfo.name} - Expert ${brandInfo.title} | React & TypeScript Specialist`,
+      siteDescription: `🚀 Professional front-end developer specializing in React, TypeScript & modern web technologies. 4+ years building responsive, user-friendly web applications. Available for hire - View portfolio & get in touch!`,
+      ogImageAlt: `${brandInfo.name} - Front-End Web Developer Portfolio`,
+      siteName: `${brandInfo.name} Portfolio`,
+      appLabel: `${brandInfo.name} Portfolio Application`,
+      logoText: brandInfo.name.charAt(0).toUpperCase(),
+      currentYear: new Date().getFullYear(),
+      siteUrl:
+        process.env.VITE_STATIC_BUILD === 'true'
+          ? packageInfo.homepage
+          : 'http://localhost:8000/',
+      ogImageUrl:
+        process.env.VITE_STATIC_BUILD === 'true'
+          ? `${packageInfo.homepage}images/og.jpg`
+          : 'http://localhost:8000/images/og.jpg',
+      twitterUsername: brandInfo.twitterUsername,
+    };
 
     return {
-      base:
-        process.env.VITE_STATIC_BUILD === 'true' ? '/tyecode-portfolio/' : '/',
+      base: getBasePath(),
+      preview: {
+        port: 8080,
+        // Fix MIME type issues for assets when using base path
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      },
+      server: {
+        port: 8000,
+        // Ensure correct MIME types are served
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      },
       plugins: [
         react(),
         tailwindcss(),
@@ -48,11 +199,7 @@ export default defineConfig(
         createHtmlPlugin({
           minify: true,
           inject: {
-            data: {
-              title: 'tyecode Portfolio',
-              description:
-                'Modern front-end web developer portfolio built with React, TypeScript, and Tailwind CSS.',
-            },
+            data: htmlData,
           },
         }),
       ],

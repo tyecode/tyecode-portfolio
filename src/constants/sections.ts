@@ -1,13 +1,4 @@
-// Hero Section Data
-export const HERO_CONTENT = {
-  availabilityStatus: 'Available for new opportunities',
-  name: 'Emma Johnson',
-  title: 'Frontend Developer',
-  description:
-    'I create beautiful, responsive, and user-friendly web applications using modern frontend technologies. Currently building innovative digital experiences at TechFlow Solutions, previously at PixelCraft Studios.',
-  currentCompany: 'TechFlow Solutions',
-  previousCompany: 'PixelCraft Studios',
-};
+import { BRAND_INFO, AVAILABILITY_STATUS } from './social';
 
 export interface Stat {
   value: string;
@@ -15,49 +6,6 @@ export interface Stat {
   ariaLabel: string;
 }
 
-export const ABOUT_SKILLS: string[] = [
-  'React/Next.js',
-  'TypeScript',
-  'JavaScript (ES6+)',
-  'HTML5/CSS3',
-  'Tailwind CSS',
-  'Sass/SCSS',
-  'Node.js',
-  'Responsive Design',
-  'Webpack/Vite',
-  'Git/GitHub',
-];
-
-export const ABOUT_STATS: Stat[] = [
-  {
-    value: '65+',
-    label: 'UI Components Built',
-    ariaLabel: '65 plus',
-  },
-  {
-    value: '4+',
-    label: 'Years Experience',
-    ariaLabel: '4 plus',
-  },
-  {
-    value: '35+',
-    label: 'Websites Launched',
-    ariaLabel: '35 plus',
-  },
-  {
-    value: '99%',
-    label: 'Mobile Responsive',
-    ariaLabel: '99 percent',
-  },
-];
-
-export const ABOUT_CONTENT = [
-  "I'm a passionate frontend developer with over 4 years of experience crafting responsive, accessible web applications. I specialize in React, TypeScript, and modern CSS frameworks, with a keen eye for pixel-perfect user interfaces.",
-  'My expertise lies in transforming complex designs into interactive, performance-optimized web experiences. I thrive on collaborating with cross-functional teams to deliver products that not only look great but also provide exceptional user experiences.',
-  "When I'm not coding, you'll find me exploring the latest frontend frameworks, contributing to open-source projects, or sharing my knowledge through technical writing and mentoring aspiring developers.",
-];
-
-// Work Section Data
 export interface Project {
   title: string;
   description: string;
@@ -68,50 +16,6 @@ export interface Project {
   link: string;
 }
 
-export const PROJECTS: Project[] = [
-  {
-    title: 'SaaS Dashboard Platform',
-    description:
-      'Modern SaaS dashboard with real-time analytics, interactive charts, and responsive design. Features advanced data visualization, user management, and dark/light mode support.',
-    category: 'Web Application',
-    // image: '/images/saas-dashboard.jpg', // Uncomment when you have actual images
-    gradient: 'bg-gradient-to-br from-blue-100 to-blue-200',
-    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Chart.js'],
-    link: 'https://github.com/taylormorgan/saas-dashboard',
-  },
-  {
-    title: 'E-commerce Marketplace',
-    description:
-      'Full-featured e-commerce platform with product catalog, shopping cart, payment integration, and admin panel. Built with performance and accessibility in mind.',
-    category: 'E-commerce',
-    // image: '/images/ecommerce-platform.jpg', // Uncomment when you have actual images
-    gradient: 'bg-gradient-to-br from-green-100 to-green-200',
-    tags: ['Next.js', 'TypeScript', 'Stripe API', 'Tailwind CSS'],
-    link: 'https://taylor-ecommerce-demo.vercel.app',
-  },
-  {
-    title: 'Design System Library',
-    description:
-      'Comprehensive design system and component library with documentation. Features tokens, reusable components, and automated testing for consistent UI/UX.',
-    category: 'Design System',
-    // image: '/images/design-system.jpg', // Uncomment when you have actual images
-    gradient: 'bg-gradient-to-br from-purple-100 to-purple-200',
-    tags: ['React', 'Storybook', 'TypeScript', 'CSS-in-JS'],
-    link: 'https://taylor-design-system.netlify.app',
-  },
-  {
-    title: 'Portfolio Website Collection',
-    description:
-      'Collection of responsive portfolio websites with smooth animations, optimized performance, and SEO-friendly architecture. Showcases various design styles and interactions.',
-    category: 'Portfolio Sites',
-    // image: '/images/portfolio-collection.jpg', // Uncomment when you have actual images
-    gradient: 'bg-gradient-to-br from-red-100 to-red-200',
-    tags: ['React', 'Framer Motion', 'Next.js', 'GSAP'],
-    link: 'https://taylor-portfolios.vercel.app',
-  },
-];
-
-// Experience Section Data
 export interface Experience {
   company: string;
   role: string;
@@ -121,44 +25,166 @@ export interface Experience {
   current: boolean;
 }
 
+// =================================================================
+// Hero Section Configuration (EDIT THIS SECTION)
+// =================================================================
+
+export const HERO_CONTENT = {
+  // Your name is pulled from BRAND_INFO.name
+  name: BRAND_INFO.name,
+  // Your title is pulled from BRAND_INFO.title
+  title: BRAND_INFO.title,
+  // A short, engaging summary of your work.
+  description: `I specialize in building responsive web applications with React and TypeScript. Passionate about creating clean, accessible user interfaces.`,
+  // Your current or most recent company
+  currentCompany: 'TechFlow Solutions',
+  // A previous company you've worked for
+  previousCompany: 'Innovate Labs',
+  // The availability status text (pulled from AVAILABILITY_STATUS)
+  availabilityStatus: AVAILABILITY_STATUS.text,
+};
+
+// =================================================================
+// About Section Configuration (EDIT THIS SECTION)
+// =================================================================
+
+// A list of your key skills.
+export const ABOUT_SKILLS: string[] = [
+  'React & Next.js',
+  'TypeScript',
+  'JavaScript (ES6+)',
+  'HTML5 & CSS3',
+  'Tailwind CSS',
+  'Node.js',
+  'Git & GitHub',
+  'Responsive Design',
+  'REST APIs',
+  'Testing',
+];
+
+// Quick statistics about your professional journey.
+export const ABOUT_STATS: Stat[] = [
+  {
+    value: '3+',
+    label: 'Years Experience',
+    ariaLabel: 'Over three years of experience',
+  },
+  {
+    value: '20+',
+    label: 'Projects',
+    ariaLabel: 'Over twenty projects completed',
+  },
+  {
+    value: '95%',
+    label: 'Client Satisfaction',
+    ariaLabel: 'Ninety-five percent client satisfaction',
+  },
+  {
+    value: '100%',
+    label: 'Mobile Responsive',
+    ariaLabel: 'One hundred percent mobile responsive designs',
+  },
+];
+
+// The paragraphs for your "About Me" section.
+export const ABOUT_CONTENT = [
+  'I am a front-end developer with 3+ years of experience building web applications. I enjoy working with React, TypeScript, and modern CSS to create user-friendly interfaces.',
+  'I have experience working with both startups and established companies, helping them build responsive websites and web applications that meet their business needs.',
+  "When I'm not coding, I enjoy learning about new technologies and contributing to open-source projects.",
+];
+
+// =================================================================
+// Projects Configuration (EDIT THIS SECTION)
+// =================================================================
+
+// Your featured projects. Add, remove, or edit as needed.
+export const PROJECTS: Project[] = [
+  {
+    title: 'E-commerce Store',
+    description:
+      'A modern e-commerce platform built with React and TypeScript. Features include product catalog, shopping cart, and checkout process.',
+    category: 'E-commerce',
+    image: '/images/ecommerce-project.jpg',
+    gradient: 'bg-gradient-to-br from-blue-100 to-blue-200',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Stripe'],
+    link: 'https://github.com/sophia-builds/ecommerce-store',
+  },
+  {
+    title: 'Task Management App',
+    description:
+      'A simple task management application with drag-and-drop functionality, built using React and local storage for data persistence.',
+    category: 'Web Application',
+    image: '/images/task-app.jpg',
+    gradient: 'bg-gradient-to-br from-green-100 to-green-200',
+    tags: ['React', 'JavaScript', 'CSS3', 'Local Storage'],
+    link: 'https://github.com/sophia-builds/task-manager',
+  },
+  {
+    title: 'Portfolio Website',
+    description:
+      'A responsive portfolio website built with modern web technologies, featuring smooth animations and optimized performance.',
+    category: 'Portfolio',
+    image: '/images/portfolio-site.jpg',
+    gradient: 'bg-gradient-to-br from-purple-100 to-purple-200',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    link: 'https://github.com/sophia-builds/portfolio',
+  },
+  {
+    title: 'Weather Dashboard',
+    description:
+      'A clean weather dashboard that displays current weather and 5-day forecast. Built with React and integrates with weather API for real-time data.',
+    category: 'Web Application',
+    image: '/images/weather-app.jpg',
+    gradient: 'bg-gradient-to-br from-orange-100 to-orange-200',
+    tags: ['React', 'JavaScript', 'Weather API', 'CSS3'],
+    link: 'https://github.com/sophia-builds/weather-dashboard',
+  },
+];
+
+// =================================================================
+// Experience Configuration (EDIT THIS SECTION)
+// =================================================================
+
+// Your professional experience. Add, remove, or edit as needed.
 export const EXPERIENCES: Experience[] = [
   {
     company: 'TechFlow Solutions',
-    role: 'Senior Frontend Developer',
-    period: '2023 - Present',
+    role: 'Front-End Developer',
+    period: '2022 - Present',
     description:
-      'Leading frontend development for enterprise-level applications, architecting scalable component systems, and mentoring a team of 4 junior developers on modern React patterns.',
+      'Building user interfaces for web applications using React and TypeScript. Working with design teams to implement responsive designs.',
     achievements: [
-      'Architected micro-frontend system that reduced deployment time by 70%',
-      'Led migration from legacy codebase to modern React/TypeScript stack',
-      'Mentored 4 junior developers, with 3 receiving promotions within 8 months',
+      'Developed and maintained multiple React applications',
+      'Improved website performance and user experience',
+      'Collaborated with designers and backend developers',
     ],
     current: true,
   },
   {
-    company: 'PixelCraft Studios',
-    role: 'Frontend Developer',
-    period: '2022 - 2023',
-    description:
-      'Developed responsive web applications for diverse clients, collaborated with design teams to implement pixel-perfect UIs, and optimized application performance.',
-    achievements: [
-      'Built React component library used across 12+ client projects',
-      'Improved Core Web Vitals scores by 45% through performance optimization',
-      'Delivered 8 major client projects on time and within budget',
-    ],
-    current: false,
-  },
-  {
-    company: 'Digital Craft Co.',
-    role: 'Junior Frontend Developer',
+    company: 'Innovate Labs',
+    role: 'Junior Front-End Developer',
     period: '2021 - 2022',
     description:
-      'First professional role focusing on modern JavaScript frameworks, responsive design implementation, and collaborative development practices in an agile environment.',
+      'Started my career building websites and learning modern web development technologies. Gained experience with React and responsive design.',
     achievements: [
-      'Developed mobile-first responsive interfaces for 15+ client websites',
-      'Implemented accessibility standards achieving WCAG 2.1 AA compliance',
-      'Created automated testing suite that reduced bug reports by 60%',
+      'Built responsive websites for various clients',
+      'Learned React and modern JavaScript',
+      'Worked in an agile development environment',
     ],
     current: false,
   },
 ];
+
+// =================================================================
+// Contact Section Configuration (EDIT THIS SECTION)
+// =================================================================
+
+export const CONTACT_CONTENT = {
+  heading: "Let's Work Together",
+  subheading:
+    "I'm available for freelance projects and full-time opportunities. Feel free to reach out if you'd like to discuss a project or just say hello.",
+  availability: {
+    heading: 'Availability',
+    text: AVAILABILITY_STATUS.text,
+  },
+};

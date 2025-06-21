@@ -18,18 +18,18 @@ const MetaTags = ({
   canonical,
   image,
   schemaMarkup,
-  keywords = 'front-end developer, React developer, TypeScript developer, JavaScript developer, Vue.js developer, responsive web design, UI developer, modern web development, available for hire, tyecode',
-  author = 'tyecode',
-  themeColor = '#111827',
-  twitterHandle = '@tyecode',
+  keywords,
+  author,
+  themeColor = '#111827', // Theme color can remain as a design-specific default
+  twitterHandle,
 }: MetaTagsProps) => (
   <Helmet>
     {/* Primary Meta Tags */}
     <title>{title}</title>
     <meta name='title' content={title} />
     <meta name='description' content={description} />
-    <meta name='keywords' content={keywords} />
-    <meta name='author' content={author} />
+    {keywords && <meta name='keywords' content={keywords} />}
+    {author && <meta name='author' content={author} />}
     <meta name='robots' content='index, follow' />
     <meta name='language' content='English' />
     <meta name='revisit-after' content='7 days' />
@@ -53,9 +53,9 @@ const MetaTags = ({
     <meta property='og:image:height' content='630' />
     <meta
       property='og:image:alt'
-      content='tyecode - Front-End Web Developer Portfolio'
+      content={`${author || 'Portfolio'} - Front-End Web Developer`}
     />
-    <meta property='og:site_name' content='tyecode Portfolio' />
+    <meta property='og:site_name' content={`${author} Portfolio`} />
     <meta property='og:locale' content='en_US' />
 
     {/* Twitter */}
@@ -66,10 +66,10 @@ const MetaTags = ({
     <meta property='twitter:image' content={image} />
     <meta
       property='twitter:image:alt'
-      content='tyecode - Front-End Web Developer Portfolio'
+      content={`${author || 'Portfolio'} - Front-End Web Developer`}
     />
-    <meta name='twitter:site' content={twitterHandle} />
-    <meta name='twitter:creator' content={twitterHandle} />
+    {twitterHandle && <meta name='twitter:site' content={twitterHandle} />}
+    {twitterHandle && <meta name='twitter:creator' content={twitterHandle} />}
 
     {/* Structured Data (Schema Markup) */}
     {schemaMarkup && (

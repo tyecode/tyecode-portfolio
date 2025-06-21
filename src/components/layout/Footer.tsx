@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import {
   NAVIGATION_LINKS,
   SOCIAL_LINKS,
@@ -7,17 +6,11 @@ import {
   BRAND_INFO,
 } from '@/constants';
 import { cn } from '@/utils/cn';
+import { getPackageInfo } from '@/utils/package-info';
 
 const Footer = () => {
-  const [currentYear, setCurrentYear] = useState<number | null>(null);
-  const [isHydrated, setIsHydrated] = useState(false);
-
-  useEffect(() => {
-    // Mark as hydrated to prevent hydration mismatch
-    setIsHydrated(true);
-    // Only set the year on the client side to prevent hydration mismatch
-    setCurrentYear(new Date().getFullYear());
-  }, []);
+  const currentYear = new Date().getFullYear();
+  const packageInfo = getPackageInfo();
 
   return (
     <footer
@@ -25,7 +18,7 @@ const Footer = () => {
       role='contentinfo'
       aria-label='Site footer'
     >
-      <div className='max-w-6xl mx-auto px-6 lg:px-8'>
+      <div className='container'>
         <div className='grid md:grid-cols-4 gap-8'>
           {/* Brand */}
           <div className='md:col-span-2'>
@@ -105,27 +98,31 @@ const Footer = () => {
           <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
             <div className='text-sm text-gray-400'>
               <span>
-                {isHydrated && currentYear
-                  ? `© ${currentYear} tyecode. All rights reserved.`
-                  : '© tyecode. All rights reserved.'}
+                © {currentYear} {packageInfo.author.name}. All rights reserved.
               </span>
             </div>
-            <div className='flex items-center gap-6 text-sm text-gray-400'>
-              <a
-                href='#contact'
-                className='hover:text-white transition-colors duration-200 focus:outline-none rounded-md flex-center'
-                aria-label='Contact for privacy policy information'
-              >
-                {'Privacy Policy'}
-              </a>
-              <a
-                href='#contact'
-                className='hover:text-white transition-colors duration-200 focus:outline-none rounded-md flex-center'
-                aria-label='Contact for terms of service information'
-              >
-                {'Terms of Service'}
-              </a>
-            </div>
+            <nav aria-label='Legal links'>
+              <ul className='flex items-center gap-6 text-sm text-gray-400'>
+                <li>
+                  <a
+                    href='#contact'
+                    className='hover:text-white transition-colors duration-200 focus:outline-none rounded-md flex-center'
+                    aria-label='Contact for privacy policy information'
+                  >
+                    {'Privacy Policy'}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href='#contact'
+                    className='hover:text-white transition-colors duration-200 focus:outline-none rounded-md flex-center'
+                    aria-label='Contact for terms of service information'
+                  >
+                    {'Terms of Service'}
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>

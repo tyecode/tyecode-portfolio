@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
 import Button from '@/components/ui/Button';
-import Logo from '@/components/ui/Logo';
+import Brand from '@/components/ui/Brand';
+
 import { cn } from '@/utils/cn';
-import { NAVIGATION_LINKS } from '@/constants';
+import { BRAND_INFO, NAVIGATION_LINKS } from '@/constants';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -25,7 +26,6 @@ export default function Header() {
 
   return (
     <>
-      {/* Skip Navigation Link */}
       <a
         href='#main-content'
         className='sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-gray-900 text-white px-4 py-2 rounded-lg z-[100]'
@@ -37,28 +37,31 @@ export default function Header() {
         className='fixed top-0 w-full bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50'
         role='banner'
       >
-        <div className='max-w-6xl mx-auto px-6 lg:px-8'>
+        <div className='container'>
           <div className='flex justify-between items-center h-16'>
             {/* Logo/Brand */}
             <div className='flex-shrink-0'>
-              <Logo />
+              <Brand brandName={BRAND_INFO.name} />
             </div>
 
             {/* Desktop Navigation */}
             <nav
-              className='hidden md:flex items-center space-x-8'
+              className='hidden md:flex items-center'
               role='navigation'
               aria-label='Main navigation'
             >
-              {NAVIGATION_LINKS.map(link => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className='flex-center text-gray-700 hover:text-gray-900 text-sm font-medium transition-colors duration-200 rounded-md px-2 py-1'
-                >
-                  {link.label}
-                </a>
-              ))}
+              <ul className='flex items-center space-x-8'>
+                {NAVIGATION_LINKS.map(link => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className='flex-center text-gray-700 hover:text-gray-900 text-sm font-medium transition-colors duration-200 rounded-md px-2 py-1'
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </nav>
 
             {/* CTA Button */}
@@ -115,22 +118,25 @@ export default function Header() {
             aria-hidden={!isMobileMenuOpen}
           >
             <nav
-              className='py-4 space-y-1 border-t border-gray-100'
+              className='py-4 border-t border-gray-100'
               role='navigation'
               aria-label='Mobile navigation'
             >
-              {NAVIGATION_LINKS.map(link => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className='block px-3 py-2 text-gray-700 hover:text-gray-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 rounded-md'
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  tabIndex={isMobileMenuOpen ? 0 : -1}
-                >
-                  {link.label}
-                </a>
-              ))}
-              <div className='p-3'>
+              <ul className='space-y-1'>
+                {NAVIGATION_LINKS.map(link => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className='block px-3 py-2 text-gray-700 hover:text-gray-900 text-sm font-medium focus:outline-none rounded-md'
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      tabIndex={isMobileMenuOpen ? 0 : -1}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <div className='p-3 mt-2'>
                 <Button
                   variant='primary'
                   size='md'

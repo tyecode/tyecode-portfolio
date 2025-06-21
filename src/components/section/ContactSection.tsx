@@ -1,6 +1,6 @@
 import ContactForm, { ContactFormData } from '@/components/ui/ContactForm';
 import { submitContactForm } from '@/utils/contact';
-import { CONTACT_INFO } from '@/constants';
+import { CONTACT_INFO, CONTACT_CONTENT } from '@/constants';
 
 const ContactSection = () => {
   const handleFormSubmit = async (data: ContactFormData) => {
@@ -13,18 +13,16 @@ const ContactSection = () => {
       className='py-20 bg-gray-50 section-contact prevent-layout-shift'
       aria-labelledby='contact-heading'
     >
-      <div className='max-w-4xl mx-auto px-6 lg:px-8'>
+      <div className='container'>
         <div className='text-center mb-16'>
           <h2
             id='contact-heading'
             className='text-3xl font-bold text-gray-900 mb-4'
           >
-            {"Let's Create Amazing User Experiences"}
+            {CONTACT_CONTENT.heading}
           </h2>
           <p className='text-lg text-gray-600 max-w-2xl mx-auto'>
-            {
-              "I'm always excited to work on new front-end projects and collaborate with design teams. Let's discuss how I can help bring your user interface designs to life."
-            }
+            {CONTACT_CONTENT.subheading}
           </p>
         </div>
 
@@ -108,12 +106,10 @@ const ContactSection = () => {
 
             <div className='bg-white p-6 rounded-lg'>
               <h4 className='font-semibold text-gray-900 mb-3'>
-                {'Availability'}
+                {CONTACT_CONTENT.availability.heading}
               </h4>
               <p className='text-sm text-gray-600 leading-relaxed'>
-                {
-                  'Currently available for front-end development projects and UI implementation opportunities. I typically respond to inquiries within 24 hours.'
-                }
+                {CONTACT_CONTENT.availability.text}
               </p>
             </div>
           </div>
