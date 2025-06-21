@@ -35,10 +35,8 @@ export const getPackageInfo = (): PackageInfo => {
  * Get the dynamic base path for the application
  */
 export const getBasePath = (): string => {
-  if (
-    typeof process !== 'undefined' &&
-    process.env?.VITE_STATIC_BUILD === 'true'
-  ) {
+  // Use import.meta.env which is consistent between server and client in Vite
+  if (import.meta.env.VITE_STATIC_BUILD === 'true') {
     return `/${getPackageInfo().name}`;
   }
   return '';
@@ -51,7 +49,7 @@ export const getBaseUrl = (): string => {
   const packageInfo = getPackageInfo();
 
   // Extract GitHub username from repository URL or use default
-  let githubUsername = 'tyecode';
+  let githubUsername = '';
   if (packageInfo.repository.url) {
     const match = packageInfo.repository.url.match(/github\.com\/([^/]+)/);
     if (match) {

@@ -1,13 +1,11 @@
 import { Suspense, lazy, useEffect } from 'react';
 
 import MainLayout from '@/components/layout/MainLayout';
-import LoadingScreen from '@/components/ui/LoadingScreen';
 import SectionSkeleton from '@/components/ui/SectionSkeleton';
 import MetaTags from '@/components/seo/MetaTags';
 import HeroSection from '@/components/section/HeroSection';
 
 import { useDynamicFavicon } from '@/hooks/useDynamicFavicon';
-import { usePreloader } from '@/hooks/usePreloader';
 import { useSEO } from '@/hooks/useSEO';
 import { BRAND_INFO } from '@/constants';
 
@@ -22,7 +20,6 @@ const ExperienceSection = lazy(
 const WorkSection = lazy(() => import('@/components/section/WorkSection'));
 
 function App() {
-  const { isLoading } = usePreloader({ minLoadingTime: 500 });
   const seoData = useSEO();
   // Initialize dynamic favicon based on brand name
   const { updateWithBrandName } = useDynamicFavicon();
@@ -31,16 +28,6 @@ function App() {
   useEffect(() => {
     updateWithBrandName(BRAND_INFO.name);
   }, [updateWithBrandName]);
-
-  // Show loading screen initially
-  if (isLoading) {
-    return (
-      <>
-        <MetaTags {...seoData} />
-        <LoadingScreen />
-      </>
-    );
-  }
 
   return (
     <>

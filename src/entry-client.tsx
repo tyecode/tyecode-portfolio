@@ -1,93 +1,37 @@
 import { StrictMode } from 'react';
-import { hydrateRoot, createRoot } from 'react-dom/client';
+import { hydrateRoot, createRoot, Root } from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
 
 import App from './App';
 import './index.css';
-import { getPackageInfo } from './utils/package-info';
 
-// Import debugging utilities for development
-import {
-  enableHydrationDebug,
-  compareSSRContent,
-  checkHydrationIssues,
-} from './utils/hydration-debug';
+// Store root instance to prevent multiple creations
+let rootInstance: Root | null = null;
 
-// Enable debugging in development
-if (process.env.NODE_ENV === 'development') {
-  enableHydrationDebug();
-}
-
-// Optimized function to wait for critical stylesheets only
-const waitForCriticalStylesheets = (): Promise<void> => {
-  return new Promise(resolve => {
-    // Only wait for critical.css - other styles can load async
-    const criticalSheet = document.querySelector('link[href*="critical.css"]');
-
-    if (!criticalSheet || (criticalSheet as HTMLLinkElement).sheet) {
-      resolve();
-      return;
-    }
-
-    const handleLoad = () => {
-      resolve();
-    };
-
-    criticalSheet.addEventListener('load', handleLoad, { once: true });
-    criticalSheet.addEventListener('error', handleLoad, { once: true });
-
-    // Fallback timeout - render anyway after 100ms
-    setTimeout(resolve, 100);
-  });
-};
-
-// More reliable hydration detection
-const hasServerRenderedContent = (): boolean => {
+// Check if we should hydrate or render fresh
+const shouldHydrate = (): boolean => {
   const root = document.getElementById('root');
   if (!root) return false;
 
-  // Check if root has meaningful content (not just whitespace)
-  const hasContent = root.innerHTML.trim() !== '';
+  // Simple check: if root has content and it's not just placeholder comments
+  const hasContent =
+    root.innerHTML.trim().length > 0 &&
+    !root.innerHTML.includes('<!--app-html-->');
 
-  // Check if we're in static build mode using dynamic package info
-  const packageInfo = getPackageInfo();
-  const isStaticBuild =
-    import.meta.env.VITE_STATIC_BUILD === 'true' ||
-    (typeof window !== 'undefined' &&
-      window.location.pathname.includes(`/${packageInfo.name}/`));
-
-  // For static builds, never hydrate - always use createRoot
-  // For SSR builds, only hydrate if we have server content
-  if (isStaticBuild) {
-    return false; // Never hydrate in static mode
-  }
-
-  return hasContent; // Only hydrate if we have SSR content
+  return hasContent;
 };
 
-// Optimized app initialization for faster LCP
+// App initialization
 const initializeApp = async () => {
-  // Ensure DOM is ready
+  // Wait for DOM
   if (document.readyState === 'loading') {
     await new Promise(resolve => {
       document.addEventListener('DOMContentLoaded', resolve, { once: true });
     });
   }
 
-  // Only wait for critical CSS, not all stylesheets
-  await waitForCriticalStylesheets();
-
-  // Add loaded class to prevent FOUC
   const root = document.getElementById('root');
-  if (root) {
-    root.classList.add('loaded');
-  }
-
-  // Debug hydration in development
-  if (process.env.NODE_ENV === 'development') {
-    compareSSRContent();
-    setTimeout(() => checkHydrationIssues(), 500);
-  }
+  if (!root) return;
 
   const AppComponent = (
     <StrictMode>
@@ -97,30 +41,44 @@ const initializeApp = async () => {
     </StrictMode>
   );
 
-  const shouldHydrate = hasServerRenderedContent();
-
   try {
-    if (shouldHydrate) {
-      // Hydrate for SSR - no additional delays
-      hydrateRoot(root as HTMLElement, AppComponent, {
-        onRecoverableError: error => {
-          console.warn('Hydration error (recoverable):', error);
+    if (shouldHydrate()) {
+      // Try hydration first
+      rootInstance = hydrateRoot(root, AppComponent, {
+        onRecoverableError: (error: unknown) => {
+          // In development, Vite's HTML formatting can cause harmless whitespace mismatches
+          if (import.meta.env.DEV) {
+            // Only log if it's not a whitespace/formatting mismatch
+            if (
+              error instanceof Error &&
+              !error.message?.includes("server rendered HTML didn't match") &&
+              !error.message?.includes('Hydration failed')
+            ) {
+              console.warn('Hydration mismatch (recoverable):', error);
+            }
+          } else {
+            // In production, log all hydration errors
+            console.warn('Hydration mismatch (recoverable):', error);
+          }
         },
       });
     } else {
-      // Render for static build - no additional delays
-      createRoot(root as HTMLElement).render(AppComponent);
+      // Fresh client-side render
+      rootInstance = createRoot(root);
+      rootInstance.render(AppComponent);
     }
   } catch (error) {
-    console.error('Hydration error occurred:', error);
-    // Fallback to client-side rendering if hydration fails
-    if (root) {
-      console.warn('Falling back to client-side rendering');
+    console.error('Critical error during app initialization:', error);
+
+    // Last resort: clear and start fresh
+    if (!rootInstance && root) {
+      console.warn('Falling back to clean client-side rendering');
       root.innerHTML = '';
-      createRoot(root).render(AppComponent);
+      rootInstance = createRoot(root);
+      rootInstance.render(AppComponent);
     }
   }
 };
 
-// Initialize immediately for optimal LCP
+// Start the app
 initializeApp().catch(console.error);

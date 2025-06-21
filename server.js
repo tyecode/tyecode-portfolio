@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import express from 'express';
 import { config } from 'dotenv';
+import dedent from 'dedent';
 
 // Load environment variables from .env file
 config();
@@ -127,28 +128,37 @@ app.post(`${base}api/contact`, async (req, res) => {
           email,
           message,
         });
-        console.log('✅ Email functionality disabled in development');
+        console.log('⚠️ Email functionality disabled in development');
+
+        // Simulate email sending in development
+        await new Promise(resolve => setTimeout(resolve, 500));
       } else {
         // Use built files in production
         const { sendContactEmail } = await import('./dist/server/email.js');
         await sendContactEmail({ name, email, message });
         console.log('✅ Email sent successfully');
       }
+
+      // Return success only when email is sent (or simulated in dev)
+      res.json({
+        success: true,
+        message: 'Message sent successfully!',
+      });
     } catch (emailError) {
       console.error('Email sending failed:', emailError);
-      // Still log the contact for manual follow-up
+      // Log the contact for manual follow-up
       console.log('Contact form submission (email failed):', {
         name,
         email,
         message,
       });
-    }
 
-    // Always return success to user (even if email fails)
-    res.json({
-      success: true,
-      message: 'Message sent successfully!',
-    });
+      // Return error to user when email fails
+      res.status(500).json({
+        success: false,
+        error: 'Failed to send message. Please try again later.',
+      });
+    }
   } catch (error) {
     console.error('Contact form error:', error);
     res.status(500).json({
@@ -175,10 +185,12 @@ app.get(`${base}robots.txt`, async (req, res) => {
   } catch (error) {
     console.error('Error serving robots.txt:', error);
     // Fallback robots.txt
-    const fallbackRobots = `User-agent: *
-Allow: /
+    const fallbackRobots = dedent`
+      User-agent: *
+      Allow: /
 
-Sitemap: ${req.protocol}://${req.get('host')}${base}sitemap.xml`;
+      Sitemap: ${req.protocol}://${req.get('host')}${base}sitemap.xml
+    `;
     res.set('Content-Type', 'text/plain');
     res.send(fallbackRobots);
   }

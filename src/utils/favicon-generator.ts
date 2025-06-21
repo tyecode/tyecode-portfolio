@@ -212,8 +212,6 @@ export const updateFavicon = async (character?: string): Promise<void> => {
       maskIconLink.setAttribute('color', '#111827');
       document.head.appendChild(maskIconLink);
     }
-
-    console.warn('✅ SEO-optimized favicon system updated successfully');
   } catch (error) {
     console.error('❌ Failed to update favicon:', error);
   }
