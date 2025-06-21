@@ -13,16 +13,14 @@ const ContactSection = () => {
       className='py-20 bg-gray-50 section-contact prevent-layout-shift'
       aria-labelledby='contact-heading'
     >
-      <div className='max-w-4xl mx-auto px-6 lg:px-8'>
+      <div className='container'>
         <div className='text-center mb-16'>
-          {/* Change: Replaced hardcoded text with dynamic constant */}
           <h2
             id='contact-heading'
             className='text-3xl font-bold text-gray-900 mb-4'
           >
             {CONTACT_CONTENT.heading}
           </h2>
-          {/* Change: Replaced hardcoded text with dynamic constant */}
           <p className='text-lg text-gray-600 max-w-2xl mx-auto'>
             {CONTACT_CONTENT.subheading}
           </p>

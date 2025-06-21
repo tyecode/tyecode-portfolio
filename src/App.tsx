@@ -1,38 +1,28 @@
 import { Suspense, lazy, useEffect } from 'react';
 
 import MainLayout from '@/components/layout/MainLayout';
+import LoadingScreen from '@/components/ui/LoadingScreen';
 import SectionSkeleton from '@/components/ui/SectionSkeleton';
 import MetaTags from '@/components/seo/MetaTags';
-import { useSEO } from '@/hooks/useSEO';
-import { useDynamicFavicon } from '@/hooks/useDynamicFavicon';
-import { BRAND_INFO } from '@/constants';
-
-// Import HeroSection directly instead of lazy loading for immediate LCP
 import HeroSection from '@/components/section/HeroSection';
 
+import { useDynamicFavicon } from '@/hooks/useDynamicFavicon';
+import { usePreloader } from '@/hooks/usePreloader';
+import { useSEO } from '@/hooks/useSEO';
+import { BRAND_INFO } from '@/constants';
+
 // Lazy load only below-the-fold components for better performance
-const AboutSection = lazy(
-  () =>
-    import('@/components/section/AboutSection' /* webpackChunkName: "about" */)
-);
-const WorkSection = lazy(
-  () =>
-    import('@/components/section/WorkSection' /* webpackChunkName: "work" */)
+const AboutSection = lazy(() => import('@/components/section/AboutSection'));
+const ContactSection = lazy(
+  () => import('@/components/section/ContactSection')
 );
 const ExperienceSection = lazy(
-  () =>
-    import(
-      '@/components/section/ExperienceSection' /* webpackChunkName: "experience" */
-    )
+  () => import('@/components/section/ExperienceSection')
 );
-const ContactSection = lazy(
-  () =>
-    import(
-      '@/components/section/ContactSection' /* webpackChunkName: "contact" */
-    )
-);
+const WorkSection = lazy(() => import('@/components/section/WorkSection'));
 
 function App() {
+  const { isLoading } = usePreloader({ minLoadingTime: 500 });
   const seoData = useSEO();
   // Initialize dynamic favicon based on brand name
   const { updateWithBrandName } = useDynamicFavicon();
@@ -41,6 +31,16 @@ function App() {
   useEffect(() => {
     updateWithBrandName(BRAND_INFO.name);
   }, [updateWithBrandName]);
+
+  // Show loading screen initially
+  if (isLoading) {
+    return (
+      <>
+        <MetaTags {...seoData} />
+        <LoadingScreen />
+      </>
+    );
+  }
 
   return (
     <>

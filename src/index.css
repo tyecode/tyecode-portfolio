@@ -11,3 +11,7 @@
     @apply flex items-center justify-center;
   }
 }
+
+@utility container {
+  @apply max-w-6xl mx-auto px-6 lg:px-8;
+}

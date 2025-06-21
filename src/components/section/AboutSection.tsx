@@ -7,7 +7,7 @@ const AboutSection = () => {
       className='py-20 bg-gray-50 section-about prevent-layout-shift'
       aria-labelledby='about-heading'
     >
-      <div className='max-w-6xl mx-auto px-6 lg:px-8'>
+      <div className='container'>
         <div className='grid lg:grid-cols-2 gap-16 items-start'>
           <div>
             <h2

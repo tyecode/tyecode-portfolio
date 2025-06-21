@@ -37,7 +37,7 @@ export default function Header() {
         className='fixed top-0 w-full bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50'
         role='banner'
       >
-        <div className='max-w-6xl mx-auto px-6 lg:px-8'>
+        <div className='container'>
           <div className='flex justify-between items-center h-16'>
             {/* Logo/Brand */}
             <div className='flex-shrink-0'>

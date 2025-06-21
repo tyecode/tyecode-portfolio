@@ -1,4 +1,9 @@
-import { BRAND_INFO, CONTACT_INFO, TWITTER_USERNAME } from '@/constants';
+import {
+  BRAND_INFO,
+  CONTACT_INFO,
+  TWITTER_USERNAME,
+  getSocialUrl,
+} from '@/constants';
 import {
   getBasePath,
   getBaseUrl,
@@ -33,16 +38,16 @@ export const siteConfig = {
   baseUrl: getBaseUrl(),
   email: CONTACT_INFO.email,
   author: BRAND_INFO.name,
-  description: `Seeking an expert React Developer? I'm ${BRAND_INFO.name}, a Front-End Specialist with 4+ years of experience. ${BRAND_INFO.description}. View my portfolio and let's connect.`,
+  description: BRAND_INFO.seoDescription,
   keywords:
     'react developer, front-end developer, typescript developer, web developer portfolio, hire front-end developer',
   themeColor: '#111827',
   locale: 'en_US',
   language: 'English',
   social: {
-    github: 'https://github.com/tyecode',
-    linkedin: 'https://linkedin.com/in/tyecode',
-    twitter: 'https://twitter.com/tyecode',
+    github: getSocialUrl('github'),
+    linkedin: getSocialUrl('linkedin'),
+    twitter: getSocialUrl('twitter'),
     twitterHandle: `@${TWITTER_USERNAME}`,
     twitterUsername: TWITTER_USERNAME,
   },

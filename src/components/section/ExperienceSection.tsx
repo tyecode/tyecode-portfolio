@@ -10,7 +10,7 @@ const ExperienceSection = () => {
       className='py-20 bg-gray-50 section-experience prevent-layout-shift'
       aria-labelledby='experience-heading'
     >
-      <div className='max-w-6xl mx-auto px-6 lg:px-8'>
+      <div className='container'>
         <div className='text-center mb-16'>
           <h2
             id='experience-heading'

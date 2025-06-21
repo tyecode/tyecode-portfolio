@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 
 import Button from '@/components/ui/Button';
 import { cn } from '@/utils/cn';
-import { getBasePath } from '@/utils/package-info';
+import { getBasePath, generateImageUrl } from '@/utils/package-info';
 import { HERO_CONTENT, SOCIAL_LINKS } from '@/constants';
 
 const HeroSection: React.FC = () => {
   const [imageError, setImageError] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
-  const profileImagePath = `${getBasePath()}/images/portrait.png`;
+  const profileImagePath = generateImageUrl('images/portrait.png');
 
   useEffect(() => {
     // Hide static hero content once React has hydrated
@@ -32,7 +32,7 @@ const HeroSection: React.FC = () => {
       className='hero-section pt-24 pb-16 bg-white'
       aria-labelledby='hero-heading'
     >
-      <div className='hero-container max-w-6xl mx-auto px-6 lg:px-8 relative'>
+      <div className='container relative'>
         <div className='hero-content max-w-3xl'>
           <div className='mb-6'>
             <span
@@ -56,9 +56,8 @@ const HeroSection: React.FC = () => {
           </h1>
 
           <p className='hero-lcp-text text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl'>
-            I create beautiful, responsive, and user-friendly web applications
-            using modern front-end technologies. Currently crafting exceptional
-            user experiences at{' '}
+            {HERO_CONTENT.description} Currently crafting exceptional user
+            experiences at{' '}
             <span className='text-gray-900 font-medium'>
               {HERO_CONTENT.currentCompany}
             </span>
