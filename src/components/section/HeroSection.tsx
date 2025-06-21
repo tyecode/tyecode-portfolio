@@ -137,7 +137,7 @@ const HeroSection: React.FC = () => {
             {profileImagePath && imageLoaded && !imageError ? (
               <img
                 src={profileImagePath}
-                alt='tyecode - Front-End Web Developer'
+                alt={`Portrait of ${HERO_CONTENT.name}, a professional Front-End Web Developer specializing in React.`}
                 className='w-full h-full object-cover'
                 loading='eager'
                 onError={handleImageError}

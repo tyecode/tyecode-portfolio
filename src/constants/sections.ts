@@ -1,13 +1,44 @@
-// Hero Section Data
+import { BRAND_INFO } from './social';
+
+// =================================================================
+// Hero Section Data (EDIT THIS SECTION)
+// =================================================================
+// Content for the hero section.
+
 export const HERO_CONTENT = {
+  // Your name is pulled from BRAND_INFO.name
+  name: BRAND_INFO.name,
+  // Your title is pulled from BRAND_INFO.title
+  title: BRAND_INFO.title,
+  // A short, engaging summary of your work.
+  description: `As a dedicated Front-End Developer, I specialize in building high-performance, accessible, and user-friendly web applications with a focus on the React ecosystem.`,
+  // Your current or most recent company
+  currentCompany: 'Freelance',
+  // A previous company you've worked for
+  previousCompany: 'Past Company',
+  // The availability status text
   availabilityStatus: 'Available for new opportunities',
-  name: 'Emma Johnson',
-  title: 'Frontend Developer',
-  description:
-    'I create beautiful, responsive, and user-friendly web applications using modern frontend technologies. Currently building innovative digital experiences at TechFlow Solutions, previously at PixelCraft Studios.',
-  currentCompany: 'TechFlow Solutions',
-  previousCompany: 'PixelCraft Studios',
 };
+
+// =================================================================
+// About Section Data (EDIT THIS SECTION)
+// =================================================================
+
+// A list of your key skills.
+export const ABOUT_SKILLS: string[] = [
+  'React & Next.js',
+  'TypeScript',
+  'JavaScript (ES6+)',
+  'State Management (Redux/Zustand)',
+  'Tailwind CSS & Styled-Components',
+  'Node.js & Express',
+  'Jest & React Testing Library',
+  'CI/CD & Vercel',
+  'Webpack & Vite',
+  'Web Performance Optimization',
+  'Accessibility (WCAG)',
+  'Git & GitHub',
+];
 
 export interface Stat {
   value: string;
@@ -15,49 +46,41 @@ export interface Stat {
   ariaLabel: string;
 }
 
-export const ABOUT_SKILLS: string[] = [
-  'React/Next.js',
-  'TypeScript',
-  'JavaScript (ES6+)',
-  'HTML5/CSS3',
-  'Tailwind CSS',
-  'Sass/SCSS',
-  'Node.js',
-  'Responsive Design',
-  'Webpack/Vite',
-  'Git/GitHub',
-];
-
+// Quick statistics about your professional journey.
 export const ABOUT_STATS: Stat[] = [
   {
-    value: '65+',
-    label: 'UI Components Built',
-    ariaLabel: '65 plus',
-  },
-  {
     value: '4+',
-    label: 'Years Experience',
-    ariaLabel: '4 plus',
+    label: 'Years of Experience',
+    ariaLabel: 'Over four years of professional experience',
   },
   {
-    value: '35+',
-    label: 'Websites Launched',
-    ariaLabel: '35 plus',
+    value: '30+',
+    label: 'Projects Completed',
+    ariaLabel: 'Over thirty projects completed',
   },
   {
     value: '99%',
-    label: 'Mobile Responsive',
-    ariaLabel: '99 percent',
+    label: 'Client Satisfaction',
+    ariaLabel: 'Ninety-nine percent client satisfaction',
+  },
+  {
+    value: '100%',
+    label: 'WCAG 2.1 AA Compliance',
+    ariaLabel: 'One hundred percent WCAG 2.1 AA Compliance',
   },
 ];
 
+// The paragraphs for your "About Me" section.
 export const ABOUT_CONTENT = [
-  "I'm a passionate frontend developer with over 4 years of experience crafting responsive, accessible web applications. I specialize in React, TypeScript, and modern CSS frameworks, with a keen eye for pixel-perfect user interfaces.",
-  'My expertise lies in transforming complex designs into interactive, performance-optimized web experiences. I thrive on collaborating with cross-functional teams to deliver products that not only look great but also provide exceptional user experiences.',
-  "When I'm not coding, you'll find me exploring the latest frontend frameworks, contributing to open-source projects, or sharing my knowledge through technical writing and mentoring aspiring developers.",
+  'I am a results-oriented Front-End Developer with a passion for creating pixel-perfect, high-performance web experiences. My expertise lies in the React ecosystem, where I leverage TypeScript and modern tooling to build scalable and maintainable applications.',
+  'I have a proven track record of collaborating effectively with designers, product managers, and backend engineers to transform ideas into reality. I am committed to writing clean, well-documented code and adhering to best practices in accessibility and performance.',
+  'Beyond coding, I am an active member of the developer community. I enjoy contributing to open-source projects, sharing my knowledge, and continuously learning to stay at the forefront of web technology.',
 ];
 
-// Work Section Data
+// =================================================================
+// Work Section Data (EDIT THIS SECTION)
+// =================================================================
+
 export interface Project {
   title: string;
   description: string;
@@ -68,50 +91,44 @@ export interface Project {
   link: string;
 }
 
+// Your featured projects. Add, remove, or edit as needed.
 export const PROJECTS: Project[] = [
   {
-    title: 'SaaS Dashboard Platform',
+    title: 'Tyecode Folio',
     description:
-      'Modern SaaS dashboard with real-time analytics, interactive charts, and responsive design. Features advanced data visualization, user management, and dark/light mode support.',
-    category: 'Web Application',
-    // image: '/images/saas-dashboard.jpg', // Uncomment when you have actual images
-    gradient: 'bg-gradient-to-br from-blue-100 to-blue-200',
-    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Chart.js'],
-    link: 'https://github.com/taylormorgan/saas-dashboard',
-  },
-  {
-    title: 'E-commerce Marketplace',
-    description:
-      'Full-featured e-commerce platform with product catalog, shopping cart, payment integration, and admin panel. Built with performance and accessibility in mind.',
-    category: 'E-commerce',
-    // image: '/images/ecommerce-platform.jpg', // Uncomment when you have actual images
-    gradient: 'bg-gradient-to-br from-green-100 to-green-200',
-    tags: ['Next.js', 'TypeScript', 'Stripe API', 'Tailwind CSS'],
-    link: 'https://taylor-ecommerce-demo.vercel.app',
-  },
-  {
-    title: 'Design System Library',
-    description:
-      'Comprehensive design system and component library with documentation. Features tokens, reusable components, and automated testing for consistent UI/UX.',
-    category: 'Design System',
-    // image: '/images/design-system.jpg', // Uncomment when you have actual images
+      'This very portfolio project. A high-performance, SEO-optimized, and accessible portfolio template built with React, Vite, and server-side rendering.',
+    category: 'Portfolio Template',
+    image: '/images/tyecode-folio.jpg',
     gradient: 'bg-gradient-to-br from-purple-100 to-purple-200',
-    tags: ['React', 'Storybook', 'TypeScript', 'CSS-in-JS'],
-    link: 'https://taylor-design-system.netlify.app',
+    tags: ['React', 'TypeScript', 'Vite', 'SSR', 'SEO'],
+    link: 'https://github.com/tyecode/tyecode-folio',
   },
   {
-    title: 'Portfolio Website Collection',
+    title: 'Inertia Design System',
     description:
-      'Collection of responsive portfolio websites with smooth animations, optimized performance, and SEO-friendly architecture. Showcases various design styles and interactions.',
-    category: 'Portfolio Sites',
-    // image: '/images/portfolio-collection.jpg', // Uncomment when you have actual images
-    gradient: 'bg-gradient-to-br from-red-100 to-red-200',
-    tags: ['React', 'Framer Motion', 'Next.js', 'GSAP'],
-    link: 'https://taylor-portfolios.vercel.app',
+      'A professional design system and component library for React applications. It ensures UI consistency and accelerates development across multiple projects.',
+    category: 'Design System',
+    image: '/images/design-system.jpg',
+    gradient: 'bg-gradient-to-br from-green-100 to-green-200',
+    tags: ['React', 'Storybook', 'TypeScript', 'CSS-in-JS'],
+    link: 'https://github.com/tyecode/inertia-design-system',
+  },
+  {
+    title: 'E-Shop Pro',
+    description:
+      'A server-rendered E-commerce application built with Next.js for optimal performance and SEO. Integrates with Stripe for payments.',
+    category: 'E-commerce',
+    image: '/images/ecommerce-platform.jpg',
+    gradient: 'bg-gradient-to-br from-blue-100 to-blue-200',
+    tags: ['Next.js', 'TypeScript', 'Stripe API', 'Vercel'],
+    link: 'https://github.com/tyecode/e-shop-pro',
   },
 ];
 
-// Experience Section Data
+// =================================================================
+// Experience Section Data (EDIT THIS SECTION)
+// =================================================================
+
 export interface Experience {
   company: string;
   role: string;
@@ -121,44 +138,45 @@ export interface Experience {
   current: boolean;
 }
 
+// Your professional experience. Add, remove, or edit as needed.
 export const EXPERIENCES: Experience[] = [
   {
-    company: 'TechFlow Solutions',
-    role: 'Senior Frontend Developer',
-    period: '2023 - Present',
+    company: 'Innovate Solutions Inc.',
+    role: 'Lead Front-End Developer',
+    period: '2021 - Present',
     description:
-      'Leading frontend development for enterprise-level applications, architecting scalable component systems, and mentoring a team of 4 junior developers on modern React patterns.',
+      'Leading the development of cutting-edge web applications, focusing on creating scalable UI architecture and mentoring a team of talented developers.',
     achievements: [
-      'Architected micro-frontend system that reduced deployment time by 70%',
-      'Led migration from legacy codebase to modern React/TypeScript stack',
-      'Mentored 4 junior developers, with 3 receiving promotions within 8 months',
+      'Spearheaded the development of a new design system, reducing development time for new features by 30%.',
+      'Improved application performance and Core Web Vitals across all major products.',
+      'Championed accessibility initiatives, achieving WCAG 2.1 AA compliance.',
     ],
     current: true,
   },
   {
-    company: 'PixelCraft Studios',
-    role: 'Frontend Developer',
-    period: '2022 - 2023',
+    company: 'Creative Tech Co.',
+    role: 'Mid-Level Front-End Developer',
+    period: '2019 - 2021',
     description:
-      'Developed responsive web applications for diverse clients, collaborated with design teams to implement pixel-perfect UIs, and optimized application performance.',
+      'Developed and maintained responsive and interactive user interfaces for a variety of client projects, utilizing React and Vue.js.',
     achievements: [
-      'Built React component library used across 12+ client projects',
-      'Improved Core Web Vitals scores by 45% through performance optimization',
-      'Delivered 8 major client projects on time and within budget',
-    ],
-    current: false,
-  },
-  {
-    company: 'Digital Craft Co.',
-    role: 'Junior Frontend Developer',
-    period: '2021 - 2022',
-    description:
-      'First professional role focusing on modern JavaScript frameworks, responsive design implementation, and collaborative development practices in an agile environment.',
-    achievements: [
-      'Developed mobile-first responsive interfaces for 15+ client websites',
-      'Implemented accessibility standards achieving WCAG 2.1 AA compliance',
-      'Created automated testing suite that reduced bug reports by 60%',
+      'Delivered high-quality code for over 15 client projects, receiving positive feedback for attention to detail.',
+      'Contributed to a component library that was adopted company-wide.',
     ],
     current: false,
   },
 ];
+
+// =================================================================
+// Contact Section Data (EDIT THIS SECTION)
+// =================================================================
+
+export const CONTACT_CONTENT = {
+  heading: "Let's Build Something Great Together",
+  subheading:
+    "I'm currently available for freelance projects and full-time opportunities. If you have a project in mind, or just want to connect, feel free to reach out.",
+  availability: {
+    heading: 'Availability',
+    text: 'I am actively seeking new roles and am available to start immediately. I typically respond to all inquiries within 24 hours.',
+  },
+};

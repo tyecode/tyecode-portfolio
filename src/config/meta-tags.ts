@@ -1,3 +1,5 @@
+import { BRAND_INFO, CONTACT_INFO } from '@/constants';
+
 export interface MetaTag {
   name?: string;
   property?: string;
@@ -17,35 +19,24 @@ export interface LinkTag {
 
 // Dynamic base path utility
 export const getBasePath = (): string => {
-  // Check for static build environment variable
-  if (import.meta.env.VITE_STATIC_BUILD === 'true') {
-    return '/tyecode-portfolio';
-  }
-
-  // Check if running on GitHub Pages (client-side detection)
-  // Use a more robust check to prevent hydration issues
   if (
-    typeof window !== 'undefined' &&
-    typeof window.location !== 'undefined' &&
-    window.location.pathname.includes('/tyecode-portfolio/')
+    typeof process !== 'undefined' &&
+    process.env?.VITE_STATIC_BUILD === 'true'
   ) {
     return '/tyecode-portfolio';
   }
-
-  // Default to root path for local development
   return '';
 };
 
-// Site configuration - centralized place for all site metadata
+// Site configuration - now fully dynamic from constants
 export const siteConfig = {
-  title: 'tyecode - Expert Front-End Developer | React & TypeScript Specialist',
+  title: `${BRAND_INFO.name} - ${BRAND_INFO.title} | React & TypeScript Specialist`,
   baseUrl: 'https://tyecode.github.io/tyecode-portfolio/',
-  email: 'sengphachanh.dev@gmail.com',
-  author: 'tyecode',
-  description:
-    '🚀 Professional front-end developer specializing in React, TypeScript & modern web technologies. 4+ years building responsive, user-friendly web applications. Available for hire - View portfolio & get in touch!',
+  email: CONTACT_INFO.email,
+  author: BRAND_INFO.name,
+  description: `Seeking an expert React Developer? I'm ${BRAND_INFO.name}, a Front-End Specialist with 4+ years of experience. ${BRAND_INFO.description}. View my portfolio and let's connect.`,
   keywords:
-    'front-end developer, React developer, TypeScript developer, JavaScript developer, Vue.js developer, responsive web design, UI developer, modern web development, available for hire, tyecode',
+    'react developer, front-end developer, typescript developer, web developer portfolio, hire front-end developer',
   themeColor: '#111827',
   locale: 'en_US',
   language: 'English',
@@ -57,8 +48,7 @@ export const siteConfig = {
   },
   images: {
     og: '/images/og.jpg',
-    favicon: '/favicon.png',
-    faviconSvg: '/favicon.svg',
+    // Static favicons removed - using dynamic generation only
   },
 };
 
@@ -75,165 +65,59 @@ export const generateCanonicalUrl = (path: string = ''): string => {
   return `${siteConfig.baseUrl}${cleanPath}`;
 };
 
+// --- SEO tags are now built from the dynamic siteConfig ---
+
 export const seoMetaTags: MetaTag[] = [
-  {
-    name: 'description',
-    content: siteConfig.description,
-  },
-  {
-    name: 'keywords',
-    content: siteConfig.keywords,
-  },
-  {
-    name: 'author',
-    content: siteConfig.author,
-  },
-  {
-    name: 'robots',
-    content: 'index, follow',
-  },
-  {
-    name: 'language',
-    content: siteConfig.language,
-  },
-  {
-    name: 'revisit-after',
-    content: '7 days',
-  },
+  { name: 'description', content: siteConfig.description },
+  { name: 'keywords', content: siteConfig.keywords },
+  { name: 'author', content: siteConfig.author },
+  { name: 'robots', content: 'index, follow' },
+  { name: 'language', content: siteConfig.language },
+  { name: 'revisit-after', content: '7 days' },
 ];
 
 export const openGraphMetaTags: MetaTag[] = [
-  {
-    property: 'og:type',
-    content: 'website',
-  },
-  {
-    property: 'og:title',
-    content: siteConfig.title,
-  },
-  {
-    property: 'og:description',
-    content: siteConfig.description,
-  },
-  {
-    property: 'og:url',
-    content: generateCanonicalUrl(),
-  },
-  {
-    property: 'og:site_name',
-    content: 'tyecode Portfolio',
-  },
-  {
-    property: 'og:image',
-    content: generateImageUrl(siteConfig.images.og),
-  },
+  { property: 'og:type', content: 'website' },
+  { property: 'og:title', content: siteConfig.title },
+  { property: 'og:description', content: siteConfig.description },
+  { property: 'og:url', content: generateCanonicalUrl() },
+  { property: 'og:site_name', content: `${siteConfig.author} Portfolio` },
+  { property: 'og:image', content: generateImageUrl(siteConfig.images.og) },
   {
     property: 'og:image:secure_url',
     content: generateImageUrl(siteConfig.images.og),
   },
-  {
-    property: 'og:image:type',
-    content: 'image/jpeg',
-  },
-  {
-    property: 'og:image:width',
-    content: '1200',
-  },
-  {
-    property: 'og:image:height',
-    content: '630',
-  },
+  { property: 'og:image:type', content: 'image/jpeg' },
+  { property: 'og:image:width', content: '1200' },
+  { property: 'og:image:height', content: '630' },
   {
     property: 'og:image:alt',
-    content: 'tyecode - Front-End Web Developer Portfolio',
+    content: `${siteConfig.author} - ${BRAND_INFO.title}`,
   },
-  {
-    property: 'og:locale',
-    content: siteConfig.locale,
-  },
+  { property: 'og:locale', content: siteConfig.locale },
 ];
 
 export const twitterMetaTags: MetaTag[] = [
-  {
-    name: 'twitter:card',
-    content: 'summary_large_image',
-  },
-  {
-    name: 'twitter:site',
-    content: siteConfig.social.twitterHandle,
-  },
-  {
-    name: 'twitter:creator',
-    content: siteConfig.social.twitterHandle,
-  },
-  {
-    name: 'twitter:title',
-    content: siteConfig.title,
-  },
-  {
-    name: 'twitter:description',
-    content: siteConfig.description,
-  },
-  {
-    name: 'twitter:image',
-    content: generateImageUrl(siteConfig.images.og),
-  },
+  { name: 'twitter:card', content: 'summary_large_image' },
+  { name: 'twitter:site', content: siteConfig.social.twitterHandle },
+  { name: 'twitter:creator', content: siteConfig.social.twitterHandle },
+  { name: 'twitter:title', content: siteConfig.title },
+  { name: 'twitter:description', content: siteConfig.description },
+  { name: 'twitter:image', content: generateImageUrl(siteConfig.images.og) },
   {
     name: 'twitter:image:alt',
-    content: 'tyecode - Front-End Web Developer Portfolio',
+    content: `${siteConfig.author} - ${BRAND_INFO.title}`,
   },
 ];
 
 export const themeMetaTags: MetaTag[] = [
-  {
-    name: 'theme-color',
-    content: siteConfig.themeColor,
-  },
-  {
-    name: 'msapplication-TileColor',
-    content: siteConfig.themeColor,
-  },
-];
-
-export const faviconLinks: LinkTag[] = [
-  {
-    rel: 'icon',
-    href: `${getBasePath()}${siteConfig.images.favicon}`,
-    type: 'image/png',
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '32x32',
-    href: `${getBasePath()}${siteConfig.images.favicon}`,
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '16x16',
-    href: `${getBasePath()}${siteConfig.images.favicon}`,
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '180x180',
-    href: `${getBasePath()}${siteConfig.images.favicon}`,
-  },
-  {
-    rel: 'manifest',
-    href: `${getBasePath()}/site.webmanifest`,
-  },
+  { name: 'theme-color', content: siteConfig.themeColor },
+  { name: 'msapplication-TileColor', content: siteConfig.themeColor },
 ];
 
 export const externalLinks: LinkTag[] = [
-  {
-    rel: 'preconnect',
-    href: 'https://fonts.googleapis.com',
-  },
-  {
-    rel: 'preconnect',
-    href: 'https://fonts.gstatic.com',
-    crossorigin: '',
-  },
+  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+  { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
   {
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap',
@@ -253,19 +137,13 @@ export const criticalLinks: LinkTag[] = [
     as: 'style',
     onload: "this.onload=null;this.rel='stylesheet'",
   },
-  // Preload critical images for better LCP
   {
     rel: 'preload',
     href: `${getBasePath()}/images/og.jpg`,
     as: 'image',
     type: 'image/jpeg',
   },
-  // Preload critical JavaScript chunks
-  {
-    rel: 'modulepreload',
-    href: '/src/entry-client.tsx',
-  },
-  // Preload fonts for better typography loading
+  { rel: 'modulepreload', href: '/src/entry-client.tsx' },
   {
     rel: 'preload',
     href: 'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2',
@@ -278,15 +156,15 @@ export const criticalLinks: LinkTag[] = [
 // Dynamic manifest generation
 export const generateManifest = () => {
   const basePath = getBasePath();
+  const shortName = BRAND_INFO.name.split(' ')[0]; // Use first name for short_name
 
   return {
-    name: 'tyecode - Front-End Developer Portfolio',
-    short_name: 'tyecode',
-    description:
-      'Modern front-end web developer portfolio built with React, TypeScript, and Tailwind CSS. Showcasing responsive web applications, UI/UX implementations, and front-end development expertise.',
+    name: `${BRAND_INFO.name} - Front-End Developer Portfolio`,
+    short_name: shortName,
+    description: BRAND_INFO.description,
     start_url: `${basePath}/`,
     scope: `${basePath}/`,
-    id: 'tyecode-portfolio',
+    id: `${shortName.toLowerCase()}-tyecode-portfolio`,
     display: 'standalone',
     display_override: ['window-controls-overlay', 'standalone'],
     orientation: 'portrait-primary',
@@ -295,30 +173,6 @@ export const generateManifest = () => {
     lang: 'en',
     dir: 'ltr',
     icons: [
-      {
-        src: `${basePath}/favicon.svg`,
-        sizes: 'any',
-        type: 'image/svg+xml',
-        purpose: 'any maskable',
-      },
-      {
-        src: `${basePath}/favicon.png`,
-        sizes: '256x256',
-        type: 'image/png',
-        purpose: 'any',
-      },
-      {
-        src: `${basePath}/favicon.png`,
-        sizes: '192x192',
-        type: 'image/png',
-        purpose: 'any',
-      },
-      {
-        src: `${basePath}/favicon.png`,
-        sizes: '512x512',
-        type: 'image/png',
-        purpose: 'any',
-      },
       {
         src: `${basePath}/images/og.jpg`,
         sizes: '1200x630',
@@ -332,21 +186,18 @@ export const generateManifest = () => {
         short_name: 'Projects',
         description: 'Browse featured web development projects',
         url: `${basePath}/#work`,
-        icons: [{ src: `${basePath}/favicon.png`, sizes: '256x256' }],
       },
       {
         name: 'Experience',
         short_name: 'Experience',
         description: 'View professional experience and timeline',
         url: `${basePath}/#experience`,
-        icons: [{ src: `${basePath}/favicon.png`, sizes: '256x256' }],
       },
       {
         name: 'Contact',
         short_name: 'Contact',
         description: 'Get in touch for collaboration',
         url: `${basePath}/#contact`,
-        icons: [{ src: `${basePath}/favicon.png`, sizes: '256x256' }],
       },
     ],
     categories: ['portfolio', 'developer', 'web-development'],

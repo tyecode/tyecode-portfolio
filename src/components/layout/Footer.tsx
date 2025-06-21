@@ -106,26 +106,32 @@ const Footer = () => {
             <div className='text-sm text-gray-400'>
               <span>
                 {isHydrated && currentYear
-                  ? `© ${currentYear} tyecode. All rights reserved.`
-                  : '© tyecode. All rights reserved.'}
+                  ? `© ${currentYear} ${BRAND_INFO.name}. All rights reserved.`
+                  : `© ${BRAND_INFO.name}. All rights reserved.`}
               </span>
             </div>
-            <div className='flex items-center gap-6 text-sm text-gray-400'>
-              <a
-                href='#contact'
-                className='hover:text-white transition-colors duration-200 focus:outline-none rounded-md flex-center'
-                aria-label='Contact for privacy policy information'
-              >
-                {'Privacy Policy'}
-              </a>
-              <a
-                href='#contact'
-                className='hover:text-white transition-colors duration-200 focus:outline-none rounded-md flex-center'
-                aria-label='Contact for terms of service information'
-              >
-                {'Terms of Service'}
-              </a>
-            </div>
+            <nav aria-label='Legal links'>
+              <ul className='flex items-center gap-6 text-sm text-gray-400'>
+                <li>
+                  <a
+                    href='#contact'
+                    className='hover:text-white transition-colors duration-200 focus:outline-none rounded-md flex-center'
+                    aria-label='Contact for privacy policy information'
+                  >
+                    {'Privacy Policy'}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href='#contact'
+                    className='hover:text-white transition-colors duration-200 focus:outline-none rounded-md flex-center'
+                    aria-label='Contact for terms of service information'
+                  >
+                    {'Terms of Service'}
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
