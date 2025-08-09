@@ -56,6 +56,9 @@ const contactRateLimit = rateLimit({
   skip: req => !req.path.includes('/api/contact'),
 });
 
+// Serve static files from public directory first (for both dev and production)
+app.use(express.static('./public'));
+
 // Add Vite or respective production middlewares
 /** @type {import('vite').ViteDevServer | undefined} */
 let vite;
