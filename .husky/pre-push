@@ -1,8 +1,8 @@
 #!/bin/sh
 echo "🚀 Running pre-push checks..."
 
-# Ensure the project builds successfully
+# Ensure the project builds successfully for Vercel
 echo "🏗️ Building project..."
-pnpm run build:static:local
+pnpm run build
 
 echo "✅ Pre-push checks passed!" 
