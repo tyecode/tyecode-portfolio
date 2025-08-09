@@ -3,11 +3,7 @@
   "outputDirectory": "dist/client",
   "installCommand": "pnpm install",
   "framework": "vite",
-  "functions": {
-    "server.js": {
-      "maxDuration": 30
-    }
-  },
+
   "rewrites": [
     {
       "source": "/api/(.*)",
