@@ -1,10 +1,24 @@
 import ContactForm, { ContactFormData } from '@/components/ui/ContactForm';
 import { submitContactForm } from '@/utils/contact';
 import { CONTACT_INFO, CONTACT_CONTENT } from '@/constants';
+import { useAnalytics, trackContactFormSubmit } from '@/hooks/useAnalytics';
 
 const ContactSection = () => {
+  const { trackEvent } = useAnalytics();
+
   const handleFormSubmit = async (data: ContactFormData) => {
-    await submitContactForm(data);
+    try {
+      await submitContactForm(data);
+      // Track successful form submission
+      trackContactFormSubmit(trackEvent);
+    } catch (error) {
+      // Track form submission error
+      trackEvent('contact_form_error', {
+        event_category: 'error',
+        event_label: 'portfolio_contact_form',
+      });
+      throw error; // Re-throw to handle in UI
+    }
   };
 
   return (

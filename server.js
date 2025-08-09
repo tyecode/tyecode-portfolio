@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import express from 'express';
 import { config } from 'dotenv';
 import dedent from 'dedent';
+import rateLimit from 'express-rate-limit';
 
 // Load environment variables from .env file
 config();
@@ -41,6 +42,20 @@ const app = express();
 // Parse JSON and URL-encoded bodies for API routes
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Rate limiting for contact form
+const contactRateLimit = rateLimit({
+  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW) || 15 * 60 * 1000, // 15 minutes default
+  max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS) || 5, // 5 requests per window default
+  message: {
+    success: false,
+    error: 'Too many contact form submissions. Please try again later.',
+  },
+  standardHeaders: true, // Return rate limit info in headers
+  legacyHeaders: false,
+  // Only apply to contact form endpoint
+  skip: req => !req.path.includes('/api/contact'),
+});
 
 // Add Vite or respective production middlewares
 /** @type {import('vite').ViteDevServer | undefined} */
@@ -97,8 +112,8 @@ app.get(`${base}site.webmanifest`, async (req, res) => {
   }
 });
 
-// Contact form API endpoint
-app.post(`${base}api/contact`, async (req, res) => {
+// Contact form API endpoint with rate limiting
+app.post(`${base}api/contact`, contactRateLimit, async (req, res) => {
   try {
     const { name, email, message } = req.body;
 
