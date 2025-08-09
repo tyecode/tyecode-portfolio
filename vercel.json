@@ -5,7 +5,7 @@
   "framework": "vite",
   "functions": {
     "server.js": {
-      "runtime": "nodejs20.x"
+      "runtime": "20.x"
     }
   },
   "rewrites": [
