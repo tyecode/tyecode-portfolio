@@ -6,11 +6,9 @@ import {
   BRAND_INFO,
 } from '@/constants';
 import { cn } from '@/utils/cn';
-import { getPackageInfo } from '@/utils/package-info';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const packageInfo = getPackageInfo();
 
   return (
     <footer
@@ -95,34 +93,12 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className='mt-8 pt-8 border-t border-gray-700'>
-          <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
+          <div className='flex flex-col md:flex-row justify-center items-center gap-4'>
             <div className='text-sm text-gray-400'>
               <span>
-                © {currentYear} {packageInfo.author.name}. All rights reserved.
+                © {currentYear} {BRAND_INFO.name}. All rights reserved.
               </span>
             </div>
-            <nav aria-label='Legal links'>
-              <ul className='flex items-center gap-6 text-sm text-gray-400'>
-                <li>
-                  <a
-                    href='#contact'
-                    className='hover:text-white transition-colors duration-200 focus:outline-none rounded-md flex-center'
-                    aria-label='Contact for privacy policy information'
-                  >
-                    {'Privacy Policy'}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href='#contact'
-                    className='hover:text-white transition-colors duration-200 focus:outline-none rounded-md flex-center'
-                    aria-label='Contact for terms of service information'
-                  >
-                    {'Terms of Service'}
-                  </a>
-                </li>
-              </ul>
-            </nav>
           </div>
         </div>
       </div>

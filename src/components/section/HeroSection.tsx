@@ -49,7 +49,7 @@ const HeroSection: React.FC = () => {
             className='hero-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight'
           >
             Hi, I&apos;m{' '}
-            <span className='text-gray-600'>{HERO_CONTENT.name}</span>
+            <span className='text-gray-600'>{HERO_CONTENT.fullName}</span>
             <br />
             <span className='text-gray-900'>Front-End</span>{' '}
             <span className='text-gray-600'>Web Developer</span>

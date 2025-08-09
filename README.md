@@ -95,7 +95,7 @@ To run this project locally:
 
 To customize this template for your own use:
 
-1. **Update Personal Information**: Edit `src/constants/social.ts` to replace Emma Loxley's dummy data with your own details.
+1. **Update Personal Information**: Edit `src/constants/social.ts` to replace Tyecode's data with your own details.
 2. **Replace Projects**: Update `src/constants/projects.ts` with your own work and projects.
 3. **Customize Styling**: Modify Tailwind classes and components to match your personal brand.
 4. **Update Images**: Replace images in the `public/` directory with your own photos and project screenshots.

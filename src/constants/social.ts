@@ -22,6 +22,7 @@ export interface AvailabilityStatus {
 
 export interface BrandInfo {
   name: string;
+  fullName: string;
   title: string;
   description: string;
   tagline: string;
@@ -33,27 +34,28 @@ export interface BrandInfo {
 // =================================================================
 
 // Twitter username (without @ symbol) for meta tags and templates
-export const TWITTER_USERNAME = 'emma_builds';
+export const TWITTER_USERNAME = 'tyecode';
 
 export const BRAND_INFO: BrandInfo = {
   // Your name or brand name
-  name: 'Emma Loxley',
+  name: 'Tyecode',
+  fullName: 'Sengphachanh Chanthavong',
   // Your professional title
-  title: 'Senior Front-End Developer',
+  title: 'Frontend Developer & AI Enthusiast',
   // A brief description of yourself
   description:
-    'A passionate senior front-end developer with 6+ years of experience building scalable React applications, design systems, and user-centric web experiences. Specialized in TypeScript, Next.js, and modern CSS frameworks.',
+    'A passionate frontend developer with 5+ years of experience building scalable React applications, now exploring AI integration and Discord bot development. Specialized in TypeScript, Next.js, and creating intelligent web experiences that bridge traditional frontend development with modern AI capabilities.',
   // A short, catchy tagline
-  tagline: 'Building beautiful, accessible web experiences that users love.',
+  tagline: 'Building intelligent web experiences with AI-powered solutions.',
   // SEO-optimized description for meta tags (includes marketing copy)
-  seoDescription: `🚀 Senior Front-End Developer specializing in React, TypeScript & Next.js. 6+ years building scalable web applications, design systems & e-commerce platforms. Available for hire - View my portfolio & let's connect!`,
+  seoDescription: `🚀 Frontend Developer & AI Enthusiast specializing in React, TypeScript & AI integration. 5+ years building scalable web applications + Discord bots. Currently exploring AI-powered web solutions. Available for hire!`,
 };
 
 export const CONTACT_INFO: ContactInfo = {
   // Your email address
-  email: 'emma.loxley@gmail.com',
+  email: 'sengphachanh.dev@gmail.com',
   // Your location
-  location: 'San Francisco, CA / Remote',
+  location: 'Vientiane Capital, Laos',
 };
 
 export const AVAILABILITY_STATUS: AvailabilityStatus = {
@@ -70,7 +72,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: 'LinkedIn',
     platform: 'linkedin',
-    href: 'https://linkedin.com/in/tyecode', // Replace with your LinkedIn URL
+    href: 'https://www.linkedin.com/in/tyecode', // Replace with your LinkedIn URL
     ariaLabel: `Visit ${BRAND_INFO.name}'s LinkedIn profile (opens in new tab)`,
   },
   {
