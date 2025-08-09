@@ -81,7 +81,7 @@ const WorkSection = () => {
                         ) : null}
                         <div className='absolute top-4 left-4'>
                           <span
-                            className='bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-gray-900'
+                            className='bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-gray-900'
                             aria-label={`Project category: ${project.category}`}
                           >
                             {project.category}
@@ -180,7 +180,7 @@ const WorkSection = () => {
           ))}
         </ul>
 
-        <div className='text-center mt-12'>
+        <div className='text-center mt-12 hidden'>
           <Button
             as='link'
             href='#contact'
