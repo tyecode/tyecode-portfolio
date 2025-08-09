@@ -122,12 +122,8 @@ export default defineConfig(
     const packageInfo = getPackageInfo();
     const brandInfo = getBrandInfo();
 
-    // Dynamic base path from package name
+    // Base path for Vercel deployment (always root)
     const getBasePath = () => {
-      if (process.env.VITE_STATIC_BUILD === 'true') {
-        // Use package name for GitHub Pages deployment
-        return `/${packageInfo.name}/`;
-      }
       return '/';
     };
 
@@ -143,14 +139,8 @@ export default defineConfig(
       appLabel: `${brandInfo.name} Portfolio Application`,
       logoText: brandInfo.name.charAt(0).toUpperCase(),
       currentYear: new Date().getFullYear(),
-      siteUrl:
-        process.env.VITE_STATIC_BUILD === 'true'
-          ? packageInfo.homepage
-          : 'http://localhost:8000/',
-      ogImageUrl:
-        process.env.VITE_STATIC_BUILD === 'true'
-          ? `${packageInfo.homepage}images/og.jpg`
-          : 'http://localhost:8000/images/og.jpg',
+      siteUrl: packageInfo.homepage || 'http://localhost:8000/',
+      ogImageUrl: `${packageInfo.homepage || 'http://localhost:8000'}/images/og.jpg`,
       twitterUsername: brandInfo.twitterUsername,
     };
 

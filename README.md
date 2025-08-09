@@ -40,10 +40,12 @@
   - **Server-Side Rendering (SSR)** with Express for fast initial loads.
   - **Code-Splitting** with `React.lazy` and `Suspense`.
   - **Critical Asset Preloading** for optimal rendering.
+  - **Vercel Optimized** for global CDN and edge functions.
 - **Accessibility (A11y)**: Built to be WCAG 2.1 AA compliant, ensuring an inclusive experience for all users.
 - **Fully Responsive**: A mobile-first design that adapts beautifully to any screen size.
 - **PWA Ready**: Includes a web manifest for a native-like app experience.
 - **No-JS Fallback**: Provides a complete, accessible experience even if JavaScript is disabled.
+- **Production Ready**: Configured for Vercel deployment with automatic HTTPS and global CDN.
 
 ## 🛠️ Technology Stack
 
@@ -90,6 +92,35 @@ To run this project locally:
     pnpm run dev
     ```
 4.  Open your browser to `http://localhost:8000`.
+
+## 🚀 Deployment
+
+This portfolio is optimized for **Vercel deployment** with full SSR support:
+
+### Quick Deploy to Vercel
+
+1. Push your changes to GitHub
+2. Connect your repository to [Vercel](https://vercel.com)
+3. Deploy with one click - Vercel auto-detects the configuration
+4. Configure your custom domain in Vercel dashboard
+
+### Environment Variables
+
+Set these in your Vercel dashboard:
+
+- `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS` - For contact form
+- `VITE_GA_TRACKING_ID` - For Google Analytics (optional)
+
+📖 **See [docs/VERCEL_DEPLOYMENT.md](docs/VERCEL_DEPLOYMENT.md) for detailed deployment instructions.**
+
+### Documentation
+
+- 🚀 [Vercel Deployment Guide](docs/VERCEL_DEPLOYMENT.md) - Complete deployment instructions
+- 📊 [Analytics Setup](docs/ANALYTICS_SETUP.md) - Google Analytics 4 configuration
+- 🧪 [Analytics Testing](docs/ANALYTICS_TESTING.md) - How to test analytics implementation
+- 🔒 [Rate Limiting](docs/RATE_LIMITING.md) - Contact form protection setup
+- 🎨 [Dynamic Favicon](docs/DYNAMIC_FAVICON.md) - Brand-based favicon generation
+- 🤝 [Contributing Guide](docs/CONTRIBUTING.md) - Development guidelines
 
 ## 🎯 Customization
 

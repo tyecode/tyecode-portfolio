@@ -4,13 +4,13 @@
   "author": {
     "name": "tyecode",
     "email": "sengphachanh.dev@gmail.com",
-    "url": "https://tyecode.github.io/tyecode-portfolio/"
+    "url": "https://github.com/tyecode/tyecode-portfolio.git"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/tyecode/tyecode-portfolio"
   },
-  "homepage": "https://tyecode.github.io/tyecode-portfolio/",
+  "homepage": "https://tyecode.dev",
   "private": false,
   "version": "1.0.0",
   "type": "module",
@@ -21,19 +21,12 @@
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "build:email": "vite build --ssr src/services/email.ts --outDir dist/server --emptyOutDir=false",
-    "prebuild:static": "node scripts/generate-static-files.js",
-    "build:static": "cross-env VITE_STATIC_BUILD=true vite build",
-    "prebuild:static:local": "node scripts/generate-static-files.js",
-    "build:static:local": "vite build",
-    "build:lighthouse": "vite build",
+    "build:vercel": "pnpm run prebuild && vite build",
     "build:analyze": "vite build --mode analyze",
     "preview": "cross-env NODE_ENV=production PORT=8080 node server",
-    "preview:static": "npm run build:static && vite preview --port 8080 --base /$npm_package_name/",
-    "preview:static:local": "npm run build:static:local && vite preview --port 8080",
     "clean": "pnpm store prune && rm -rf node_modules/.cache && rm -rf dist",
     "lighthouse": "lighthouse http://localhost:8000 --output html --output-path ./lighthouse-dev-report.html --chrome-flags=\"--headless\"",
     "lighthouse:local": "lighthouse http://localhost:8080 --output html --output-path ./lighthouse-local-report.html --chrome-flags=\"--headless\"",
-    "lighthouse:prod": "node -e \"const pkg = require('./package.json'); const repo = pkg.repository.url.match(/github\\.com\\/([^/]+)/); const username = repo ? repo[1] : 'tyecode'; console.log('https://' + username + '.github.io/' + pkg.name + '/');\" | xargs lighthouse --output html --output-path ./lighthouse-prod-report.html --chrome-flags=\"--headless\"",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:check": "eslint . --max-warnings 0",

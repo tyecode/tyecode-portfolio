@@ -11,4 +11,4 @@ User-agent: *
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://tyecode.github.io/tyecode-portfolio/sitemap.xml
+Sitemap: https://tyecode.dev/sitemap.xml

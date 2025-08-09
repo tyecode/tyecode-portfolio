@@ -42,8 +42,8 @@ const getBaseUrl = packageInfo => {
       /github\.com\/([^/]+)\/([^/]+)/
     );
     if (match) {
-      const [, username, repoName] = match;
-      return `https://${username}.github.io/${repoName}/`;
+      // For Vercel deployment, use homepage from package.json
+      return packageInfo.homepage || 'https://tyecode.dev';
     }
   }
 
