@@ -9,7 +9,7 @@ const HeroSection: React.FC = () => {
   const [imageError, setImageError] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
-  const profileImagePath = generateImageUrl('images/portrait.png');
+  const profileImagePath = generateImageUrl('images/portrait.jpg');
 
   useEffect(() => {
     // Hide static hero content once React has hydrated
@@ -133,11 +133,13 @@ const HeroSection: React.FC = () => {
         {/* Profile Image */}
         <div className='absolute top-8 right-8 lg:right-8 hidden lg:block'>
           <div className='w-32 h-32 rounded-full border-4 border-white shadow-lg overflow-hidden'>
-            {profileImagePath && imageLoaded && !imageError ? (
+            {profileImagePath && !imageError ? (
               <img
                 src={profileImagePath}
                 alt={`Portrait of ${HERO_CONTENT.name}, a professional Front-End Web Developer specializing in React.`}
-                className='w-full h-full object-cover'
+                className={`w-full h-full object-cover transition-opacity duration-300 ${
+                  imageLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
                 loading='eager'
                 onError={handleImageError}
                 onLoad={handleImageLoad}
