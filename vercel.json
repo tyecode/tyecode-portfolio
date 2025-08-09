@@ -9,7 +9,7 @@
       "destination": "/server.js"
     },
     {
-      "source": "/((?!images|robots\\.txt|sitemap\\.xml|_redirects|site\\.webmanifest|.*\\.(ico|png|jpg|jpeg|gif|svg|css|js|woff|woff2|ttf|eot)).*)",
+      "source": "/((?!images)(?!robots.txt)(?!sitemap.xml)(?!_redirects)(?!site.webmanifest)(?!.*\\.(ico|png|jpg|jpeg|gif|svg|css|js|woff|woff2|ttf|eot)).*)",
       "destination": "/server.js"
     }
   ],
