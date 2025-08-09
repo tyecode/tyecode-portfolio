@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import Button from '@/components/ui/Button';
 import { cn } from '@/utils/cn';
-import { getBasePath, generateImageUrl } from '@/utils/package-info';
+import { generateImageUrl } from '@/utils/package-info';
 import { HERO_CONTENT, SOCIAL_LINKS } from '@/constants';
 
 const HeroSection: React.FC = () => {
@@ -94,10 +94,11 @@ const HeroSection: React.FC = () => {
               {'View My Projects'}
             </Button>
             <Button
+              as='link'
+              href={`/resume.pdf`}
+              target='_blank'
+              rel='noopener noreferrer'
               variant='secondary'
-              onClick={() =>
-                window.open(`${getBasePath()}/resume.pdf`, '_blank')
-              }
               aria-label='Download resume PDF file'
             >
               {'Download Resume'}
