@@ -1,20 +1,23 @@
-# Email Configuration Template for Contact Form
+# Portfolio Environment Configuration Template
 # Copy this content to ".env" file or use it as reference
 
 # ==============================================
-# SMTP EMAIL SETTINGS
+# CORE SETTINGS
+# ==============================================
+NODE_ENV=production
+PORT=8080
+
+# Static Build (for GitHub Pages deployment)
+VITE_STATIC_BUILD=false
+
+# ==============================================
+# SMTP EMAIL SETTINGS (for Contact Form)
 # ==============================================
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=465
 SMTP_USER=your-email@gmail.com
 SMTP_PASS=your-app-password-here
 CONTACT_EMAIL=your-contact-email@gmail.com
-
-# ==============================================
-# SERVER SETTINGS
-# ==============================================
-NODE_ENV=production
-PORT=8080
 
 # ==============================================
 # SETUP INSTRUCTIONS
@@ -63,9 +66,39 @@ PORT=8080
 # - Check server logs to see if emails are actually being sent
 
 # ==============================================
+# OPTIONAL: ANALYTICS & TRACKING
+# ==============================================
+# Google Analytics (uncomment if you want to add analytics)
+# VITE_GA_TRACKING_ID=G-XXXXXXXXXX
+
+# Google Tag Manager (alternative to GA)
+# VITE_GTM_ID=GTM-XXXXXXX
+
+# ==============================================
+# OPTIONAL: ADDITIONAL SERVICES
+# ==============================================
+# Site URL (for production builds and SEO)
+# VITE_SITE_URL=https://yourdomain.com
+
+# Form Services (alternative to SMTP email)
+# FORMSPREE_ENDPOINT=https://formspree.io/f/your-form-id
+# NETLIFY_FORMS=true
+
+# Rate Limiting (for contact form protection)
+# RATE_LIMIT_WINDOW=900000
+# RATE_LIMIT_MAX_REQUESTS=5
+
+# ==============================================
+# DEPLOYMENT VARIABLES
+# ==============================================
+# Lighthouse CI (for automated performance testing)
+# LHCI_GITHUB_APP_TOKEN=your-lighthouse-ci-token
+
+# ==============================================
 # SECURITY REMINDERS
 # ==============================================
 # ❌ Never commit .env file with real credentials to version control
 # ✅ .env is already in .gitignore
 # ✅ For production deployment, set these as environment variables
-# ✅ Use App Passwords, not regular email passwords 
+# ✅ Use App Passwords, not regular email passwords
+# ✅ Keep SMTP credentials secure and rotate them periodically 
