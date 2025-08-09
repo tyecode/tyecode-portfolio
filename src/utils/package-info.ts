@@ -64,8 +64,16 @@ export const generateUrl = (path: string = ''): string => {
  * Generate an image URL with the correct base path
  */
 export const generateImageUrl = (imagePath: string): string => {
+  // For local development and Vite static file serving, use relative paths
   const cleanImagePath = imagePath.startsWith('/')
-    ? imagePath.slice(1)
-    : imagePath;
+    ? imagePath
+    : `/${imagePath}`;
+
+  // In development or when serving static files, use relative paths
+  if (import.meta.env.DEV || typeof window !== 'undefined') {
+    return cleanImagePath;
+  }
+
+  // For SSR or production builds, use full URLs
   return `${getBaseUrl()}${cleanImagePath}`;
 };
