@@ -1,6 +1,0 @@
-# Redirect www to non-www if applicable
-https://www.tyecode.github.io/* https://tyecode.github.io/:splat 301!
-
-# Handle legacy URLs or alternative patterns
-/portfolio/* /:splat 301!
-/home / 301!

@@ -4,11 +4,8 @@
 # ==============================================
 # REQUIRED: CORE SETTINGS
 # ==============================================
-# NODE_ENV=production  # Only set this for production deployment
+# NODE_ENV=production  # Automatically set by Vercel
 PORT=8080
-
-# Static Build (for GitHub Pages deployment)
-VITE_STATIC_BUILD=false
 
 # ==============================================
 # REQUIRED: SMTP EMAIL SETTINGS (for Contact Form)
@@ -43,7 +40,7 @@ CONTACT_EMAIL=your-contact-email@gmail.com
 # SMTP_USER=john.doe@gmail.com
 # SMTP_PASS=abcdefghijklmnop
 # CONTACT_EMAIL=contact@johndoe.com
-# NODE_ENV=production  # Only for production
+# NODE_ENV=production  # Automatically set by Vercel
 # PORT=8080
 
 # ==============================================

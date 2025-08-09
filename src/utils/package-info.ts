@@ -48,16 +48,8 @@ export const getBasePath = (): string => {
 export const getBaseUrl = (): string => {
   const packageInfo = getPackageInfo();
 
-  // Extract GitHub username from repository URL or use default
-  let githubUsername = '';
-  if (packageInfo.repository.url) {
-    const match = packageInfo.repository.url.match(/github\.com\/([^/]+)/);
-    if (match) {
-      githubUsername = match[1];
-    }
-  }
-
-  return `https://${githubUsername}.github.io/${packageInfo.name}/`;
+  // For Vercel deployment, use homepage from package.json
+  return packageInfo.homepage || 'https://tyecode.dev';
 };
 
 /**

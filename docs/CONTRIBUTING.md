@@ -64,7 +64,8 @@ Feel free to check the [issues page](https://github.com/tyecode/tyecode-portfoli
    - Write clean, self-documenting code
    - Test on multiple screen sizes (mobile, tablet, desktop)
    - Verify accessibility with screen readers and keyboard navigation
-   - Check performance with Lighthouse
+   - Check performance with Lighthouse locally (`pnpm run lighthouse:local`)
+   - Test analytics implementation (`pnpm run test:analytics`)
    - Ensure TypeScript compilation passes without errors
 
 3. **Before Submitting**

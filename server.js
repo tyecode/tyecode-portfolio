@@ -27,9 +27,8 @@ const getPackageInfo = async () => {
 const isProduction = process.env.NODE_ENV === 'production';
 const port = process.env.PORT || 5173;
 const packageInfo = await getPackageInfo();
-// Use base path only for static builds, not for local SSR development
-const base =
-  process.env.VITE_STATIC_BUILD === 'true' ? `/${packageInfo.name}/` : '/';
+// Base path for Vercel deployment (always root)
+const base = '/';
 
 // Cached production assets
 const templateHtml = isProduction
