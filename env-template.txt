@@ -2,7 +2,7 @@
 # Copy this content to ".env" file or use it as reference
 
 # ==============================================
-# CORE SETTINGS
+# REQUIRED: CORE SETTINGS
 # ==============================================
 NODE_ENV=production
 PORT=8080
@@ -11,7 +11,7 @@ PORT=8080
 VITE_STATIC_BUILD=false
 
 # ==============================================
-# SMTP EMAIL SETTINGS (for Contact Form)
+# REQUIRED: SMTP EMAIL SETTINGS (for Contact Form)
 # ==============================================
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=465
@@ -66,39 +66,34 @@ CONTACT_EMAIL=your-contact-email@gmail.com
 # - Check server logs to see if emails are actually being sent
 
 # ==============================================
-# OPTIONAL: ANALYTICS & TRACKING
+# RECOMMENDED: ANALYTICS & TRACKING
 # ==============================================
-# Google Analytics (uncomment if you want to add analytics)
+# Google Analytics 4 - Track user behavior and site performance
+# Get your tracking ID from: https://analytics.google.com
 # VITE_GA_TRACKING_ID=G-XXXXXXXXXX
 
-# Google Tag Manager (alternative to GA)
-# VITE_GTM_ID=GTM-XXXXXXX
+# Google Analytics Debug Mode - Enable detailed console logging
+# VITE_GA_DEBUG=true
 
 # ==============================================
-# OPTIONAL: ADDITIONAL SERVICES
+# OPTIONAL: CONTACT FORM PROTECTION
 # ==============================================
-# Site URL (for production builds and SEO)
-# VITE_SITE_URL=https://yourdomain.com
-
-# Form Services (alternative to SMTP email)
-# FORMSPREE_ENDPOINT=https://formspree.io/f/your-form-id
-# NETLIFY_FORMS=true
-
-# Rate Limiting (for contact form protection)
-# RATE_LIMIT_WINDOW=900000
-# RATE_LIMIT_MAX_REQUESTS=5
+# Rate Limiting - Prevent spam/abuse on contact form
+# RATE_LIMIT_WINDOW=900000          # 15 minutes in milliseconds
+# RATE_LIMIT_MAX_REQUESTS=5         # Max 5 submissions per window
 
 # ==============================================
-# DEPLOYMENT VARIABLES
-# ==============================================
-# Lighthouse CI (for automated performance testing)
-# LHCI_GITHUB_APP_TOKEN=your-lighthouse-ci-token
-
-# ==============================================
-# SECURITY REMINDERS
+# 🔐 SECURITY REMINDERS
 # ==============================================
 # ❌ Never commit .env file with real credentials to version control
 # ✅ .env is already in .gitignore
 # ✅ For production deployment, set these as environment variables
 # ✅ Use App Passwords, not regular email passwords
-# ✅ Keep SMTP credentials secure and rotate them periodically 
+# ✅ Keep SMTP credentials secure and rotate them periodically
+
+# ==============================================
+# 🚀 QUICK START PRIORITY
+# ==============================================
+# 1. REQUIRED: Set up SMTP email variables (lines 16-20)
+# 2. RECOMMENDED: Add Google Analytics tracking (line 73)
+# 3. OPTIONAL: Enable contact form protection (lines 82-83) 
