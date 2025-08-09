@@ -6,18 +6,12 @@ import type { Stat, Project, Experience } from '@/types/portfolio';
 // =================================================================
 
 export const HERO_CONTENT = {
-  // Your name is pulled from BRAND_INFO.name
   name: BRAND_INFO.name,
   fullName: BRAND_INFO.fullName,
-  // Your title is pulled from BRAND_INFO.title
   title: BRAND_INFO.title,
-  // A short, engaging summary of your work.
-  description: `I build digital experiences that users love and businesses need. Frontend-focused full-stack developer creating fast, intuitive applications with modern technologies.`,
-  // Your current or most recent company
+  description: `I build digital experiences that users love and businesses need. Frontend-focused full-stack developer creating fast, intuitive applications and Discord bots with modern technologies.`,
   currentCompany: 'AppZap',
-  // A previous company you've worked for
   previousCompany: 'Lailaolab ICT Solutions',
-  // The availability status text (pulled from AVAILABILITY_STATUS)
   availabilityStatus: AVAILABILITY_STATUS.text,
 };
 
@@ -31,6 +25,7 @@ export const ABOUT_SKILLS: string[] = [
   'React & Next.js',
   'TypeScript',
   'Modern JavaScript',
+  'Discord Bot Development',
   'UI/UX Design',
   'Performance Optimization',
   'Responsive Design',
@@ -38,7 +33,6 @@ export const ABOUT_SKILLS: string[] = [
   'Full-Stack Development',
   'Problem Solving',
   'User Experience',
-  'Code Quality',
 ];
 
 // Quick statistics about your professional journey.
@@ -49,9 +43,9 @@ export const ABOUT_STATS: Stat[] = [
     ariaLabel: 'Over three years of experience',
   },
   {
-    value: '10+',
+    value: '25+',
     label: 'Client Projects',
-    ariaLabel: 'Over ten client projects delivered',
+    ariaLabel: 'Over twenty-five client projects delivered',
   },
   {
     value: '30%',
@@ -67,9 +61,9 @@ export const ABOUT_STATS: Stat[] = [
 
 // The paragraphs for your "About Me" section.
 export const ABOUT_CONTENT = [
-  'I am a frontend-focused full-stack developer with 5+ years of experience creating web applications that solve real business problems. Currently building scalable restaurant management systems at AppZap while exploring the exciting possibilities of AI integration.',
-  'My passion lies in crafting user experiences that feel effortless and intuitive. From pixel-perfect interfaces to robust backend systems, I focus on creating solutions that delight users and drive measurable business results.',
-  "When I'm not coding, you'll find me experimenting with new technologies, contributing to open-source projects, or building Discord bots. I believe the best developers are lifelong learners who aren't afraid to push boundaries.",
+  'I am a frontend-focused full-stack developer with 5+ years of experience creating web applications and Discord bots that solve real business problems. Currently building scalable restaurant management systems at AppZap while developing production-ready Discord bots for community management.',
+  'My passion lies in crafting user experiences that feel effortless and intuitive. From pixel-perfect interfaces to robust backend systems and enterprise-grade Discord bots, I focus on creating solutions that delight users and drive measurable business results.',
+  "When I'm not coding, you'll find me experimenting with new technologies, contributing to open-source projects, or building Discord bots with advanced features like role management and AI integration. I believe the best developers are lifelong learners who aren't afraid to push boundaries.",
 ];
 
 // =================================================================
@@ -79,44 +73,44 @@ export const ABOUT_CONTENT = [
 // Your featured projects. Add, remove, or edit as needed.
 export const PROJECTS: Project[] = [
   {
-    title: 'Restaurant Management System',
+    title: 'Role Reactor Bot',
     description:
-      'A comprehensive web application streamlining restaurant operations. Built for real clients at AppZap, featuring online ordering, table management, and real-time notifications that increased operational efficiency by 30%.',
+      'A production-ready Discord bot for self-assignable roles through reactions. Serving communities with enterprise-grade logging, health monitoring, MongoDB integration, and temporary role management. Features comprehensive permission controls and user-friendly slash commands.',
+    category: 'Discord Bot',
+    image: '/images/projects/role-reactor-bot.png',
+    gradient: 'bg-gradient-to-br from-indigo-100 to-indigo-200',
+    tags: ['Discord.js', 'MongoDB', 'Node.js', 'TypeScript'],
+    link: 'https://rolereactor.app',
+  },
+  {
+    title: 'Portfolio Uno',
+    description:
+      'A modern, responsive portfolio website featuring a unique Matrix-style animated background, dark theme, and smooth section transitions. Built with Next.js 14, TypeScript, and NextUI with custom Canvas animations. Optimized for SEO and performance across all devices.',
+    category: 'Portfolio Website',
+    image: '/images/projects/portfolio-uno.png',
+    gradient: 'bg-gradient-to-br from-emerald-100 to-emerald-200',
+    tags: ['Next.js 14', 'TypeScript', 'NextUI', 'Canvas'],
+    link: 'https://github.com/tyecode/portfolio-uno',
+  },
+  {
+    title: 'Nonsavang Temple Management',
+    description:
+      'A comprehensive Income & Expense management system for Nonsavang Temple built with Next.js 14, TypeScript, and Supabase. Features multi-role authentication, transaction approval workflows, financial reporting, and real-time dashboard analytics with multi-currency support.',
     category: 'Web Application',
-    image: '/images/restaurant-system.jpg',
-    gradient: 'bg-gradient-to-br from-orange-100 to-orange-200',
-    tags: ['React', 'Node.js', 'PWA', 'Real-time'],
-    link: 'https://github.com/tyecode/restaurant-management',
+    image: '/images/projects/nonsavang-temple-management.png',
+    gradient: 'bg-gradient-to-br from-amber-100 to-amber-200',
+    tags: ['Next.js 14', 'TypeScript', 'Supabase', 'PostgreSQL'],
+    link: 'https://github.com/tyecode/nonsavang-temple--web-client',
   },
   {
-    title: 'Client Portfolio Platform',
+    title: 'Jotting Blog',
     description:
-      'A modern portfolio builder helping 10+ clients showcase their work effectively. Features drag-and-drop editing, responsive design, and SEO optimization resulting in 25% better search visibility.',
-    category: 'Client Project',
-    image: '/images/portfolio-platform.jpg',
-    gradient: 'bg-gradient-to-br from-blue-100 to-blue-200',
-    tags: ['Next.js', 'TypeScript', 'CMS', 'SEO'],
-    link: 'https://github.com/tyecode/portfolio-builder',
-  },
-  {
-    title: 'AI Assistant Bot',
-    description:
-      'An intelligent Discord bot serving 500+ users with AI-powered responses and community moderation. Reduced manual moderation time by 40% while improving user engagement through smart interactions.',
-    category: 'AI Project',
-    image: '/images/ai-bot.jpg',
-    gradient: 'bg-gradient-to-br from-purple-100 to-purple-200',
-    tags: ['AI Integration', 'Automation', 'Community'],
-    link: 'https://github.com/tyecode/ai-discord-bot',
-  },
-  {
-    title: 'Performance Dashboard',
-    description:
-      'A real-time analytics dashboard built during my internship at Wecare. Improved admin workflow efficiency by 30% through intuitive data visualization and automated reporting features.',
-    category: 'Dashboard',
-    image: '/images/dashboard.jpg',
-    gradient: 'bg-gradient-to-br from-green-100 to-green-200',
-    tags: ['React', 'Analytics', 'Performance', 'UI/UX'],
-    link: 'https://github.com/tyecode/performance-dashboard',
+      'A modern, minimalist blog built with Astro featuring a beautiful dark theme and clean typography. Achieved 100/100 Lighthouse performance score with SEO optimization, RSS feeds, and responsive design. Showcases dual-font system and custom Tailwind configuration.',
+    category: 'Blog Platform',
+    image: '/images/projects/jotting-blog.png',
+    gradient: 'bg-gradient-to-br from-slate-100 to-slate-200',
+    tags: ['Astro', 'TypeScript', 'Tailwind', 'MDX'],
+    link: 'https://jotting.tyecode.dev/',
   },
 ];
 
