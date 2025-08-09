@@ -72,12 +72,22 @@ const getBrandInfo = () => {
           /TWITTER_USERNAME\s*=\s*['"`]([^'"`]+)['"`]/
         );
 
+        // Extract seoDescription as well
+        const seoDescriptionMatch = constantsContent.match(
+          /seoDescription:\s*(['"`])([\s\S]*?)\1/
+        );
+
         return {
-          name: nameMatch ? nameMatch[1] : 'tyecode',
-          title: titleMatch ? titleMatch[1] : 'Front-End Developer',
+          name: nameMatch ? nameMatch[1] : 'Tyecode',
+          title: titleMatch
+            ? titleMatch[1]
+            : 'Frontend Developer & AI Enthusiast',
           description: descriptionMatch
             ? descriptionMatch[2].replace(/\s+/g, ' ').trim()
-            : 'Professional front-end developer specializing in React and TypeScript',
+            : 'A passionate frontend developer with 5+ years of experience building scalable React applications, now exploring AI integration and Discord bot development.',
+          seoDescription: seoDescriptionMatch
+            ? seoDescriptionMatch[2].replace(/\s+/g, ' ').trim()
+            : '🚀 Frontend Developer & AI Enthusiast specializing in React, TypeScript & AI integration. 5+ years building scalable web applications + Discord bots. Currently exploring AI-powered web solutions. Available for hire!',
           twitterUsername: twitterUsernameMatch
             ? twitterUsernameMatch[1]
             : 'tyecode',
@@ -86,10 +96,12 @@ const getBrandInfo = () => {
         console.warn('Could not parse constants file:', importError);
         // Fallback to defaults
         return {
-          name: 'tyecode',
-          title: 'Front-End Developer',
+          name: 'Tyecode',
+          title: 'Frontend Developer & AI Enthusiast',
           description:
-            'Professional front-end developer specializing in React and TypeScript',
+            'A passionate frontend developer with 5+ years of experience building scalable React applications, now exploring AI integration and Discord bot development.',
+          seoDescription:
+            '🚀 Frontend Developer & AI Enthusiast specializing in React, TypeScript & AI integration. 5+ years building scalable web applications + Discord bots. Currently exploring AI-powered web solutions. Available for hire!',
           twitterUsername: 'tyecode',
         };
       }
@@ -97,19 +109,23 @@ const getBrandInfo = () => {
 
     // Fallback for other contexts
     return {
-      name: 'tyecode',
-      title: 'Front-End Developer',
+      name: 'Tyecode',
+      title: 'Frontend Developer & AI Enthusiast',
       description:
-        'Professional front-end developer specializing in React and TypeScript',
+        'A passionate frontend developer with 5+ years of experience building scalable React applications, now exploring AI integration and Discord bot development.',
+      seoDescription:
+        '🚀 Frontend Developer & AI Enthusiast specializing in React, TypeScript & AI integration. 5+ years building scalable web applications + Discord bots. Currently exploring AI-powered web solutions. Available for hire!',
       twitterUsername: 'tyecode',
     };
   } catch (error) {
     console.warn('Could not read brand info, using defaults:', error);
     return {
-      name: 'tyecode',
-      title: 'Front-End Developer',
+      name: 'Tyecode',
+      title: 'Frontend Developer & AI Enthusiast',
       description:
-        'Professional front-end developer specializing in React and TypeScript',
+        'A passionate frontend developer with 5+ years of experience building scalable React applications, now exploring AI integration and Discord bot development.',
+      seoDescription:
+        '🚀 Frontend Developer & AI Enthusiast specializing in React, TypeScript & AI integration. 5+ years building scalable web applications + Discord bots. Currently exploring AI-powered web solutions. Available for hire!',
       twitterUsername: 'tyecode',
     };
   }
@@ -132,9 +148,11 @@ export default defineConfig(
       brandName: brandInfo.name,
       brandTitle: brandInfo.title,
       brandDescription: brandInfo.description,
-      siteTitle: `${brandInfo.name} - Expert ${brandInfo.title} | React & TypeScript Specialist`,
-      siteDescription: `🚀 Professional front-end developer specializing in React, TypeScript & modern web technologies. 4+ years building responsive, user-friendly web applications. Available for hire - View portfolio & get in touch!`,
-      ogImageAlt: `${brandInfo.name} - Front-End Web Developer Portfolio`,
+      siteTitle: `${brandInfo.name} - ${brandInfo.title} | React & TypeScript Specialist`,
+      siteDescription:
+        brandInfo.seoDescription ||
+        `🚀 Frontend Developer & AI Enthusiast specializing in React, TypeScript & AI integration. 5+ years building scalable web applications + Discord bots. Currently exploring AI-powered web solutions. Available for hire!`,
+      ogImageAlt: `${brandInfo.name} - Frontend Developer & AI Enthusiast Portfolio`,
       siteName: `${brandInfo.name} Portfolio`,
       appLabel: `${brandInfo.name} Portfolio Application`,
       logoText: brandInfo.name.charAt(0).toUpperCase(),
