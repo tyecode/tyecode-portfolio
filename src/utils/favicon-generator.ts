@@ -1,11 +1,5 @@
 import { BRAND_INFO } from '@/constants';
-
-export interface FaviconOptions {
-  character?: string;
-  backgroundColor?: string;
-  foregroundColor?: string;
-  size?: number;
-}
+import type { FaviconOptions } from '@/types/utils';
 
 /**
  * Generates a dynamic favicon based on the Logo component design

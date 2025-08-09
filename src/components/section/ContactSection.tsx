@@ -1,4 +1,5 @@
-import ContactForm, { ContactFormData } from '@/components/ui/ContactForm';
+import ContactForm from '@/components/ui/ContactForm';
+import type { ContactFormData } from '@/types/contact';
 import { submitContactForm } from '@/utils/contact';
 import { CONTACT_INFO, CONTACT_CONTENT } from '@/constants';
 import { useAnalytics, trackContactFormSubmit } from '@/hooks/useAnalytics';

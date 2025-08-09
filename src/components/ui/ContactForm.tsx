@@ -1,23 +1,14 @@
 import React, { useState } from 'react';
 
 import { cn } from '@/utils/cn';
+import type {
+  ContactFormData,
+  ContactFormProps,
+  ValidationErrors,
+} from '@/types/contact';
 
-export interface ContactFormData {
-  name: string;
-  email: string;
-  message: string;
-}
-
-export interface ContactFormProps {
-  onSubmit?: (data: ContactFormData) => Promise<void>;
-  className?: string;
-}
-
-export interface ValidationErrors {
-  name?: string;
-  email?: string;
-  message?: string;
-}
+// Re-export for backward compatibility
+export type { ContactFormData, ContactFormProps, ValidationErrors };
 
 const Button: React.FC<{
   type?: 'button' | 'submit' | 'reset';

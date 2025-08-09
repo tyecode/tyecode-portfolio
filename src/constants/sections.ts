@@ -1,29 +1,5 @@
 import { BRAND_INFO, AVAILABILITY_STATUS } from './social';
-
-export interface Stat {
-  value: string;
-  label: string;
-  ariaLabel: string;
-}
-
-export interface Project {
-  title: string;
-  description: string;
-  category: string;
-  image?: string;
-  gradient: string;
-  tags: string[];
-  link: string;
-}
-
-export interface Experience {
-  company: string;
-  role: string;
-  period: string;
-  description: string;
-  achievements: string[];
-  current: boolean;
-}
+import type { Stat, Project, Experience } from '@/types/portfolio';
 
 // =================================================================
 // Hero Section Configuration (EDIT THIS SECTION)
