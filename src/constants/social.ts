@@ -2,32 +2,12 @@
 // Type Definitions
 // =================================================================
 
-export interface SocialLink {
-  name: string;
-  href: string;
-  ariaLabel: string;
-  platform: string; // Add platform identifier for easier filtering
-}
-
-export interface ContactInfo {
-  email: string;
-  location: string;
-}
-
-export interface AvailabilityStatus {
-  text: string;
-  ariaLabel: string;
-  available: boolean;
-}
-
-export interface BrandInfo {
-  name: string;
-  fullName: string;
-  title: string;
-  description: string;
-  tagline: string;
-  seoDescription: string; // Add SEO-optimized description for meta tags
-}
+import type {
+  SocialLink,
+  ContactInfo,
+  AvailabilityStatus,
+  BrandInfo,
+} from '@/types/portfolio';
 
 // =================================================================
 // Core Configuration (EDIT THIS SECTION)

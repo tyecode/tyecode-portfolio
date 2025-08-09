@@ -1,20 +1,5 @@
 import nodemailer from 'nodemailer';
-
-export interface EmailConfig {
-  host: string;
-  port: number;
-  secure: boolean;
-  auth: {
-    user: string;
-    pass: string;
-  };
-}
-
-export interface ContactEmailData {
-  name: string;
-  email: string;
-  message: string;
-}
+import type { EmailConfig, ContactEmailData } from '@/types/contact';
 
 const createTransporter = () => {
   const config: EmailConfig = {

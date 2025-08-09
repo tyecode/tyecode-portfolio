@@ -15,22 +15,7 @@ import {
 // Re-export for backward compatibility
 export { getBasePath };
 
-export interface MetaTag {
-  name?: string;
-  property?: string;
-  content: string;
-  httpEquiv?: string;
-}
-
-export interface LinkTag {
-  rel: string;
-  href?: string;
-  type?: string;
-  sizes?: string;
-  as?: string;
-  onload?: string;
-  crossorigin?: string;
-}
+import type { MetaTag, LinkTag } from '@/types/seo';
 
 // Site configuration - now fully dynamic from constants and package info
 export const siteConfig = {

@@ -1,16 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-
-interface MetaTagsProps {
-  title: string;
-  description: string;
-  canonical: string;
-  image: string;
-  schemaMarkup?: Record<string, unknown>;
-  keywords?: string;
-  author?: string;
-  themeColor?: string;
-  twitterHandle?: string;
-}
+import type { MetaTagsProps } from '@/types/seo';
 
 const MetaTags = ({
   title,

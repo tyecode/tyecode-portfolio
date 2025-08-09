@@ -4,7 +4,7 @@
 # ==============================================
 # REQUIRED: CORE SETTINGS
 # ==============================================
-NODE_ENV=production
+# NODE_ENV=production  # Only set this for production deployment
 PORT=8080
 
 # Static Build (for GitHub Pages deployment)
@@ -43,7 +43,7 @@ CONTACT_EMAIL=your-contact-email@gmail.com
 # SMTP_USER=john.doe@gmail.com
 # SMTP_PASS=abcdefghijklmnop
 # CONTACT_EMAIL=contact@johndoe.com
-# NODE_ENV=production
+# NODE_ENV=production  # Only for production
 # PORT=8080
 
 # ==============================================

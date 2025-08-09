@@ -1,10 +1,4 @@
-import { ContactFormData } from '@/components/ui/ContactForm';
-
-export interface ContactResponse {
-  success: boolean;
-  message?: string;
-  error?: string;
-}
+import type { ContactFormData, ContactResponse } from '@/types/contact';
 
 export const submitContactForm = async (
   data: ContactFormData
