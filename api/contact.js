@@ -47,6 +47,16 @@ const sendSuccessResponse = (res, data = {}) => {
 };
 
 export default async function handler(req, res) {
+  // Set CORS headers for Vercel
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Handle preflight request
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   // Only allow POST requests
   if (req.method !== 'POST') {
     return sendErrorResponse(res, 405, 'Method not allowed');
