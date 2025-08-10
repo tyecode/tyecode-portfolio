@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import ViteSitemap from 'vite-plugin-sitemap';
 import { createHtmlPlugin } from 'vite-plugin-html';
+import vercel from 'vite-plugin-vercel';
 import path from 'path';
 import {
   BASE_URL,
@@ -41,10 +42,11 @@ export default defineConfig(
         port: 8080,
       },
       server: {
-        port: 8000,
+        port: (process.env.PORT as unknown as number) || 8000,
       },
       plugins: [
         react(),
+        vercel(),
         ViteSitemap({
           hostname: BASE_URL,
           dynamicRoutes: staticRoutes,
