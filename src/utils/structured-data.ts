@@ -28,9 +28,9 @@ export function generateStructuredData(): string {
     email: CONTACT_INFO.email,
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'San Francisco',
-      addressRegion: 'CA',
-      addressCountry: 'US',
+      addressLocality: CONTACT_INFO.location,
+      addressRegion: 'Vientiane Capital',
+      addressCountry: 'LA',
     },
     worksFor: {
       '@type': 'Organization',

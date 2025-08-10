@@ -25,8 +25,19 @@ export const siteConfig = {
   email: CONTACT_INFO.email,
   author: BRAND_INFO.name,
   description: BRAND_INFO.seoDescription,
-  keywords:
-    'tyecode, sengphachanh, chanthavong, react developer, front-end developer, typescript developer, web developer portfolio, hire front-end developer, laos developer, vientiane developer, AI developer, discord bot developer',
+  keywords: [
+    BRAND_INFO.name.toLowerCase(),
+    BRAND_INFO.fullName.toLowerCase().replace(' ', ', '),
+    'react developer',
+    'front-end developer',
+    'typescript developer',
+    'web developer portfolio',
+    'hire front-end developer',
+    'laos developer',
+    CONTACT_INFO.location.toLowerCase().replace(' Capital', ''),
+    'AI developer',
+    'discord bot developer',
+  ].join(', '),
   themeColor: '#111827',
   locale: 'en_US',
   language: 'English',
@@ -39,7 +50,6 @@ export const siteConfig = {
   },
   images: {
     og: '/images/og.jpg',
-    // Static favicons removed - using dynamic generation only
   },
 };
 
@@ -71,14 +81,14 @@ export const seoMetaTags: MetaTag[] = [
   },
   // Additional SEO meta tags for better rankings
   { name: 'geo.region', content: 'LA' },
-  { name: 'geo.placename', content: 'Vientiane Capital, Laos' },
+  { name: 'geo.placename', content: CONTACT_INFO.location },
   { name: 'geo.position', content: '17.9757;102.6331' },
   { name: 'ICBM', content: '17.9757, 102.6331' },
   { name: 'DC.title', content: `${BRAND_INFO.name} - ${BRAND_INFO.title}` },
   { name: 'DC.creator', content: BRAND_INFO.fullName },
   {
     name: 'DC.subject',
-    content: 'Frontend Development, React, TypeScript, AI Integration',
+    content: `${BRAND_INFO.title}, ${BRAND_INFO.description.split(' ').slice(0, 10).join(' ')}...`,
   },
   { name: 'DC.description', content: siteConfig.description },
   { name: 'DC.publisher', content: BRAND_INFO.name },
@@ -116,11 +126,17 @@ export const openGraphMetaTags: MetaTag[] = [
   { property: 'og:locale', content: siteConfig.locale },
   { property: 'og:locale:alternate', content: 'lo_LA' },
   { property: 'og:country-name', content: 'Laos' },
-  { property: 'og:region', content: 'Vientiane Capital' },
-  { property: 'og:profile:first_name', content: 'Sengphachanh' },
-  { property: 'og:profile:last_name', content: 'Chanthavong' },
-  { property: 'og:profile:username', content: 'tyecode' },
-  { property: 'og:profile:gender', content: 'male' },
+  { property: 'og:region', content: CONTACT_INFO.location },
+  {
+    property: 'og:profile:first_name',
+    content: BRAND_INFO.fullName.split(' ')[0],
+  },
+  {
+    property: 'og:profile:last_name',
+    content: BRAND_INFO.fullName.split(' ')[1] || '',
+  },
+  { property: 'og:profile:username', content: TWITTER_USERNAME },
+  { property: 'og:profile:gender', content: BRAND_INFO.gender },
 ];
 
 export const twitterMetaTags: MetaTag[] = [
