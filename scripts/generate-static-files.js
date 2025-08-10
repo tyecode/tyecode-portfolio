@@ -60,20 +60,59 @@ const generateStaticFiles = () => {
 
   // Generate robots.txt
   const robotsContent = dedent`
+    # Global rules for all bots
     User-agent: *
     Allow: /
-
-    # Block admin and private areas
-    User-agent: *
+    Allow: /images/
+    Allow: /public/
+    Allow: /assets/
     Disallow: /admin
     Disallow: /private
+    Disallow: /api/
+    Disallow: /dev-tools
+    Disallow: /test
+    Disallow: /_redirects
+    Disallow: /server.js
+    Crawl-delay: 1
 
-    # Allow crawling of all other pages
-    User-agent: *
+    # Googlebot - Most important for SEO
+    User-agent: Googlebot
+    Allow: /
+    Allow: /images/
+    Allow: /public/
+    Allow: /assets/
+    Disallow: /admin
+    Disallow: /private
+    Disallow: /api/
+    Disallow: /dev-tools
+    Disallow: /test
+    Crawl-delay: 0.5
+
+    # Bingbot - Second most important
+    User-agent: Bingbot
+    Allow: /
+    Allow: /images/
+    Allow: /public/
+    Allow: /assets/
+    Disallow: /admin
+    Disallow: /private
+    Disallow: /api/
+    Disallow: /dev-tools
+    Disallow: /test
+    Crawl-delay: 0.5
+
+    # Slurp (Yahoo) - Less critical but good to include
+    User-agent: Slurp
+    Allow: /
+    Disallow: /admin
+    Disallow: /private
+    Disallow: /api/
+    Disallow: /dev-tools
+    Disallow: /test
     Crawl-delay: 1
 
     # Sitemap location
-    Sitemap: ${baseUrl}sitemap.xml
+    Sitemap: ${baseUrl}/sitemap.xml
   `;
 
   // Extract domain from baseUrl for redirects
@@ -98,7 +137,7 @@ const generateStaticFiles = () => {
     fs.writeFileSync(path.join(publicDir, '_redirects'), redirectsContent);
 
     console.log('✅ Generated dynamic static files:');
-    console.log(`   - robots.txt (sitemap: ${baseUrl}sitemap.xml)`);
+    console.log(`   - robots.txt (sitemap: ${baseUrl}/sitemap.xml)`);
     console.log(`   - _redirects (base: ${baseUrl})`);
   } catch (error) {
     console.error('❌ Error generating static files:', error);

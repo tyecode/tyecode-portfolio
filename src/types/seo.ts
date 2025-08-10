@@ -15,6 +15,10 @@ export interface LinkTag {
   as?: string;
   onload?: string;
   crossorigin?: string;
+  hreflang?: string;
+  author?: string;
+  publisher?: string;
+  me?: string;
 }
 
 export interface SEOProps {
