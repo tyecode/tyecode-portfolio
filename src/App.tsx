@@ -4,6 +4,7 @@ import MainLayout from '@/components/layout/MainLayout';
 import SectionSkeleton from '@/components/ui/SectionSkeleton';
 import MetaTags from '@/components/seo/MetaTags';
 import HeroSection from '@/components/section/HeroSection';
+import LoadingScreen from '@/components/ui/LoadingScreen';
 
 import { useDynamicFavicon } from '@/hooks/useDynamicFavicon';
 import { useSEO } from '@/hooks/useSEO';
@@ -40,6 +41,7 @@ function App() {
   return (
     <>
       <MetaTags {...seoData} />
+      <LoadingScreen />
       <MainLayout>
         {/* Hero section loads immediately for optimal LCP */}
         <HeroSection />

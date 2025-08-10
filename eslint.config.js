@@ -24,6 +24,7 @@ export default tseslint.config(
       '*.log',
       '.DS_Store',
       'Thumbs.db',
+      'scripts/cleanup.js',
     ],
   },
   {

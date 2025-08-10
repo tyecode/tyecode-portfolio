@@ -27,3 +27,15 @@ dist-ssr
 
 # Lighthouse reports
 lighthouse*
+
+# Additional cleanup patterns
+.cache
+*.cache
+.tmp
+*.tmp
+*.temp
+coverage
+.nyc_output
+*.tsbuildinfo
+.eslintcache
+.prettiercache

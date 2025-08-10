@@ -113,7 +113,7 @@ export const criticalLinks: LinkTag[] = [
   },
   {
     rel: 'preload',
-    href: '/src/index.css',
+    href: '/src/main.css',
     as: 'style',
     onload: "this.onload=null;this.rel='stylesheet'",
   },
