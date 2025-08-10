@@ -36,21 +36,19 @@ const getBaseUrl = packageInfo => {
     return packageInfo.homepage;
   }
 
-  // Fallback: Try to construct from repository URL if available
-  if (packageInfo.repository.url) {
-    const match = packageInfo.repository.url.match(
-      /github\.com\/([^/]+)\/([^/]+)/
-    );
-    if (match) {
-      // For Vercel deployment, use homepage from package.json
-      return packageInfo.homepage || 'https://tyecode.dev';
-    }
+  // Fallback: Use environment variable or default for development
+  const envBaseUrl = process.env.VITE_BASE_URL || process.env.BASE_URL;
+  if (envBaseUrl) {
+    return envBaseUrl;
   }
 
-  // Last resort: throw error since homepage should be configured
-  throw new Error(
-    'No homepage configured in package.json and unable to determine from repository URL'
-  );
+  // For development, use localhost
+  if (process.env.NODE_ENV === 'development') {
+    return 'http://localhost:8000';
+  }
+
+  // For production, use the configured domain
+  return 'https://tyecode.dev';
 };
 
 // Generate dynamic files
