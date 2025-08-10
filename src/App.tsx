@@ -6,10 +6,8 @@ import MetaTags from '@/components/seo/MetaTags';
 import HeroSection from '@/components/section/HeroSection';
 import LoadingScreen from '@/components/ui/LoadingScreen';
 
-import { useDynamicFavicon } from '@/hooks/useDynamicFavicon';
 import { useSEO } from '@/hooks/useSEO';
 import { useAnalytics } from '@/hooks/useAnalytics';
-import { BRAND_INFO } from '@/constants';
 
 // Lazy load only below-the-fold components for better performance
 const AboutSection = lazy(() => import('@/components/section/AboutSection'));
@@ -23,15 +21,8 @@ const WorkSection = lazy(() => import('@/components/section/WorkSection'));
 
 function App() {
   const seoData = useSEO();
-  // Initialize dynamic favicon based on brand name
-  const { updateWithBrandName } = useDynamicFavicon();
   // Initialize Google Analytics
   const { trackPageView } = useAnalytics();
-
-  // Update favicon when brand name changes
-  useEffect(() => {
-    updateWithBrandName(BRAND_INFO.name);
-  }, [updateWithBrandName]);
 
   // Track initial page view
   useEffect(() => {

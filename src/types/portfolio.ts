@@ -50,4 +50,5 @@ export interface BrandInfo {
   description: string;
   tagline: string;
   seoDescription: string; // Add SEO-optimized description for meta tags
+  gender: string; // Personal information for SEO and social media
 }

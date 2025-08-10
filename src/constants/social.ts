@@ -29,6 +29,8 @@ export const BRAND_INFO: BrandInfo = {
   tagline: 'Building intelligent web experiences with AI-powered solutions.',
   // SEO-optimized description for meta tags (includes marketing copy)
   seoDescription: `🚀 Frontend Developer & AI Enthusiast specializing in React, TypeScript & AI integration. 5+ years building scalable web applications + Discord bots. Currently exploring AI-powered web solutions. Available for hire!`,
+  // Personal information for SEO and social media
+  gender: 'male',
 };
 
 export const CONTACT_INFO: ContactInfo = {

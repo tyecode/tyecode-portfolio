@@ -24,6 +24,9 @@ const MetaTags = ({
     {keywords && <meta name='keywords' content={keywords} />}
     {author && <meta name='author' content={author} />}
 
+    {/* Static Favicon Configuration */}
+    <link rel='icon' type='image/x-icon' href='/favicon.ico' />
+
     {/* Comprehensive SEO Meta Tags */}
     {seoMetaTags.map((tag, index) => (
       <meta
