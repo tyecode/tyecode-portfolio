@@ -3,6 +3,7 @@ import {
   CONTACT_INFO,
   TWITTER_USERNAME,
   getSocialUrl,
+  SOCIAL_LINKS,
 } from '@/constants';
 import {
   getBasePath,
@@ -25,7 +26,7 @@ export const siteConfig = {
   author: BRAND_INFO.name,
   description: BRAND_INFO.seoDescription,
   keywords:
-    'react developer, front-end developer, typescript developer, web developer portfolio, hire front-end developer',
+    'tyecode, sengphachanh, chanthavong, react developer, front-end developer, typescript developer, web developer portfolio, hire front-end developer, laos developer, vientiane developer, AI developer, discord bot developer',
   themeColor: '#111827',
   locale: 'en_US',
   language: 'English',
@@ -51,9 +52,47 @@ export const seoMetaTags: MetaTag[] = [
   { name: 'description', content: siteConfig.description },
   { name: 'keywords', content: siteConfig.keywords },
   { name: 'author', content: siteConfig.author },
-  { name: 'robots', content: 'index, follow' },
+  {
+    name: 'robots',
+    content:
+      'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
+  },
   { name: 'language', content: siteConfig.language },
   { name: 'revisit-after', content: '7 days' },
+  {
+    name: 'googlebot',
+    content:
+      'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
+  },
+  {
+    name: 'bingbot',
+    content:
+      'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
+  },
+  // Additional SEO meta tags for better rankings
+  { name: 'geo.region', content: 'LA' },
+  { name: 'geo.placename', content: 'Vientiane Capital, Laos' },
+  { name: 'geo.position', content: '17.9757;102.6331' },
+  { name: 'ICBM', content: '17.9757, 102.6331' },
+  { name: 'DC.title', content: `${BRAND_INFO.name} - ${BRAND_INFO.title}` },
+  { name: 'DC.creator', content: BRAND_INFO.fullName },
+  {
+    name: 'DC.subject',
+    content: 'Frontend Development, React, TypeScript, AI Integration',
+  },
+  { name: 'DC.description', content: siteConfig.description },
+  { name: 'DC.publisher', content: BRAND_INFO.name },
+  { name: 'DC.contributor', content: BRAND_INFO.fullName },
+  { name: 'DC.date', content: new Date().toISOString() },
+  { name: 'DC.type', content: 'Text' },
+  { name: 'DC.format', content: 'text/html' },
+  { name: 'DC.identifier', content: generateUrl() },
+  { name: 'DC.language', content: 'en' },
+  { name: 'DC.coverage', content: 'Worldwide' },
+  {
+    name: 'DC.rights',
+    content: `Copyright ${new Date().getFullYear()} ${BRAND_INFO.fullName}`,
+  },
 ];
 
 export const openGraphMetaTags: MetaTag[] = [
@@ -61,7 +100,7 @@ export const openGraphMetaTags: MetaTag[] = [
   { property: 'og:title', content: siteConfig.title },
   { property: 'og:description', content: siteConfig.description },
   { property: 'og:url', content: generateUrl() },
-  { property: 'og:site_name', content: `${siteConfig.author} Portfolio` },
+  { property: 'og:site_name', content: `${BRAND_INFO.name} Portfolio` },
   { property: 'og:image', content: generateImageUrl(siteConfig.images.og) },
   {
     property: 'og:image:secure_url',
@@ -72,9 +111,16 @@ export const openGraphMetaTags: MetaTag[] = [
   { property: 'og:image:height', content: '630' },
   {
     property: 'og:image:alt',
-    content: `${siteConfig.author} - ${BRAND_INFO.title}`,
+    content: `${BRAND_INFO.name} - ${BRAND_INFO.title}`,
   },
   { property: 'og:locale', content: siteConfig.locale },
+  { property: 'og:locale:alternate', content: 'lo_LA' },
+  { property: 'og:country-name', content: 'Laos' },
+  { property: 'og:region', content: 'Vientiane Capital' },
+  { property: 'og:profile:first_name', content: 'Sengphachanh' },
+  { property: 'og:profile:last_name', content: 'Chanthavong' },
+  { property: 'og:profile:username', content: 'tyecode' },
+  { property: 'og:profile:gender', content: 'male' },
 ];
 
 export const twitterMetaTags: MetaTag[] = [
@@ -86,13 +132,22 @@ export const twitterMetaTags: MetaTag[] = [
   { name: 'twitter:image', content: generateImageUrl(siteConfig.images.og) },
   {
     name: 'twitter:image:alt',
-    content: `${siteConfig.author} - ${BRAND_INFO.title}`,
+    content: `${BRAND_INFO.name} - ${BRAND_INFO.title}`,
   },
+  { name: 'twitter:label1', content: 'Name' },
+  { name: 'twitter:data1', content: BRAND_INFO.fullName },
+  { name: 'twitter:label2', content: 'Location' },
+  { name: 'twitter:data2', content: CONTACT_INFO.location },
 ];
 
 export const themeMetaTags: MetaTag[] = [
   { name: 'theme-color', content: siteConfig.themeColor },
   { name: 'msapplication-TileColor', content: siteConfig.themeColor },
+  { name: 'apple-mobile-web-app-capable', content: 'yes' },
+  { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
+  { name: 'apple-mobile-web-app-title', content: BRAND_INFO.name },
+  { name: 'application-name', content: BRAND_INFO.name },
+  { name: 'msapplication-config', content: '/browserconfig.xml' },
 ];
 
 export const externalLinks: LinkTag[] = [
@@ -124,6 +179,19 @@ export const criticalLinks: LinkTag[] = [
     type: 'image/jpeg',
   },
   { rel: 'modulepreload', href: '/src/entry-client.tsx' },
+];
+
+// Additional SEO links for better indexing
+export const seoLinks: LinkTag[] = [
+  { rel: 'canonical', href: generateUrl() },
+  { rel: 'alternate', href: generateUrl(), hreflang: 'en' },
+  { rel: 'alternate', href: generateUrl(), hreflang: 'lo' },
+  { rel: 'alternate', href: generateUrl(), hreflang: 'x-default' },
+  // Social identity links using centralized social configuration
+  ...SOCIAL_LINKS.map(link => ({ rel: 'me' as const, href: link.href })),
+  // Author and publisher links
+  { rel: 'author', href: getSocialUrl('github') },
+  { rel: 'publisher', href: getSocialUrl('linkedin') },
 ];
 
 // Dynamic manifest generation
@@ -173,6 +241,13 @@ export const generateManifest = () => {
         description: 'Get in touch for collaboration',
         url: `${basePath}/#contact`,
       },
+      // Social media shortcuts
+      ...SOCIAL_LINKS.map(link => ({
+        name: `Visit ${link.name}`,
+        short_name: link.name,
+        description: `Visit ${BRAND_INFO.name}'s ${link.name} profile`,
+        url: link.href,
+      })),
     ],
     categories: ['portfolio', 'developer', 'web-development'],
     screenshots: [

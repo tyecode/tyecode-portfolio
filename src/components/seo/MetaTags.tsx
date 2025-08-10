@@ -1,5 +1,12 @@
 import { Helmet } from 'react-helmet-async';
 import type { MetaTagsProps } from '@/types/seo';
+import {
+  seoMetaTags,
+  openGraphMetaTags,
+  twitterMetaTags,
+  themeMetaTags,
+  seoLinks,
+} from '@/config/meta-tags';
 
 const MetaTags = ({
   title,
@@ -9,56 +16,74 @@ const MetaTags = ({
   schemaMarkup,
   keywords,
   author,
-  themeColor = '#111827', // Theme color can remain as a design-specific default
-  twitterHandle,
 }: MetaTagsProps) => (
   <Helmet>
     {/* Primary Meta Tags */}
     <title>{title}</title>
-    <meta name='title' content={title} />
     <meta name='description' content={description} />
     {keywords && <meta name='keywords' content={keywords} />}
     {author && <meta name='author' content={author} />}
-    <meta name='robots' content='index, follow' />
-    <meta name='language' content='English' />
-    <meta name='revisit-after' content='7 days' />
 
-    {/* Canonical URL */}
+    {/* Comprehensive SEO Meta Tags */}
+    {seoMetaTags.map((tag, index) => (
+      <meta
+        key={`seo-${index}`}
+        name={tag.name}
+        property={tag.property}
+        content={tag.content}
+        httpEquiv={tag.httpEquiv}
+      />
+    ))}
+
+    {/* Canonical and SEO Links */}
     <link rel='canonical' href={canonical} />
+    {seoLinks.map((link, index) => (
+      <link
+        key={`seo-link-${index}`}
+        rel={link.rel}
+        href={link.href}
+        type={link.type}
+        sizes={link.sizes}
+        as={link.as}
+        crossOrigin={
+          link.crossorigin as 'anonymous' | 'use-credentials' | undefined
+        }
+        hrefLang={link.hreflang}
+      />
+    ))}
 
-    {/* Theme Color */}
-    <meta name='theme-color' content={themeColor} />
-    <meta name='msapplication-TileColor' content={themeColor} />
+    {/* Theme Color Meta Tags */}
+    {themeMetaTags.map((tag, index) => (
+      <meta key={`theme-${index}`} name={tag.name} content={tag.content} />
+    ))}
 
-    {/* Open Graph / Facebook */}
-    <meta property='og:type' content='website' />
-    <meta property='og:url' content={canonical} />
-    <meta property='og:title' content={title} />
-    <meta property='og:description' content={description} />
-    <meta property='og:image' content={image} />
-    <meta property='og:image:secure_url' content={image} />
-    <meta property='og:image:type' content='image/jpeg' />
-    <meta property='og:image:width' content='1200' />
-    <meta property='og:image:height' content='630' />
-    <meta
-      property='og:image:alt'
-      content={`${author || 'Portfolio'} - Front-End Web Developer`}
-    />
-    <meta property='og:site_name' content={`${author} Portfolio`} />
-    <meta property='og:locale' content='en_US' />
+    {/* Open Graph Meta Tags */}
+    {openGraphMetaTags.map((tag, index) => {
+      // Override image URLs if custom image is provided
+      let content = tag.content;
+      if (image && tag.property === 'og:image') {
+        content = image;
+      } else if (image && tag.property === 'og:image:secure_url') {
+        content = image;
+      }
 
-    {/* Twitter */}
-    <meta property='twitter:card' content='summary_large_image' />
-    <meta property='twitter:url' content={canonical} />
-    <meta property='twitter:title' content={title} />
-    <meta property='twitter:description' content={description} />
-    <meta property='twitter:image' content={image} />
-    <meta
-      property='twitter:image:alt'
-      content={`${author || 'Portfolio'} - Front-End Web Developer`}
-    />
-    {twitterHandle && <meta name='twitter:site' content={twitterHandle} />}
-    {twitterHandle && <meta name='twitter:creator' content={twitterHandle} />}
+      return (
+        <meta key={`og-${index}`} property={tag.property} content={content} />
+      );
+    })}
+
+    {/* Twitter Meta Tags */}
+    {twitterMetaTags.map((tag, index) => {
+      // Override image URL if custom image is provided
+      let content = tag.content;
+      if (image && tag.name === 'twitter:image') {
+        content = image;
+      }
+
+      return (
+        <meta key={`twitter-${index}`} name={tag.name} content={content} />
+      );
+    })}
 
     {/* Structured Data (Schema Markup) */}
     {schemaMarkup && (
