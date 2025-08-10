@@ -21,6 +21,7 @@ html {
 
 body {
   font-family: inherit;
+  overflow-x: hidden;
 }
 
 /* Focus management for keyboard navigation */
