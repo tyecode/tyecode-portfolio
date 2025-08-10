@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-import nodemailer from 'nodemailer';
 
 // Rate limiting configuration
 const RATE_LIMIT_WINDOW =
@@ -111,12 +110,35 @@ export default async function handler(req, res) {
       );
     }
 
+    // Dynamic import of nodemailer to ensure it works in Vercel
+    let nodemailer;
+    try {
+      nodemailer = await import('nodemailer');
+      console.log('📦 Nodemailer imported successfully:', {
+        nodemailer: typeof nodemailer,
+        default: typeof nodemailer.default,
+        createTransport: typeof nodemailer.default?.createTransport,
+      });
+    } catch (importError) {
+      console.error('❌ Failed to import nodemailer:', importError);
+      return sendErrorResponse(
+        res,
+        500,
+        'Email service not available. Please try again later.'
+      );
+    }
+
     // Check if nodemailer is properly imported
-    if (!nodemailer || typeof nodemailer.createTransporter !== 'function') {
+    if (
+      !nodemailer ||
+      !nodemailer.default ||
+      typeof nodemailer.default.createTransport !== 'function'
+    ) {
       console.error('❌ Nodemailer not properly imported:', {
         nodemailer: typeof nodemailer,
-        createTransporter: nodemailer
-          ? typeof nodemailer.createTransporter
+        default: typeof nodemailer.default,
+        createTransport: nodemailer.default
+          ? typeof nodemailer.default.createTransport
           : 'undefined',
       });
       return sendErrorResponse(
@@ -127,7 +149,7 @@ export default async function handler(req, res) {
     }
 
     // Create transporter
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.default.createTransport({
       host: process.env.SMTP_HOST,
       port: parseInt(process.env.SMTP_PORT),
       secure: process.env.SMTP_PORT === '465',
@@ -135,6 +157,19 @@ export default async function handler(req, res) {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
+    });
+
+    // Verify SMTP connection configuration before sending
+    await new Promise((resolve, reject) => {
+      transporter.verify(function (error, success) {
+        if (error) {
+          console.error('❌ SMTP connection verification failed:', error);
+          reject(error);
+        } else {
+          console.log('✅ SMTP server is ready to take our messages');
+          resolve(success);
+        }
+      });
     });
 
     // Email content
@@ -164,13 +199,24 @@ export default async function handler(req, res) {
 
     console.log('📧 Attempting to send email...');
 
-    // Send email
-    await transporter.sendMail(mailOptions);
+    // Send email using promises (required for Vercel serverless)
+    const info = await new Promise((resolve, reject) => {
+      transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+          console.error('❌ Email sending failed:', err);
+          reject(err);
+        } else {
+          console.log('✅ Email sent successfully:', info);
+          resolve(info);
+        }
+      });
+    });
 
     console.log('✅ Contact form email sent successfully:', {
       name: name.trim(),
       email: email.trim(),
       message: message.trim(),
+      messageId: info.messageId,
     });
 
     sendSuccessResponse(res, { message: 'Message sent successfully!' });
