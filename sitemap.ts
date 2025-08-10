@@ -51,31 +51,16 @@ const getBaseUrl = (): string => {
 
 export const BASE_URL = getBaseUrl();
 
-// Static routes that should be included in the sitemap
+// Single-page portfolio with sections - only one main route
 export const staticRoutes: string[] = [
-  '/',
-  '/about',
-  '/projects',
-  '/contact',
-  '/skills',
-  '/experience',
+  '/', // Main portfolio page with all sections
 ];
 
 // Dynamic routes - fetch from API or database if needed
 export const dynamicRoutes = async (): Promise<string[]> => {
-  // For a portfolio, you might fetch blog posts, project details, etc.
-  // Example: if you have dynamic project pages
-  try {
-    // const response = await fetch(`${BASE_URL}/api/projects`);
-    // const projects = await response.json();
-    // return projects.map(project => `/projects/${project.slug}`);
-
-    // For now, return empty array since this is a simple portfolio
-    return [];
-  } catch (error) {
-    console.warn('Failed to fetch dynamic routes:', error);
-    return [];
-  }
+  // For a single-page portfolio, no dynamic routes needed
+  // All content is in sections on the main page
+  return [];
 };
 
 // Routes to exclude from the sitemap
@@ -88,18 +73,13 @@ export const excludeRoutes: string[] = [
   '/dev-tools',
 ];
 
-// Additional sitemap configuration
+// Sitemap configuration for single-page portfolio
 export const sitemapConfig = {
-  changefreq: 'weekly' as const,
-  priority: 0.8,
-  // Remove dynamic date to prevent hydration issues
-  // lastmod: new Date().toISOString(),
+  changefreq: 'monthly' as const, // Less frequent updates for portfolio
+  priority: 1.0, // Highest priority since it's the only page
   // Route-specific configurations
   routeConfig: {
-    '/': { priority: 1.0, changefreq: 'daily' as const },
-    '/projects': { priority: 0.9, changefreq: 'weekly' as const },
-    '/about': { priority: 0.8, changefreq: 'monthly' as const },
-    '/contact': { priority: 0.7, changefreq: 'monthly' as const },
+    '/': { priority: 1.0, changefreq: 'monthly' as const }, // Main portfolio page
   },
 };
 
