@@ -28,6 +28,7 @@
     "clean": "pnpm store prune && rm -rf node_modules/.cache && rm -rf dist",
     "cleanup": "node scripts/cleanup.js",
     "lint": "eslint .",
+    "lint:check": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

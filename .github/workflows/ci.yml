@@ -33,13 +33,13 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Lint check
-        run: pnpm run lint:check
+        run: pnpm run lint
 
       - name: Format check
         run: pnpm run format:check
 
       - name: Type check
-        run: tsc --noEmit
+        run: pnpm run type-check
 
       - name: Build for Vercel
         run: pnpm run build
