@@ -5,15 +5,16 @@
   "framework": "vite",
 
   "functions": {
-    "api/contact.mjs": {
-      "maxDuration": 10
+    "api/contact.js": {
+      "maxDuration": 10,
+      "runtime": "nodejs20.x"
     }
   },
 
   "rewrites": [
     {
       "source": "/api/contact",
-      "destination": "/api/contact.mjs"
+      "destination": "/api/contact.js"
     },
     {
       "source": "/(.*)",
