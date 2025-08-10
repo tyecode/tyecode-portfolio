@@ -5,7 +5,7 @@
   "framework": "vite",
 
   "functions": {
-    "src/api/contact.mjs": {
+    "api/contact.mjs": {
       "maxDuration": 10
     }
   },
@@ -13,7 +13,7 @@
   "rewrites": [
     {
       "source": "/api/contact",
-      "destination": "/src/api/contact.mjs"
+      "destination": "/api/contact.mjs"
     },
     {
       "source": "/(.*)",
