@@ -1,0 +1,57 @@
+/* Main CSS entry point for Tailwind CSS v3 */
+
+/* Import organized CSS files first (PostCSS requirement) */
+@import './styles/base.css';
+@import './styles/utilities.css';
+@import './styles/animations.css';
+@import './styles/accessibility.css';
+
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply max-w-6xl mx-auto px-6 lg:px-8;
+  }
+}
+
+/* CSS loading transition */
+.prevent-fouc {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.prevent-fouc.loaded {
+  opacity: 1;
+}
+
+/* Smooth fade-in for the entire app */
+#root {
+  transition: opacity 0.3s ease-in-out;
+}
+
+#root.loaded {
+  opacity: 1;
+}
+
+/* Ensure loading screen doesn't interfere with app transitions */
+.loading-screen {
+  pointer-events: none;
+}
+
+.loading-screen.fade-out {
+  pointer-events: none;
+}
+
+/* Smooth transition when loading screen disappears */
+.loading-screen:not(.fade-out) {
+  pointer-events: auto;
+}

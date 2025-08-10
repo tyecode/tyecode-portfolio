@@ -116,10 +116,7 @@ Set these in your Vercel dashboard:
 ### Documentation
 
 - 🚀 [Vercel Deployment Guide](docs/VERCEL_DEPLOYMENT.md) - Complete deployment instructions
-- 📊 [Analytics Setup](docs/ANALYTICS_SETUP.md) - Google Analytics 4 configuration
-- 🧪 [Analytics Testing](docs/ANALYTICS_TESTING.md) - How to test analytics implementation
-- 🔒 [Rate Limiting](docs/RATE_LIMITING.md) - Contact form protection setup
-- 🎨 [Dynamic Favicon](docs/DYNAMIC_FAVICON.md) - Brand-based favicon generation
+- 🧹 [Cleanup Guide](docs/CLEANUP_GUIDE.md) - Project maintenance and cleanup
 - 🤝 [Contributing Guide](docs/CONTRIBUTING.md) - Development guidelines
 
 ## 🎯 Customization
@@ -152,3 +149,69 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 ⭐ **Thanks for visiting!**
+
+# Tyecode Portfolio
+
+Modern front-end web developer portfolio built with React, TypeScript, and Tailwind CSS. Showcasing responsive web applications, UI/UX implementations, and front-end development expertise.
+
+## 🚀 Quick Start
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm run dev
+
+# Build for production
+pnpm run build
+
+# Preview production build
+pnpm run preview
+```
+
+## 🧹 Project Cleanup
+
+Essential cleanup scripts for optimal performance:
+
+```bash
+# Regular maintenance
+pnpm run clean
+
+# Comprehensive cleanup
+pnpm run cleanup
+```
+
+**When to clean:**
+
+- **Weekly**: `pnpm run clean` for maintenance
+- **Before deployment**: `pnpm run cleanup` for clean builds
+- **Troubleshooting**: `node scripts/cleanup.js --full` for complete reset
+
+📖 **See [docs/CLEANUP_GUIDE.md](docs/CLEANUP_GUIDE.md) for detailed instructions.**
+
+## 📋 Available Scripts
+
+### Development
+
+- `pnpm run dev` - Start development server
+- `pnpm run build` - Build for production
+- `pnpm run preview` - Preview production build
+
+### Maintenance
+
+- `pnpm run clean` - Clean build artifacts and cache
+- `pnpm run cleanup` - Run comprehensive cleanup script
+
+### Code Quality
+
+- `pnpm run lint` - Run ESLint
+- `pnpm run lint:fix` - Fix ESLint issues
+- `pnpm run format` - Format code with Prettier
+- `pnpm run check` - Run linting and formatting checks
+- `pnpm run fix` - Fix linting and formatting issues
+- `pnpm run type-check` - Run TypeScript type checking
+
+### Testing
+
+- `pnpm run test:analytics` - Test analytics configuration

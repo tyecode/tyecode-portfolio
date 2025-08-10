@@ -80,7 +80,7 @@ async function main() {
     'Analytics types exist'
   );
   allChecksPass &= checkFile(
-    path.join(projectRoot, 'docs/ANALYTICS_SETUP.md'),
+    path.join(projectRoot, 'docs/CLEANUP_GUIDE.md'),
     'Analytics documentation exists'
   );
 
@@ -203,8 +203,8 @@ async function main() {
   log('\n🔗 Helpful Commands:', 'blue');
   log('• Test in debug mode: VITE_GA_DEBUG=true pnpm run dev', 'reset');
   log('• Check environment: cat .env', 'reset');
-  log('• View documentation: cat docs/ANALYTICS_SETUP.md', 'reset');
-  log('• Full testing guide: cat docs/ANALYTICS_TESTING.md', 'reset');
+  log('• View documentation: cat docs/CLEANUP_GUIDE.md', 'reset');
+  log('• Full testing guide: cat docs/VERCEL_DEPLOYMENT.md', 'reset');
 
   process.exit(allChecksPass ? 0 : 1);
 }

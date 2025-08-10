@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 interface PreloaderOptions {
   minLoadingTime?: number;
+  fadeOutDuration?: number;
 }
 
 // Function to check if critical resources are loaded
@@ -40,9 +41,11 @@ const waitForCriticalResources = (): Promise<void> => {
 
 export const usePreloader = ({
   minLoadingTime = 500,
+  fadeOutDuration = 500,
 }: PreloaderOptions = {}) => {
   // Start with true on both server and client to prevent hydration mismatch
   const [isLoading, setIsLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     // This effect only runs on client side after hydration
@@ -62,13 +65,23 @@ export const usePreloader = ({
         await new Promise(resolve => setTimeout(resolve, remainingTime));
       }
 
-      // Final delay before hiding to ensure everything is painted
-      await new Promise(resolve => setTimeout(resolve, 200));
+      // Start fade out
+      setIsVisible(false);
+
+      // Wait for fade out animation to complete
+      await new Promise(resolve => setTimeout(resolve, fadeOutDuration));
+
+      // Hide loading screen completely
       setIsLoading(false);
     };
 
     handleLoading();
-  }, [minLoadingTime]);
+  }, [minLoadingTime, fadeOutDuration]);
 
-  return { isLoading };
+  return {
+    isLoading,
+    isVisible,
+    // Convenience method to check if we should show the loading screen
+    shouldShow: isLoading && isVisible,
+  };
 };

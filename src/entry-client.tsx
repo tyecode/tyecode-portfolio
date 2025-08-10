@@ -3,7 +3,8 @@ import { hydrateRoot, createRoot, Root } from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
 
 import App from './App';
-import './index.css';
+import './styles/critical.css';
+import './main.css';
 
 // Store root instance to prevent multiple creations
 let rootInstance: Root | null = null;
@@ -32,6 +33,9 @@ const initializeApp = async () => {
 
   const root = document.getElementById('root');
   if (!root) return;
+
+  // Add prevent-fouc class to prevent flash of unstyled content
+  root.classList.add('prevent-fouc');
 
   const AppComponent = (
     <StrictMode>
@@ -67,6 +71,12 @@ const initializeApp = async () => {
       rootInstance = createRoot(root);
       rootInstance.render(AppComponent);
     }
+
+    // Remove prevent-fouc class once app is loaded
+    setTimeout(() => {
+      root.classList.remove('prevent-fouc');
+      root.classList.add('loaded');
+    }, 100);
   } catch (error) {
     console.error('Critical error during app initialization:', error);
 
@@ -76,6 +86,12 @@ const initializeApp = async () => {
       root.innerHTML = '';
       rootInstance = createRoot(root);
       rootInstance.render(AppComponent);
+
+      // Remove prevent-fouc class even in error case
+      setTimeout(() => {
+        root.classList.remove('prevent-fouc');
+        root.classList.add('loaded');
+      }, 100);
     }
   }
 };
