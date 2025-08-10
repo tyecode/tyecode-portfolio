@@ -26,7 +26,7 @@ export const getPackageInfo = (): PackageInfo => {
       typeof packageJson.author === 'string'
         ? { name: packageJson.author }
         : packageJson.author || {},
-    homepage: (packageJson as any).homepage || undefined,
+    homepage: (packageJson as { homepage?: string }).homepage || undefined,
     repository: packageJson.repository || {},
   };
 };
