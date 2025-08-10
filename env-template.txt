@@ -8,6 +8,14 @@
 PORT=8080
 
 # ==============================================
+# DEVELOPMENT: BASE URL CONFIGURATION
+# ==============================================
+# For local development, these should point to localhost
+# For production, these will be set automatically
+VITE_BASE_URL=http://localhost:8000
+BASE_URL=http://localhost:8000
+
+# ==============================================
 # REQUIRED: SMTP EMAIL SETTINGS (for Contact Form)
 # ==============================================
 SMTP_HOST=smtp.gmail.com

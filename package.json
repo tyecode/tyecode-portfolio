@@ -10,7 +10,6 @@
     "type": "git",
     "url": "https://github.com/tyecode/tyecode-portfolio"
   },
-  "homepage": "https://tyecode.dev",
   "private": false,
   "version": "1.0.0",
   "type": "module",

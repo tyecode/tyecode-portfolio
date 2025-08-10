@@ -8,7 +8,7 @@ export interface PackageInfo {
     email?: string;
     url?: string;
   };
-  homepage: string;
+  homepage?: string;
   repository: {
     type?: string;
     url?: string;
@@ -26,7 +26,7 @@ export const getPackageInfo = (): PackageInfo => {
       typeof packageJson.author === 'string'
         ? { name: packageJson.author }
         : packageJson.author || {},
-    homepage: packageJson.homepage || '',
+    homepage: (packageJson as any).homepage || undefined,
     repository: packageJson.repository || {},
   };
 };
@@ -48,8 +48,24 @@ export const getBasePath = (): string => {
 export const getBaseUrl = (): string => {
   const packageInfo = getPackageInfo();
 
-  // For Vercel deployment, use homepage from package.json
-  return packageInfo.homepage || 'https://tyecode.dev';
+  // Use homepage from package.json if available
+  if (packageInfo.homepage) {
+    return packageInfo.homepage;
+  }
+
+  // Fallback: Use environment variable or default for development
+  const envBaseUrl = import.meta.env.VITE_BASE_URL || import.meta.env.BASE_URL;
+  if (envBaseUrl) {
+    return envBaseUrl;
+  }
+
+  // For development, use localhost
+  if (import.meta.env.DEV) {
+    return 'http://localhost:8000';
+  }
+
+  // For production, use the configured domain
+  return 'https://tyecode.dev';
 };
 
 /**
