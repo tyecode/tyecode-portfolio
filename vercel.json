@@ -4,14 +4,20 @@
   "installCommand": "pnpm install",
   "framework": "vite",
 
+  "functions": {
+    "src/api/contact.mjs": {
+      "maxDuration": 10
+    }
+  },
+
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/server.js"
+      "source": "/api/contact",
+      "destination": "/src/api/contact.mjs"
     },
     {
       "source": "/(.*)",
-      "destination": "/server.js"
+      "destination": "/index.html"
     }
   ],
   "env": {
