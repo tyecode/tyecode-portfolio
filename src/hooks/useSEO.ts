@@ -42,7 +42,6 @@ export const useSEO = ({
     return {
       title: seoTitle,
       description: seoDescription,
-      canonical: seoUrl,
       image: seoImage,
       keywords: seoKeywords,
       author: siteConfig.author,

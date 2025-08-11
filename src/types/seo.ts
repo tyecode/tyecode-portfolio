@@ -34,7 +34,6 @@ export interface SEOProps {
 export interface MetaTagsProps {
   title: string;
   description: string;
-  canonical: string;
   image: string;
   schemaMarkup?: Record<string, unknown>;
   keywords?: string;

@@ -11,7 +11,6 @@ import {
 const MetaTags = ({
   title,
   description,
-  canonical,
   image,
   schemaMarkup,
   keywords,
@@ -38,22 +37,25 @@ const MetaTags = ({
       />
     ))}
 
-    {/* Canonical and SEO Links */}
-    <link rel='canonical' href={canonical} />
-    {seoLinks.map((link, index) => (
-      <link
-        key={`seo-link-${index}`}
-        rel={link.rel}
-        href={link.href}
-        type={link.type}
-        sizes={link.sizes}
-        as={link.as}
-        crossOrigin={
-          link.crossorigin as 'anonymous' | 'use-credentials' | undefined
-        }
-        hrefLang={link.hreflang}
-      />
-    ))}
+    {/* SEO Links */}
+    {seoLinks.map((link, index) => {
+      const linkProps: React.ComponentProps<'link'> = {
+        rel: link.rel,
+        href: link.href,
+      };
+
+      // Only add properties that have values
+      if (link.type) linkProps.type = link.type;
+      if (link.sizes) linkProps.sizes = link.sizes;
+      if (link.as) linkProps.as = link.as;
+      if (link.crossorigin)
+        linkProps.crossOrigin = link.crossorigin as
+          | 'anonymous'
+          | 'use-credentials';
+      if (link.hreflang) linkProps.hrefLang = link.hreflang;
+
+      return <link key={`seo-link-${index}`} {...linkProps} />;
+    })}
 
     {/* Theme Color Meta Tags */}
     {themeMetaTags.map((tag, index) => (
