@@ -9,7 +9,7 @@ const HeroSection: React.FC = () => {
   const [imageError, setImageError] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
-  const profileImagePath = generateImageUrl('images/portrait.jpg');
+  const profileImagePath = generateImageUrl('images/portrait.png');
 
   useEffect(() => {
     // Hide static hero content once React has hydrated
