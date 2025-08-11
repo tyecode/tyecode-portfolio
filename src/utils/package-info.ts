@@ -53,6 +53,11 @@ export const getBaseUrl = (): string => {
     return packageInfo.homepage;
   }
 
+  // For production builds, always use the production domain
+  if (import.meta.env.PROD) {
+    return 'https://tyecode.dev';
+  }
+
   // Fallback: Use environment variable or default for development
   const envBaseUrl = import.meta.env.VITE_BASE_URL || import.meta.env.BASE_URL;
   if (envBaseUrl) {
@@ -64,7 +69,7 @@ export const getBaseUrl = (): string => {
     return 'http://localhost:8000';
   }
 
-  // For production, use the configured domain
+  // Default fallback
   return 'https://tyecode.dev';
 };
 

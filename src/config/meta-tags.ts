@@ -199,10 +199,10 @@ export const criticalLinks: LinkTag[] = [
 
 // Additional SEO links for better indexing
 export const seoLinks: LinkTag[] = [
-  { rel: 'canonical', href: generateUrl() },
-  { rel: 'alternate', href: generateUrl(), hreflang: 'en' },
-  { rel: 'alternate', href: generateUrl(), hreflang: 'lo' },
-  { rel: 'alternate', href: generateUrl(), hreflang: 'x-default' },
+  { rel: 'canonical', href: generateUrl('/') },
+  { rel: 'alternate', href: generateUrl('/'), hreflang: 'en' },
+  { rel: 'alternate', href: generateUrl('/'), hreflang: 'lo' },
+  { rel: 'alternate', href: generateUrl('/'), hreflang: 'x-default' },
   // Social identity links using centralized social configuration
   ...SOCIAL_LINKS.map(link => ({ rel: 'me' as const, href: link.href })),
   // Author and publisher links
