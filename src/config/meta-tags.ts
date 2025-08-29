@@ -79,6 +79,10 @@ export const seoMetaTags: MetaTag[] = [
     content:
       'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
   },
+  // Cache control for SEO refresh
+  { name: 'cache-control', content: 'no-cache, no-store, must-revalidate' },
+  { name: 'pragma', content: 'no-cache' },
+  { name: 'expires', content: '0' },
   // Additional SEO meta tags for better rankings
   { name: 'geo.region', content: 'LA' },
   { name: 'geo.placename', content: CONTACT_INFO.location },

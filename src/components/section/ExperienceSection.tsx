@@ -1,4 +1,3 @@
-import Button from '@/components/ui/Button';
 import { cn } from '@/utils/cn';
 import { EXPERIENCES } from '@/constants';
 
@@ -103,19 +102,6 @@ const ExperienceSection = () => {
             </li>
           ))}
         </ul>
-
-        <div className='text-center mt-12'>
-          <Button
-            as='link'
-            href={`/resume.pdf`}
-            target='_blank'
-            rel='noopener noreferrer'
-            variant='primary'
-            aria-label='Download complete resume PDF showcasing front-end development experience'
-          >
-            {'Download Complete Resume'}
-          </Button>
-        </div>
       </div>
     </section>
   );

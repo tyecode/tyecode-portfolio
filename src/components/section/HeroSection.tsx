@@ -93,16 +93,6 @@ const HeroSection: React.FC = () => {
             >
               {'View My Projects'}
             </Button>
-            <Button
-              as='link'
-              href={`/resume.pdf`}
-              target='_blank'
-              rel='noopener noreferrer'
-              variant='secondary'
-              aria-label='Download resume PDF file'
-            >
-              {'Download Resume'}
-            </Button>
           </div>
           <div id='projects-description' className='sr-only'>
             Navigate to the portfolio section to view my front-end development
