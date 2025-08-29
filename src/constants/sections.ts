@@ -122,6 +122,7 @@ export const PROJECTS: Project[] = [
 export const EXPERIENCES: Experience[] = [
   {
     company: 'AppZap',
+    companyUrl: 'https://profile.appzap.la/',
     role: 'Full-Stack Developer',
     period: 'Aug 2024 - Present',
     description:
@@ -137,6 +138,7 @@ export const EXPERIENCES: Experience[] = [
   },
   {
     company: 'Lailaolab ICT Solutions',
+    companyUrl: 'https://lailaolab.com',
     role: 'Front-end Developer',
     period: 'Dec 2023 - Present',
     description:
@@ -151,6 +153,7 @@ export const EXPERIENCES: Experience[] = [
   },
   {
     company: 'Wecare',
+    companyUrl: '',
     role: 'Software Engineering Intern',
     period: 'Apr 2023 - July 2023',
     description:

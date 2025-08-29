@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Button from '@/components/ui/Button';
 import { cn } from '@/utils/cn';
 import { generateImageUrl } from '@/utils/package-info';
-import { HERO_CONTENT, SOCIAL_LINKS } from '@/constants';
+import { EXPERIENCES, HERO_CONTENT, SOCIAL_LINKS } from '@/constants';
 
 const HeroSection: React.FC = () => {
   const [imageError, setImageError] = useState<boolean>(false);
@@ -58,13 +58,25 @@ const HeroSection: React.FC = () => {
           <p className='hero-lcp-text text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl'>
             {HERO_CONTENT.description} Currently crafting exceptional user
             experiences at{' '}
-            <span className='text-gray-900 font-medium'>
+            <a
+              href={EXPERIENCES[0].companyUrl}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-gray-900 font-medium hover:underline transition-colors'
+              aria-label='Visit AppZap company website (opens in new tab)'
+            >
               {HERO_CONTENT.currentCompany}
-            </span>
-            , previously at{' '}
-            <span className='text-gray-900 font-medium'>
+            </a>
+            , and{' '}
+            <a
+              href={EXPERIENCES[1].companyUrl}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-gray-900 font-medium hover:underline transition-colors'
+              aria-label='Visit Lailaolab ICT Solutions website (opens in new tab)'
+            >
               {HERO_CONTENT.previousCompany}
-            </span>
+            </a>
             . Explore my{' '}
             <a
               href='#work'

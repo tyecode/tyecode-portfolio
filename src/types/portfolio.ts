@@ -18,6 +18,7 @@ export interface Project {
 
 export interface Experience {
   company: string;
+  companyUrl?: string; // Optional company website URL
   role: string;
   period: string;
   description: string;

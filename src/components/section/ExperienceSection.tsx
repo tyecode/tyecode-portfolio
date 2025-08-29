@@ -55,7 +55,19 @@ const ExperienceSection = () => {
                       )}
                     </div>
                     <div className='text-gray-600 font-medium mb-1'>
-                      {exp.company}
+                      {exp.companyUrl ? (
+                        <a
+                          href={exp.companyUrl}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          className='hover:text-gray-900 hover:underline transition-colors duration-200'
+                          aria-label={`Visit ${exp.company} website (opens in new tab)`}
+                        >
+                          {exp.company}
+                        </a>
+                      ) : (
+                        exp.company
+                      )}
                     </div>
                     <time
                       className='text-sm text-gray-500'
