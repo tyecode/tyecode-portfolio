@@ -1,6 +1,6 @@
 # 🤝 Contributing to tyecode Portfolio
 
-Contributions, issues, and feature requests are welcome! This project follows front-end development best practices and welcomes improvements to UI/UX, performance, accessibility, and code quality.
+Contributions, issues, and feature requests are welcome! This project follows full-stack development best practices and welcomes improvements to UI/UX, performance, accessibility, and code quality.
 
 Feel free to check the [issues page](https://github.com/tyecode/tyecode-portfolio/issues) for open tasks or create new ones.
 
@@ -64,7 +64,7 @@ Feel free to check the [issues page](https://github.com/tyecode/tyecode-portfoli
    - Write clean, self-documenting code
    - Test on multiple screen sizes (mobile, tablet, desktop)
    - Verify accessibility with screen readers and keyboard navigation
-   - Check performance with Lighthouse locally (`pnpm run lighthouse:local`)
+   - Check performance with Lighthouse DevTools manually
    - Test analytics implementation (`pnpm run test:analytics`)
    - Ensure TypeScript compilation passes without errors
 

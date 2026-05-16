@@ -216,7 +216,7 @@ vercel --prod --env SMTP_HOST=smtp.gmail.com
 - ✅ **Code splitting** - Lazy loading for better performance
 - ✅ **SSR** - Server-side rendering for fast initial loads
 - ✅ **Image optimization** - Automatic compression via Vercel
-- ✅ **Bundle analysis** - Use `pnpm run build:analyze`
+- ✅ **Bundle analysis** - Use `npx vite-bundle-analyzer` or check Vercel build logs
 - ✅ **Critical CSS** - Inline critical styles
 
 ### Monitor Performance:

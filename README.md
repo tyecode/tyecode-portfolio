@@ -3,7 +3,7 @@
 # Tyecode Portfolio
 
 <p align="center">
-  <em>A modern, SEO-optimized single-page portfolio showcasing front-end development expertise with React, TypeScript, and modern web technologies.</em>
+  <em>A modern, SEO-optimized single-page portfolio showcasing full-stack development expertise with React, Next.js, TypeScript, and modern web technologies.</em>
 </p>
 
 ---
@@ -25,7 +25,7 @@
 
 </div>
 
-> **Tyecode's professional portfolio** - A single-page application showcasing front-end development skills, AI integration expertise, and modern web technologies. Built with performance, accessibility, and SEO in mind.
+> **Tyecode's professional portfolio** - A single-page application showcasing full-stack development skills, crypto payment infrastructure, and modern web technologies. Built with performance, accessibility, and SEO in mind.
 
 ## 🚀 Key Features
 
@@ -49,9 +49,9 @@
 
 ## 🎯 Portfolio Sections
 
-- **Hero Section**: Professional introduction with AI enthusiast focus
+- **Hero Section**: Professional introduction with current role and background
 - **About Section**: Skills showcase and professional background
-- **Work Section**: Featured projects with modern web technologies
+- **Work Section**: Featured projects including crypto payment infrastructure and web applications
 - **Experience Section**: Professional timeline and achievements
 - **Contact Section**: Contact form and professional information
 
@@ -64,13 +64,13 @@
 - **Build Tool**: Vite 6.1 with SSR support
 - **State Management**: React hooks and context
 
-### Backend & SEO
+### Backend & Infrastructure
 
 - **Server**: Express 5.0 for SSR and API endpoints
-- **SEO**: React Helmet Async with centralized meta configuration
-- **Sitemap**: Auto-generated with `vite-plugin-sitemap`
-- **Structured Data**: JSON-LD Person schema
-- **Analytics**: Google Analytics integration
+- **Database**: Supabase/PostgreSQL, MongoDB, Redis
+- **API**: GraphQL (Apollo), RESTful API design
+- **Testing**: Playwright (E2E), Jest (Unit)
+- **CI/CD**: Vercel, Netlify
 
 ### Development & Deployment
 
@@ -165,10 +165,11 @@ Set these in your Vercel dashboard:
 To customize this portfolio for your own use:
 
 1. **Update Personal Information**: Edit `src/constants/social.ts` with your details
-2. **Replace Projects**: Update project data in the constants
-3. **Customize Styling**: Modify Tailwind classes and components
-4. **Update Images**: Replace images in `public/images/` directory
-5. **SEO Configuration**: Update meta tags and structured data in `src/config/`
+2. **Replace Projects**: Update `PROJECTS` in `src/constants/sections.ts`
+3. **Update Experience**: Update `EXPERIENCES` in `src/constants/sections.ts`
+4. **Customize Styling**: Modify Tailwind classes and components
+5. **Update Images**: Replace images in `public/images/` directory
+6. **SEO Configuration**: Update meta tags and structured data in `src/config/`
 
 ## 📁 Project Structure
 
