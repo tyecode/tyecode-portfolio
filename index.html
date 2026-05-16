@@ -276,39 +276,6 @@
     <div id="root" role="application" aria-label="<%- appLabel %>">
       <!-- Server-side and client-side rendered content will be injected here -->
       <!--app-html-->
-
-      <!-- NoScript Fallback -->
-      <noscript>
-        <div class="noscript-fallback">
-          <div class="noscript-content">
-            <h1>{<%- logoText %>} <%- brandName %></h1>
-            <p class="noscript-title">Front-End Web Developer</p>
-            <p class="noscript-description">
-              I build digital experiences that users love and businesses need.
-              Currently crafting exceptional user experiences at
-              <strong>AppZap</strong>.
-            </p>
-            <div class="noscript-actions">
-              <a
-                href="mailto:sengphachanh.dev@gmail.com"
-                class="noscript-btn primary"
-              >
-                Get in Touch
-              </a>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                class="noscript-btn secondary"
-              >
-                Download Resume
-              </a>
-            </div>
-            <p class="noscript-note">
-              For the full interactive experience, please enable JavaScript.
-            </p>
-          </div>
-        </div>
-      </noscript>
     </div>
 
     <!-- Application Entry Point -->
@@ -369,79 +336,5 @@
         detectCSSLoaded();
       }
     </script>
-
-    <!-- NoScript Fallback Styles -->
-    <style>
-      .noscript-fallback {
-        padding: 2rem;
-        text-align: center;
-        font-family:
-          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: #f9fafb;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .noscript-content {
-        max-width: 600px;
-      }
-
-      .noscript-content h1 {
-        color: #111827;
-        margin-bottom: 1rem;
-        font-size: 2rem;
-      }
-
-      .noscript-title {
-        color: #6b7280;
-        margin-bottom: 1.5rem;
-        font-size: 1.1rem;
-      }
-
-      .noscript-description {
-        color: #374151;
-        margin-bottom: 2rem;
-        line-height: 1.6;
-      }
-
-      .noscript-actions {
-        margin-bottom: 2rem;
-      }
-
-      .noscript-btn {
-        padding: 0.75rem 1.5rem;
-        text-decoration: none;
-        border-radius: 0.5rem;
-        display: inline-block;
-        margin: 0 0.5rem;
-        transition: all 0.2s ease;
-      }
-
-      .noscript-btn.primary {
-        background: #111827;
-        color: white;
-      }
-
-      .noscript-btn.primary:hover {
-        background: #1f2937;
-      }
-
-      .noscript-btn.secondary {
-        border: 2px solid #111827;
-        color: #111827;
-      }
-
-      .noscript-btn.secondary:hover {
-        background: #111827;
-        color: white;
-      }
-
-      .noscript-note {
-        color: #9ca3af;
-        font-size: 0.9rem;
-      }
-    </style>
   </body>
 </html>

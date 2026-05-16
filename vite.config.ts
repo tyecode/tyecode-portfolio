@@ -19,17 +19,16 @@ export default defineConfig(
     // Simplified HTML data
     const htmlData = {
       brandName: 'Tyecode',
-      brandTitle: 'Frontend Developer & AI Enthusiast',
+      brandTitle: 'Full-Stack Developer',
       brandDescription:
-        'A passionate frontend developer with 5+ years of experience building scalable React applications, now exploring AI integration and Discord bot development.',
+        'Full-Stack Developer specializing in Next.js, Node.js, and TypeScript.',
       siteTitle:
-        'Tyecode - Frontend Developer & AI Enthusiast | React & TypeScript Specialist',
+        'Tyecode - Full-Stack Developer | Next.js & TypeScript Specialist',
       siteDescription:
-        '🚀 Frontend Developer & AI Enthusiast specializing in React, TypeScript & AI integration. 5+ years building scalable web applications + Discord bots. Currently exploring AI-powered web solutions. Available for hire!',
-      ogImageAlt: 'Tyecode - Frontend Developer & AI Enthusiast Portfolio',
+        '🚀 Full-Stack Developer specializing in Next.js, Node.js & TypeScript. 3+ years building scalable web systems. Available for hire!',
+      ogImageAlt: 'Tyecode - Full-Stack Developer Portfolio',
       siteName: 'Tyecode Portfolio',
       appLabel: 'Tyecode Portfolio Application',
-      logoText: 'T',
       currentYear: new Date().getFullYear(),
       siteUrl: 'https://tyecode.dev/',
       ogImageUrl: 'https://tyecode.dev/images/og.jpg',
