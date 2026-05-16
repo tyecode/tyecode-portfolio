@@ -1,5 +1,5 @@
 # Redirect www to non-www if applicable
-https://www.tyecode.dev/* https://tyecode.dev/:splat 301!
+https://www.tyecode.is-a.dev/* https://tyecode.is-a.dev/:splat 301!
 
 # Handle legacy URLs or alternative patterns
 /portfolio/* /:splat 301!

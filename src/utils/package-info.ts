@@ -55,7 +55,7 @@ export const getBaseUrl = (): string => {
 
   // For production builds, always use the production domain
   if (import.meta.env.PROD) {
-    return 'https://tyecode.dev';
+    return 'https://tyecode.is-a.dev';
   }
 
   // Fallback: Use environment variable or default for development
@@ -70,7 +70,7 @@ export const getBaseUrl = (): string => {
   }
 
   // Default fallback
-  return 'https://tyecode.dev';
+  return 'https://tyecode.is-a.dev';
 };
 
 /**

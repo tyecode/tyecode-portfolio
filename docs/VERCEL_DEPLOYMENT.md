@@ -118,13 +118,13 @@ Your project includes a `vercel.json` configuration file:
 ### Add Your Domain to Vercel:
 
 1. Go to **Settings** → **Domains**
-2. Add your custom domain (`tyecode.dev`)
+2. Add your custom domain (`tyecode.is-a.dev`)
 3. Follow DNS configuration instructions
 4. Vercel will automatically provision SSL certificate
 
 ### Domain Configuration:
 
-Your portfolio is configured to use `https://tyecode.dev` as the primary domain. This is set in:
+Your portfolio is configured to use `https://tyecode.is-a.dev` as the primary domain. This is set in:
 
 - `package.json` → `homepage` field
 - All URL generation functions use this domain
@@ -246,6 +246,6 @@ vercel --prod --env SMTP_HOST=smtp.gmail.com
 
 ---
 
-**Your portfolio is now ready for Vercel deployment at `tyecode.dev`! 🎉**
+**Your portfolio is now ready for Vercel deployment at `tyecode.is-a.dev`! 🎉**
 
-Vercel provides excellent performance, automatic SSL, and global CDN distribution for your SSR portfolio. Your custom domain `tyecode.dev` is pre-configured and ready to use.
+Vercel provides excellent performance, automatic SSL, and global CDN distribution for your SSR portfolio. Your custom domain `tyecode.is-a.dev` is pre-configured and ready to use.

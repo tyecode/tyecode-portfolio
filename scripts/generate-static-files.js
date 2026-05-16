@@ -48,7 +48,7 @@ const getBaseUrl = packageInfo => {
   }
 
   // For production, use the configured domain
-  return 'https://tyecode.dev';
+  return 'https://tyecode.is-a.dev';
 };
 
 // Generate dynamic files

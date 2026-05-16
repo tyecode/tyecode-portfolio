@@ -44,7 +44,7 @@ const getBaseUrl = (): string => {
   }
 
   // For production, use the configured domain
-  return 'https://tyecode.dev';
+  return 'https://tyecode.is-a.dev';
 };
 
 export const BASE_URL = getBaseUrl();

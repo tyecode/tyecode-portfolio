@@ -30,8 +30,8 @@ export default defineConfig(
       siteName: 'Tyecode Portfolio',
       appLabel: 'Tyecode Portfolio Application',
       currentYear: new Date().getFullYear(),
-      siteUrl: 'https://tyecode.dev/',
-      ogImageUrl: 'https://tyecode.dev/images/og.jpg',
+      siteUrl: 'https://tyecode.is-a.dev/',
+      ogImageUrl: 'https://tyecode.is-a.dev/images/og.jpg',
       twitterUsername: 'tyecode',
     };
 
