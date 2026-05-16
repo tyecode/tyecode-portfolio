@@ -5,21 +5,21 @@ import { PROJECTS } from '@/constants';
 const WorkSection = () => {
   return (
     <section
-      id='work'
-      className='py-20 bg-white section-work prevent-layout-shift'
-      aria-labelledby='work-heading'
+      id='projects'
+      className='py-20 bg-white section-projects prevent-layout-shift'
+      aria-labelledby='projects-heading'
     >
       <div className='container relative'>
         <div className='text-center mb-16'>
           <h2
-            id='work-heading'
+            id='projects-heading'
             className='text-3xl font-bold text-gray-900 mb-4'
           >
             {'Featured Projects'}
           </h2>
           <p className='text-lg text-gray-600 max-w-2xl mx-auto'>
             {
-              "A showcase of user interfaces and web applications I've built, demonstrating my front-end development skills and attention to user experience design. Learn more "
+              "A showcase of web applications and systems I've built. Learn more "
             }
             <a
               href='#about'
@@ -41,7 +41,7 @@ const WorkSection = () => {
         </div>
 
         <ul
-          className='grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-fr'
+          className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr'
           aria-label='Featured projects'
         >
           {PROJECTS.map((project, index) => (
@@ -190,8 +190,8 @@ const WorkSection = () => {
             {'View All Projects'}
           </Button>
           <div id='view-all-description' className='sr-only'>
-            Contact me to see more of my front-end development projects and
-            discuss collaboration opportunities
+            Contact me to see more of my projects and discuss collaboration
+            opportunities
           </div>
         </div>
       </div>

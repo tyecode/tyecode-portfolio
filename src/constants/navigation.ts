@@ -6,8 +6,8 @@ export const NAVIGATION_LINKS: NavLink[] = [
     label: 'About',
   },
   {
-    href: '#work',
-    label: 'Work',
+    href: '#projects',
+    label: 'Projects',
   },
   {
     href: '#experience',

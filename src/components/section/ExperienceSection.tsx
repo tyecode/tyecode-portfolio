@@ -18,9 +18,7 @@ const ExperienceSection = () => {
             {'Professional Experience'}
           </h2>
           <p className='text-lg text-gray-600 max-w-2xl mx-auto'>
-            {
-              'My journey through different companies and roles, each contributing to my growth as a front-end developer and UI specialist.'
-            }
+            {"Where I've worked and what I've built along the way."}
           </p>
         </div>
 
@@ -111,7 +109,7 @@ const ExperienceSection = () => {
             target='_blank'
             rel='noopener noreferrer'
             variant='primary'
-            aria-label='Download complete resume PDF showcasing front-end development experience'
+            aria-label='Download complete resume PDF showcasing full-stack development experience'
           >
             {'Download Complete Resume'}
           </Button>

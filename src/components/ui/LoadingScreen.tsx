@@ -7,9 +7,15 @@ const LoadingScreen = () => {
     fadeOutDuration: 500,
   });
 
-  // Don't render anything if loading is complete
+  // Hide loading screen after fade-out without unmounting to prevent reflow
   if (!shouldShow) {
-    return null;
+    return (
+      <div
+        className='loading-screen'
+        style={{ display: 'none' }}
+        aria-hidden='true'
+      />
+    );
   }
 
   const character = BRAND_INFO.name.charAt(0);

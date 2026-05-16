@@ -20,7 +20,7 @@ import type { MetaTag, LinkTag } from '@/types/seo';
 
 // Site configuration - now fully dynamic from constants and package info
 export const siteConfig = {
-  title: `${BRAND_INFO.name} - ${BRAND_INFO.title} | React & TypeScript Specialist`,
+  title: `${BRAND_INFO.name} - ${BRAND_INFO.title} | Next.js & TypeScript Specialist`,
   baseUrl: getBaseUrl(),
   email: CONTACT_INFO.email,
   author: BRAND_INFO.name,
@@ -28,15 +28,16 @@ export const siteConfig = {
   keywords: [
     BRAND_INFO.name.toLowerCase(),
     BRAND_INFO.fullName.toLowerCase().replace(' ', ', '),
-    'react developer',
-    'front-end developer',
+    'full-stack developer',
+    'next.js developer',
     'typescript developer',
+    'node.js developer',
     'web developer portfolio',
-    'hire front-end developer',
+    'hire full-stack developer',
     'laos developer',
     CONTACT_INFO.location.toLowerCase().replace(' Capital', ''),
-    'AI developer',
-    'discord bot developer',
+    'crypto payment developer',
+    'blockchain developer',
   ].join(', '),
   themeColor: '#111827',
   locale: 'en_US',
@@ -44,7 +45,8 @@ export const siteConfig = {
   social: {
     github: getSocialUrl('github'),
     linkedin: getSocialUrl('linkedin'),
-    twitter: getSocialUrl('twitter'),
+    twitter:
+      getSocialUrl('twitter') || `https://twitter.com/${TWITTER_USERNAME}`,
     twitterHandle: `@${TWITTER_USERNAME}`,
     twitterUsername: TWITTER_USERNAME,
   },
@@ -217,7 +219,7 @@ export const generateManifest = () => {
   const shortName = BRAND_INFO.name.split(' ')[0]; // Use first name for short_name
 
   return {
-    name: `${BRAND_INFO.name} - Front-End Developer Portfolio`,
+    name: `${BRAND_INFO.name} - Full-Stack Developer Portfolio`,
     short_name: shortName,
     description: BRAND_INFO.description,
     start_url: `${basePath}/`,
@@ -243,7 +245,7 @@ export const generateManifest = () => {
         name: 'View Projects',
         short_name: 'Projects',
         description: 'Browse featured web development projects',
-        url: `${basePath}/#work`,
+        url: `${basePath}/#projects`,
       },
       {
         name: 'Experience',

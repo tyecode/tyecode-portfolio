@@ -51,23 +51,18 @@ const HeroSection: React.FC = () => {
             Hi, I&apos;m{' '}
             <span className='text-gray-600'>{HERO_CONTENT.fullName}</span>
             <br />
-            <span className='text-gray-900'>Front-End</span>{' '}
-            <span className='text-gray-600'>Web Developer</span>
+            <span className='text-gray-900'>
+              {HERO_CONTENT.title.split(' ')[0]}
+            </span>{' '}
+            <span className='text-gray-600'>
+              {HERO_CONTENT.title.split(' ').slice(1).join(' ')}
+            </span>
           </h1>
 
           <p className='hero-lcp-text text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl'>
-            {HERO_CONTENT.description} Currently crafting exceptional user
-            experiences at{' '}
-            <span className='text-gray-900 font-medium'>
-              {HERO_CONTENT.currentCompany}
-            </span>
-            , previously at{' '}
-            <span className='text-gray-900 font-medium'>
-              {HERO_CONTENT.previousCompany}
-            </span>
-            . Explore my{' '}
+            {HERO_CONTENT.description} Explore my{' '}
             <a
-              href='#work'
+              href='#projects'
               className='text-gray-900 font-medium hover:underline transition-colors'
               aria-label='View portfolio projects'
             >
@@ -84,28 +79,27 @@ const HeroSection: React.FC = () => {
             .
           </p>
 
-          <div className='flex flex-col sm:flex-row gap-4 mb-10'>
+          <div className='flex items-center gap-6 mb-10'>
             <Button
               as='link'
-              href='#work'
+              href='#projects'
               variant='primary'
               aria-describedby='projects-description'
             >
-              {'View My Projects'}
+              {'View Projects'}
             </Button>
-            <Button
-              as='link'
-              href={`/resume.pdf`}
+            <a
+              href='/resume.pdf'
               target='_blank'
               rel='noopener noreferrer'
-              variant='secondary'
+              className='text-gray-900 font-medium hover:underline transition-colors flex items-center gap-1'
               aria-label='Download resume PDF file'
             >
-              {'Download Resume'}
-            </Button>
+              Resume <span aria-hidden='true'>↗</span>
+            </a>
           </div>
           <div id='projects-description' className='sr-only'>
-            Navigate to the portfolio section to view my front-end development
+            Navigate to the portfolio section to view my web development
             projects and{' '}
             <a href='#experience' className='underline'>
               professional experience
@@ -137,7 +131,7 @@ const HeroSection: React.FC = () => {
             {profileImagePath && !imageError ? (
               <img
                 src={profileImagePath}
-                alt={`Portrait of ${HERO_CONTENT.name}, a professional Front-End Web Developer specializing in React.`}
+                alt={`Portrait of ${HERO_CONTENT.name}, a professional ${HERO_CONTENT.title}.`}
                 className={`w-full h-full object-cover transition-opacity duration-300 ${
                   imageLoaded ? 'opacity-100' : 'opacity-0'
                 }`}

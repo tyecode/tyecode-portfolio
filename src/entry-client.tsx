@@ -31,6 +31,14 @@ const initializeApp = async () => {
     });
   }
 
+  // Preload lazy-loaded sections so they are ready before hydration
+  await Promise.all([
+    import('@/components/section/AboutSection'),
+    import('@/components/section/ContactSection'),
+    import('@/components/section/ExperienceSection'),
+    import('@/components/section/WorkSection'),
+  ]);
+
   const root = document.getElementById('root');
   if (!root) return;
 
@@ -73,10 +81,13 @@ const initializeApp = async () => {
     }
 
     // Remove prevent-fouc class once app is loaded
-    setTimeout(() => {
-      root.classList.remove('prevent-fouc');
-      root.classList.add('loaded');
-    }, 100);
+    // Use double rAF to ensure the browser has painted before revealing content
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        root.classList.remove('prevent-fouc');
+        root.classList.add('loaded');
+      });
+    });
   } catch (error) {
     console.error('Critical error during app initialization:', error);
 
@@ -88,10 +99,12 @@ const initializeApp = async () => {
       rootInstance.render(AppComponent);
 
       // Remove prevent-fouc class even in error case
-      setTimeout(() => {
-        root.classList.remove('prevent-fouc');
-        root.classList.add('loaded');
-      }, 100);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          root.classList.remove('prevent-fouc');
+          root.classList.add('loaded');
+        });
+      });
     }
   }
 };

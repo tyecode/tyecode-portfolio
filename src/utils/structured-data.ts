@@ -32,11 +32,7 @@ export function generateStructuredData(): string {
       addressRegion: 'Vientiane Capital',
       addressCountry: 'LA',
     },
-    worksFor: {
-      '@type': 'Organization',
-      name: HERO_CONTENT.currentCompany,
-    },
-    alumniOf: EXPERIENCES.filter(exp => !exp.current).map(exp => ({
+    worksFor: EXPERIENCES.filter(exp => exp.current).map(exp => ({
       '@type': 'Organization',
       name: exp.company,
     })),

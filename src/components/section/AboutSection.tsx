@@ -25,25 +25,31 @@ const AboutSection = () => {
                   {paragraph}
                 </p>
               ))}
-              <p className='text-lg text-gray-600 leading-relaxed'>
-                Check out my{' '}
-                <a
-                  href='#work'
-                  className='text-gray-900 font-medium hover:underline transition-colors'
-                  aria-label='View my portfolio projects'
-                >
-                  portfolio projects
-                </a>{' '}
-                to see these skills in action, or view my{' '}
-                <a
-                  href='#experience'
-                  className='text-gray-900 font-medium hover:underline transition-colors'
-                  aria-label='View my professional experience'
-                >
-                  professional experience
-                </a>{' '}
-                for more details about my career journey.
-              </p>
+            </div>
+
+            <div className='mt-12'>
+              <h3
+                id='stats-heading'
+                className='text-xl font-semibold text-gray-900 mb-6'
+              >
+                {'Quick Stats'}
+              </h3>
+              <ul
+                className='grid grid-cols-3 gap-6'
+                aria-labelledby='stats-heading'
+              >
+                {ABOUT_STATS.map((stat, index) => (
+                  <li key={index}>
+                    <div
+                      className='text-2xl font-bold text-gray-900 mb-1'
+                      aria-label={stat.ariaLabel}
+                    >
+                      {stat.value}
+                    </div>
+                    <div className='text-sm text-gray-600'>{stat.label}</div>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
@@ -67,31 +73,6 @@ const AboutSection = () => {
                 </li>
               ))}
             </ul>
-
-            <div className='mt-12'>
-              <h3
-                id='stats-heading'
-                className='text-xl font-semibold text-gray-900 mb-6'
-              >
-                {'Quick Stats'}
-              </h3>
-              <ul
-                className='grid grid-cols-2 gap-6'
-                aria-labelledby='stats-heading'
-              >
-                {ABOUT_STATS.map((stat, index) => (
-                  <li key={index}>
-                    <div
-                      className='text-2xl font-bold text-gray-900 mb-1'
-                      aria-label={stat.ariaLabel}
-                    >
-                      {stat.value}
-                    </div>
-                    <div className='text-sm text-gray-600'>{stat.label}</div>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
         </div>
       </div>
