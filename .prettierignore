@@ -22,4 +22,5 @@ build/
 
 # Other
 .git/
-public/ 
+public/
+register/ 

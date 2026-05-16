@@ -26,6 +26,7 @@ export default tseslint.config(
       'Thumbs.db',
       'scripts/cleanup.js',
       '.vercel/**',
+      'register/**',
     ],
   },
   {
